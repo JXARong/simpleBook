@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>简简书后台管理</title>
+    <link rel="stylesheet" href="/simpleBook/css/houtai_login.css"/>
+</head>
+<script src="/simpleBook/js/jquery-1.12.4.min.js"></script>
+<script src="/simpleBook/js/houtai_login.js"></script>
+<body>
+<img src="/simpleBook/images/bgImg.jpg" class="bgImg"/>
+<div class="content">
+    <div class="bidTitle">简简书后台登录</div>
+     <div class="logCon" id="login">
+         <span class="tip" style="font-size: 14px"></span>
+         <div class="line"><span>账号:</span>
+             <input class="bt_input" id="username" type="text" placeholder="请输入用户名"/>
+         </div>
+         <div class="line"><span>密码:</span>
+             <input class="bt_input" id="password" type="password" placeholder="请输入密码"/>
+         </div>
+         <div class="line"><span>验证码:</span>
+             <input class="bt_input" id="code" type="text" style="width:80px;" placeholder="验证码"/>
+             <img class="codeImage" src="/simpleBook/admin/generateCode" width="80px" height="35px"
+                  style="vertical-align: middle"/>
+             <a href="javascript:void(0)" class="switchCode"
+                style="font-size: 14px;margin-right:65px;display: inline-block;vertical-align: bottom;height: 38px;color: aliceblue;text-decoration: none;">看不清？点击切换</a>
+         </div>
+
+         <button type="button" class="logingBut" id="login_btn">登录</button>
+         <br>
+         <a class="forgetPwd" href="javascript:void(0)">忘记密码？</a>
+     </div>
+
+     <div class="logCon" id="forget" style="display: none">
+         <span class="tip" style="font-size: 14px"></span>
+         <div class="line">
+             <span>用户名:</span>
+             <input class="bt_input" name="email" id="forget_username" type="text" placeholder="请输入用户名"/>
+         </div>
+         <div class="line">
+             <span>&nbsp;&nbsp;&nbsp;邮箱:</span>
+             <input class="bt_input" name="email" id="forget_email" type="text" placeholder="请输入邮箱"/>
+         </div>
+         <div class="line">
+             <span>&nbsp;&nbsp;&nbsp;&nbsp;验证码:</span>
+             <input class="bt_input" id="forget_code" type="text" placeholder="请查看邮箱" style="width:160px;"/>
+             <a href="javascript:void(0)" class="sendEmail"
+                style="display: inline-block;width: 90px;height: 36px; background-color: #dfe6e9;color: #000;line-height: 36px;text-decoration: none;margin-right:95px">发送验证码</a>
+         </div>
+         <div class="line">
+             <button class="logingBut" id="sub_emailCode">确定</button>
+             <br>
+             <a href="/simpleBook/index.html"
+                style="display:inline-block;margin-top: 20px; margin-left:20px;color:aliceblue;font-size:15px;text-decoration:none;width:50px">上一页</a>
+         </div>
+
+     </div>
+    <div class="logCon" id="updateAdmin" style="display: none;">
+        <span class="tip" style="font-size: 14px"></span>
+        <div class="line">
+            <input class="bt_input" name="username" id="update_id" type="hidden" value="0"/>
+        </div>
+        <div class="line">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码:</span>
+            <input class="bt_input" name="email" id="update_pwd" type="text" placeholder="请输入密码"/>
+        </div>
+        <div class="line">
+            <span>确认密码:</span>
+            <input class="bt_input" name="email" id="update_pwdTwo" type="text" placeholder="请输入密码"/>
+        </div>
+        <div class="line">
+            <button class="logingBut" id="sub_updatePwd">修改</button>
+        </div>
+    </div>
+
+</div>
+<div style="text-align:center;">
+    <p>© 简简书</p>
+</div>
+</body>
+
+</html>

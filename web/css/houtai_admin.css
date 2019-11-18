@@ -1,0 +1,90 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.header_panel {
+    width: 100%;
+    height:80px;
+    background-color: #0984e3;
+}
+
+.left_panel {
+    width: 10%;
+    height: 100%;
+    background-color: #74b9ff;
+}
+.lis{
+    margin-bottom: 20px;
+}
+.lis p {
+    font-size: 22px;
+    padding-left: 20%;
+}
+
+.lis ul {
+    font-size: 16px;
+    padding-left: 30%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.lis ul li {
+    height: 30px;
+    line-height: 30px;
+}
+.lis ul:last-child{
+
+}
+.lis ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.lis ul li a:hover {
+    color: red;
+}
+
+.lis:first-of-type {
+    padding-top: 15%;
+}
+
+.title {
+    line-height: 80px;
+    text-indent: 1em;
+    color: white;
+    display: inline-block;
+}
+.adminInfo{
+    line-height: 80px;
+    float: right;
+    height: 80px;
+    width: 250px;
+    margin-right: 20px;
+}
+.photo{
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+}
+.admin_opr{
+    display: inline-block;
+    margin-left: 10px;
+    height: 60px;
+    width: 120px;
+    vertical-align: super;
+}
+.admin_opr li{
+    height: 20px;
+    line-height: 20px;
+    padding-bottom: 8px;
+    color: white;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color: #fdcb6e;
+}

@@ -1,0 +1,45 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.show_data>li{
+    width: 540px;
+    height: 300px;
+    display: inline-block;
+    border: #cccccc 1px solid;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.show_data>li>p{
+    height:30px;
+    border-bottom: 1px #ccc solid;
+    line-height: 30px;
+    padding: 10px;
+}
+.show_data>li>ul{
+    padding: 8px;
+}
+.todo_list{
+    background-color: #f2f2f2;
+    list-style: none;
+    display: inline-block;
+    width: 200px;
+    height:100px;
+    margin: 5px 10px;
+ }
+.todo_list:nth-child(odd){
+    margin-left: 40px;
+}
+.todo_list a{
+    text-decoration: none;
+    color: #888888;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    width: 200px;
+    padding-left: 10px;
+}
+.todo_list h1{
+    color: green;
+    padding-left: 20px;
+}

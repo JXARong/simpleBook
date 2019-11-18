@@ -1,0 +1,66 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 50,
+  "data":[{
+    "id": "123456789",
+    "username": "赖榕",
+    "password": "123456789",
+    "email": "11311111310@qq.com",
+    "gender": "1",
+    "photo": "2736056.jpg",
+    "money": "1239.99",
+    "status": "1",
+    "bornthDay": "2019-09-19"
+  },{
+    "id": "123456789",
+    "username": "赖榕",
+    "password": "123456789",
+    "email": "11311111310@qq.com",
+    "gender": "0",
+    "photo": "2736056.jpg",
+    "money": "1239.99",
+    "status": "0",
+    "bornthDay": "2019-09-19"
+  },{
+    "id": "123456789",
+    "username": "赖榕",
+    "password": "123456789",
+    "email": "11311111310@qq.com",
+    "gender": "1",
+    "photo": "45958000.png",
+    "money": "1239.99",
+    "status": "0",
+    "bornthDay": "2019-09-19"
+  },{
+    "id": "123456789",
+    "username": "赖榕",
+    "password": "123456789",
+    "email": "11311111310@qq.com",
+    "gender": "0",
+    "photo": "2736056.jpg",
+    "money": "1239.99",
+    "bornthDay": "2019-09-19",
+    "status": "1"
+  },{
+    "id": "123456789",
+    "username": "赖榕",
+    "password": "123456789",
+    "email": "11311111310@qq.com",
+    "gender": "1",
+    "bornthDay": "2019-09-19",
+    "photo": "2736056.jpg",
+    "money": "1239.99",
+    "status": "0"
+  },{
+    "id": "123456789",
+    "username": "赖榕",
+    "password": "123456789",
+    "email": "11311111310@qq.com",
+    "gender": "0",
+    "bornthDay": "2019-09-19",
+    "photo": "2736056.jpg",
+    "money": "1239.99",
+    "status": "1"
+  }]
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>被举报文章管理</title>
+    <link href="/simpleBook/js/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <script src="/simpleBook/js/layui/layui.js" type="application/javascript"></script>
+</head>
+<script type="text/html" id="exam">
+    <div class="layui-input-inline">
+        <input type="checkbox" style="font-size: 12px" class="layui-word-aux" name="close" lay-skin="switch"
+               lay-text="通过|失败" lay-event="examine">
+    </div>
+</script>
+<body class="layui-bg-gray">
+<div class="layui-card">
+    <div class="layui-card-header">
+        <p>被举报文章管理</p>
+    </div>
+    <div class="layui-card-body">
+        <table class="layui-table" lay-filter="reportPost" id="reportPost"></table>
+    </div>
+</div>
+<script type="application/javascript">
+    layui.use(['table', 'jquery', "layer", "form"], function () {
+        var table = layui.table;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        table.render({
+            elem: "#reportPost",
+            url: "/simpleBook/json/reportPost.json",
+            title: "被举报文章列表",
+            cols: [[
+                {type: 'checkbox', fixed: "left"},
+                {field: "id", title: "编号", width: "7%", fixed: "left", align: "center", sort: true},
+                {field: 'author', title: '作者', width: "7%", unresize: true, sort: true},
+                {field: 'title', title: '标题', width: "20%", unresize: true},
+                {field: 'context', title: '文章内容', width: "26.3%", unresize: true},
+                {field: 'reportName', title: '举报人', width: "7%", unresize: true},
+                {field: 'reportReason', title: '举报原因', width: "13%", unresize: true},
+                {field: 'createTime', title: '举报时间', width: "9%", unresize: true,sort:true},
+                {fixed: "right", title: '操作', width: "8%", align: "center", sort: true, templet: "#exam"}
+            ]],
+            page: true
+        });
+    })
+</script>
+</body>
+</html>

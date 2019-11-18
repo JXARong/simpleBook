@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试写文章</title>
+</head>
+<script src="/simpleBook/js/layui/layui.js" type="application/javascript"></script>
+<link href="/simpleBook/js/layui/css/layui.css">
+<script type="application/javascript">
+    layui.use(['layedit'],function () {
+        var layedit=layui.layedit;
+        layedit.build("myTextarea");
+
+    })
+</script>
+<body>
+    <form method="post">
+        <textarea id="myTextarea" style="display: none">Hello, World!</textarea>
+        <input  type="button" value="上传" onclick="sub(this)"/>
+    </form>
+
+</body>
+</html>
