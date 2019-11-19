@@ -14,7 +14,7 @@ import java.util.Properties;
 /**
  * @author: 赖榕
  * @date: 2019/11/2
- * @description:
+ * @description: jdbc工具类
  * @version: 1.0
  * @since: JDK1.8
  * @packageName: com.bdqn.simplebook.utils

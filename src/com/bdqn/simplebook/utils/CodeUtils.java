@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * @author: 赖榕
  * @date: 2019/11/2
- * @description:
+ * @description:  生成随机验证码
  * @version: 1.0
  * @since: JDK1.8
  * @packageName: com.bdqn.simplebook.utils
