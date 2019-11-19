@@ -13,6 +13,7 @@ import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import sun.text.normalizer.UnicodeSet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
@@ -55,16 +56,16 @@ public class UserServlet extends BaseServlet {
         AjaxUtils ajaxUtils = new AjaxUtils();
         request.setCharacterEncoding("Utf-8");
         User user = new User();
-        user.setUname(request.getParameter("username"));
+        user.setUname(request.getParameter("uname"));
         user.setPassword(request.getParameter("password"));
         user.setEmail(request.getParameter("email"));
-        user.setSex(Integer.parseInt(request.getParameter("gender")));
+        user.setSex(Integer.parseInt(request.getParameter("sex")));
         user.setBornthDay(Timestamp.valueOf(request.getParameter("bornthDay")));
         user.setPhoto(request.getParameter("filePath"));
         user.setMoney(Double.valueOf(request.getParameter("money")));
         user.setStatus(Integer.valueOf(request.getParameter("status")));
         // 判断是否包含id值，有则调用修改方法，否则调用添加方法
-        String id = request.getParameter("id");
+        String id = request.getParameter("uid");
         if (id != null && id.trim().length() > 0) {
             user.setUid(Integer.valueOf(id));
             try {
@@ -153,15 +154,38 @@ public class UserServlet extends BaseServlet {
      * @param response
      */
     public void selectUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        // 存储分页信息
         PageUtils page=new PageUtils();
         String pageNum = request.getParameter("page");
         String limit = request.getParameter("limit");
+
+        // 创建实体类，用于存储查询所携带的信息
+        User user=new User();
+        String uid=request.getParameter("uid");
+        if (uid!=null && uid.length()>0){
+            user.setUid(Integer.valueOf(uid));
+        }
+        user.setUname(request.getParameter("uname"));
+        user.setEmail(request.getParameter("email"));
+        String bornthDay = request.getParameter("bornthDay");
+        if (bornthDay != null && bornthDay.length()>0) {
+            user.setBornthDay(Timestamp.valueOf(bornthDay));
+        }
+        String sex=request.getParameter("sex");
+        if (sex != null && sex.length()>0) {
+            user.setSex(Integer.valueOf(sex));
+        }
+        String status = request.getParameter("status");
+        if (status != null && status.length()>0) {
+            user.setStatus(Integer.valueOf(status));
+        }
 
         // 将数据封装到page对象中
         page.setLimit(Integer.valueOf(limit));
         page.setPageNum(Integer.valueOf(pageNum));
 
-        page= service.selUserByPage(page,null);
+        page= service.selUserByPage(page,user);
         page.setCode(0);
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
