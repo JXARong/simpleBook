@@ -4,7 +4,7 @@
 <script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>
 
 <script id="gender_temp" type="text/html">
-    {{#  if(d.gender == 0){ }}
+    {{#  if(d.sex == 0){ }}
     女
     {{#  } else { }}
     男
@@ -45,17 +45,17 @@
         table.render({
             elem: '#user_info'
             , title: "用户列表"
-            , url: '/simpleBook/json/userJson.json'
+            , url: '/simpleBook/user/selectUser'
             , toolbar: '#opr_left' //开启头部工具栏，并为其绑定左侧模板
             , layEvent: 'LAYTABLE_TIPS'
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             , cols: [[
                 {type: 'checkbox', fixed: 'left'}
-                , {field: 'id', width: 110, title: 'ID', sort: true}
-                , {field: 'username', width: 150, title: '昵称'}
+                , {field: 'uid', width: 110, title: 'ID', sort: true}
+                , {field: 'uname', width: 150, title: '昵称'}
                 , {field: 'password', width: 135, title: '密码'}
                 , {field: 'email', width: 180, title: '邮箱'}
-                , {field: 'gender', title: '性别', width: 80, templet: "#gender_temp"} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                , {field: 'sex', title: '性别', width: 80, templet: "#gender_temp"} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 , {field: 'bornthDay', title: '生日', width: 150, sort: true}
                 , {field: 'photo', title: '头像地址(悬浮可查看)'}
                 , {field: 'money', title: '金额', sort: true}
@@ -63,6 +63,9 @@
                 , {fixed: 'right', title: '操作', toolbar: '#opr', width: 150}
             ]]
             , page: true
+            ,limits:[10,20,30,50]
+            ,loading:true
+            ,text:{none:"暂无相关数据"}
             , done: function (res, curr, count) {
                 hoverOpenImg();
             }
@@ -85,7 +88,7 @@
                     btn: ["确定", "取消"],
                     success: function (layero, index) {
                         var body = layui.layer.getChildFrame("body", index);
-                        body.find(".layui-form-item:eq(0)").css("display", "none")
+                        body.find(".layui-form-item:eq(0)").css("display", "none").removeAttr("name");
                     },
                     yes: function (index, obj) {
                         yes(index, obj);
@@ -112,7 +115,7 @@
                 }
                 if (status.data.length == 1) {
                     var index = layer.open({
-                        title: status.data[0].username.toString() + "-" + status.data[0].id.toString(),
+                        title: status.data[0].uname.toString() + "-" + status.data[0].uid.toString(),
                         content: ["/simpleBook/houtai/updateAndAdd.html", 'no'],
                         type: 2,
                         area: ['500px', '750px'],
@@ -126,7 +129,8 @@
                         btn: ["确定", "取消"],
                         // 确定按钮点击事件
                         yes: function (index, obj) {
-                            yes(index, obj)
+                            yes(index, obj);
+                            table.reload("#user_info");
                         },
                         // 关闭用户编辑窗口
                         btn2: function () {
@@ -195,7 +199,7 @@
             var img_show = null; // tips，用来放置图片的提示框
             $('tr td[data-field="photo"]').hover(function () {
                 var id = "#" + $(this).parent().attr('id');
-                var img = "<img class='img_msg' src='/simpleBook/portrait/" + $(this).text() + "' style='width:130px;' />";//tips具体显示内容，具体样式可自行拼接
+                var img = "<img class='img_msg' src='/simpleBook/resources/userPhoto/" + $(this).text() + "' style='height: 130px;' />";//tips具体显示内容，具体样式可自行拼接
                 img_show = layer.tips(img, this, {
                     time: 0, //-1为不消失
                     tips: [2, 'rgba(41,41,41,.5)'], //浮动方向设定,1-4上右下左
@@ -218,17 +222,17 @@
 
         // 给弹框赋值
         function assignment(body, data) {
-            body.find("#id").val(data.id);
-            body.find("input[name='username']").val(data.username);
+            body.find("#id").val(data.uid);
+            body.find("input[name='username']").val(data.uname);
             body.find("input[name='password']").val(data.password);
             body.find("input[name='passwordTwo']").val(data.password);
             body.find("input[name='email']").val(data.email);
-            body.find("#gender").val(data.gender);
+            body.find("#gender").val(data.sex);
             body.find("input[name='bornthDay']").val(data.bornthDay);
             body.find("input[name='money']").val(data.money);
             body.find("input[name='bornthDay']").val(data.bornthDay);
             body.find("#status").val(data.status);
-            body.find("#portrait").attr("src", "/simpleBook/portrait/" + data.photo)
+            body.find("#portrait").attr("src", "/simpleBook/resources/userPhoto/" + data.photo)
         }
 
     })
