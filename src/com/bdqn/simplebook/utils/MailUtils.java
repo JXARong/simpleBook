@@ -1,35 +1,47 @@
 package com.bdqn.simplebook.utils;
 
+import com.alibaba.druid.sql.ast.statement.SQLCreateTriggerStatement;
+import com.bdqn.simplebook.domain.Email;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.*;
 import java.util.Properties;
 
 /**
  * 发邮件工具类
  */
 public final class MailUtils {
-    private static final String USER = "17779799124@163.com"; // 发件人称号，同邮箱地址
-    private static final String PASSWORD = "lr17779799124"; // 如果是qq邮箱可以使户端授权码，或者登录密码
+
+    public static final Properties props = new Properties();
+
+    // 加载发送邮件信息
+    static {
+        loadEmailInfo();
+    }
 
     /**
+     * 加载邮箱信息
+     */
+    public static void loadEmailInfo() {
+        try {
+            InputStreamReader stream = new InputStreamReader(MailUtils.class.getClassLoader().getResourceAsStream("email.properties"), "utf-8");
+            props.load(stream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 发送验证信息的邮件
      *
-     * @param to 收件人邮箱
-     * @param text 邮件正文
+     * @param to    收件人邮箱
+     * @param text  邮件正文
      * @param title 标题
      */
-    /* 发送验证信息的邮件 */
-    public static boolean sendMail(String to, String text, String title){
+    public static boolean sendMail(String to, String text, String title) {
         try {
-            final Properties props = new Properties();
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.host", "smtp.163.com");
-
-            // 发件人的账号
-            props.put("mail.user", USER);
-            //发件人的密码
-            props.put("mail.password", PASSWORD);
-
             // 构建授权信息，用于进行SMTP进行身份验证
             Authenticator authenticator = new Authenticator() {
                 @Override
@@ -46,7 +58,7 @@ public final class MailUtils {
             MimeMessage message = new MimeMessage(mailSession);
             // 设置发件人
             String username = props.getProperty("mail.user");
-            InternetAddress form = new InternetAddress(username);
+            InternetAddress form = new InternetAddress(username, props.getProperty("mail.smtp.user"));
             message.setFrom(form);
 
             // 设置收件人
@@ -61,14 +73,73 @@ public final class MailUtils {
             // 发送邮件
             Transport.send(message);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
+            System.out.println("发送邮件失败");
+        }
+        return false;
+    }
+
+
+    /**
+     * 测试修改的email是否能成功发送邮件
+     *
+     * @param host
+     * @param port
+     * @param username
+     * @param account
+     * @param password
+     * @return
+     * @throws Exception
+     */
+    public static boolean testInfo(String host, String port, String username, String account, String password) {
+        // 赋值给保存发送邮件的properties中
+        MailUtils.props.setProperty("mail.user", account);
+        props.setProperty("mail.password", password);
+        props.setProperty("mail.smtp.host", host);
+        props.setProperty("mail.smtp.user", username);
+        props.setProperty("mail.smtp.port", port);
+        //设置超时时间为20秒
+        props.setProperty("mail.smtp.timeout", "20000");
+
+        // 测试邮件是否能否发送
+        boolean result = MailUtils.sendMail("1131111310@qq.com", "测试修改邮箱", "管理员修改邮箱信息");
+        // 发送失败抛出异常
+        if (!result) {
+            // 重新加载email.properties原有信息进properties中
+            loadEmailInfo();
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * 修改当前内存中的email信息以及将它们持久化到email.properties中
+     *
+     * @param path  properties文件路径
+     * @param email 封装了email信息
+     * @return
+     */
+    public static boolean updateEmailInfo(String path, Email email) {
+
+        try {
+            FileOutputStream fos = new FileOutputStream(path);
+            // 修改内存中的email信息
+            props.setProperty("mail.user",email.getEmail());
+            props.setProperty("mail.smtp.user",email.getEmailName());
+            props.setProperty("mail.smtp.host",email.getHost());
+            props.setProperty("mail.smtp.port",email.getPort());
+            props.setProperty("mail.password",email.getPassword());
+
+            // 将信息持久化到硬盘中
+            props.store(fos,"emailInfo");
+            return true;
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
     }
 
     public static void main(String[] args) throws Exception { // 做测试用
-        boolean flag = MailUtils.sendMail("1131111310@qq.com", "你好，这是一封测试邮件，无需回复。", "测试邮件");
-        System.out.println("发送成功");
+        boolean b = testInfo("smtp.163.com", "26", "fa", "fa", "fa");
     }
 }

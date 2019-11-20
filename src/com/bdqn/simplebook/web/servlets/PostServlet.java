@@ -38,7 +38,7 @@ public class PostServlet extends BaseServlet {
     public void  selectAllPost(HttpServletRequest request, HttpServletResponse response){
         try {
             request.setCharacterEncoding("utf-8");
-            List<Post> postList=  postService.selectAllPost();
+            List<Post> postList=  service.selectAllPost();
             request.setAttribute("postList",postList);
             request.getRequestDispatcher("index.jsp").forward(request,response);
         } catch (Exception e) {

@@ -1,7 +1,9 @@
 package com.bdqn.simplebook.dao;
 
 import com.bdqn.simplebook.domain.Post;
+import com.bdqn.simplebook.domain.User;
 
+import java.util.List;
 
 
 /**

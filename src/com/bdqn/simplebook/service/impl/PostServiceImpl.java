@@ -26,50 +26,52 @@ public class PostServiceImpl implements PostService {
 
 
 
-    @Override
-    public List<Post> selectAllPost() throws Exception {
-
-        List<Post> posts=dao.selectAllPost();
-        if (posts==null){
-            throw new RuntimeException("文章为空，未查询到一条post");
-        }
-        return posts;
 
     /**
      * 文章dao接口
      */
-    private PostDao dao=new PostDaoImpl();
+    private PostDao dao = new PostDaoImpl();
 
     /**
      * 主题dao编号
      */
-    private TopicDao topicDao=new TopicDaoImpl();
+    private TopicDao topicDao = new TopicDaoImpl();
 
-    private CommentsDao commentsDao=new CommentsDaoImpl();
+    private CommentsDao commentsDao = new CommentsDaoImpl();
 
-    private Commons_LikeDao commons_likeDao=new Commons_LikeDaoImpl();
+    private Commons_LikeDao commons_likeDao = new Commons_LikeDaoImpl();
 
-    private ReportDao reportDao=new ReportDaoImpl();
+    private ReportDao reportDao = new ReportDaoImpl();
 
-    private FavouriteDao favouriteDao=new FavouriteDaoImpl();
+    private FavouriteDao favouriteDao = new FavouriteDaoImpl();
 
+    @Override
+    public List<Post> selectAllPost() throws Exception {
+
+        List<Post> posts = dao.selectAllPost();
+        if (posts == null) {
+            throw new RuntimeException("文章为空，未查询到一条post");
+        }
+        return posts;
+    }
     /**
-     *  查询post(post中可以携带参数)
+     * 查询post(post中可以携带参数)
+     *
      * @param pageUtils 分页工具
-     * @param post 封装好查询条件的post的实例
+     * @param post      封装好查询条件的post的实例
      * @return
      * @throws Exception
      */
     @Override
     public PageUtils selPostByPage(PageUtils pageUtils, Post post) throws Exception {
         List<Post> posts = dao.selPostByPage((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit(), post);
-        if (posts==null || posts.size()==0){
+        if (posts == null || posts.size() == 0) {
             throw new Exception("暂无相关数据");
-        }else {
+        } else {
             // 遍历查询的文章，查询该文章属于哪个主题
             for (Post postOne : posts) {
-               Topic topic = topicDao.selTopicById(postOne.getTopicId());
-               postOne.setTopic(topic);
+                Topic topic = topicDao.selTopicById(postOne.getTopicId());
+                postOne.setTopic(topic);
             }
         }
 
@@ -81,12 +83,13 @@ public class PostServiceImpl implements PostService {
 
     /**
      * 根据文章编号删除文章信息
+     *
      * @param pids
      * @return
      */
     @Override
     public Integer delPostById(String[] pids) throws Exception {
-        int count=0;
+        int count = 0;
         // 遍历所有的文章编号
         for (String pid : pids) {
 
@@ -111,9 +114,9 @@ public class PostServiceImpl implements PostService {
 
             // 删除该文章
             Integer delPostByPid = dao.delPostByPid(Integer.valueOf(pid));
-            count+=delPostByPid;
+            count += delPostByPid;
         }
-        if (count==0){
+        if (count == 0) {
             throw new Exception("成功删除0条信息");
         }
         return count;
