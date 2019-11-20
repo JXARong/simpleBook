@@ -130,6 +130,12 @@
                 success:function (data) {
                     if (data.flag==true){
                         layer.msg(data.msg,{icon:6});
+                        // 刷新session作用域中的admin数据
+                        $.ajax({
+                            url:"<%=request.getContextPath()%>/admin/saveSession",
+                            method:"post",
+                            data:{id:"${sessionScope.admin.id}"}
+                        })
                     } else{
                         layer.msg(data.errorMsg,{icon:2});
                     }
