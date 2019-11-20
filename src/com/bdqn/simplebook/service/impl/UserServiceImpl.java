@@ -1,9 +1,11 @@
 package com.bdqn.simplebook.service.impl;
 
+
 import com.bdqn.simplebook.dao.*;
 import com.bdqn.simplebook.dao.impl.*;
 import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
+
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.utils.ConstantUtils;
@@ -14,6 +16,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Random;
 
+import java.util.List;
+
 /**
  * @author: 龚皓冬
  * @date: 2019/11/18
@@ -22,7 +26,10 @@ import java.util.Random;
  * @since: JDK1.8
  * @packageName: com.bdqn.simplebook.service.impl
  */
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl  implements UserService {
+
+
+    
 
     /**
      * 用户dao访问接口
@@ -58,6 +65,19 @@ public class UserServiceImpl implements UserService {
      * 评论点赞表
      */
     private Commons_LikeDao commons_likeDao=new Commons_LikeDaoImpl();
+  
+  
+    /**
+     * 查询首页的所有用户
+     */
+  @Override
+    public List<User> selectIndexUser() throws Exception {
+        List<User>users=userDao.selectIndexUser();
+        if(users==null){
+            throw  new  RuntimeException("用户为空，未查到数据");
+        }
+        return users;
+      }
 
     /**
      * 添加用户
@@ -212,6 +232,7 @@ public class UserServiceImpl implements UserService {
             throw new Exception("成功删除0条用户信息");
         }
         return index;
+
     }
 
     @Override

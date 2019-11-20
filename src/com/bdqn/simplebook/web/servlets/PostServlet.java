@@ -1,5 +1,7 @@
 package com.bdqn.simplebook.web.servlets;
 
+
+import java.util.List;
 import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.service.PostService;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
 
+
 /**
  * @author: 赖榕
  * @date: 2019/11/18
@@ -24,8 +27,26 @@ import java.sql.Timestamp;
  */
 public class PostServlet extends BaseServlet {
 
+
     private PostService service = new PostServiceImpl();
 
+   /**
+     * 查询首页所有的文章，
+     * @param request
+     * @param response
+     */
+    public void  selectAllPost(HttpServletRequest request, HttpServletResponse response){
+        try {
+            request.setCharacterEncoding("utf-8");
+            List<Post> postList=  postService.selectAllPost();
+            request.setAttribute("postList",postList);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+
+        }
+  }
     /**
      * 查询文章
      *
@@ -72,7 +93,7 @@ public class PostServlet extends BaseServlet {
             pageUtils = service.selPostByPage(pageUtils, post);
             pageUtils.setCode(0);
         } catch (Exception e) {
-            pageUtils.setMsg("查询失败，请稍后再试");
+            pageUtils.setMsg(e.getMessage());
         }
         String json = JSON.toJSONString(pageUtils);
         response.setCharacterEncoding("utf-8");
@@ -105,6 +126,7 @@ public class PostServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
+
     }
 
 }

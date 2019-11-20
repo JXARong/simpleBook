@@ -32,7 +32,7 @@
             console.log($(":hidden").val());
             $.ajax({
                 method:"post",
-                url:"/simpleBook/user/AddAndUpdate",
+                url:"/simpleBook/user/addAndUpdate",
                 data:$(":input").serializeArray(),
                 success:function (data) {
                     if (data.flag==true){

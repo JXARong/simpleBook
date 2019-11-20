@@ -17,4 +17,5 @@ public interface TopicService {
 
     List<Topic> selAllTopic() throws Exception;
 
+    Topic addTopic(Topic topic) throws Exception;
 }

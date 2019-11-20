@@ -3,12 +3,14 @@ package com.bdqn.simplebook.dao.impl;
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.PostDao;
 import com.bdqn.simplebook.domain.Post;
+
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.PageUtils;
 import javafx.geometry.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * @author: 赖榕
@@ -20,6 +22,19 @@ import java.util.List;
  */
 public class PostDaoImpl extends BaseDao implements PostDao {
 
+    @Override
+    public List<Post> selectAllPost() throws Exception {
+        String sql="select * from post";
+        Class clazz = Post.class;
+        List<Post> post=super.selectList(clazz,sql,null);
+        return post;
+
+
+    @Override
+    public Post findPost(int pid) throws Exception {
+        return super.selectOne(Post.class,"select * from post where pid=?",new Object[]{pid});
+
+    }
     /**
      * 根据用户Id删除文章内容
      *
@@ -111,5 +126,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
             params.add("%" + post.getSendDate() + "%");
         }
         return sql;
+
+
     }
 }
