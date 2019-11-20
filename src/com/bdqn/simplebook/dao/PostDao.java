@@ -1,9 +1,7 @@
 package com.bdqn.simplebook.dao;
 
 import com.bdqn.simplebook.domain.Post;
-import com.bdqn.simplebook.domain.User;
 
-import java.util.List;
 
 /**
  * @author: 赖榕
@@ -14,6 +12,8 @@ import java.util.List;
  * @packageName: com.bdqn.simplebook.dao
  */
 public interface PostDao {
+
+    Post findPost(int pid)throws Exception;
 
     Integer delPostByUid(User user);
 

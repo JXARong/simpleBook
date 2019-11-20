@@ -1,7 +1,10 @@
 package com.bdqn.simplebook.test;
 
 import com.bdqn.simplebook.dao.BaseDao;
+import com.bdqn.simplebook.dao.PostDao;
+import com.bdqn.simplebook.dao.impl.PostDaoImpl;
 import com.bdqn.simplebook.domain.Admin;
+import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.ConstantUtils;
 import com.bdqn.simplebook.utils.JdbcUtils;
@@ -63,5 +66,10 @@ public class TestDB  extends BaseDao {
         File file=new File(ConstantUtils.userPhoto+File.separatorChar+"0c916505b2cd49af871a61b3d87687bf.png");
         file.deleteOnExit();
         System.out.println(file);
+    }
+    @Test
+    public void fun1() throws Exception {
+        PostDao postDao = new PostDaoImpl();
+        System.out.println( postDao.findPost(1));
     }
 }
