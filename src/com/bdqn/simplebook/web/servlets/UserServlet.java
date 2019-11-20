@@ -9,20 +9,15 @@ import com.bdqn.simplebook.utils.PageUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import sun.text.normalizer.UnicodeSet;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,9 +31,6 @@ import java.util.List;
 public class UserServlet extends BaseServlet {
 
 
-
-   
-
     private UserService service = new UserServiceImpl();
 
     /**
@@ -47,7 +39,6 @@ public class UserServlet extends BaseServlet {
      * @param request
      * @param response
      */
-
     public void login(HttpServletRequest request, HttpServletResponse response) {
 
     }
@@ -113,7 +104,6 @@ public class UserServlet extends BaseServlet {
      * @param response
      * @throws IOException
      */
-
     public void uploadPhoto(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils = new AjaxUtils();
         // 保存文件路径
@@ -161,23 +151,25 @@ public class UserServlet extends BaseServlet {
     }
 
     /**
-
      * 查询首页所有用户
+     *
      * @param request
      * @param response
      */
-    public void setUserService(HttpServletRequest request,HttpServletResponse response) {
+    public void setUserService(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding("utf-8");
-            List<User>userList=userService.selectIndexUser();
-            request.setAttribute("userList",userList);
-            request.getRequestDispatcher("index.jsp").forward(request,response);
-        }catch (Exception e) {
+            List<User> userList = service.selectIndexUser();
+            request.setAttribute("userList", userList);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
 
         }
+    }
 
+    /**
      * 查询数据
      *
      * @param request
