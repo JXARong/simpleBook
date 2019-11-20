@@ -1,7 +1,9 @@
 package com.bdqn.simplebook.service.impl;
 
-import com.bdqn.simplebook.dao.UserDao;
-import com.bdqn.simplebook.dao.impl.UserDaoImpl;
+import com.bdqn.simplebook.dao.*;
+import com.bdqn.simplebook.dao.impl.*;
+import com.bdqn.simplebook.domain.Comments;
+import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.utils.ConstantUtils;
@@ -22,7 +24,40 @@ import java.util.Random;
  */
 public class UserServiceImpl implements UserService {
 
+    /**
+     * 用户dao访问接口
+     */
     private UserDao dao = new UserDaoImpl();
+    /**
+     * 文章dao 访问接口
+     */
+    private PostDao postDao = new PostDaoImpl();
+    /**
+     * 交易dao访问接口
+     */
+    private DealDao dealDao = new DealDaoImpl();
+    /**
+     * 用户喜爱文章dao接口
+     */
+    private FavouriteDao favouriteDao = new FavouriteDaoImpl();
+    /**
+     * 用户关注dao接口
+     */
+    private RelationDao relationDao = new RelationDaoImpl();
+    /**
+     * 用户举报dao接口
+     */
+    private ReportDao reportDao = new ReportDaoImpl();
+
+    /**
+     * 文章评论dao接口
+     */
+    private CommentsDao commentsDao = new CommentsDaoImpl();
+
+    /**
+     * 评论点赞表
+     */
+    private Commons_LikeDao commons_likeDao=new Commons_LikeDaoImpl();
 
     /**
      * 添加用户
@@ -110,5 +145,72 @@ public class UserServiceImpl implements UserService {
         page.setData(users);
         page.setCount(Integer.valueOf(count.toString()));
         return page;
+    }
+
+    /**
+     * 根据uid删除用户信息
+     *
+     * @param uid
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public int delUserById(String[] uid) throws Exception {
+        int index = 0;
+        if (uid == null || uid.length == 0)
+            throw new Exception("暂无该用户信息,删除失败");
+
+        // 遍历所有需要删除的id
+        for (String s : uid) {
+            User user = new User();
+            user.setUid(Integer.valueOf(s));
+
+            // 查询该用户下的所有帖子
+            List<Post> posts = postDao.selPostByUid(user);
+            // 当该用户下有帖子时删除该帖子相关的所有信息
+            if (posts != null || posts.size() > 0) {
+                for (Post post : posts) {
+                    // 删除该帖子的所有收藏信息(Favourite表)
+                    int favouriteIndex = favouriteDao.delFavouriteByPid(post);
+                    // 删除该帖子相关的所有举报信息
+                    int report = reportDao.delReportByPid(post);
+
+                    // 查询该文章下的所有评论
+                    List<Comments> comments = commentsDao.selCommentsByPid(post.getPid());
+
+                    // 遍历该文章所有的评论
+                    for (Comments comment : comments) {
+                        // 删除该评论下的所有点赞数量
+                        Integer delCommonsByCid = commons_likeDao.delCommonsByCid(comment.getCid());
+                    }
+
+                    // 删除该文章下的所有评论
+                    Integer delCommentsByPid = commentsDao.delCommentsByPid(post.getPid());
+                }
+            }
+
+            // 删除该用户下的所有发布的帖子
+            int postIndex = postDao.delPostByUid(user);
+            // 删除用户交易信息
+            int dealIndex = dealDao.delDealByUid(user);
+            // 删除该用户下的所有关注人
+            int relationIndex = relationDao.delRelationByUid(user);
+            // 删除该用户被关注的所有信息
+            int cRelationIndex = relationDao.delcRelationByCid(user);
+            // 删除该用户关注的所有文章信息
+            int favouriteIndex = favouriteDao.delFavouriteByUid(user);
+            // 删除该用户所有举报信息
+            int reportIndex = reportDao.delReportByUid(user);
+            // 删除该用户所有的评论信息
+            Integer delCommentsByUid = commentsDao.delCommentsByUid(user.getUid());
+            // 删除该用户所有的评论点赞信息
+            Integer delCommonsByUid = commons_likeDao.delCommonsByUid(user.getUid());
+            // 删除用户信息
+            index += dao.delUserById(user);
+        }
+        if (index == 0) {
+            throw new Exception("成功删除0条用户信息");
+        }
+        return index;
     }
 }

@@ -39,6 +39,7 @@ public class UserServlet extends BaseServlet {
 
     /**
      * 登录用户信息
+     *
      * @param request
      * @param response
      */
@@ -48,6 +49,7 @@ public class UserServlet extends BaseServlet {
 
     /**
      * 修改与添加用户
+     *
      * @param request
      * @param response
      * @throws IOException
@@ -70,10 +72,10 @@ public class UserServlet extends BaseServlet {
             user.setUid(Integer.valueOf(id));
             try {
                 int index = service.updateUser(user);
-                if (index>=1){
+                if (index >= 1) {
                     ajaxUtils.setFlag(true);
                     ajaxUtils.setMsg("用户信息修改成功");
-                }else{
+                } else {
                     ajaxUtils.setFlag(false);
                     ajaxUtils.setErrorMsg("修改失败");
                 }
@@ -84,7 +86,7 @@ public class UserServlet extends BaseServlet {
         } else {
             try {
                 int index = service.addUser(user);
-                if (index>=1){
+                if (index >= 1) {
                     ajaxUtils.setFlag(true);
                     ajaxUtils.setMsg("用户添加成功");
                 }
@@ -99,7 +101,8 @@ public class UserServlet extends BaseServlet {
     }
 
     /**
-     *上传头像接口，响应使用uuid生成的头像名称
+     * 上传头像接口，响应使用uuid生成的头像名称
+     *
      * @param request
      * @param response
      * @throws IOException
@@ -150,34 +153,35 @@ public class UserServlet extends BaseServlet {
 
     /**
      * 查询数据
+     *
      * @param request
      * @param response
      */
-    public void selectUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void selectUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // 存储分页信息
-        PageUtils page=new PageUtils();
+        PageUtils page = new PageUtils();
         String pageNum = request.getParameter("page");
         String limit = request.getParameter("limit");
 
         // 创建实体类，用于存储查询所携带的信息
-        User user=new User();
-        String uid=request.getParameter("uid");
-        if (uid!=null && uid.length()>0){
+        User user = new User();
+        String uid = request.getParameter("uid");
+        if (uid != null && uid.trim().length() > 0) {
             user.setUid(Integer.valueOf(uid));
         }
         user.setUname(request.getParameter("uname"));
         user.setEmail(request.getParameter("email"));
         String bornthDay = request.getParameter("bornthDay");
-        if (bornthDay != null && bornthDay.length()>0) {
+        if (bornthDay != null && bornthDay.trim().length() > 0) {
             user.setBornthDay(Timestamp.valueOf(bornthDay));
         }
-        String sex=request.getParameter("sex");
-        if (sex != null && sex.length()>0) {
+        String sex = request.getParameter("sex");
+        if (sex != null && sex.trim().length() > 0) {
             user.setSex(Integer.valueOf(sex));
         }
         String status = request.getParameter("status");
-        if (status != null && status.length()>0) {
+        if (status != null && status.trim().length() > 0) {
             user.setStatus(Integer.valueOf(status));
         }
 
@@ -185,10 +189,36 @@ public class UserServlet extends BaseServlet {
         page.setLimit(Integer.valueOf(limit));
         page.setPageNum(Integer.valueOf(pageNum));
 
-        page= service.selUserByPage(page,user);
+        page = service.selUserByPage(page, user);
         page.setCode(0);
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
-        response.getWriter().write(JSON.toJSONStringWithDateFormat(page,"YYYY-MM-dd hh:mm:ss"));
+        response.getWriter().write(JSON.toJSONStringWithDateFormat(page, "YYYY-MM-dd hh:mm:ss"));
+    }
+
+    /**
+     * 根据用户id删除用户（可删除多个用户）
+     *
+     * @param request
+     * @param response
+     */
+    public void delUserById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        String[] uid = request.getParameterValues("uid");
+        try {
+            int index = service.delUserById(uid);
+            ajaxUtils.setFlag(true);
+            if (index == 1) {
+                ajaxUtils.setMsg("成功删除该用户");
+            } else {
+                ajaxUtils.setMsg("成功删除" + index + "条用户信息");
+            }
+        } catch (Exception e) {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setErrorMsg(e.getMessage());
+        }
+        response.setCharacterEncoding("utf-8");
+        String json = JSON.toJSONString(ajaxUtils);
+        response.getWriter().write(json);
     }
 }

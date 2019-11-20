@@ -24,5 +24,7 @@ public interface UserService {
 
     int updateUser(User user) throws Exception;
 
-    PageUtils selUserByPage(PageUtils page,User user);
+    PageUtils selUserByPage(PageUtils page, User user);
+
+    int delUserById(String[] uids) throws Exception;
 }
