@@ -124,6 +124,7 @@ public class BaseDao {
         try {
             connection = JdbcUtils.getConnection();
             ps = connection.prepareStatement(sql);
+            this.fullParams(ps,params);
             rs = ps.executeQuery();
             if (rs.next())
                 object = rs.getObject(1);

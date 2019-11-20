@@ -1,6 +1,9 @@
 package com.bdqn.simplebook.dao.impl;
 
+import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.ReportDao;
+import com.bdqn.simplebook.domain.Post;
+import com.bdqn.simplebook.domain.User;
 
 /**
  * @author: 赖榕
@@ -10,5 +13,22 @@ import com.bdqn.simplebook.dao.ReportDao;
  * @since: JDK1.8
  * @packageName: com.bdqn.simplebook.dao.impl
  */
-public class ReportDaoImpl implements ReportDao {
+public class ReportDaoImpl extends BaseDao implements ReportDao {
+
+    @Override
+    public int delReportByPid(Post post) {
+        String sql="delete from report where pid = ?";
+        return super.update(sql,new Object[]{post.getPid()});
+    }
+
+    /**
+     *  删除该用户下的所有举报信息
+     * @param user
+     * @return
+     */
+    @Override
+    public int delReportByUid(User user) {
+        String sql="delete from report where uid = ?";
+        return super.update(sql,new Object[]{user.getUid()});
+    }
 }

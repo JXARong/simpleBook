@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface UserDao {
 
-        int addUser(User user);
+    int addUser(User user);
 
     User selUserByUserName(String uname);
 
@@ -22,7 +22,9 @@ public interface UserDao {
 
     int updateUserById(User user);
 
-    List<User> selUserByPage(Integer startNum,Integer limit,User user);
+    List<User> selUserByPage(Integer startNum, Integer limit, User user);
 
     Long selUserCount(User user);
+
+    int delUserById(User user);
 }
