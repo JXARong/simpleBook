@@ -81,4 +81,13 @@
         <servlet-name>commons_like</servlet-name>
         <url-pattern>/commons/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>email</servlet-name>
+        <servlet-class>com.bdqn.simplebook.web.servlets.EmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>email</servlet-name>
+        <url-pattern>/email/*</url-pattern>
+    </servlet-mapping>
 </web-app>

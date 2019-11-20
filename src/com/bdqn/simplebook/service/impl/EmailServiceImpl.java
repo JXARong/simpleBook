@@ -4,9 +4,7 @@ import com.bdqn.simplebook.domain.Email;
 import com.bdqn.simplebook.service.EmailService;
 import com.bdqn.simplebook.utils.MailUtils;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -41,6 +39,29 @@ public class EmailServiceImpl implements EmailService {
                 throw new Exception("服务器繁忙，请稍后重试");
             }
             return updateEmailInfo;
+        }
+    }
+
+    /**
+     * 获取email.properties中邮箱信息
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Email selEmailInfo() throws Exception {
+        try {
+            InputStreamReader stream=new InputStreamReader(EmailServiceImpl.class.getClassLoader().getResourceAsStream("email.properties"),"utf-8");
+            Properties properties=new Properties();
+            properties.load(stream);
+            Email email=new Email();
+            email.setEmail(properties.getProperty("mail.user"));
+            email.setPassword(properties.getProperty("mail.password"));
+            email.setPort(properties.getProperty("mail.smtp.port"));
+            email.setEmailName(properties.getProperty("mail.smtp.user"));
+            email.setHost(properties.getProperty("mail.smtp.host"));
+            return email;
+        } catch (IOException e) {
+            throw new Exception("服务器繁忙,获取邮箱信息失败");
         }
     }
 }
