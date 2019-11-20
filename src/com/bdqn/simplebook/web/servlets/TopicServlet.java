@@ -21,10 +21,17 @@ import java.util.List;
  */
 public class TopicServlet extends BaseServlet {
 
-    private TopicService service=new TopicServiceImpl();
+    private TopicService service = new TopicServiceImpl();
 
+    /**
+     * 查询所有主题
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     public void selectTopic(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        AjaxUtils ajaxUtils=new AjaxUtils();
+        AjaxUtils ajaxUtils = new AjaxUtils();
         try {
             List<Topic> topics = service.selAllTopic();
             ajaxUtils.setFlag(true);
@@ -32,6 +39,37 @@ public class TopicServlet extends BaseServlet {
         } catch (Exception e) {
             ajaxUtils.setErrorMsg(e.getMessage());
             ajaxUtils.setFlag(false);
+        }
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONString(ajaxUtils));
+    }
+
+    /**
+     * 添加主题
+     *
+     * @param request
+     * @param response
+     */
+    public void addTopic(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        String topicName = request.getParameter("topicName");
+        Topic topic = new Topic();
+        topic.setTopic(topicName);
+        // 添加主题，返回带有该主题编号的实例
+        try {
+            topic = service.addTopic(topic);
+            if (topic.getTopicId() != null) {
+                ajaxUtils.setFlag(true);
+                ajaxUtils.setData(topic);
+                ajaxUtils.setMsg("添加主题成功");
+            }else{
+                ajaxUtils.setErrorMsg("添加失败");
+                ajaxUtils.setFlag(false);
+            }
+        } catch (Exception e) {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setErrorMsg(e.getMessage());
         }
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");

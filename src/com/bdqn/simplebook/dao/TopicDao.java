@@ -15,5 +15,10 @@ import java.util.List;
  */
 public interface TopicDao {
     Topic selTopicById(Integer id);
+
     List<Topic> selTopicOfAll();
+
+    Topic selTopicByName(String topic);
+
+    int addTopic(Topic topic);
 }

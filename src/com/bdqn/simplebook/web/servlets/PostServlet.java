@@ -72,7 +72,7 @@ public class PostServlet extends BaseServlet {
             pageUtils = service.selPostByPage(pageUtils, post);
             pageUtils.setCode(0);
         } catch (Exception e) {
-            pageUtils.setMsg("查询失败，请稍后再试");
+            pageUtils.setMsg(e.getMessage());
         }
         String json = JSON.toJSONString(pageUtils);
         response.setCharacterEncoding("utf-8");
