@@ -196,6 +196,22 @@ public class AdminServlet extends BaseServlet {
     }
 
     /**
+     * 查询最新的信息并保存至session中
+     * @param request
+     * @param response
+     */
+    public void saveSession(HttpServletRequest request,HttpServletResponse response){
+        Admin admin=new Admin();
+        admin.setId(Integer.valueOf(request.getParameter("id")));
+        try {
+            admin= service.selAdminById(admin);
+            request.getSession().setAttribute("admin",admin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 管理员退出
      *
      * @param request
