@@ -69,6 +69,12 @@ public class EmailServlet extends BaseServlet {
 
     }
 
+    /**
+     *  查询邮箱信息
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     public void selEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils=new AjaxUtils();
         try {

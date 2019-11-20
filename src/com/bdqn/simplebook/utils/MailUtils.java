@@ -99,7 +99,7 @@ public final class MailUtils {
         props.setProperty("mail.smtp.user", username);
         props.setProperty("mail.smtp.port", port);
         //设置超时时间为20秒
-        props.setProperty("mail.smtp.timeout", "20000");
+        props.setProperty("mail.smtp.timeout", "10000");
 
         // 测试邮件是否能否发送
         boolean result = MailUtils.sendMail("1131111310@qq.com", "测试修改邮箱", "管理员修改邮箱信息");
@@ -109,7 +109,7 @@ public final class MailUtils {
             loadEmailInfo();
             return false;
         }
-        return false;
+        return true;
     }
 
     /**
@@ -140,6 +140,6 @@ public final class MailUtils {
     }
 
     public static void main(String[] args) throws Exception { // 做测试用
-        boolean b = testInfo("smtp.163.com", "26", "fa", "fa", "fa");
+        sendMail("1131111310@qq.com","测试","测试");
     }
 }
