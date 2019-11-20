@@ -23,5 +23,9 @@ public interface AdminService {
 
     int sendEmail(Admin forgetAdmin);
 
-    int updatePwdById(Admin admin);
+    int updatePwdById(Admin admin,String oldPassword) throws Exception;
+
+    Admin selAdminById(Admin admin) throws Exception;
+
+    int updateInfo(Admin admin) throws Exception;
 }

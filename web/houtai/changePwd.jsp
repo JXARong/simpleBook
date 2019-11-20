@@ -19,14 +19,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">原密码</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" name="oPwd" lay-verify="oPwd" autocomplete="off"
+                        <input type="text" class="layui-input" id="oPwd" name="oPwd" lay-verify="oPwd" autocomplete="off"
                                lay-verType="tips">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">新密码</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" name="newPwd" lay-verify="newPwd" lay-verType="tips">
+                        <input type="text" class="layui-input" name="newPwd" id="password" lay-verify="newPwd" lay-verType="tips">
                     </div>
                     <label class="layui-word-aux layui-form-mid">6-16位新密码</label>
                 </div>
@@ -55,15 +55,11 @@
     // 自定义表单验证
     form.verify({
         oPwd: function (value, item) {
-            var oldPwd = "${sessionScope.admin.password}";
             if (value == null || value == "") {
                 return "原密码不能为空"
             }
             if (!regExp.test(value)) {
                 return "原密码格式错误";
-            }
-            if (oldPwd != value) {
-                return "原密码错误,无法修改";
             }
         },
         newPwd: function (value, item) {
@@ -88,9 +84,26 @@
         }
     });
 
-    // 修改用户信息
+    // 修改管理员密码
     form.on("submit(sub)", function (data) {
-        layer.alert(JSON.stringify(data.field))
+        $.ajax({
+            url:"/simpleBook/admin/updatePwd",
+            data:{id:"${sessionScope.admin.id}",oldPassword:$("#oPwd").val(),password:$("#password").val()},
+            method:"post",
+            success:function (data) {
+                console.log(data);
+                if (data.flag==true){
+                    layer.msg(data.msg+",正在转跳至登录页面",{icon:6});
+                    setTimeout(function () {
+                        parent.location.href="<%=request.getContextPath()%>/houtai/login.html";
+                    }, 2000);
+                }else{
+                    layer.msg(data.errorMsg,{icon:2});
+                }
+            },error:function () {
+                layer.msg("服务器繁忙",{icon:2});
+            }
+        });
     });
 
 </script>

@@ -86,6 +86,7 @@
                         layer.msg(data.errorMsg, {icon: 5});
                     }
                 }, error: function () {
+                    layer.close(index);
                     layer.msg("服务器繁忙", {icon: 1});
                 }, beforeSend: function () {
                     // 由于测试邮箱是否可用时间过长，使用加载窗口

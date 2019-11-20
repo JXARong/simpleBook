@@ -11,7 +11,7 @@ package com.bdqn.simplebook.utils;
 public class ConstantUtils {
 
     // 保存用户头像的绝对路径
-    public final static String userPhoto="F:\\关于代码\\S2\\jyxm_two\\simpleBook\\out\\artifacts\\simpleBook_war_exploded\\WEB-INF\\classes\\resources\\userPhoto\\";
+    public final static String userPhoto="F:\\关于代码\\S2\\jyxm_three\\simpleBook\\out\\artifacts\\simpleBook_war_exploded\\resources\\userPhoto\\";
 
 
 }

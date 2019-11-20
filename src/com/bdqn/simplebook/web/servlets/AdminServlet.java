@@ -1,8 +1,10 @@
 package com.bdqn.simplebook.web.servlets;
 
+import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.domain.Admin;
 import com.bdqn.simplebook.service.AdminService;
 import com.bdqn.simplebook.service.impl.AdminServiceImpl;
+import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.CodeUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.TilePane;
@@ -102,17 +104,17 @@ public class AdminServlet extends BaseServlet {
         try {
             forgetAdmin = service.selAdminByUsername(admin);
             int result = service.sendEmail(forgetAdmin);
-            if (result==-1){
-                tip="发送失败,服务器繁忙";
-            }else{
+            if (result == -1) {
+                tip = "发送失败,服务器繁忙";
+            } else {
                 HttpSession session = request.getSession();
-                session.setAttribute("forgetAdmin",forgetAdmin);
-                session.setAttribute("emailCode",result);
-                tip="验证码发送成功，请查看邮箱";
+                session.setAttribute("forgetAdmin", forgetAdmin);
+                session.setAttribute("emailCode", result);
+                tip = "验证码发送成功，请查看邮箱";
             }
         } catch (Exception e) {
             e.printStackTrace();
-            tip=e.getMessage();
+            tip = e.getMessage();
         }
         PrintWriter writer = response.getWriter();
         writer.write(tip);
@@ -121,13 +123,13 @@ public class AdminServlet extends BaseServlet {
     }
 
     // 验证邮箱验证码
-    public void verifyEmailCode(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void verifyEmailCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String emailCode = request.getParameter("emailCode");
         Object code = request.getSession().getAttribute("emailCode");
-        System.out.println(emailCode+"----"+code);
+        System.out.println(emailCode + "----" + code);
         Admin forgetAdmin = (Admin) request.getSession().getAttribute("forgetAdmin");
-        String flag="";
-        flag=emailCode.equals(code.toString())?forgetAdmin.getId().toString():"false";
+        String flag = "";
+        flag = emailCode.equals(code.toString()) ? forgetAdmin.getId().toString() : "false";
         System.out.println(flag);
         PrintWriter writer = response.getWriter();
         writer.write(flag);
@@ -136,21 +138,111 @@ public class AdminServlet extends BaseServlet {
     }
 
     // 修改密码
-    public void updatePwd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void updatePwd(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
         String id = request.getParameter("id");
-        String pwd = request.getParameter("pwd");
-        Admin admin=new Admin();
-        admin.setId(Integer.parseInt(id));
-        admin.setPassword(pwd);
-        int index = service.updatePwdById(admin);
+        Admin admin = new Admin();
+        // 判断id是否获取到
+        if (id != null && id.length() > 0) {
+            admin.setId(Integer.valueOf(id));
+            // 获取用户输入的旧密码
+            String oldPassword = request.getParameter("oldPassword");
+            // 获取用户输入的密码
+            admin.setPassword(request.getParameter("password"));
+            try {
+                int index = service.updatePwdById(admin, oldPassword);
+                ajaxUtils.setMsg("密码修改成功");
+                ajaxUtils.setFlag(true);
+            } catch (Exception e) {
+                ajaxUtils.setErrorMsg(e.getMessage());
+                ajaxUtils.setFlag(false);
+            }
+        } else {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setErrorMsg("服务器繁忙,请刷新后重试");
+        }
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(JSON.toJSONString(ajaxUtils));
+    }
+
+    /**
+     * 根据编号查询管理员信息
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public void selAdminById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        String id = request.getParameter("id");
+        Admin admin = new Admin();
+        if (id != null && id.length() > 0) {
+            admin.setId(Integer.valueOf(id));
+            try {
+                admin = service.selAdminById(admin);
+                ajaxUtils.setData(admin);
+                ajaxUtils.setFlag(true);
+            } catch (Exception e) {
+                ajaxUtils.setFlag(false);
+                ajaxUtils.setErrorMsg(e.getMessage());
+            }
+        } else {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setErrorMsg("获取管理员信息失败，请重试登录");
+        }
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(JSON.toJSONString(ajaxUtils));
+    }
+
+    /**
+     * 管理员退出
+     *
+     * @param request
+     * @param response
+     */
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.removeAttribute("admin");
+        response.sendRedirect("/simpleBook/houtai/login.html");
+    }
+
+    /**
+     * 修改管理员信息
+     *
+     * @param request
+     * @param response
+     */
+    public void updateInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        Admin admin = new Admin();
+        String id = request.getParameter("id");
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String sex = request.getParameter("sex");
+        String fileName = request.getParameter("fileName");
+
+        admin.setId(Integer.valueOf(id));
+        admin.setUsername(username);
+        admin.setEmail(email);
+        admin.setPhone(phone);
+        admin.setSex(Integer.valueOf(sex));
+        admin.setPortrait(fileName);
+
+        try {
+            int index = service.updateInfo(admin);
+            ajaxUtils.setMsg("修改成功");
+            ajaxUtils.setFlag(true);
+        } catch (Exception e) {
+            ajaxUtils.setErrorMsg(e.getMessage());
+            ajaxUtils.setFlag(false);
+        }
         response.setCharacterEncoding("utf-8");
         PrintWriter writer = response.getWriter();
-        if (index>0){
-            writer.write("true");
-        }else {
-            writer.write("false");
-        }
-        writer.flush();
+        writer.write(JSON.toJSONString(ajaxUtils));
         writer.close();
+
     }
+
 }
