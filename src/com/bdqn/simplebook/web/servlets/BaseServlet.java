@@ -30,7 +30,7 @@ public class BaseServlet extends HttpServlet {
             Method method = clazz.getMethod(action, HttpServletRequest.class, HttpServletResponse.class);
             method.invoke(clazz.newInstance(),request,response);
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 }

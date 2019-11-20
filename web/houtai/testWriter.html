@@ -12,12 +12,30 @@
         layedit.build("myTextarea");
 
     })
+
+    layui.use("jquery",function () {
+        $=layui.jquery;
+        $("#fa").on("click",function () {
+            $.ajax({
+                url:"fa",
+                data:$("input[name='test']").val()
+            })
+            return false;
+        })
+    })
 </script>
 <body>
     <form method="post">
         <textarea id="myTextarea" style="display: none">Hello, World!</textarea>
         <input  type="button" value="上传" onclick="sub(this)"/>
+
+        <input type="checkbox"  name ="test"value="1"/>
+        <input type="checkbox" name="test" value="2">
+        <input type="button" id="fa">
     </form>
+
+
+
 
 </body>
 </html>
