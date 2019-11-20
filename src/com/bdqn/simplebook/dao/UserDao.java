@@ -27,4 +27,8 @@ public interface UserDao {
     Long selUserCount(User user);
 
     int delUserById(User user);
+
+    int register(User user);
+
+    List<User> queryUser();
 }

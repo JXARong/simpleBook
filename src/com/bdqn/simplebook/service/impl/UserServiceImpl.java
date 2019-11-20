@@ -213,4 +213,21 @@ public class UserServiceImpl implements UserService {
         }
         return index;
     }
+
+    @Override
+    public int register(User user) throws Exception {
+        int random = Integer.valueOf(NumberUtils.createRandomNumber(8));
+        for (User i : dao.queryUser()) {
+            if (random == i.getUid()){
+                random = Integer.valueOf(NumberUtils.createRandomNumber(8));
+            }
+        }
+        user.setUid(random);
+        return dao.register(user);
+    }
+
+    @Override
+    public List<User> usersList() throws Exception {
+        return dao.queryUser();
+    }
 }

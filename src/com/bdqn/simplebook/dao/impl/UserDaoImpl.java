@@ -4,6 +4,7 @@ import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.UserDao;
 import com.bdqn.simplebook.domain.User;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -133,5 +134,18 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             }
         }
         return sql;
+    }
+
+    @Override
+    public int register(User user) {
+        String sql = "insert into user values(?,?,?,?,?)";
+        return super.update(sql,new Object[]{user.getUid(),user.getPassword(),user.getEmail(),user.getStatus(),user.getUname()});
+    }
+
+    @Override
+    public List<User> queryUser() {
+        String sql = "select * from user";
+        List<User> userList = super.selectList(User.class,sql,null);
+        return userList;
     }
 }
