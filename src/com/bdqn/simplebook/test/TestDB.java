@@ -56,10 +56,10 @@ public class TestDB  extends BaseDao {
     }
 
     @Test
-    public  void testAllPost(){
-        List<Post> post=super.selectList(Post.class,"select * from post",null);
+    public  void testAllPost() {
+        List<Post> post = super.selectList(Post.class, "select * from post", null);
         System.out.println(post.toString());
-
+    }
 
     @Test
     public void s() {

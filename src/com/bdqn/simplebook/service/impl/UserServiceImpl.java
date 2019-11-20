@@ -28,9 +28,6 @@ import java.util.List;
  */
 public class UserServiceImpl  implements UserService {
 
-
-    
-
     /**
      * 用户dao访问接口
      */
@@ -72,7 +69,7 @@ public class UserServiceImpl  implements UserService {
      */
   @Override
     public List<User> selectIndexUser() throws Exception {
-        List<User>users=userDao.selectIndexUser();
+        List<User>users=dao.selectIndexUser();
         if(users==null){
             throw  new  RuntimeException("用户为空，未查到数据");
         }

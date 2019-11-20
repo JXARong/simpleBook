@@ -24,11 +24,11 @@ public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
     public List<Post> selectAllPost() throws Exception {
-        String sql="select * from post";
+        String sql = "select * from post";
         Class clazz = Post.class;
-        List<Post> post=super.selectList(clazz,sql,null);
+        List<Post> post = super.selectList(clazz, sql, null);
         return post;
-
+    }
 
     @Override
     public Post findPost(int pid) throws Exception {
