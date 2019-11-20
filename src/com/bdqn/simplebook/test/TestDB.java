@@ -2,6 +2,7 @@ package com.bdqn.simplebook.test;
 
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.domain.Admin;
+import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.JdbcUtils;
 import org.junit.Test;
@@ -44,5 +45,10 @@ public class TestDB  extends BaseDao {
     public void testUser(){
         User user = super.selectOne(User.class, "select * from user", null);
         System.out.println(user);
+    }
+    @Test
+    public  void testAllPost(){
+        List<Post> post=super.selectList(Post.class,"select * from post",null);
+        System.out.println(post.toString());
     }
 }

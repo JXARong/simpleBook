@@ -2,7 +2,11 @@ package com.bdqn.simplebook.dao.impl;
 
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.UserDao;
+import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
+
+
+import java.util.List;
 
 /**
  * @author: 赖榕
@@ -18,5 +22,17 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         String sql="insert into user values(?,?,?,?,?,?,?,1,?)";
         int update = super.update(sql, new Object[]{user.getUid(), user.getPassword(), user.getEmail(), user.getSex(), user.getBornthDay(), user.getPhoto(), user.getMoney(), user.getUname()});
         return update;
+    }
+
+
+    @Override
+    /**
+     * 查询首页所有用户
+     */
+    public List<User> selectIndexUser() throws Exception {
+        String sql="select * from user";
+        Class clazz= Post.class;
+        List<User>users=super.selectList(clazz,sql,null);
+        return users;
     }
 }

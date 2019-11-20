@@ -1,6 +1,9 @@
 package com.bdqn.simplebook.web.servlets;
 
 import com.alibaba.fastjson.JSON;
+import com.bdqn.simplebook.domain.User;
+import com.bdqn.simplebook.service.UserService;
+import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -30,6 +33,8 @@ import java.util.List;
  */
 public class UserServlet extends BaseServlet {
 
+    private UserService userService = new UserServiceImpl();
+
     // /simpleBook/user/login?username=""
     public void login(HttpServletRequest request, HttpServletResponse response) {
 
@@ -39,10 +44,10 @@ public class UserServlet extends BaseServlet {
 
     }
 
-    public void uploadPhoto(HttpServletRequest request, HttpServletResponse response)  throws IOException {
-        AjaxUtils ajaxUtils=new AjaxUtils();
+    public void uploadPhoto(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
         // 保存文件路径
-        String path="";
+        String path = "";
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
         try {
@@ -59,17 +64,17 @@ public class UserServlet extends BaseServlet {
                     String fileType = fileItem.getName().substring(fileItem.getName().lastIndexOf('.'));
                     // 获取存储用户头像的绝对路径
 
-                    path = context.getRealPath("/WEB-INF/classes/resources/userPhoto")+File.separatorChar+uuid+fileType;
+                    path = context.getRealPath("/WEB-INF/classes/resources/userPhoto") + File.separatorChar + uuid + fileType;
                     InputStream inputStream = fileItem.getInputStream();
-                    File file=new File(path);
-                    if (!file.exists()){
+                    File file = new File(path);
+                    if (!file.exists()) {
                         file.createNewFile();
                     }
-                    FileOutputStream fos=new FileOutputStream(file);
-                    int count=0;
-                    byte[] bytes=new byte[1024*5];
-                    while ((count=inputStream.read(bytes))!=-1){
-                        fos.write(bytes,0,count);
+                    FileOutputStream fos = new FileOutputStream(file);
+                    int count = 0;
+                    byte[] bytes = new byte[1024 * 5];
+                    while ((count = inputStream.read(bytes)) != -1) {
+                        fos.write(bytes, 0, count);
                     }
                     ajaxUtils.setFlag(true);
                     ajaxUtils.setData(file.getName());
@@ -81,5 +86,23 @@ public class UserServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
+    }
+
+    /**
+     * 查询首页所有用户
+     * @param request
+     * @param response
+     */
+    public void setUserService(HttpServletRequest request,HttpServletResponse response) {
+        try {
+            request.setCharacterEncoding("utf-8");
+            List<User>userList=userService.selectIndexUser();
+            request.setAttribute("userList",userList);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+
+        }
     }
 }

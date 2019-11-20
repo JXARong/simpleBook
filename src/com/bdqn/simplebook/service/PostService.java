@@ -1,5 +1,9 @@
 package com.bdqn.simplebook.service;
 
+import com.bdqn.simplebook.domain.Post;
+
+import java.util.List;
+
 /**
  * @author: 龚皓冬
  * @date: 2019/11/18
@@ -10,4 +14,10 @@ package com.bdqn.simplebook.service;
  */
 public interface PostService {
 
+    /**
+     * 查询post表的所有数据，首页显示
+     * @return
+     * @throws Exception
+     */
+    public List<Post>selectAllPost()throws  Exception;
 }
