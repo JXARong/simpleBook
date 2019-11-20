@@ -1,5 +1,7 @@
 package com.bdqn.simplebook.dao;
 
+import com.bdqn.simplebook.domain.Post;
+
 /**
  * @author: 赖榕
  * @date: 2019/11/18
@@ -9,4 +11,5 @@ package com.bdqn.simplebook.dao;
  * @packageName: com.bdqn.simplebook.dao
  */
 public interface PostDao {
+    Post findPost(int pid)throws Exception;
 }
