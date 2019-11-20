@@ -23,6 +23,14 @@ import java.util.List;
 public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
+    public List<Post> selectAllPost() throws Exception {
+        String sql="select * from post";
+        Class clazz = Post.class;
+        List<Post> post=super.selectList(clazz,sql,null);
+        return post;
+
+
+    @Override
     public Post findPost(int pid) throws Exception {
         return super.selectOne(Post.class,"select * from post where pid=?",new Object[]{pid});
 
@@ -118,6 +126,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
             params.add("%" + post.getSendDate() + "%");
         }
         return sql;
+
 
     }
 }

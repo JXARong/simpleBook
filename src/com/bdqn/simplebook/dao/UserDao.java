@@ -26,5 +26,14 @@ public interface UserDao {
 
     Long selUserCount(User user);
 
+
+        /**
+         * 查询首页的所有用户
+         * @return
+         * @throws Exception
+         */
+        public List<User> selectIndexUser()throws Exception;
+
     int delUserById(User user);
+
 }

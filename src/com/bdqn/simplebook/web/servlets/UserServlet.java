@@ -35,6 +35,10 @@ import java.util.List;
  */
 public class UserServlet extends BaseServlet {
 
+
+
+   
+
     private UserService service = new UserServiceImpl();
 
     /**
@@ -43,6 +47,7 @@ public class UserServlet extends BaseServlet {
      * @param request
      * @param response
      */
+
     public void login(HttpServletRequest request, HttpServletResponse response) {
 
     }
@@ -100,6 +105,7 @@ public class UserServlet extends BaseServlet {
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
     }
 
+
     /**
      * 上传头像接口，响应使用uuid生成的头像名称
      *
@@ -107,6 +113,7 @@ public class UserServlet extends BaseServlet {
      * @param response
      * @throws IOException
      */
+
     public void uploadPhoto(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils = new AjaxUtils();
         // 保存文件路径
@@ -127,7 +134,9 @@ public class UserServlet extends BaseServlet {
                     String fileType = fileItem.getName().substring(fileItem.getName().lastIndexOf('.'));
                     // 获取存储用户头像的绝对路径
 
+
                     path = context.getRealPath("/resources/userPhoto") + File.separatorChar + uuid + fileType;
+
                     InputStream inputStream = fileItem.getInputStream();
                     File file = new File(path);
                     if (!file.exists()) {
@@ -152,6 +161,23 @@ public class UserServlet extends BaseServlet {
     }
 
     /**
+
+     * 查询首页所有用户
+     * @param request
+     * @param response
+     */
+    public void setUserService(HttpServletRequest request,HttpServletResponse response) {
+        try {
+            request.setCharacterEncoding("utf-8");
+            List<User>userList=userService.selectIndexUser();
+            request.setAttribute("userList",userList);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+
+        }
+
      * 查询数据
      *
      * @param request
@@ -220,5 +246,6 @@ public class UserServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         String json = JSON.toJSONString(ajaxUtils);
         response.getWriter().write(json);
+
     }
 }

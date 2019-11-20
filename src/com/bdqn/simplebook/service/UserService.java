@@ -1,7 +1,9 @@
 package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.User;
+
 import com.bdqn.simplebook.utils.PageUtils;
+
 
 import java.util.List;
 
@@ -14,6 +16,12 @@ import java.util.List;
  * @packageName: com.bdqn.simplebook.service
  */
 public interface UserService {
+    /**
+     * 查询首页所有的用户
+     * @return
+     * @throws Exception
+     */
+    public  List<User>selectIndexUser()throws  Exception;
 
     /**
      * 添加User

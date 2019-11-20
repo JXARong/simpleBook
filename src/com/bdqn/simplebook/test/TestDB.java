@@ -56,6 +56,12 @@ public class TestDB  extends BaseDao {
     }
 
     @Test
+    public  void testAllPost(){
+        List<Post> post=super.selectList(Post.class,"select * from post",null);
+        System.out.println(post.toString());
+
+
+    @Test
     public void s() {
         String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         System.out.println(format);
@@ -71,5 +77,6 @@ public class TestDB  extends BaseDao {
     public void fun1() throws Exception {
         PostDao postDao = new PostDaoImpl();
         System.out.println( postDao.findPost(1));
+
     }
 }

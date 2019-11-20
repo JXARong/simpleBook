@@ -1,7 +1,12 @@
 package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.Post;
+
+
+import java.util.List;
+
 import com.bdqn.simplebook.utils.PageUtils;
+
 
 /**
  * @author: 龚皓冬
@@ -13,7 +18,16 @@ import com.bdqn.simplebook.utils.PageUtils;
  */
 public interface PostService {
 
+
+    /**
+     * 查询post表的所有数据，首页显示
+     * @return
+     * @throws Exception
+     */
+    public List<Post>selectAllPost()throws  Exception;
+
     PageUtils selPostByPage(PageUtils pageUtils, Post post) throws Exception;
 
     Integer delPostById(String[] pid) throws Exception;
+
 }

@@ -1,12 +1,16 @@
 package com.bdqn.simplebook.service.impl;
 
+
 import com.bdqn.simplebook.dao.*;
 import com.bdqn.simplebook.dao.impl.*;
 import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.Topic;
+
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.utils.PageUtils;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -19,6 +23,17 @@ import java.util.List;
  * @packageName: com.bdqn.simplebook.service.impl
  */
 public class PostServiceImpl implements PostService {
+
+
+
+    @Override
+    public List<Post> selectAllPost() throws Exception {
+
+        List<Post> posts=dao.selectAllPost();
+        if (posts==null){
+            throw new RuntimeException("文章为空，未查询到一条post");
+        }
+        return posts;
 
     /**
      * 文章dao接口
@@ -102,5 +117,6 @@ public class PostServiceImpl implements PostService {
             throw new Exception("成功删除0条信息");
         }
         return count;
+
     }
 }
