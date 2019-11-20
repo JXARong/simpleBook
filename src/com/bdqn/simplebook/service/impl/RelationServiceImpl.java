@@ -11,5 +11,5 @@ import com.bdqn.simplebook.service.RelationService;
  * @packageName: com.bdqn.simplebook.service.impl
  */
 public class RelationServiceImpl implements RelationService {
-
+    private RelationService service=new RelationServiceImpl();
 }

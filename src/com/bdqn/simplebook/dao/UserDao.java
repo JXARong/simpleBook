@@ -14,7 +14,18 @@ import java.util.List;
  */
 public interface UserDao {
 
-        int addUser(User user);
+    int addUser(User user);
+
+    User selUserByUserName(String uname);
+
+    User selUserById(Integer id);
+
+    int updateUserById(User user);
+
+    List<User> selUserByPage(Integer startNum, Integer limit, User user);
+
+    Long selUserCount(User user);
+
 
         /**
          * 查询首页的所有用户
@@ -23,6 +34,6 @@ public interface UserDao {
          */
         public List<User> selectIndexUser()throws Exception;
 
-
+    int delUserById(User user);
 
 }

@@ -12,9 +12,11 @@ import java.util.List;
  */
 public class PageUtils {
 
-    private Integer code; // 状态
+    private Integer pageNum; // 当前页数
+    private Integer limit; // 数据长度
+    private Integer code;  // 状态
     private String msg;  // 分页携带的信息
-    private Integer count; // 总页数
+    private Integer count;  // 总页数
     private List<?> data; // 数据
 
     public PageUtils(Integer code, String msg, Integer count, List<?> data) {
@@ -25,6 +27,22 @@ public class PageUtils {
     }
 
     public PageUtils() {
+    }
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
     }
 
     public Integer getCode() {

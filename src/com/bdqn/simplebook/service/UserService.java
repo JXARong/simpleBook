@@ -2,6 +2,9 @@ package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.User;
 
+import com.bdqn.simplebook.utils.PageUtils;
+
+
 import java.util.List;
 
 /**
@@ -20,4 +23,16 @@ public interface UserService {
      */
     public  List<User>selectIndexUser()throws  Exception;
 
+    /**
+     * 添加User
+     * @param user
+     * @return
+     */
+    int addUser(User user) throws Exception;
+
+    int updateUser(User user) throws Exception;
+
+    PageUtils selUserByPage(PageUtils page, User user);
+
+    int delUserById(String[] uids) throws Exception;
 }

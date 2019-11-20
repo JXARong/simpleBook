@@ -1,5 +1,7 @@
 package com.bdqn.simplebook.service.impl;
 
+import com.bdqn.simplebook.dao.ReportDao;
+import com.bdqn.simplebook.dao.impl.ReportDaoImpl;
 import com.bdqn.simplebook.service.ReportService;
 
 /**
@@ -11,5 +13,5 @@ import com.bdqn.simplebook.service.ReportService;
  * @packageName: com.bdqn.simplebook.service.impl
  */
 public class ReportServiceImpl implements ReportService {
-
+private ReportDao dao=new ReportDaoImpl();
 }

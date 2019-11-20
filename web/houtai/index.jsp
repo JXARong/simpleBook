@@ -79,8 +79,11 @@
                     <dl class="layui-nav-child">
                         <dd><a href="<%=request.getContextPath()%>/houtai/postList.html" target="rightFrame">文章列表</a>
                         </dd>
-                        <dd><a href="<%=request.getContextPath()%>/houtai/Post_report.html" target="rightFrame">被举报文章</a></dd>
+                        <dd><a href="<%=request.getContextPath()%>/houtai/post_report.html" target="rightFrame">被举报文章</a></dd>
                     </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="<%=request.getContextPath()%>/houtai/topic.html" target="rightFrame">主题管理</a>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">系统设置</a>
@@ -96,7 +99,7 @@
     </div>
 
     <div class="layui-body">
-        <iframe src="<%=request.getContextPath()%>/houtai/userList.html" frameborder="0" id="rightFrame"
+        <iframe src="<%=request.getContextPath()%>/houtai/topic.html" frameborder="0" id="rightFrame"
                 class="layui-bg-gray"
                 name="rightFrame" style="width: 100%; height: 100%"></iframe>
     </div>
