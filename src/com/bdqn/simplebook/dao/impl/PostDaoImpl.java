@@ -26,7 +26,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
     public Post findPost(int pid) throws Exception {
         return super.selectOne(Post.class,"select * from post where pid=?",new Object[]{pid});
 
-
+    }
     /**
      * 根据用户Id删除文章内容
      *
