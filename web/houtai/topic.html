@@ -81,8 +81,9 @@
             <form action="" class="layui-form">
                 <div class="layui-form-item layui-input-inline">
                     <label class="layui-form-label" style="font-size: 14px">主题名称：</label>
-                    <input type="text" class="layui-input layui-input-inline" required>
-                    <button class="layui-btn layui-btn-normal">添加</button>
+                    <input type="text" id="topicName" class="layui-input layui-input-inline" required>
+                    <button id="add" class="layui-btn layui-btn-normal">添加</button>
+                    <span style="color: red" id="tip"></span>
                 </div>
             </form>
         </div>
@@ -99,7 +100,8 @@
 
 <script type="text/javascript">
 
-    function ren(){
+    // 渲染标签云
+    function ren() {
         /*3D标签云*/
         tagcloud({
             selector: ".tagcloud",  //元素选择器
@@ -112,31 +114,60 @@
         });
     }
 
-    layui.use(['jquery', 'form', 'element','layer'], function () {
+
+    layui.use(['jquery', 'form', 'element', 'layer'], function () {
         var $ = layui.jquery,
             form = layui.form,
             element = layui.element,
-            layer=layui.layer;
+            layer = layui.layer;
         element.render();
 
-        $.ajax({
-            url:'/simpleBook/topic/selectTopic',
-            method:"post",
-            success:function (data) {
-                if (data.flag==true){
-                    // 清空标签云中的代码
-                    $.each(data.data,function (i,o) {
-                        $("#tag").append($("<a href='"+o.topicId+"'>"+o.topic+"</a>"));
-                    });
-                    // 重新渲染标签云
-                    ren();
-                } else{
-                    layer.msg(data.errorMsg,{icon:2});
+        // 加载标签云
+        function loadTag() {
+            $.ajax({
+                url: '/simpleBook/topic/selectTopic',
+                method: "post",
+                success: function (data) {
+                    if (data.flag == true) {
+                        // 清空标签云中的代码
+                        $("#tag").html("");
+                        $.each(data.data, function (i, o) {
+                            $("#tag").append($("<a href='" + o.topicId + "'>" + o.topic + "</a>"));
+                        });
+                        // 重新渲染标签云
+                        ren();
+                    } else {
+                        layer.msg(data.errorMsg, {icon: 2});
+                    }
+                }, error: function () {
+                    layer.msg("服务器繁忙，请稍后重试", {icon: 2});
                 }
-            },error:function () {
-                layer.msg("服务器繁忙，请稍后重试",{icon:2});
-            }
+            })
+        }
+
+        loadTag();
+
+        $("#add").on("click", function () {
+            var topicName = $("#topicName").val();
+            $.ajax({
+                url: "/simpleBook/topic/addTopic",
+                data: {topicName: topicName},
+                method: "post",
+                success: function (data) {
+                        if (data.flag==true){
+                            layer.msg(data.msg,{icon:1});
+                            // 添加成功重试获取所有最新的主题显示
+
+                        } else{
+                            layer.msg(data.errorMsg,{icon:2});
+                        }
+                }, error: function () {
+                    layer.msg("服务器繁忙，请稍后再试",{icon:2});
+                }
+            });
+            return false;
         })
+
     });
 
 </script>

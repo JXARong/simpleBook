@@ -64,7 +64,7 @@ public class PostServiceImpl implements PostService {
     public PageUtils selPostByPage(PageUtils pageUtils, Post post) throws Exception {
         List<Post> posts = dao.selPostByPage((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit(), post);
         if (posts==null || posts.size()==0){
-            throw new Exception("未查询到数据");
+            throw new Exception("暂无相关数据");
         }else {
             // 遍历查询的文章，查询该文章属于哪个主题
             for (Post postOne : posts) {

@@ -26,5 +26,10 @@ public interface AdminDao {
      */
     Admin selAdminByUserName(String username);
 
+    /**
+     * 根据管理员编号修改信息
+     * @param admin
+     * @return
+     */
     int updatePwdById(Admin admin);
 }

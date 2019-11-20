@@ -32,17 +32,17 @@ public class BaseDao {
     protected int update(String sql, Object[] params) {
         Connection connection = JdbcUtils.getConnection();
         PreparedStatement ps = null;
+        int index = 0;
         try {
             ps = connection.prepareStatement(sql);
             this.fullParams(ps, params);
-            int i = ps.executeUpdate();
-            return i;
+            index = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             JdbcUtils.close(connection, ps, null);
         }
-        return 0;
+        return index;
     }
 
     /**
@@ -124,7 +124,7 @@ public class BaseDao {
         try {
             connection = JdbcUtils.getConnection();
             ps = connection.prepareStatement(sql);
-            this.fullParams(ps,params);
+            this.fullParams(ps, params);
             rs = ps.executeQuery();
             if (rs.next())
                 object = rs.getObject(1);

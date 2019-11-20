@@ -36,6 +36,7 @@
         laydate.render({
             elem: '#startDate' //指定元素
         });
+
         // 显示表格
         table.render({
             elem: '#postList'
@@ -79,7 +80,7 @@
                     icon: 8,
                     btn: ["确定", "取消"],
                     btn1: function () {
-                        delUser("pid="+ obj.data.pid);
+                        delUser("pid=" + obj.data.pid);
                     },
                     btn2: function () {
 
@@ -98,15 +99,43 @@
             var status = table.checkStatus(obj.config.id);
             var data = "";
             $.each(status.data, function (i, v) {
-                data += "pid="+v.pid+"&"
+                data += "pid=" + v.pid + "&"
             });
             data = data.substring(0, data.length - 1);
             console.log(data);
             delUser(data);
         });
 
+        form.verify({
+            uid: function (value, item) {
+                if (value == "") {
+                    return;
+                }else
+                if (isNaN(value)) {
+                    return "请输入正确的用户编号";
+                }
+            },
+            pid: function (value, item) {
+                if (value == "") {
+                    return;
+                }else
+                if (isNaN(value)) {
+                    return "请输入正确的文章编号";
+                }
+            },
+            sendDate: function (value, item) {
+                var reg = /^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/;
+                if (value == "") {
+                    return;
+                } else if (!reg.test(value)) {
+                    return "请输入正确的日期格式";
+                }
+            }
+        })
+
         // 查询按钮点击事件
         form.on("submit(select)", function (data) {
+
             reload();
         });
 
@@ -120,7 +149,7 @@
                     pid: $("#pid").val(),
                     uid: $("#uid").val(),
                     email: $("#email").val(),
-                    title:$("#title").val()
+                    title: $("#title").val()
                 }
             });
         }
@@ -129,7 +158,7 @@
         function delUser(data) {
             $.ajax({
                 method: "get",
-                url: "/simpleBook/post/delPostByPid"+"?"+data,
+                url: "/simpleBook/post/delPostByPid" + "?" + data,
                 dataType: "json",
                 success: function (data) {
                     if (data.flag == true) {
@@ -165,11 +194,11 @@
                 <form action="" class="layui-form">
 
                     <div class="layui-input-inline">
-                        <input type="text" name="pid" id="pid" placeholder="文章编号" autocomplete="off"
+                        <input type="text" name="pid" id="pid" placeholder="文章编号" lay-verify="pid" autocomplete="off"
                                class="layui-input"/>
                     </div>
                     <div class="layui-input-inline">
-                        <input type="text" name="uid" id="uid" placeholder="用户编号" class="layui-input"
+                        <input type="text" name="uid" id="uid" placeholder="用户编号" lay-verify="uid" class="layui-input"
                                autocomplete="off"/>
                     </div>
                     <div class="layui-input-inline">
@@ -177,7 +206,7 @@
                                autocomplete="off"/>
                     </div>
                     <div class="layui-input-inline">
-                        <input type="data" class="layui-input" name="sendDate" id="startDate"
+                        <input type="data" class="layui-input" name="sendDate" id="startDate" lay-verify="sendDate"
                                placeholder="发帖时间(yyyy-MM-dd)" autocomplete="off">
                     </div>
 

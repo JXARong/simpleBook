@@ -59,7 +59,7 @@ public class UserServlet extends BaseServlet {
      * @param response
      * @throws IOException
      */
-    public void AddAndUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void addAndUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils = new AjaxUtils();
         request.setCharacterEncoding("Utf-8");
         User user = new User();

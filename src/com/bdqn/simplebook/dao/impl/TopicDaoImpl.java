@@ -29,10 +29,38 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
         return topic;
     }
 
+    /**
+     * 查询所有的主题
+     * @return
+     */
     @Override
     public List<Topic> selTopicOfAll() {
         String sql="select * from topic";
         List<Topic> topics = super.selectList(Topic.class, sql, null);
         return topics;
+    }
+
+    /**
+     *  根据主题名称查询主题
+     * @param topic
+     * @return
+     */
+    @Override
+    public Topic selTopicByName(String topic) {
+        String sql="select * from topic where topic = ?";
+        Topic selectOne = super.selectOne(Topic.class, sql, new Object[]{topic});
+        return selectOne;
+    }
+
+    /**
+     *  添加主题
+     * @param topic
+     * @return
+     */
+    @Override
+    public int addTopic(Topic topic) {
+        String sql="insert into topic values(default,?)";
+        int update = super.update(sql, new Object[]{topic.getTopic()});
+        return update;
     }
 }
