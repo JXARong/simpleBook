@@ -23,7 +23,7 @@
 </script>
 <!--主题名称-->
 <script type="text/html" id="topic_temp">
-    {{d.topic.name}}
+    {{d.topic.topic}}
 </script>
 
 <script type="application/javascript">
@@ -36,14 +36,12 @@
         laydate.render({
             elem: '#startDate' //指定元素
         });
-        laydate.render({
-            elem:"#endDate"
-        });
         // 显示表格
         table.render({
             elem: '#postList'
+            , id: "postInfo"
             , title: "文章列表"
-            , url: '/simpleBook/json/postJson.json'
+            , url: '/simpleBook/post/selectPost'
             , toolbar: '#opr_left' //开启头部工具栏，并为其绑定左侧模板
             , layEvent: 'LAYTABLE_TIPS'
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
@@ -56,7 +54,7 @@
                     width: 120,
                     title: '点赞/浏览',
                     sort: true,
-                    templet: "<span>{{(d.start+d.readCount)*10}}</span>"
+                    templet: "<span>{{(d.hot+d.readCount)*10}}</span>"
                 }
                 , {field: 'gratuity', width: 100, title: '打赏金额'}
                 , {field: 'title', title: '标题', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
@@ -67,13 +65,26 @@
                 , {fixed: 'right', title: '操作', toolbar: '#opr', width: 150}
             ]]
             , page: true
+            , limits: [10, 20, 30, 50]
+            , loading: true
+            , text: {none: "暂无相关数据"}
         });
 
         //监听行工具事件
         table.on('tool(post_opr)', function (obj) {
-            var data = obj.data;
             if (obj.event === 'del') {
-                layer.alert(JSON.stringify(data))
+                layer.open({
+                    title: "删除文章",
+                    content: "确定删除该文章吗？\n点击确定将删除该文章的所有信息",
+                    icon: 8,
+                    btn: ["确定", "取消"],
+                    btn1: function () {
+                        delUser("pid="+ obj.data.pid);
+                    },
+                    btn2: function () {
+
+                    }
+                })
             } else if (obj.event === 'edit') {
                 layer.open({
                     type: 0
@@ -85,13 +96,53 @@
         // 删除已选中数据
         table.on("toolbar(post_opr)", function (obj) {
             var status = table.checkStatus(obj.config.id);
-            layer.alert(JSON.stringify(status.data));
+            var data = "";
+            $.each(status.data, function (i, v) {
+                data += "pid="+v.pid+"&"
+            });
+            data = data.substring(0, data.length - 1);
+            console.log(data);
+            delUser(data);
         });
 
         // 查询按钮点击事件
         form.on("submit(select)", function (data) {
-            layer.alert(JSON.stringify(data.field));
-        })
+            reload();
+        });
+
+        // 重新加载表格
+        function reload() {
+            table.reload('postInfo', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                },
+                where: {
+                    pid: $("#pid").val(),
+                    uid: $("#uid").val(),
+                    email: $("#email").val(),
+                    title:$("#title").val()
+                }
+            });
+        }
+
+        // 删除用户
+        function delUser(data) {
+            $.ajax({
+                method: "get",
+                url: "/simpleBook/post/delPostByPid"+"?"+data,
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag == true) {
+                        layer.msg(data.msg, {icon: 1});
+                        reload();
+                    } else {
+                        layer.msg(data.errorMsg, {icon: 2});
+                    }
+                }, error: function () {
+                    layer.msg("服务器繁忙，请稍后再试");
+                }
+            });
+        }
     });
 
 </script>
@@ -114,10 +165,11 @@
                 <form action="" class="layui-form">
 
                     <div class="layui-input-inline">
-                        <input type="text" name="pid" placeholder="文章编号" autocomplete="off" class="layui-input"/>
+                        <input type="text" name="pid" id="pid" placeholder="文章编号" autocomplete="off"
+                               class="layui-input"/>
                     </div>
                     <div class="layui-input-inline">
-                        <input type="text" name="uid" id="uId" placeholder="用户编号" class="layui-input"
+                        <input type="text" name="uid" id="uid" placeholder="用户编号" class="layui-input"
                                autocomplete="off"/>
                     </div>
                     <div class="layui-input-inline">
@@ -129,10 +181,6 @@
                                placeholder="发帖时间(yyyy-MM-dd)" autocomplete="off">
                     </div>
 
-                    <div class="layui-input-inline">
-                        <input type="data" class="layui-input" name="endDate" id="endDate"
-                               placeholder="截止时间(yyyy-MM-dd)" autocomplete="off">
-                    </div>
 
                     <button type="button" lay-filter="select" lay-submit class="layui-btn layui-btn-normal">查询</button>
                 </form>

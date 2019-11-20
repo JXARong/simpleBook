@@ -102,14 +102,21 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         return ((Long) count);
     }
 
-    public String appenSql(String sql,User user,List params){
+    @Override
+    public int delUserById(User user) {
+        String sql="delete from user where uid = ?";
+        int index = super.update(sql, new Object[]{user.getUid()});
+        return index;
+    }
+
+    private String appenSql(String sql, User user, List params){
         if (user!=null) {
             if (user.getUname()!=null){
-                sql+=" and uname=?";
-                params.add(user.getUname());
+                sql+=" and uname like ?";
+                params.add("%"+user.getUname()+"%");
             }
             if (user.getBornthDay()!=null){
-                sql+=" and bornthDay=?";
+                sql+=" and bornthDay = ?";
                 params.add(user.getBornthDay());
             }
             if (user.getSex()!=null){
