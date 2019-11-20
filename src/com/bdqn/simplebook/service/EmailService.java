@@ -12,4 +12,7 @@ import com.bdqn.simplebook.domain.Email;
  */
 public interface EmailService {
     boolean updateEmail(String path, Email email) throws Exception;
+
+    Email selEmailInfo() throws Exception;
+
 }
