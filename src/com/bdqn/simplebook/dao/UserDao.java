@@ -36,4 +36,9 @@ public interface UserDao {
 
     int delUserById(User user);
 
+
+    int register(User user);
+
+    List<User> queryUser();
+
 }

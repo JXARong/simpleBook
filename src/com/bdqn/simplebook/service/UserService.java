@@ -35,4 +35,8 @@ public interface UserService {
     PageUtils selUserByPage(PageUtils page, User user);
 
     int delUserById(String[] uids) throws Exception;
+
+    int register(User user) throws Exception;
+
+    List<User> usersList() throws Exception;
 }

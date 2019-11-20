@@ -248,4 +248,52 @@ public class UserServlet extends BaseServlet {
         response.getWriter().write(json);
 
     }
+
+    /**
+     * 用戶注册
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public void register(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        String uname = request.getParameter("uname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        try {
+            User user = new User();
+            user.setUname(uname);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setStatus(1);
+            boolean result = true;
+            for (User u : service.usersList()) {
+                if (service.usersList().equals(email)){
+                    result = false;
+                }
+            }
+
+            if (result){
+                int i = service.register(user);
+                if (i==1){
+                    ajaxUtils.setFlag(true);
+                }else {
+                    ajaxUtils.setErrorMsg("注册失败");
+                    ajaxUtils.setFlag(false);
+                }
+            }else {
+                ajaxUtils.setErrorMsg("邮箱已被注册！");
+                ajaxUtils.setFlag(false);
+            }
+
+
+        } catch (Exception e) {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setErrorMsg(e.getMessage());
+        }
+
+        response.setCharacterEncoding("utf-8");
+        String json = JSON.toJSONString(ajaxUtils);
+        response.getWriter().write(json);
+    }
 }

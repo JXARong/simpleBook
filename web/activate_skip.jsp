@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>邮箱激活</title>
     <script>
 
         var hash={
@@ -75,7 +75,7 @@
 
     <b>验证邮件已发送到您的电子邮箱：</b>
 
-    <b class="blue-text text-darken-1" id="email"></b>
+    <b class="blue-text text-darken-1" id="email">${}</b>
 
 </div>
 
