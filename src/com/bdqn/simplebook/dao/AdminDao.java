@@ -32,4 +32,8 @@ public interface AdminDao {
      * @return
      */
     int updatePwdById(Admin admin);
+
+    Admin selAdminById(Integer id);
+
+    int updateAdminInfo(Admin admin);
 }

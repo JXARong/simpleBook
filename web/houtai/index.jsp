@@ -19,13 +19,12 @@
                 area:["550px","550px"]
             });
         });
-        $("#showInfo").click(function () {
+        $("#showInfo").on("click",function () {
             layer.open({
                 title:"管理员信息",
                 type:2,
                 content:"/simpleBook/houtai/adminInfo.jsp",
                 area:["600px","650px"]
-
             });
         });
     })
@@ -38,7 +37,7 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户管理</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -51,7 +50,7 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="/simpleBook/portrait/${sessionScope.admin.portrait}" class="layui-nav-img">
+                    <img src="/simpleBook/resources/userPhoto/${sessionScope.admin.portrait}" class="layui-nav-img">
                     ${sessionScope.admin.username}
                 </a>
                 <dl class="layui-nav-child">
@@ -59,7 +58,7 @@
                     <dd><a href="javascript:void(0)" lay-filter="showInfo" id="showInfo">基本资料</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/admin/logout">退出</a></li>
         </ul>
     </div>
 

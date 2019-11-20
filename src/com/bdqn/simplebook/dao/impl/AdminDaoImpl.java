@@ -33,4 +33,27 @@ public class AdminDaoImpl extends BaseDao implements AdminDao {
         String sql="update admin set password = ? where id=?";
         return super.update(sql,new Object[]{admin.getPassword(),admin.getId()});
     }
+
+    /**
+     *  根据id查询用户
+     * @param id
+     * @return
+     */
+    @Override
+    public Admin selAdminById(Integer id) {
+        String sql="select * from admin where id = ?";
+        return super.selectOne(Admin.class, sql, new Object[]{id});
+    }
+
+    /**
+     * 修改admin信息
+     * @param admin
+     * @return
+     */
+    @Override
+    public int updateAdminInfo(Admin admin) {
+        String sql="UPDATE admin SET `username`=?,`email`=?,`portrait`=?,`phone`=?,`sex`=? WHERE id = ?";
+        int update = super.update(sql, new Object[]{admin.getUsername(), admin.getEmail(), admin.getPortrait(), admin.getPhone(), admin.getSex(), admin.getId()});
+        return update;
+    }
 }
