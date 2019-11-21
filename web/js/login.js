@@ -8,9 +8,9 @@ $(function () {
             method: "post",
             success: function (data) {
                 if (data == "false") {
-                    $(".tip").text("用户名或密码错误");
+                    alert("用户名或密码错误");
                 } else {
-                    location.href = "/simpleBook/houtai/index.jsp";
+                    location.href = "/simpleBook/index.jsp";
                 }
             }, error: function () {
                 $(".tip").text("服务器繁忙");

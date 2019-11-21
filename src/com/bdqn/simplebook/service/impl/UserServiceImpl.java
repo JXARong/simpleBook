@@ -248,4 +248,9 @@ public class UserServiceImpl  implements UserService {
     public List<User> usersList() throws Exception {
         return dao.queryUser();
     }
+
+    @Override
+    public User login(String emailOruname, String pwd) throws Exception {
+        return dao.login(emailOruname,pwd);
+    }
 }
