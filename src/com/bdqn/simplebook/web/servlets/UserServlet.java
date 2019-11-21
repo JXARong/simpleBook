@@ -237,4 +237,10 @@ public class UserServlet extends BaseServlet {
         String json = JSON.toJSONString(ajaxUtils);
         response.getWriter().write(json);
     }
+
+    public void loginOn(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
+
+    }
 }

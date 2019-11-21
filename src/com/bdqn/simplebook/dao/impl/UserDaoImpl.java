@@ -164,4 +164,11 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         return userList;
     }
 
+    @Override
+    public User login(String emailOrunam,String pwd) {
+
+        String sql = "select * from `user` where (? = email or ? = uname) and ? = `password`";
+        User user = super.selectOne(User.class,sql,new Object[]{emailOrunam,emailOrunam,pwd});
+        return user;
+    }
 }

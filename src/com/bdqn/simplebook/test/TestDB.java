@@ -79,4 +79,10 @@ public class TestDB  extends BaseDao {
         System.out.println( postDao.findPost(1));
 
     }
+
+    @Test
+    public void showff(){
+        List<User> userList = super.selectList(User.class, "select * from user", null);
+        System.out.println(userList);
+    }
 }
