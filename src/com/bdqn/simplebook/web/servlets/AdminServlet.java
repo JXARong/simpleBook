@@ -220,7 +220,7 @@ public class AdminServlet extends BaseServlet {
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("admin");
-        response.sendRedirect("/simpleBook/houtai/login.html");
+        response.getWriter().write("true");
     }
 
     /**
