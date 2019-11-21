@@ -36,9 +36,23 @@ public interface UserService {
 
     int delUserById(String[] uids) throws Exception;
 
+    /**
+     * 注册
+     * @param user
+     * @return
+     * @throws Exception
+     */
     int register(User user) throws Exception;
 
     List<User> usersList() throws Exception;
 
+    /**
+     * 登陆
+     * @param emailOruname
+     * @param pwd
+     * @return
+     * @throws Exception
+     */
+    User login(String emailOruname,String pwd) throws Exception;
 
 }

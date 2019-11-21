@@ -239,8 +239,21 @@ public class UserServlet extends BaseServlet {
     }
 
     public void loginOn(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        String unameOrEamil = request.getParameter("unameAndEmail");
+        String password = request.getParameter("password");
+        try {
+            User user = service.login(unameOrEamil,password);
+            if (user==null){
+                ajaxUtils.setErrorMsg("密码错误！");
+                ajaxUtils.setFlag(false);
+            }else {
+                ajaxUtils.setFlag(true);
+            }
+        } catch (Exception e) {
+            ajaxUtils.setErrorMsg(e.getMessage());
+            ajaxUtils.setFlag(false);
+        }
 
     }
 }
