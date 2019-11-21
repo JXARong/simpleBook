@@ -21,6 +21,7 @@ public class User {
     private  Double money; // 余额
     private Integer status; // 状态  0正常使用  1审核中 2 已封禁
     private String uname; // 昵称
+    private String registerTime; // 注册时间
 
     public Integer getUid() {
         return uid;
@@ -94,19 +95,27 @@ public class User {
         this.uname = uname;
     }
 
+    public String getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(String registerTime) {
+        this.registerTime = registerTime;
+    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("User{");
-        sb.append("uid=").append(uid);
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", sex=").append(sex);
-        sb.append(", bornthDay=").append(bornthDay);
-        sb.append(", photo='").append(photo).append('\'');
-        sb.append(", money=").append(money);
-        sb.append(", status=").append(status);
-        sb.append(", uname='").append(uname).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "User{" +
+                "uid=" + uid +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", sex=" + sex +
+                ", bornthDay=" + bornthDay +
+                ", photo='" + photo + '\'' +
+                ", money=" + money +
+                ", status=" + status +
+                ", uname='" + uname + '\'' +
+                ", registerTime='" + registerTime + '\'' +
+                '}';
     }
 }

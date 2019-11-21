@@ -41,4 +41,6 @@ public interface UserDao {
 
     List<User> queryUser();
 
+    User login(String emailOrunam,String pwd);
+
 }
