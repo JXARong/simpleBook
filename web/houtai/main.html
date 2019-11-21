@@ -6,32 +6,11 @@
 </head>
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css"/>
 <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="/simpleBook/js/echarts.js"></script>
 
-    layui.use(['element','layer','jquery'], function () {
-            var layer=layui.layer;
-            var $=layui.jquery;
-        // 显示信息
-        $("#myInfo").on("click", function () {
-            layer.open({
-                title: "管理员信息",
-                type: 2,
-                content: "/simpleBook/houtai/adminInfo.jsp",
-                area: ["600px", "650px"]
-            });
-        });
-
-        $("#passwordManage").click(function (data) {
-            layer.open({
-                title: "修改密码",
-                type: 2,
-                content: "/simpleBook/houtai/changePwd.jsp",
-                area: ["550px", "550px"]
-            });
-        });
-    });
-</script>
 <style>
+
+    /*卡片主题样式*/
     .layui-card-body{
         padding: 5px;
         line-height: 24px;
@@ -40,10 +19,13 @@
     .layui-col-xs3{
         width: 25%;
     }
+    .layui-col-xs6{
+        width: 50%;
+    }
     /*设置快捷方式中图标的样式*/
     .layui-col-xs3 .layui-icon{
         font-size: 30px;
-        height: 55px;
+        height: 54px;
         line-height: 55px;
         display: inline-block;
         width: 100%;
@@ -70,6 +52,27 @@
     .layui-col-space10 >*{
         padding: 5px;
     }
+
+    /*设置待办事项样式*/
+    .layadmin-backlog-body{
+        display: block;
+        padding: 10px 15px;
+        height: 63px;
+        background-color: #f8f8f8;
+        text-align: left;
+    }
+    .layadmin-backlog-body p cite{
+        font-style: normal;
+        font-size: 30px;
+        font-weight: 300;
+        color: #009688;
+    }
+    .layadmin-backlog-body h3{
+        font-size: 17px;
+        height: 24px;
+        padding-bottom: 10px;
+    }
+
 </style>
 <body style="padding: 15px">
 
@@ -126,6 +129,7 @@
                                             <cite>用户管理</cite>
                                         </a>
                                     </li>
+
                                     <li class="layui-col-xs3">
                                         <a lay-href="set/system/website">
                                             <i class="layui-icon layui-icon-set"></i>
@@ -137,10 +141,39 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="layui-col-md6">
                     <div class="layui-card">
                         <h3 class="layui-card-header">待办事项</h3>
                         <div class="layui-card-body">
+                            <div carousel-item="">
+                                <ul class="layui-row layui-col-space10 shortcut">
+                                    <li class="layui-col-xs6">
+                                        <a lay-href="app/content/comment" class="layadmin-backlog-body">
+                                            <h3>今日注册</h3>
+                                            <p><cite>66</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs6">
+                                        <a lay-href="app/forum/list" class="layadmin-backlog-body">
+                                            <h3>用户总量</h3>
+                                            <p><cite>12</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs6">
+                                        <a lay-href="template/goodslist" class="layadmin-backlog-body">
+                                            <h3>今日收入</h3>
+                                            <p><cite>99</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs6">
+                                        <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                                            <h3>待审帖子</h3>
+                                            <p><cite>20</cite></p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,35 +183,8 @@
                         <div class="layui-card-body">
 
                             <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade"
-                                 lay-filter="LAY-index-dataview" lay-anim="fade" lay-indicator="inside" lay-arrow="none"
+                                 lay-filter="LAY-index-dataview" lay-anim="fade" lay-indicator="inside" lay-arrow="none" id="registerNum"
                                  style="width: 100%; height: 280px;">
-                                <div carousel-item="" id="LAY-index-dataview">
-                                    <div class="layui-this" _echarts_instance_="1574297585997"
-                                         style="-webkit-tap-highlight-color: transparent; user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);">
-                                        <div style="position: relative; overflow: hidden; width: 553px; height: 332px;">
-                                            <div data-zr-dom-id="bg" class="zr-element"
-                                                 style="position: absolute; left: 0px; top: 0px; width: 553px; height: 332px; user-select: none;"></div>
-                                            <canvas width="553" height="332" data-zr-dom-id="0" class="zr-element"
-                                                    style="position: absolute; left: 0px; top: 0px; width: 553px; height: 332px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
-                                            <canvas width="553" height="332" data-zr-dom-id="1" class="zr-element"
-                                                    style="position: absolute; left: 0px; top: 0px; width: 553px; height: 332px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
-                                            <canvas width="553" height="332" data-zr-dom-id="_zrender_hover_"
-                                                    class="zr-element"
-                                                    style="position: absolute; left: 0px; top: 0px; width: 553px; height: 332px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas>
-                                        </div>
-                                    </div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                                <div class="layui-carousel-ind">
-                                    <ul>
-                                        <li class="layui-this"></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                                <button class="layui-icon layui-carousel-arrow" lay-type="sub"></button>
-                                <button class="layui-icon layui-carousel-arrow" lay-type="add"></button>
                             </div>
 
                         </div>
@@ -1081,6 +1087,56 @@
         </div>
     </div>
 </div>
-
 </body>
+<script type="text/javascript">
+
+    layui.use(['element','layer','jquery'], function () {
+        var layer=layui.layer;
+        var $=layui.jquery;
+        // 显示信息
+        $("#myInfo").on("click", function () {
+            layer.open({
+                title: "管理员信息",
+                type: 2,
+                content: "/simpleBook/houtai/adminInfo.jsp",
+                area: ["600px", "650px"]
+            });
+        });
+
+        $("#passwordManage").click(function (data) {
+            layer.open({
+                title: "修改密码",
+                type: 2,
+                content: "/simpleBook/houtai/changePwd.jsp",
+                area: ["550px", "550px"]
+            });
+        });
+    });
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('registerNum'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '最近一周注册时间'
+        },
+        tooltip: {},
+        legend: {
+            data:['']
+        },
+        xAxis: {
+            data: ["周一","周二","周三","周四","周五","周六","周日"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+</script>
 </html>
