@@ -9,24 +9,43 @@
     <script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>
 </head>
 <script type="application/javascript">
-    layui.use(["jquery","layer"], function () {
+    layui.use(["jquery", "layer"], function () {
         var $ = layui.jquery;
         $("#changePwd").click(function (data) {
             layer.open({
-                title:"修改密码",
-                type:2,
-                content:"/simpleBook/houtai/changePwd.jsp",
-                area:["550px","550px"]
+                title: "修改密码",
+                type: 2,
+                content: "/simpleBook/houtai/changePwd.jsp",
+                area: ["550px", "550px"]
             });
         });
-        $("#showInfo").on("click",function () {
+        // 显示信息
+        $("#showInfo").on("click", function () {
             layer.open({
-                title:"管理员信息",
-                type:2,
-                content:"/simpleBook/houtai/adminInfo.jsp",
-                area:["600px","650px"]
+                title: "管理员信息",
+                type: 2,
+                content: "/simpleBook/houtai/adminInfo.jsp",
+                area: ["600px", "650px"]
             });
         });
+        // 安全退出
+        $("#logout").on("click", function () {
+            layer.open({
+                title: "安全退出",
+                content: "确认退出吗？退出将会转跳至登录页面",
+                btn: ["确定", "取消"],
+                btn1: function () {
+                    $.ajax({
+                        url: "<%=request.getContextPath()%>/admin/logout",
+                        success: function (data) {
+                            parent.location.href = "<%=request.getContextPath()%>/houtai/login.html";
+                        }, error: function () {
+                            layer.msg("服务器繁忙,请刷新后重试")
+                        }
+                    })
+                }
+            });
+        })
     })
 
 </script>
@@ -37,7 +56,8 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户管理</a></li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户管理</a>
+            </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -58,7 +78,7 @@
                     <dd><a href="javascript:void(0)" lay-filter="showInfo" id="showInfo">基本资料</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/admin/logout">退出</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" id="logout">退出</a></li>
         </ul>
     </div>
 
@@ -66,6 +86,9 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="nav_tree">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="<%=request.getContextPath()%>/houtai/main.html" target="rightFrame">主页</a>
+                </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
@@ -78,7 +101,8 @@
                     <dl class="layui-nav-child">
                         <dd><a href="<%=request.getContextPath()%>/houtai/postList.html" target="rightFrame">文章列表</a>
                         </dd>
-                        <dd><a href="<%=request.getContextPath()%>/houtai/post_report.html" target="rightFrame">被举报文章</a></dd>
+                        <dd><a href="<%=request.getContextPath()%>/houtai/post_report.html"
+                               target="rightFrame">被举报文章</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -98,7 +122,7 @@
     </div>
 
     <div class="layui-body">
-        <iframe src="<%=request.getContextPath()%>/houtai/topic.html" frameborder="0" id="rightFrame"
+        <iframe src="<%=request.getContextPath()%>/houtai/main.html" frameborder="0" id="rightFrame"
                 class="layui-bg-gray"
                 name="rightFrame" style="width: 100%; height: 100%"></iframe>
     </div>
