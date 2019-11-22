@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <title>后台首页</title>
 </head>
-<link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css"/>
+<link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css"/>
 <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
 <script type="text/javascript" src="/simpleBook/js/echarts.js"></script>
 
 <style>
 
     /*卡片主题样式*/
-    .layui-card-body{
+    .layui-card-body {
         padding: 5px;
         line-height: 24px;
     }
+
     /*设置每个快捷方式的样式*/
-    .layui-col-xs3{
+    .layui-col-xs3 {
         width: 25%;
     }
-    .layui-col-xs6{
+
+    .layui-col-xs6 {
         width: 50%;
     }
+
     /*设置快捷方式中图标的样式*/
-    .layui-col-xs3 .layui-icon{
+    .layui-col-xs3 .layui-icon {
         font-size: 30px;
         height: 54px;
         line-height: 55px;
@@ -33,41 +36,48 @@
         border-radius: 2px;
         background-color: #f2f2f2;
     }
+
     /*快捷方式中字体的样式*/
-    .layui-col-xs3 cite{
+    .layui-col-xs3 cite {
         text-align: center;
         padding-top: 5px;
         display: block;
     }
-    .shortcut li{
+
+    .shortcut li {
         text-align: center;
     }
-    .shortcut li i,cite{
+
+    .shortcut li i, cite {
         cursor: pointer;
     }
-    .shortcut{
+
+    .shortcut {
         background-color: white;
         padding: 10px;
     }
-    .layui-col-space10 >*{
+
+    .layui-col-space10 > * {
         padding: 5px;
     }
 
     /*设置待办事项样式*/
-    .layadmin-backlog-body{
+    .layadmin-backlog-body {
         display: block;
         padding: 10px 15px;
         height: 63px;
         background-color: #f8f8f8;
         text-align: left;
     }
-    .layadmin-backlog-body p cite{
+
+    .layadmin-backlog-body p cite {
         font-style: normal;
         font-size: 30px;
         font-weight: 300;
         color: #009688;
     }
-    .layadmin-backlog-body h3{
+
+    .layadmin-backlog-body h3 {
         font-size: 17px;
         height: 24px;
         padding-bottom: 10px;
@@ -141,7 +151,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="layui-col-md6">
                     <div class="layui-card">
                         <h3 class="layui-card-header">待办事项</h3>
@@ -167,7 +176,8 @@
                                         </a>
                                     </li>
                                     <li class="layui-col-xs6">
-                                        <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                                        <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
+                                           class="layadmin-backlog-body">
                                             <h3>待审帖子</h3>
                                             <p><cite>20</cite></p>
                                         </a>
@@ -177,16 +187,16 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="layui-col-md12">
                     <div class="layui-card">
-                        <div class="layui-card-header">数据概览</div>
+                        <div class="layui-card-header">最近一周用户注册数</div>
                         <div class="layui-card-body">
-
                             <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade"
-                                 lay-filter="LAY-index-dataview" lay-anim="fade" lay-indicator="inside" lay-arrow="none" id="registerNum"
-                                 style="width: 100%; height: 280px;">
+                                 lay-filter="LAY-index-dataview" lay-anim="fade" lay-indicator="inside" lay-arrow="none"
+                                 id="registerNum"
+                                 style="width: 100%; height: 250px; background-color: white">
                             </div>
-
                         </div>
                     </div>
                     <div class="layui-card">
@@ -1054,21 +1064,23 @@
                                                         value="90">90 条/页</option></select></span></div>
                                             </div>
                                         </div>
-                                        <style>.laytable-cell-15-0-0 {
-                                            width: 40px;
-                                        }
 
-                                        .laytable-cell-15-0-1 {
-                                        }
+                                        <style>
+                                            .laytable-cell-15-0-0 {
+                                                width: 40px;
+                                            }
 
-                                        .laytable-cell-15-0-2 {
-                                        }
+                                            .laytable-cell-15-0-1 {
+                                            }
 
-                                        .laytable-cell-15-0-3 {
-                                        }
+                                            .laytable-cell-15-0-2 {
+                                            }
 
-                                        .laytable-cell-15-0-4 {
-                                        }</style>
+                                            .laytable-cell-15-0-3 {
+                                            }
+
+                                            .laytable-cell-15-0-4 {
+                                            }</style>
                                     </div>
                                 </div>
                             </div>
@@ -1077,22 +1089,18 @@
                 </div>
             </div>
         </div>
-        <div class="layui-col-md4">
-            <div class="layui-card">
-                <div class="layui-card-header">发发</div>
-                <div class="layui-card-body">
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </body>
 <script type="text/javascript">
+    
+    layui.use(['element', 'layer', 'jquery'], function () {
+        var layer = layui.layer;
+        var $ = layui.jquery;
+        var element=layui.element;
+        // 初始化echarts实例
+        var myChart = echarts.init(document.getElementById('registerNum'));
 
-    layui.use(['element','layer','jquery'], function () {
-        var layer=layui.layer;
-        var $=layui.jquery;
         // 显示信息
         $("#myInfo").on("click", function () {
             layer.open({
@@ -1111,32 +1119,68 @@
                 area: ["550px", "550px"]
             });
         });
+
+        $.ajax({
+            url:"/simpleBook/admin/getRegisterNumOfUser",
+            method:"post",
+            success:function (data) {
+                if(data.flag==true){
+                    loadEcharts(data.data)
+                }else{
+                    layer.msg("服务器繁忙，请刷新页面",{icon:2});
+                }
+            },error:function () {
+                layer.msg("服务器繁忙，请刷新页面",{icon:2});
+            }
+        });
+
+        // 加载图标
+        function loadEcharts(data){
+            var date = new Date();
+            var today = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var time = year + "." + month + ".";
+            console.log(today);
+            console.log(data);
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    id: "registerNumOfUser",
+                    "text": "近一周用户注册数",
+                    "top": "top",
+                    "left": "center",
+                    "textStyle": {"color": "#306fb6"},
+                    "subtextStyle": {
+                        "color": "#306fb6",
+                    }
+                },
+                tooltip: {},
+                legend: {
+                    data: ['']
+                },
+                xAxis: {
+                    data: [time + (today - 6),time + (today - 6), time + (today - 5), time + (today - 4), time + (today - 3), time + (today - 2), time + (today - 1)]
+                    // data:[1,2,3,4,5,6,7]
+                },
+                yAxis: {},
+                series: [{
+                    name: '用户注册',
+                    type: "line",
+                    data: eval(data)
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+
+        // echarts随着窗口的大小变换
+        window.onresize = function(){
+            myChart.resize();
+        }
+
     });
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('registerNum'));
-
-    // 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: '最近一周注册时间'
-        },
-        tooltip: {},
-        legend: {
-            data:['']
-        },
-        xAxis: {
-            data: ["周一","周二","周三","周四","周五","周六","周日"]
-        },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-
+    
 </script>
 </html>

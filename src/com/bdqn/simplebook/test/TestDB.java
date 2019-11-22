@@ -1,11 +1,13 @@
 package com.bdqn.simplebook.test;
 
+import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.PostDao;
 import com.bdqn.simplebook.dao.impl.PostDaoImpl;
 import com.bdqn.simplebook.domain.Admin;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
+import com.bdqn.simplebook.service.impl.AdminServiceImpl;
 import com.bdqn.simplebook.utils.ConstantUtils;
 import com.bdqn.simplebook.utils.JdbcUtils;
 import org.junit.Test;
@@ -15,7 +17,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -84,5 +88,18 @@ public class TestDB  extends BaseDao {
     public void showff(){
         List<User> userList = super.selectList(User.class, "select * from user", null);
         System.out.println(userList);
+    }
+
+    @Test
+    public void testTimestamp(){
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//        Calendar instance = Calendar.getInstance();
+//        instance.add(Calendar.DATE,-2);
+//        String format = sdf.format(instance.getTime());
+//
+//        System.out.println(format);
+        AdminServiceImpl service=new AdminServiceImpl();
+        List<Integer> numOfUser = service.getRegisterNumOfUser();
+        System.out.println(JSON.toJSONString(numOfUser));
     }
 }

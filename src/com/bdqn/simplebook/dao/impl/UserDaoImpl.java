@@ -166,9 +166,20 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public User login(String emailOrunam,String pwd) {
-
         String sql = "select * from `user` where (? = email or ? = uname) and ? = `password`";
         User user = super.selectOne(User.class,sql,new Object[]{emailOrunam,emailOrunam,pwd});
         return user;
+    }
+
+    /**
+     *  获取某一天的用户注册总量
+     * @param format
+     * @return
+     */
+    @Override
+    public Long selUserCountByDate(String format) {
+        String sql="select count(*) from user where registerTime like ?";
+        Object count = super.getCount(sql, new Object[]{"%" + format + "%"});
+        return ((Long) count);
     }
 }

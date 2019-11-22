@@ -167,7 +167,7 @@
                     } else {
                         layer.msg(data.errorMsg + ",正在为您转跳至登录页面", {icon: 2});
                         setTimeout(function () {
-                            parent.location.href = "<%=request.getContextPath()%>/houtai/login.html";
+                            parent.parent.location.href = "<%=request.getContextPath()%>/houtai/login.html";
                         }, 2000);
                     }
                 }, error: function () {

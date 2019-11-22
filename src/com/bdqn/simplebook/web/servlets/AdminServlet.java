@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.List;
 
 /**
  * @author: 赖榕
@@ -259,6 +260,21 @@ public class AdminServlet extends BaseServlet {
         writer.write(JSON.toJSONString(ajaxUtils));
         writer.close();
 
+    }
+
+    // 获取近七天的用户信息
+    public void getRegisterNumOfUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+            AjaxUtils ajaxUtils=new AjaxUtils();
+        try {
+            List<Integer> nums = service.getRegisterNumOfUser();
+            ajaxUtils.setFlag(true);
+            ajaxUtils.setData(JSON.toJSONString(nums));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONString(ajaxUtils));
     }
 
 }

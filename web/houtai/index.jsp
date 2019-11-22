@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>简简书-后台管理</title>
-    <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css">
     <script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>
 </head>
 <script type="application/javascript">
-    layui.use(["jquery", "layer"], function () {
+    layui.use(["jquery", "layer","element"], function () {
         var $ = layui.jquery;
+        var element = layui.element;
         $("#changePwd").click(function (data) {
             layer.open({
                 title: "修改密码",
@@ -132,12 +133,5 @@
         © 简简书-后台管理
     </div>
 </div>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function () {
-        var element = layui.element;
-
-    });
-</script>
 </body>
 </html>
