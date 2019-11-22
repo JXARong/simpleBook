@@ -3,11 +3,13 @@ package com.bdqn.simplebook.test;
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.PostDao;
 import com.bdqn.simplebook.dao.impl.PostDaoImpl;
+import com.bdqn.simplebook.dao.impl.UserDaoImpl;
 import com.bdqn.simplebook.domain.Admin;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.ConstantUtils;
 import com.bdqn.simplebook.utils.JdbcUtils;
+import javafx.geometry.Pos;
 import org.junit.Test;
 
 import javax.sql.DataSource;
@@ -16,8 +18,10 @@ import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author: 赖榕
@@ -27,7 +31,7 @@ import java.util.List;
  * @since: JDK1.8
  * @packageName: com.bdqn.simplebook.test
  */
-public class TestDB  extends BaseDao {
+public class TestDB extends BaseDao {
 
     @Test
     public void testGetDs() {
@@ -62,14 +66,33 @@ public class TestDB  extends BaseDao {
     }
 
     @Test
-    public void show(){
-        File file=new File(ConstantUtils.userPhoto+File.separatorChar+"0c916505b2cd49af871a61b3d87687bf.png");
+    public void show() {
+        File file = new File(ConstantUtils.userPhoto + File.separatorChar + "0c916505b2cd49af871a61b3d87687bf.png");
         file.deleteOnExit();
         System.out.println(file);
     }
-    @Test
-    public void fun1() throws Exception {
+
+    public Post fun1() throws Exception {
         PostDao postDao = new PostDaoImpl();
-        System.out.println( postDao.findPost(1));
+        Post post = postDao.updateLookPostCount(1);
+        post.setUser(new UserDaoImpl().selUserById(17263785));
+        return post;
+    }
+
+    public List<Post> fun2(Post post) throws Exception {
+        PostDao postDao = new PostDaoImpl();
+        List<Post> posts = postDao.findAllPost(post);
+        Random rd = new Random();
+        while (posts.size() >= 6) {
+            int randomNum = rd.nextInt(posts.size() - 1);
+            posts.remove(randomNum);
+        }
+        System.out.println(posts.toString());
+        return posts;
+    }
+    @Test
+    public void fun4(){
+       Post p= super.selectOne(Post.class,"select * from post where pid=?",new Object[]{1});
+        System.out.println(p);
     }
 }

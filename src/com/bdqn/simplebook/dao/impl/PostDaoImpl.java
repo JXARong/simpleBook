@@ -25,7 +25,6 @@ public class PostDaoImpl extends BaseDao implements PostDao {
     @Override
     public Post findPost(int pid) throws Exception {
         return super.selectOne(Post.class,"select * from post where pid=?",new Object[]{pid});
-
     }
     /**
      * 根据用户Id删除文章内容
@@ -91,6 +90,23 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         String sql="delete from post where pid = ?";
         return super.update(sql, new Object[]{pid});
     }
+
+    /**
+     * 查询除了本文章的所有文章
+     * @param post 本文章
+     * @return 文章集合
+     */
+    @Override
+    public List<Post> findAllPost(Post post) {
+        return super.selectList(Post.class,"select * from post where pid<>?",new Object[]{post.getPid()});
+    }
+
+    @Override
+    public Post updateLookPostCount(int pid) throws Exception {
+        super.update("update post set readCount=readCount+1 where pid=?",new Object[]{pid});
+        return findPost(pid);
+    }
+
 
     /**
      * 拼接sql语句

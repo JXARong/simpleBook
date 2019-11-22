@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.service.impl.PostServiceImpl;
+import com.bdqn.simplebook.test.TestDB;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 import org.omg.PortableInterceptor.INACTIVE;
@@ -106,5 +107,9 @@ public class PostServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
     }
-
+    public void lookPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        TestDB testDB = new TestDB();
+        request.getSession().setAttribute("test",testDB.fun1());
+        response.sendRedirect("/simpleBook/read.jsp");
+    }
 }

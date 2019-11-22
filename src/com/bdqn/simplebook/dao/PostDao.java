@@ -1,6 +1,10 @@
 package com.bdqn.simplebook.dao;
 
 import com.bdqn.simplebook.domain.Post;
+import com.bdqn.simplebook.domain.User;
+import javafx.geometry.Pos;
+
+import java.util.List;
 
 
 /**
@@ -24,4 +28,8 @@ public interface PostDao {
     Long selPostCount(Post post);
 
     Integer delPostByPid(Integer pid);
+
+    List<Post> findAllPost(Post post);
+
+    Post updateLookPostCount(int pid) throws Exception;
 }
