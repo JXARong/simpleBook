@@ -15,24 +15,22 @@
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
 <script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
 <body>
-<nav class="first_header">
+<nav class="first_header" style="width: 66%; position: relative;left: 250px">
 
     <ul class="header_login">
         <li><a href="" style="color: orangered;font-size: 24px;position: relative;left: 50px;top: 5px">简·简书</a></li>
         <li><a href=""
                style="text-decoration: none;color: orangered;position: relative;top:5px;left:80px;font-size: 18px">首页</a>
         </li>
-        <li><a href=""><img src="/simpleBook/images/xiazaiAPP(2).png"
-                            style="position: relative;left: 100px;top: 2px"></a></li>
-        <li><input type="text" name="search"
-                   style="position: relative;left: 150px;top: 5px;background-color: #f0f0f0;width: 180px ;height: 40px ;border-radius:10%">
-            <input type="button" value="提交" style="position: relative;left: 150px;top: 5px ;width: 35px;height: 35px;border-radius: 50%" ></li>
-        <li><a href=""><img src="/simpleBook/images/Aaa.png" style="position: relative;left: 400px;top: 5px "></a></li>
-        <li><a href=""><img src="/simpleBook/images/beastApp.png" style="position: relative;left: 230px;top: 2px"></a>
+        <li><a href="" style="position: relative;left: 100px;top: 2px"><img src="/simpleBook/images/xiazaiAPP(2).png" ></a></li>
+        <li>
+            <input class="search_input" type="text" name="search" style="padding: 0 40px 0 20px;border-radius:40px;height: 38px;font-size: 14px;border: 1px solid #eee;background: #eee;width: 200px;position: relative;left: 100px;top:2px">
+            <a href="" style="position: relative;left: 70px;z-index: 9999;font-size: 20px"><i class="layui-icon">&#xe615;</i></a>
         </li>
-        <li name="login_simple"><a href=""
-                                   style="color:#b0b0b0;position: relative;left: 300px;top: 5px;font-size: 20px;">登录</a>
+        <li><a href="" style="position: relative;left: 400px;top: 5px "><img src="/simpleBook/images/Aaa.png" ></a></li>
+        <li><a href=""style="position: relative;left: 230px;top: 2px"><img src="/simpleBook/images/beastApp.png" ></a>
         </li>
+        <li name="login_simple"><a href="" style="color:#b0b0b0;position: relative;left: 300px;top: 5px;font-size: 20px;">登录</a></li>
         <li>
             <button type="button" class="layui-btn layui-btn-primary layui-btn-radius"
                     style="color: orangered;position: relative;left: 350px">注册
@@ -47,6 +45,7 @@
     </ul>
 </nav>
 <section class="first_subject" style="margin: 10px auto">
+    <div style="border: 1px solid red ; height: "></div>
     <div class="subjec_left">
         <ul class="left_meue">
             <li>
