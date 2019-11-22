@@ -95,7 +95,7 @@
                 if (data.flag==true){
                     layer.msg(data.msg+",正在转跳至登录页面",{icon:6});
                     setTimeout(function () {
-                        parent.location.href="<%=request.getContextPath()%>/houtai/login.html";
+                        parent.parent.location.href="<%=request.getContextPath()%>/houtai/login.html";
                     }, 2000);
                 }else{
                     layer.msg(data.errorMsg,{icon:2});

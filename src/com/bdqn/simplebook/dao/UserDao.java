@@ -43,4 +43,5 @@ public interface UserDao {
 
     User login(String emailOrunam,String pwd);
 
+    Long selUserCountByDate(String format);
 }

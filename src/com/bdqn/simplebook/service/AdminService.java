@@ -2,6 +2,8 @@ package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.Admin;
 
+import java.util.List;
+
 /**
  * @author: 赖榕
  * @date: 2019/11/2
@@ -28,4 +30,7 @@ public interface AdminService {
     Admin selAdminById(Admin admin) throws Exception;
 
     int updateInfo(Admin admin) throws Exception;
+
+    List<Integer> getRegisterNumOfUser();
+
 }

@@ -1,13 +1,22 @@
 package com.bdqn.simplebook.service.impl;
 
 import com.bdqn.simplebook.dao.AdminDao;
+import com.bdqn.simplebook.dao.UserDao;
 import com.bdqn.simplebook.dao.impl.AdminDaoImpl;
+import com.bdqn.simplebook.dao.impl.UserDaoImpl;
 import com.bdqn.simplebook.domain.Admin;
+import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.AdminService;
 import com.bdqn.simplebook.utils.ConstantUtils;
 import com.bdqn.simplebook.utils.MailUtils;
 
+import javax.xml.crypto.Data;
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -21,6 +30,7 @@ import java.util.Random;
 public class AdminServiceImpl implements AdminService {
 
     private AdminDao dao = new AdminDaoImpl();
+    private UserDao userDao=new UserDaoImpl();
 
     @Override
     public Admin login(Admin admin) {
@@ -97,6 +107,12 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
+    /**
+     *  修改管理员信息
+     * @param admin
+     * @return
+     * @throws Exception
+     */
     @Override
     public int updateInfo(Admin admin) throws Exception {
 
@@ -111,5 +127,29 @@ public class AdminServiceImpl implements AdminService {
             throw new Exception("修改失败,请稍后重试");
         }
         return index;
+    }
+
+    /**
+     * 获取近一周的每天用户注册数量
+     * @return
+     */
+    @Override
+    public List<Integer> getRegisterNumOfUser() {
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+
+        List<Integer> list=new ArrayList<>();
+        // 实例化时间类
+        Calendar calendar=Calendar.getInstance();
+        // 遍历前七天
+        for (int i = 1; i <= 7; i++) {
+            // 获取一天到七天前的时间,没循环一次时间推前一天
+            calendar.add(Calendar.DAY_OF_MONTH,-1);
+            String format = sdf.format(calendar.getTime());
+            System.out.println(format);
+            Long number = userDao.selUserCountByDate(format);
+            list.add(Integer.valueOf(number.toString()));
+        }
+        return list;
     }
 }
