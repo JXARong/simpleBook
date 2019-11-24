@@ -13,12 +13,14 @@ import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
 import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
+import com.sun.deploy.net.HttpResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.omg.PortableInterceptor.INACTIVE;
+import org.omg.PortableInterceptor.RequestInfo;
 import sun.management.snmp.jvmmib.JvmThreadInstanceTableMeta;
 
 import javax.crypto.spec.PSource;
@@ -72,17 +74,7 @@ public class PostServlet extends BaseServlet {
         PageUtils pageUtils = new PageUtils();
         Post post = new Post();
 
-        String pageNum = request.getParameter("page");
-        String limit = request.getParameter("limit");
-
-        // 封装分页条件
-        if (pageNum != null || pageNum.trim().length() != 0) {
-            pageUtils.setPageNum(Integer.valueOf(pageNum));
-        }
-
-        if (limit != null || limit.trim().length() > 0) {
-            pageUtils.setLimit(Integer.valueOf(limit));
-        }
+        pageUtils = getParameter(request);
 
         // 封装查询条件
         String pid = request.getParameter("pid");
@@ -198,10 +190,16 @@ public class PostServlet extends BaseServlet {
                     String postPathName = item.getString("utf-8");
                     // 拼接该图片的最终路径
                     realPath += "/" + postPathName + "/" + imageName;
-                    relativePath = postPathName + imageName;
+                    relativePath = context.getContextPath()+"\\/resources\\/post"+"\\/"+123123+"\\/"+postPathName +"\\/"+ imageName;
                 }
             }
 
+            // 获取文章路径
+            File postPath=new File(realPath.substring(0,realPath.lastIndexOf("/")+1));
+            if (!postPath.exists()){
+                postPath.mkdir();
+            }
+            System.out.println(realPath);
             // 判断图片是否存在，不存在则创建新文件
             File imageFile = new File(realPath);
             if (!imageFile.exists()) {
@@ -214,11 +212,52 @@ public class PostServlet extends BaseServlet {
             while ((count = is.read(bytes)) != -1) {
                 fos.write(bytes, 0, count);
             }
+            is.close();
+            fos.close();
             System.out.println("图片保存成功");
-
+            response.setContentType("application/json;charset=utf-8");
+            response.setCharacterEncoding("utf-8");
+            String s = "{\"location\":" + "\""+relativePath +"\""+ "}";
+            System.out.println(s);
+            response.getWriter().write(s);
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     *  查询排行前20的帖子
+     * @param request
+     * @param response
+     */
+    public void selPostListOfTop(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PageUtils pageUtils = getParameter(request);
+        try {
+            pageUtils = service.selPostListOfTop(pageUtils);
+            pageUtils.setCode(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String json = JSON.toJSONString(pageUtils);
+        System.out.println(json);
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(json);
+    }
+
+    private PageUtils getParameter(HttpServletRequest request){
+        PageUtils pageUtils = new PageUtils();
+        String pageNum = request.getParameter("page");
+        String limit = request.getParameter("limit");
+
+        // 封装分页条件
+        if (pageNum != null || pageNum.trim().length() != 0) {
+            pageUtils.setPageNum(Integer.valueOf(pageNum));
+        }
+
+        if (limit != null || limit.trim().length() > 0) {
+            pageUtils.setLimit(Integer.valueOf(limit));
+        }
+        return pageUtils;
+    }
 }

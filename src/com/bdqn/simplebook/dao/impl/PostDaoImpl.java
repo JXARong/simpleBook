@@ -100,6 +100,13 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         return super.update(sql, new Object[]{pid});
     }
 
+    @Override
+    public List<Post> selPostOfTop(int i, Integer limit) {
+        String sql="SELECT * FROM post ORDER BY (readCount+hot)*10 DESC LIMIT ?,?";
+        List<Post> posts = super.selectList(Post.class, sql, new Object[]{i, limit});
+        return posts;
+    }
+
     /**
      * 拼接sql语句
      *
