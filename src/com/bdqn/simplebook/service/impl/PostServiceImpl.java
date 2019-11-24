@@ -7,6 +7,7 @@ import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.Topic;
 
+import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.utils.PageUtils;
 
@@ -44,6 +45,8 @@ public class PostServiceImpl implements PostService {
     private ReportDao reportDao = new ReportDaoImpl();
 
     private FavouriteDao favouriteDao = new FavouriteDaoImpl();
+
+    private UserDao userDao=new UserDaoImpl();
 
     @Override
     public List<Post> selectAllPost() throws Exception {
@@ -121,5 +124,19 @@ public class PostServiceImpl implements PostService {
         }
         return count;
 
+    }
+
+    @Override
+    public PageUtils selPostListOfTop(PageUtils pageUtils) {
+        List<Post> list= dao.selPostOfTop((pageUtils.getPageNum()-1)*pageUtils.getLimit(),pageUtils.getLimit());
+        for (Post post : list) {
+            User user = userDao.selUserById(post.getUid());
+            Topic topic = topicDao.selTopicById(post.getTopicId());
+            post.setTopic(topic);
+            post.setUser(user);
+        }
+        pageUtils.setCount(20);
+        pageUtils.setData(list);
+        return pageUtils;
     }
 }

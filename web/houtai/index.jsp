@@ -64,7 +64,7 @@
                 <dl class="layui-nav-child">
                     <dd><a href="<%=request.getContextPath()%>/houtai/emailManager.html" target="rightFrame">邮件管理</a>
                     </dd>
-                    <dd><a href="">支付管理</a></dd>
+                    <dd><a href="javascript:layer.msg('该功能暂无开通,请敬请期待2.0版本')">支付管理</a></dd>
                 </dl>
             </li>
         </ul>
@@ -91,11 +91,7 @@
                     <a href="<%=request.getContextPath()%>/houtai/main.html" target="rightFrame">主页</a>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">用户管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户列表</a>
-                        </dd>
-                    </dl>
+                    <a class="" href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户管理</a>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">文章管理</a>
@@ -115,7 +111,7 @@
                         <dd><a href="<%=request.getContextPath()%>/houtai/emailManager.html"
                                target="rightFrame">邮箱设置</a>
                         </dd>
-                        <dd><a href="javascript:;">支付设置</a></dd>
+                        <dd><a href="javascript:layer.msg('该功能暂无开通,请敬请期待2.0版本')">支付设置</a></dd>
                     </dl>
                 </li>
             </ul>

@@ -29,4 +29,6 @@ public interface PostDao {
     Long selPostCount(Post post);
 
     Integer delPostByPid(Integer pid);
+
+ List<Post> selPostOfTop(int i, Integer limit);
 }

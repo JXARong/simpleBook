@@ -30,4 +30,5 @@ public interface PostService {
 
     Integer delPostById(String[] pid) throws Exception;
 
+    PageUtils selPostListOfTop(PageUtils pageUtils);
 }

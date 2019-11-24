@@ -38,10 +38,10 @@
 
         tinymce.init({
             selector: '#postContent',
-            plugins : 'advlist autolink link image lists preview',//字符串方式
+            plugins : 'image',//字符串方式
             language: 'zh_CN',
-            toolbar: 'undo redo | styleselect | bold italic | link image',
-            images_upload_base_path: '/demo',
+            toolbar: 'image',
+            images_upload_base_path: '/resources/post',
             images_upload_handler:function (blobInfo, success, failure) {
                 var form = new FormData();
                 form.append('files', blobInfo.blob());
@@ -53,7 +53,7 @@
                     contentType: false,
                     data:form,
                     success:function (data) {
-                        console.log(data);
+                        success(data.location);
                     },error:function () {
                         
                     }
@@ -74,7 +74,7 @@
                         processData: false,
                         contentType: false,
                         success: function(data) {
-                            console.log(data);
+                            callback(data);
                         },
                         error: function(e) {
                             alert("图片上传失败");
