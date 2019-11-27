@@ -174,7 +174,7 @@ $(function () {
             data:{id:$("#update_id").val(),pwd:$("#update_pwdTwo").val()},
             success:function (data) {
                 if(data=="true")
-                    $(".tip").html("修改成功,<a href='/simpleBook/index.html'>登录</a>");
+                    $(".tip").html("修改成功,<a href='/simpleBook/houtai/login.html'>登录</a>");
                 else
                     $(".tip").text("修改失败");
             },error:function () {
