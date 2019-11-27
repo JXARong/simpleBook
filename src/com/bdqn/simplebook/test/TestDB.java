@@ -14,12 +14,8 @@ import org.junit.Test;
 
 import javax.sql.DataSource;
 import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
