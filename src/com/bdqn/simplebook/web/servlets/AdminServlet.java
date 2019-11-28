@@ -8,8 +8,6 @@ import com.bdqn.simplebook.service.impl.AdminServiceImpl;
 import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.CodeUtils;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.TilePane;
 import org.omg.CORBA.ARG_OUT;
 
 import javax.imageio.ImageIO;

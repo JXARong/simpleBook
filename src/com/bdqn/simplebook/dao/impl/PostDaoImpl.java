@@ -6,7 +6,6 @@ import com.bdqn.simplebook.domain.Post;
 
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.PageUtils;
-import javafx.geometry.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
