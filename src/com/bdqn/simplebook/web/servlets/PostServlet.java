@@ -91,12 +91,9 @@ public class PostServlet extends BaseServlet {
         post.setTitle(title);
 
         String sendDate = request.getParameter("sendDate");
-        if (sendDate != null && sendDate.trim().length() > 0) {
-            post.setSendDate(Timestamp.valueOf(sendDate));
-        }
 
         try {
-            pageUtils = service.selPostByPage(pageUtils, post);
+            pageUtils = service.selPostByPage(pageUtils, post,sendDate);
             pageUtils.setCode(0);
         } catch (Exception e) {
             pageUtils.setMsg(e.getMessage());
@@ -190,13 +187,13 @@ public class PostServlet extends BaseServlet {
                     String postPathName = item.getString("utf-8");
                     // 拼接该图片的最终路径
                     realPath += "/" + postPathName + "/" + imageName;
-                    relativePath = context.getContextPath()+"\\/resources\\/post"+"\\/"+123123+"\\/"+postPathName +"\\/"+ imageName;
+                    relativePath = context.getContextPath() + "\\/resources\\/post" + "\\/" + 123123 + "\\/" + postPathName + "\\/" + imageName;
                 }
             }
 
             // 获取文章路径
-            File postPath=new File(realPath.substring(0,realPath.lastIndexOf("/")+1));
-            if (!postPath.exists()){
+            File postPath = new File(realPath.substring(0, realPath.lastIndexOf("/") + 1));
+            if (!postPath.exists()) {
                 postPath.mkdir();
             }
             System.out.println(realPath);
@@ -217,7 +214,7 @@ public class PostServlet extends BaseServlet {
             System.out.println("图片保存成功");
             response.setContentType("application/json;charset=utf-8");
             response.setCharacterEncoding("utf-8");
-            String s = "{\"location\":" + "\""+relativePath +"\""+ "}";
+            String s = "{\"location\":" + "\"" + relativePath + "\"" + "}";
             System.out.println(s);
             response.getWriter().write(s);
         } catch (FileUploadException e) {
@@ -226,7 +223,8 @@ public class PostServlet extends BaseServlet {
     }
 
     /**
-     *  查询排行前20的帖子
+     * 查询排行前20的帖子
+     *
      * @param request
      * @param response
      */
@@ -245,7 +243,7 @@ public class PostServlet extends BaseServlet {
         response.getWriter().write(json);
     }
 
-    private PageUtils getParameter(HttpServletRequest request){
+    private PageUtils getParameter(HttpServletRequest request) {
         PageUtils pageUtils = new PageUtils();
         String pageNum = request.getParameter("page");
         String limit = request.getParameter("limit");

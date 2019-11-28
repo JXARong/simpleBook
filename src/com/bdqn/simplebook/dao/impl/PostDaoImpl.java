@@ -64,10 +64,14 @@ public class PostDaoImpl extends BaseDao implements PostDao {
      * @return
      */
     @Override
-    public List<Post> selPostByPage(Integer start, Integer limit, Post post) {
+    public List<Post> selPostByPage(Integer start, Integer limit, Post post,String sendDate) {
         String sql = "select * from post where 1 = 1";
         List params = new LinkedList();
         sql = this.appenSql(sql, post, params);
+        if(sendDate!=null){
+            sql += "and sendDate like ?";
+            params.add("%"+sendDate+"%");
+        }
         sql += " limit ?,?";
         params.add(start);
         params.add(limit);
@@ -127,10 +131,6 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         if (post.getTitle() != null) {
             sql += " and  title  like ?";
             params.add("%"+post.getTitle()+"%");
-        }
-        if (post.getSendDate() != null) {
-            sql += " and sendDate like ?";
-            params.add("%" + post.getSendDate() + "%");
         }
         return sql;
 

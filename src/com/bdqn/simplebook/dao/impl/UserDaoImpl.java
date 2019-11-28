@@ -182,4 +182,18 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         Object count = super.getCount(sql, new Object[]{"%" + format + "%"});
         return ((Long) count);
     }
+
+    @Override
+    public Long selUserCountOfToday(String today) {
+        String sql="select Count(*) from user where registerTime like ?";
+        Object count = super.getCount(sql, new Object[]{"%" + today + "%"});
+        return ((Long) count);
+    }
+
+    @Override
+    public Long selUserCountOfAll() {
+        String sql="select Count(*) from user";
+        Object count = super.getCount(sql, null);
+        return ((Long) count);
+    }
 }

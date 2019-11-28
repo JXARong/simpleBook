@@ -3,7 +3,9 @@ package com.bdqn.simplebook.web.servlets;
 import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.domain.Admin;
 import com.bdqn.simplebook.service.AdminService;
+import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.service.impl.AdminServiceImpl;
+import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.CodeUtils;
 import javafx.scene.control.Alert;
@@ -34,6 +36,7 @@ public class AdminServlet extends BaseServlet {
 
     private AdminService service = new AdminServiceImpl();
 
+    private UserService userService=new UserServiceImpl();
     // 登录
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
@@ -264,6 +267,7 @@ public class AdminServlet extends BaseServlet {
 
     // 获取近七天的用户信息
     public void getRegisterNumOfUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
             AjaxUtils ajaxUtils=new AjaxUtils();
         try {
             List<Integer> nums = service.getRegisterNumOfUser();
@@ -275,6 +279,34 @@ public class AdminServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
+    }
+
+    /**
+     * 获取今天的用户注册数量
+     * @param request
+     * @param response
+     */
+    public void getUserNumOfToday(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        Long count = userService.selUserCountOfToday();
+        String json="{\"count\":"+count+"}";
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(json);
+    }
+
+    /**
+     * 获取所有用户注册的数量
+     * @param request
+     * @param response
+     */
+    public void getUserNumOfAll(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        Long count = userService.selUserCountOfAll();
+        String json="{\"count\":"+count+"}";
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(json);
+
     }
 
 }

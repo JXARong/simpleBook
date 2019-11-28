@@ -27,12 +27,13 @@ public interface UserDao {
     Long selUserCount(User user);
 
 
-        /**
-         * 查询首页的所有用户
-         * @return
-         * @throws Exception
-         */
-        public List<User> selectIndexUser()throws Exception;
+    /**
+     * 查询首页的所有用户
+     *
+     * @return
+     * @throws Exception
+     */
+    public List<User> selectIndexUser() throws Exception;
 
     int delUserById(User user);
 
@@ -41,7 +42,11 @@ public interface UserDao {
 
     List<User> queryUser();
 
-    User login(String emailOrunam,String pwd);
+    User login(String emailOrunam, String pwd);
 
     Long selUserCountByDate(String format);
+
+    Long selUserCountOfToday(String today);
+
+    Long selUserCountOfAll();
 }

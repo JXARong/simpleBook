@@ -13,8 +13,8 @@ import com.bdqn.simplebook.utils.NumberUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 
 import java.io.File;
-import java.util.List;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import java.util.List;
 
@@ -252,5 +252,27 @@ public class UserServiceImpl  implements UserService {
     @Override
     public User login(String emailOruname, String pwd) throws Exception {
         return dao.login(emailOruname,pwd);
+    }
+
+    /**
+     *  获取今天的用户注册数量
+     * @return
+     */
+    @Override
+    public Long selUserCountOfToday() {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String format = sdf.format(new Date());
+        System.out.println(format);
+        return dao.selUserCountOfToday(format);
+    }
+
+    /**
+     *  获取用户总数量
+     * @return
+     */
+    @Override
+    public Long selUserCountOfAll() {
+        Long all = dao.selUserCountOfAll();
+        return  all;
     }
 }

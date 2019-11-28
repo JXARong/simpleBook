@@ -24,7 +24,7 @@ public interface PostDao {
 
     List<Post> selPostByUid(User user);
 
-    List<Post> selPostByPage(Integer startNum, Integer limit, Post post);
+    List<Post> selPostByPage(Integer startNum, Integer limit, Post post,String sendDate);
 
     Long selPostCount(Post post);
 

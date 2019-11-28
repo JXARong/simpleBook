@@ -98,7 +98,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="<%=request.getContextPath()%>/houtai/postList.html" target="rightFrame">文章列表</a>
                         </dd>
-                        <dd><a href="<%=request.getContextPath()%>/houtai/post_report.html"
+                        <dd><a href="javascript:layer.msg('暂未开放，请期待下一个版本更新',{icon:7})"
                                target="rightFrame">被举报文章</a></dd>
                     </dl>
                 </li>

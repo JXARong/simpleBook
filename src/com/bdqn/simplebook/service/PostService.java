@@ -26,7 +26,7 @@ public interface PostService {
      */
     public List<Post>selectAllPost()throws  Exception;
 
-    PageUtils selPostByPage(PageUtils pageUtils, Post post) throws Exception;
+    PageUtils selPostByPage(PageUtils pageUtils, Post post,String sendDate) throws Exception;
 
     Integer delPostById(String[] pid) throws Exception;
 

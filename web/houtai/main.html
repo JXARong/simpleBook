@@ -160,13 +160,13 @@
                                     <li class="layui-col-xs6">
                                         <a lay-href="app/content/comment" class="layadmin-backlog-body">
                                             <h3>今日注册</h3>
-                                            <p><cite>66</cite></p>
+                                            <p><cite id="registerOfToday"></cite></p>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs6">
                                         <a lay-href="app/forum/list" class="layadmin-backlog-body">
                                             <h3>用户总量</h3>
-                                            <p><cite>12</cite></p>
+                                            <p><cite id="registerOfAll"></cite></p>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs6">
@@ -267,6 +267,7 @@
             });
         });
 
+        // 获取近一周用户注册数量
         $.ajax({
             url:"/simpleBook/admin/getRegisterNumOfUser",
             method:"post",
@@ -278,6 +279,28 @@
                 }
             },error:function () {
                 layer.msg("服务器繁忙，请刷新页面",{icon:2});
+            }
+        });
+
+        // 获取今日数量，以及用户总量
+        $.ajax({
+            url:"/simpleBook/admin/getUserNumOfToday",
+            method:"post",
+            success:function (data) {
+                $("#registerOfToday").text(data.count);
+            },error:function () {
+                layer.msg("服务器繁忙，获取数据失败",{icon:2});
+            }
+        });
+
+        // 获取数据库用户总数量
+        $.ajax({
+            url:"/simpleBook/admin/getUserNumOfAll",
+            method:"post",
+            success:function (data) {
+                $("#registerOfAll").text(data.count);
+            },error:function () {
+                layer.msg("服务器繁忙，获取数据失败",{icon:2});
             }
         });
 
@@ -307,7 +330,7 @@
                     data: ['']
                 },
                 xAxis: {
-                    data: [time + (today - 6),time + (today - 6), time + (today - 5), time + (today - 4), time + (today - 3), time + (today - 2), time + (today - 1)]
+                    data: [time + (today - 7),time + (today - 6), time + (today - 5), time + (today - 4), time + (today - 3), time + (today - 2), time + (today - 1)]
                     // data:[1,2,3,4,5,6,7]
                 },
                 yAxis: {},

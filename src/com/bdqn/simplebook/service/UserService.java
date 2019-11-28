@@ -55,4 +55,8 @@ public interface UserService {
      */
     User login(String emailOruname,String pwd) throws Exception;
 
+    Long selUserCountOfToday();
+
+    Long selUserCountOfAll();
+
 }

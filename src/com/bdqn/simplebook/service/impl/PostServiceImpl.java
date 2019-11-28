@@ -66,8 +66,8 @@ public class PostServiceImpl implements PostService {
      * @throws Exception
      */
     @Override
-    public PageUtils selPostByPage(PageUtils pageUtils, Post post) throws Exception {
-        List<Post> posts = dao.selPostByPage((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit(), post);
+    public PageUtils selPostByPage(PageUtils pageUtils, Post post,String sendDate) throws Exception {
+        List<Post> posts = dao.selPostByPage((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit(), post,sendDate);
         if (posts == null || posts.size() == 0) {
             throw new Exception("暂无相关数据");
         } else {
