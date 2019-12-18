@@ -34,7 +34,7 @@
             </div>
             <div>
                 <label>邮箱：</label>
-                <input class="layui-input layui-input-inline" name="email" value="1131111310@qq.com"/>
+                <input class="layui-input layui-input-inline" name="email" value="1131111310@qq.com" readonly/>
             </div>
             <div>
                 <label>生日：</label>

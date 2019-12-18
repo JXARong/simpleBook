@@ -21,7 +21,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    public  List<User>selectIndexUser()throws  Exception;
+    public  List<User> selectIndexUser()throws  Exception;
 
     /**
      * 添加User

@@ -5,6 +5,7 @@ import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
+import com.bdqn.simplebook.utils.NumberUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -13,6 +14,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import javax.mail.Session;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -246,6 +248,8 @@ public class UserServlet extends BaseServlet {
      */
     public void register(HttpServletRequest request, HttpServletResponse response) throws IOException{
         AjaxUtils ajaxUtils = new AjaxUtils();
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
         String uname = request.getParameter("uname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -255,26 +259,16 @@ public class UserServlet extends BaseServlet {
             user.setEmail(email);
             user.setPassword(password);
             user.setStatus(1);
-            boolean result = true;
-            for (User u : service.usersList()) {
-                if (service.usersList().equals(email)){
-                    result = false;
-                }
-            }
+            int i = service.register(user);
 
-            if (result){
-                int i = service.register(user);
-                if (i==1){
-                    ajaxUtils.setFlag(true);
-                }else {
-                    ajaxUtils.setErrorMsg("注册失败");
-                    ajaxUtils.setFlag(false);
-                }
+            if (i>0){
+                ajaxUtils.setFlag(true);
+                request.getSession().setAttribute("email",email);
+
             }else {
-                ajaxUtils.setErrorMsg("邮箱已被注册！");
                 ajaxUtils.setFlag(false);
+                ajaxUtils.setErrorMsg("注册失败！");
             }
-
 
         } catch (Exception e) {
             ajaxUtils.setFlag(false);
@@ -288,12 +282,13 @@ public class UserServlet extends BaseServlet {
 
     public void loginOn(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils = new AjaxUtils();
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
         String unameOrEamil = request.getParameter("unameAndEmail");
         String password = request.getParameter("password");
         try {
             User user = service.login(unameOrEamil,password);
             if (user==null){
-                ajaxUtils.setErrorMsg("密码错误！");
                 ajaxUtils.setFlag(false);
             }else {
                 ajaxUtils.setFlag(true);
@@ -302,6 +297,31 @@ public class UserServlet extends BaseServlet {
             ajaxUtils.setErrorMsg(e.getMessage());
             ajaxUtils.setFlag(false);
         }
+        String json = JSON.toJSONString(ajaxUtils);
+        response.getWriter().write(json);
+    }
 
+    public void verificationUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
+        try {
+            List<User> getAllUserList = service.selectIndexUser();
+            String uname = request.getParameter("uname");
+            for (User userList :getAllUserList){
+                if (uname.equals(userList.getUname())){
+                    ajaxUtils.setFlag(false);
+                    ajaxUtils.setErrorMsg("名称已被使用，请输入其它名称");
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            ajaxUtils.setErrorMsg(e.getMessage());
+            ajaxUtils.setFlag(false);
+        }
+
+        String json = JSON.toJSONString(ajaxUtils);
+        response.getWriter().write(json);
     }
 }
