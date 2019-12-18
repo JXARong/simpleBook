@@ -22,9 +22,9 @@ public interface UserDao {
 
     int updateUserById(User user);
 
-    List<User> selUserByPage(Integer startNum, Integer limit, User user);
+    List<User> selUserByPage(Integer startNum, Integer limit, User user,String borthday);
 
-    Long selUserCount(User user);
+    Long selUserCount(User user,String bornthday);
 
 
     /**

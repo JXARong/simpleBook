@@ -132,7 +132,7 @@
                         // 清空标签云中的代码
                         $("#tag").html("");
                         $.each(data.data, function (i, o) {
-                            $("#tag").append($("<a href='" + o.topicId + "'>" + o.topic + "</a>"));
+                            $("#tag").append($("<a href='javascript:void(0)'>" + o.topic + "</a>"));
                         });
                         // 重新渲染标签云
                         ren();

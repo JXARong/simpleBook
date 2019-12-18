@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:javascript="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>后台首页</title>
@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css"/>
 <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
 <script type="text/javascript" src="/simpleBook/js/echarts.js"></script>
-
 <style>
 
     /*卡片主题样式*/
@@ -88,7 +87,7 @@
 
 <div class="layui-fluid" style="margin: 0 auto">
     <div class="layui-row layui-col-space15">
-        <div class="layui-col-md8">
+        <div class="layui-col-md15">
             <div class="layui-row layui-col-space15">
 
                 <div class="layui-col-md6">
@@ -96,7 +95,7 @@
                         <h3 class="layui-card-header">快捷方式</h3>
                         <div class="layui-card-body">
                             <div carousel-item="">
-                                <ul class="layui-row layui-col-space10 shortcut">
+                                <ul class="layui-row layui-col-space15 shortcut">
                                     <li class="layui-col-xs3">
                                         <a href="javascript:void(0)" id="myInfo">
                                             <i class="layui-icon layui-icon-template-1"></i>
@@ -211,8 +210,10 @@
     </div>
 </div>
 </body>
+<script id="time" type="text/html">
+</script>
+
 <script type="text/javascript">
-    
     layui.use(['element', 'layer', 'jquery','table'], function () {
         var layer = layui.layer;
         var $ = layui.jquery;
@@ -220,6 +221,8 @@
         var table=layui.table;
         // 初始化echarts实例
         var myChart = echarts.init(document.getElementById('registerNum'));
+
+
 
         // 显示表格
         table.render({
@@ -230,8 +233,8 @@
             , layEvent: 'LAYTABLE_TIPS'
             , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             , cols: [[
-                {field: 'title', width: "50%", title: '标题', sort: true}
-                , {field: 'user', width: 100, title: '作者',templet:"<span>{{d.user.uname}}</span>"}
+                {field: 'title', width: "40%", title: '标题', sort: true}
+                , {field: 'user', width: '7%', title: '作者',templet:"<span>{{d.user.uname}}</span>"}
                 , {
                     field: 'start',
                     width: 120,
@@ -239,7 +242,8 @@
                     sort: true,
                     templet: "<span>{{(d.hot+d.readCount)*10}}</span>"
                 }
-                , {field: 'topic', width: 120, title: '主题', templet: "<span>{{d.topic.topic}}</span>"}
+                , {field: 'topic', width: '8%', title: '主题', templet: "<span>{{d.topic.topic}}</span>"}
+                , {field:'sendDate',width:'15%',title:'发布时间'}
             ]]
             , page: true
             , limits: [10, 20, 30, 50]
@@ -273,7 +277,7 @@
             method:"post",
             success:function (data) {
                 if(data.flag==true){
-                    loadEcharts(data.data)
+                    loadEcharts(data.data);
                 }else{
                     layer.msg("服务器繁忙，请刷新页面",{icon:2});
                 }
@@ -330,7 +334,7 @@
                     data: ['']
                 },
                 xAxis: {
-                    data: [time + (today - 7),time + (today - 6), time + (today - 5), time + (today - 4), time + (today - 3), time + (today - 2), time + (today - 1)]
+                    data: [(time)+(today-7),(time)+(today-6), (time)+(today-5), (time)+(today-4), (time)+(today-3), (time)+(today-2), (time)+(today-1)]
                     // data:[1,2,3,4,5,6,7]
                 },
                 yAxis: {},

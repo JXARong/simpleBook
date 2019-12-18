@@ -95,6 +95,7 @@
                     },
                     yes: function (index, obj) {
                         yes(index, obj);
+                        reload();
                     }
                 });
             } else if (opr === "update_user") { // 修改用户信息
@@ -134,6 +135,7 @@
                         yes: function (index, obj) {
                             yes(index, obj);
                             table.reload("#user_info");
+                            reload();
                         },
                         // 关闭用户编辑窗口
                         btn2: function () {
@@ -272,7 +274,7 @@
             body.find("input[name='bornthDay']").val(data.bornthDay);
             body.find("#status").val(data.status);
             body.find("#filePath").val(data.photo);
-            body.find("#portrait").attr("src", "/simpleBook/resources/userPhoto/" + data.photo)
+            body.find("#portrait").attr("src", "/simpleBook/resources/userPhoto/" + data.photo);
         }
 
     })

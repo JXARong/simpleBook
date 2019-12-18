@@ -20,6 +20,13 @@
         <button type="button" class="layui-btn" id="delAll" lay-event="delAll">删除已选中</button>
     </div>
 </script>
+<script id="status" type="text/html">
+    <span>
+        {{# if(d.status==0){ }}
+        {{# '未使用'} else { }}
+        {{# '已封禁'} }}
+    </span>
+</script>
 <!--主题名称-->
 <script type="text/html" id="topic_temp">
     {{d.topic.topic}}
@@ -61,9 +68,9 @@
                 , {field: 'title', title: '标题', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 , {field: 'sendDate', title: '发布时间', sort: true}
                 , {field: 'hot', title: '热度', sort: true}
-                , {field: 'status', title: '状态'}
+                , {field: 'status', title: '状态',templet:"#status"}
                 , {field: 'topic', width: 120, title: '主题', templet: "#topic_temp"}
-                , {fixed: 'right', title: '操作', toolbar: '#opr', width: 150}
+                , {fixed: 'right', title: '操作', toolbar: '#opr', width: 120}
             ]]
             , page: true
             , limits: [10, 20, 30, 50]

@@ -5,19 +5,15 @@ import com.bdqn.simplebook.dao.UserDao;
 import com.bdqn.simplebook.dao.impl.AdminDaoImpl;
 import com.bdqn.simplebook.dao.impl.UserDaoImpl;
 import com.bdqn.simplebook.domain.Admin;
-import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.AdminService;
 import com.bdqn.simplebook.utils.ConstantUtils;
 import com.bdqn.simplebook.utils.MailUtils;
 
-import javax.xml.crypto.Data;
 import java.io.File;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author: 赖榕
@@ -55,6 +51,11 @@ public class AdminServiceImpl implements AdminService {
         return admin1;
     }
 
+    /**
+     * 发送邮箱
+     * @param forgetAdmin
+     * @return
+     */
     @Override
     public int sendEmail(Admin forgetAdmin) {
         int code = (int) ((Math.random() * 9 + 1) * 100000);
@@ -68,6 +69,9 @@ public class AdminServiceImpl implements AdminService {
         }
         return code;
     }
+
+
+
 
     /**
      * 修改管理员密码
@@ -142,14 +146,26 @@ public class AdminServiceImpl implements AdminService {
         // 实例化时间类
         Calendar calendar=Calendar.getInstance();
         // 遍历前七天
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 7; i >=0; i--) {
             // 获取一天到七天前的时间,没循环一次时间推前一天
-            calendar.add(Calendar.DAY_OF_MONTH,-1);
+            calendar.add(Calendar.DAY_OF_MONTH,-i);
             String format = sdf.format(calendar.getTime());
             System.out.println(format);
             Long number = userDao.selUserCountByDate(format);
             list.add(Integer.valueOf(number.toString()));
+
+            // 回到现在的时间
+            calendar.add(Calendar.DAY_OF_MONTH,+i);
         }
         return list;
+    }
+
+    /**
+     * 修改密码
+     * @param admin
+     */
+    @Override
+    public void updatePwd(Admin admin) {
+        dao.updatePwdById(admin);
     }
 }

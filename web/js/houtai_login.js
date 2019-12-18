@@ -170,10 +170,10 @@ $(function () {
         // 发送修改密码请求
         $.ajax({
             method:"post",
-            url:"/simpleBook/admin/updatePwd",
+            url:"/simpleBook/admin/updatePwdById",
             data:{id:$("#update_id").val(),pwd:$("#update_pwdTwo").val()},
             success:function (data) {
-                if(data=="true")
+                if(data.flag==true)
                     $(".tip").html("修改成功,<a href='/simpleBook/houtai/login.html'>登录</a>");
                 else
                     $(".tip").text("修改失败");

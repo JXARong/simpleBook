@@ -1,9 +1,6 @@
 package com.bdqn.simplebook.web.servlets;
 
 
-import java.io.*;
-import java.util.List;
-
 import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
@@ -12,21 +9,20 @@ import com.bdqn.simplebook.service.impl.PostServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
-import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.omg.PortableInterceptor.INACTIVE;
-import org.omg.PortableInterceptor.RequestInfo;
 
-import javax.crypto.spec.PSource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Timestamp;
-import java.util.UUID;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 
 /**
@@ -96,7 +92,7 @@ public class PostServlet extends BaseServlet {
         } catch (Exception e) {
             pageUtils.setMsg(e.getMessage());
         }
-        String json = JSON.toJSONString(pageUtils);
+        String json = JSON.toJSONStringWithDateFormat(pageUtils,"yyyy-MM-dd HH:ss:mm");
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(json);
@@ -234,7 +230,7 @@ public class PostServlet extends BaseServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String json = JSON.toJSONString(pageUtils);
+        String json = JSON.toJSONStringWithDateFormat(pageUtils,"yyyy-MM-dd HH:ss:mm");
         System.out.println(json);
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");

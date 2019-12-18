@@ -5,7 +5,6 @@ import com.bdqn.simplebook.dao.*;
 import com.bdqn.simplebook.dao.impl.*;
 import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
-
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.utils.ConstantUtils;
@@ -14,9 +13,9 @@ import com.bdqn.simplebook.utils.PageUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.*;
-
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author: 龚皓冬
@@ -149,16 +148,16 @@ public class UserServiceImpl  implements UserService {
      * @return
      */
     @Override
-    public PageUtils selUserByPage(PageUtils page, User user) {
+    public PageUtils selUserByPage(PageUtils page, User user,String borthday) {
        /*
        查询指定页数中的数据
        startNum = (pageNum-1)*limit
        */
-        List<User> users = dao.selUserByPage((page.getPageNum() - 1) * page.getLimit(), page.getLimit(), user);
+        List<User> users = dao.selUserByPage((page.getPageNum() - 1) * page.getLimit(), page.getLimit(), user,borthday);
         if (users.size() == 0) {
             page.setMsg("暂无相关数据");
         }
-        Long count = dao.selUserCount(user);
+        Long count = dao.selUserCount(user, borthday);
         page.setData(users);
         page.setCount(Integer.valueOf(count.toString()));
         return page;

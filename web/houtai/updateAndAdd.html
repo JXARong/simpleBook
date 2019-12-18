@@ -25,7 +25,7 @@
         });
 
         // 渲染表单控件
-        form.render('select');
+        form.render();
 
         // 表单提交事件
         form.on("submit(sub)", function (obj) {
@@ -52,10 +52,6 @@
             username:function (value,item) {
                 if(value==null || value==""){
                     return "用户名不能为空";
-                }
-                var reg=new RegExp("^[\u4e00-\u9fa5]{2,8}$|^[\\dA-Za-z_]{6,16}$")
-                if (!reg.test(value)){
-                    return "用户名不合法"
                 }
             }
             ,password:function (value,item) {

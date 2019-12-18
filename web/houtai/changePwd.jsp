@@ -19,21 +19,21 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">原密码</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" id="oPwd" name="oPwd" lay-verify="oPwd" autocomplete="off"
+                        <input type="password" class="layui-input" id="oPwd" name="oPwd" lay-verify="oPwd" autocomplete="off"
                                lay-verType="tips">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">新密码</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" name="newPwd" id="password" lay-verify="newPwd" lay-verType="tips">
+                        <input type="password" class="layui-input" name="newPwd" id="password" lay-verify="newPwd" lay-verType="tips">
                     </div>
                     <label class="layui-word-aux layui-form-mid">6-16位新密码</label>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">确定密码</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" name="conNewPwd" lay-verify="conNewPwd"
+                        <input type="password" class="layui-input" name="conNewPwd" lay-verify="conNewPwd"
                                lay-verType="tips">
                     </div>
                 </div>

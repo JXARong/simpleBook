@@ -32,7 +32,7 @@ public interface UserService {
 
     int updateUser(User user) throws Exception;
 
-    PageUtils selUserByPage(PageUtils page, User user);
+    PageUtils selUserByPage(PageUtils page, User user,String bornthday);
 
     int delUserById(String[] uids) throws Exception;
 

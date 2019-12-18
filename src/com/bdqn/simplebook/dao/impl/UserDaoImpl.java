@@ -5,7 +5,6 @@ import com.bdqn.simplebook.dao.UserDao;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
      */
     @Override
     public int addUser(User user) {
-        String sql = "insert into user values(?,?,?,?,?,?,?,1,?)";
+        String sql = "insert into user values(?,?,?,?,?,?,?,1,?,default)";
         int update = super.update(sql, new Object[]{user.getUid(), user.getPassword(), user.getEmail(), user.getSex(), user.getBornthDay(), user.getPhoto(), user.getMoney(), user.getUname()});
         return update;
     }
@@ -92,10 +91,14 @@ public class UserDaoImpl extends BaseDao implements UserDao {
      * @return
      */
     @Override
-    public List<User> selUserByPage(Integer startNum, Integer limit, User user) {
+    public List<User> selUserByPage(Integer startNum, Integer limit, User user,String bornthday) {
         List params=new LinkedList();
         String sql="select * from user where 1=1";
         sql = appenSql(sql, user, params);
+        if(bornthday!=null){
+            sql+= " and bornthday like ?";
+            params.add("%"+bornthday+"%");
+        }
         sql+=" limit ?,?";
         params.add(startNum);
         params.add(limit);
@@ -109,10 +112,14 @@ public class UserDaoImpl extends BaseDao implements UserDao {
      * @return
      */
     @Override
-    public Long selUserCount(User user) {
+    public Long selUserCount(User user,String bornthday) {
         String sql="select count(*) from user where 1=1";
         List params=new LinkedList();
         sql = appenSql(sql, user, params);
+        if (bornthday!=null){
+            sql+=" and bornthday like ?";
+            params.add("%"+bornthday+"%");
+        }
         Object count = super.getCount(sql, params.toArray());
         return ((Long) count);
     }
@@ -146,6 +153,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                 sql+=" and status = ?";
                 params.add(user.getStatus());
             }
+            if (user.getEmail()!=null){
+                sql+=" and email like ?";
+                params.add("%"+user.getEmail()+"%");
+            }
         }
         return sql;
     }
@@ -153,7 +164,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public int register(User user) {
-        String sql = "insert into user values(?,?,?,?,?)";
+        String sql = "insert into user values(?,?,?,?,?,default)";
         return super.update(sql,new Object[]{user.getUid(),user.getPassword(),user.getEmail(),user.getStatus(),user.getUname()});
     }
 

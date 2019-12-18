@@ -16,6 +16,7 @@ public interface AdminService {
 
     /**
      * 管理员登录
+     *
      * @param admin
      * @return
      */
@@ -25,7 +26,7 @@ public interface AdminService {
 
     int sendEmail(Admin forgetAdmin);
 
-    int updatePwdById(Admin admin,String oldPassword) throws Exception;
+    int updatePwdById(Admin admin, String oldPassword) throws Exception;
 
     Admin selAdminById(Admin admin) throws Exception;
 
@@ -33,4 +34,5 @@ public interface AdminService {
 
     List<Integer> getRegisterNumOfUser();
 
+    void updatePwd(Admin admin);
 }

@@ -8,18 +8,14 @@ import com.bdqn.simplebook.service.impl.AdminServiceImpl;
 import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.CodeUtils;
-import org.omg.CORBA.ARG_OUT;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -34,7 +30,8 @@ public class AdminServlet extends BaseServlet {
 
     private AdminService service = new AdminServiceImpl();
 
-    private UserService userService=new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
+
     // 登录
     public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
@@ -168,6 +165,32 @@ public class AdminServlet extends BaseServlet {
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
     }
 
+    public void updatePwdById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        String id = request.getParameter("id");
+        Admin admin = new Admin();
+        // 判断id是否获取到
+        if (id != null && id.length() > 0) {
+            admin.setId(Integer.valueOf(id));
+            // 获取用户输入的密码
+            admin.setPassword(request.getParameter("pwd"));
+            try {
+                service.updatePwd(admin);
+                ajaxUtils.setMsg("密码修改成功");
+                ajaxUtils.setFlag(true);
+            } catch (Exception e) {
+                ajaxUtils.setErrorMsg(e.getMessage());
+                ajaxUtils.setFlag(false);
+            }
+        } else {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setErrorMsg("服务器繁忙,请刷新后重试");
+        }
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(JSON.toJSONString(ajaxUtils));
+    }
+
     /**
      * 根据编号查询管理员信息
      *
@@ -202,12 +225,12 @@ public class AdminServlet extends BaseServlet {
      * @param request
      * @param response
      */
-    public void saveSession(HttpServletRequest request,HttpServletResponse response){
-        Admin admin=new Admin();
+    public void saveSession(HttpServletRequest request, HttpServletResponse response) {
+        Admin admin = new Admin();
         admin.setId(Integer.valueOf(request.getParameter("id")));
         try {
-            admin= service.selAdminById(admin);
-            request.getSession().setAttribute("admin",admin);
+            admin = service.selAdminById(admin);
+            request.getSession().setAttribute("admin", admin);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -264,9 +287,9 @@ public class AdminServlet extends BaseServlet {
     }
 
     // 获取近七天的用户信息
-    public void getRegisterNumOfUser(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void getRegisterNumOfUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-            AjaxUtils ajaxUtils=new AjaxUtils();
+        AjaxUtils ajaxUtils = new AjaxUtils();
         try {
             List<Integer> nums = service.getRegisterNumOfUser();
             ajaxUtils.setFlag(true);
@@ -281,12 +304,13 @@ public class AdminServlet extends BaseServlet {
 
     /**
      * 获取今天的用户注册数量
+     *
      * @param request
      * @param response
      */
-    public void getUserNumOfToday(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void getUserNumOfToday(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Long count = userService.selUserCountOfToday();
-        String json="{\"count\":"+count+"}";
+        String json = "{\"count\":" + count + "}";
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(json);
@@ -294,13 +318,14 @@ public class AdminServlet extends BaseServlet {
 
     /**
      * 获取所有用户注册的数量
+     *
      * @param request
      * @param response
      */
-    public void getUserNumOfAll(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void getUserNumOfAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         Long count = userService.selUserCountOfAll();
-        String json="{\"count\":"+count+"}";
+        String json = "{\"count\":" + count + "}";
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(json);

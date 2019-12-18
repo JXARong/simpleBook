@@ -11,7 +11,9 @@ package com.bdqn.simplebook.domain;
 public class Topic {
     private Integer topicId;// 主题编号
     private String topic; // 主题名称
-
+    private String topicPicture;
+    private Integer topicPost;
+    private Integer topicFollow;
     public Integer getTopicId() {
         return topicId;
     }
@@ -28,12 +30,38 @@ public class Topic {
         this.topic = topic;
     }
 
+    public String getTopicPicture() {
+        return topicPicture;
+    }
+
+    public void setTopicPicture(String topicPicture) {
+        this.topicPicture = topicPicture;
+    }
+
+    public Integer getTopicPost() {
+        return topicPost;
+    }
+
+    public void setTopicPost(Integer topicPost) {
+        this.topicPost = topicPost;
+    }
+
+    public Integer getTopicFollow() {
+        return topicFollow;
+    }
+
+    public void setTopicFollow(Integer topicFollow) {
+        this.topicFollow = topicFollow;
+    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Topic{");
-        sb.append("topicId=").append(topicId);
-        sb.append(", topic='").append(topic).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Topic{" +
+                "topicId=" + topicId +
+                ", topic='" + topic + '\'' +
+                ", topicPicture='" + topicPicture + '\'' +
+                ", topicPost=" + topicPost +
+                ", topicFollow=" + topicFollow +
+                '}';
     }
 }

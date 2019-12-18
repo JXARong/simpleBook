@@ -57,16 +57,8 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户管理</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="<%=request.getContextPath()%>/houtai/emailManager.html" target="rightFrame">邮件管理</a>
-                    </dd>
-                    <dd><a href="javascript:layer.msg('该功能暂无开通,请敬请期待2.0版本')">支付管理</a></dd>
-                </dl>
-            </li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/houtai/userList.html" target="rightFrame">用户管理</a></li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/houtai/emailManager.html" target="rightFrame">邮件管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -106,14 +98,9 @@
                     <a href="<%=request.getContextPath()%>/houtai/topic.html" target="rightFrame">主题管理</a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">系统设置</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="<%=request.getContextPath()%>/houtai/emailManager.html"
-                               target="rightFrame">邮箱设置</a>
-                        </dd>
-                        <dd><a href="javascript:layer.msg('该功能暂无开通,请敬请期待2.0版本')">支付设置</a></dd>
-                    </dl>
+                    <a href="<%=request.getContextPath()%>/houtai/emailManager.html" target="rightFrame">邮箱设置</a>
                 </li>
+
             </ul>
         </div>
     </div>
