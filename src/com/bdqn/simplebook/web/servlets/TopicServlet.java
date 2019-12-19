@@ -75,5 +75,4 @@ public class TopicServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSON.toJSONString(ajaxUtils));
     }
-
 }
