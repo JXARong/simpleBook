@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css" media="all">
+<script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,10 +14,13 @@
 </head>
 <script href=""></script>
 <script type="text/javascript">
-
+    layui.use('element', function(){
+        var $ = layui.jquery
+            ,element = layui.element;
+    })
 </script>
 <body>
-<div class="layui-tab">
+<div class="layui-tab" >
     <ul class="layui-tab-title">
         <li class="layui-this">网站设置</li>
         <li>用户管理</li>
