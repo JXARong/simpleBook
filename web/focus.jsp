@@ -50,58 +50,14 @@
     </div>
 <div class="layui-tab layui-tab-brief  focus_right" lay-filter="docDemoTabBrief" style="width: 65%;float: right;margin: 20px 0px 0px 20px">
     <ul class="layui-tab-title focus_filter">
-        <li class="layui-this" style=" font-size: 18px">网站设置</li>
-        <li style=" font-size: 18px"><i class="layui-icon">&#xe612;&nbsp;</i>用户管理</li>
+
+        <li  class="layui-this"style=" font-size: 18px"><i class="layui-icon">&#xe612;&nbsp;</i>用户管理</li>
         <li style=" font-size: 18px"> <i class="layui-icon">&#xe653;&nbsp;</i>权限分配</li>
     </ul>
     <div class="layui-tab-content focus_guanzhu" style="height: 100px">
-        <div class="layui-tab-item layui-show">
-            <ul>
-                <li >
-                    <p style="color: red;font-size: 14px;position: relative;left: 10px">简书推荐专题</p>
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 100px;width: 100px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <li >
-                    <p style="color: red;font-size: 14px;position: relative;left: 10px">简书推荐专题</p>
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 100px;width: 100px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <li >
-                    <p style="color: red;font-size: 14px;position: relative;left: 10px">简书推荐专题</p>
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 100px;width: 100px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <li >
-                    <p style="color: red;font-size: 14px;position: relative;left: 10px">简书推荐专题</p>
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 100px;width: 100px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <button type="button" class="layui-btn layui-btn-radius" style="font-size: 20px;width: 100%;height: 30px;line-height: 30px;color: white">查看更多</button>
 
-            </ul>
-        </div>
-        <div class="layui-tab-item">
-            <ul>
-            <li >
-              <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
-                <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
-                <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
-                <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-        </li>
+<div class="layui-tab-item">
+    <ul>
         <li >
             <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
             <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
@@ -123,43 +79,50 @@
             <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
             <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
         </li>
-                <button type="button" class="layui-btn layui-btn-radius" style="font-size: 20px;width: 100%;height: 30px;line-height: 30px;color: white">查看更多</button>
+        <li >
+            <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
+            <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
+            <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
+            <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
+            <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
+        </li>
+        <button type="button" class="layui-btn layui-btn-radius" style="font-size: 20px;width: 100%;height: 30px;line-height: 30px;color: white">查看更多</button>
     </ul>
-        </div>
-        <div class="layui-tab-item">
-            <ul>
-                <li >
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <li >
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <li >
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <li >
-                    <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
-                    <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
-                    <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
-                    <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
-                    <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
-                </li>
-                <button type="button" class="layui-btn layui-btn-radius" style="font-size: 20px;width: 100%;height: 30px;line-height: 30px;color: white">查看更多</button>
-            </ul>
-        </div>
-    </div>
+</div>
+<div class="layui-tab-item">
+    <ul>
+        <li >
+            <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
+            <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
+            <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
+            <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
+            <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
+        </li>
+        <li >
+            <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
+            <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
+            <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
+            <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
+            <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
+        </li>
+        <li >
+            <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
+            <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
+            <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
+            <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
+            <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
+        </li>
+        <li >
+            <img src="/simpleBook/images/sujectpetetou.png" style="height: 50px;width: 50px" name="focus_img">
+            <h3 style="position: relative;bottom: 50px ;left: 70px" name="focus_title">摄影</h3>
+            <p style="position: relative;left: 70px ;bottom: 50px;color:#b0b0b0" name="focus_content">我是东京哦洒家打开撒娇到时间东京哦阿姐滴哦窘境送到家</p>
+            <button type="button" class="layui-btn layui-btn-radius"  style="position:relative; left: 500px;bottom: 80px;width: 80px;height: 40px;font-size:20px">+关注</button>
+            <a href=""style="position: relative;left: -30px;bottom: 50px"><i class="layui-icon" style="font-size: 10px;color:#b0b0b0 ">&#xe653;148.8K篇文章 · 2513.1K人关注</i></a>
+        </li>
+        <button type="button" class="layui-btn layui-btn-radius" style="font-size: 20px;width: 100%;height: 30px;line-height: 30px;color: white">查看更多</button>
+    </ul>
+</div>
+</div>
 </div>
 </section>
 </body>
