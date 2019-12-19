@@ -280,6 +280,12 @@ public class UserServlet extends BaseServlet {
         response.getWriter().write(json);
     }
 
+    /**
+     * 登陆
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     public void loginOn(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils = new AjaxUtils();
         response.setCharacterEncoding("utf-8");
@@ -292,6 +298,7 @@ public class UserServlet extends BaseServlet {
                 ajaxUtils.setFlag(false);
             }else {
                 ajaxUtils.setFlag(true);
+                request.getSession().setAttribute("user",user);
             }
         } catch (Exception e) {
             ajaxUtils.setErrorMsg(e.getMessage());
@@ -301,6 +308,12 @@ public class UserServlet extends BaseServlet {
         response.getWriter().write(json);
     }
 
+    /**
+     * 用户名验证
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     public void verificationUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         AjaxUtils ajaxUtils = new AjaxUtils();
@@ -321,6 +334,35 @@ public class UserServlet extends BaseServlet {
             ajaxUtils.setFlag(false);
         }
 
+        String json = JSON.toJSONString(ajaxUtils);
+        response.getWriter().write(json);
+    }
+
+    /**
+     * 邮箱验证
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public void verificationEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        AjaxUtils ajaxUtils = new AjaxUtils();
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json;charset=utf-8");
+        try {
+            List<User> getAllEmailList = service.selectIndexUser();
+            String email = request.getParameter("email");
+            for (User emailList : getAllEmailList) {
+                if (emailList.getEmail().equals(email)){
+                    ajaxUtils.setFlag(false);
+                    ajaxUtils.setErrorMsg("邮箱已被使用，请输入其它邮箱");
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            ajaxUtils.setErrorMsg(e.getMessage());
+            ajaxUtils.setFlag(false);
+        }
         String json = JSON.toJSONString(ajaxUtils);
         response.getWriter().write(json);
     }
