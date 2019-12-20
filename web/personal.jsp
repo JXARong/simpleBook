@@ -17,7 +17,36 @@
 
     <link rel="stylesheet" href="/simpleBook/css/personal_two.css">
     <link rel="stylesheet" href="/simpleBook/css/personal_one.css">
+    <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css">
+    <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
+    <script type="text/javascript" src="/simpleBook/js/jquery-1.12.4.min.js" ></script>
 </head>
+<script type="text/javascript">
+
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //一些事件监听
+        element.on('tab(demo)', function(data){
+            console.log(data);
+        });
+    });
+
+    $(function () {
+        $("#visit").hover(function () {
+
+            $("#dmenus").css({display:""});
+        },function () {
+            $("#dmenus").css({display:"none"});
+        })
+    })
+
+</script>
+<style type="text/css">
+
+
+
+</style>
 
 <body lang="zh-CN" class="reader-black-font">
 <!-- 全局顶部导航栏 -->
@@ -31,43 +60,34 @@
         <a class="btn write-btn" target="_blank" href="/writer#/">
             <i class="iconfont ic-write"></i>写文章
         </a>
+
+        <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img"></a>
+        <dl class="layui-nav-child">
+            <dd><a href="javascript:;">修改信息</a></dd>
+            <dd><a href="javascript:;">安全管理</a></dd>
+            <dd><a href="javascript:;">退了</a></dd>
+        </dl>
+
         <!-- 如果用户登录，显示下拉菜单 -->
-        <div class="user">
-            <div data-hover="dropdown">
-                <a class="avatar" href="/u/38268d4671c8"><img src="" alt="120" /></a>
+        <div class="user" style="background-color: white">
+            <div data-hover="dropdown" id="visit">
+                <a class="avatar" href="/simpleBook/personal.jsp"><img src="" alt="120" /></a>
             </div>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menus" style="list-style:none;dispaly:none;background-color: white" id="dmenus">
                 <li>
-                    <a href="/u/38268d4671c8">
+                    <a href="/simpleBook/personal.jsp">
                         <i class="iconfont ic-navigation-profile"></i><span>我的主页</span>
                     </a>          </li>
                 <li>
-                    <!-- TODO bookmarks_path -->
-                    <a href="/bookmarks">
-                        <i class="iconfont ic-navigation-mark"></i><span>收藏的文章</span>
+                    <a href="/simpleBook/userInfo.jsp">
+                        <i class="iconfont ic-navigation-settings"></i><span>个人信息</span>
                     </a>          </li>
                 <li>
-                    <a href="/users/38268d4671c8/liked_notes">
-                        <i class="iconfont ic-navigation-like"></i><span>喜欢的文章</span>
-                    </a>          </li>
-                <li>
-                    <a href="/my/paid_notes">
-                        <i class="iconfont ic-paid"></i><span>已购内容</span>
-                    </a>          </li>
-                <li>
-                    <a href="/wallet">
-                        <i class="iconfont ic-navigation-wallet"></i><span>我的钱包</span>
-                    </a>          </li>
-                <li>
-                    <a href="/settings">
-                        <i class="iconfont ic-navigation-settings"></i><span>设置</span>
-                    </a>          </li>
-                <li>
-                    <a href="/faqs">
+                    <a href="/simpleBook/problem.html">
                         <i class="iconfont ic-navigation-feedback"></i><span>帮助与反馈</span>
                     </a>          </li>
                 <li>
-                    <a rel="nofollow" data-method="delete" href="/sign_out">
+                    <a rel="nofollow" data-method="delete" href="/simpleBook/index.jsp">
                         <i class="iconfont ic-navigation-signout"></i><span>退出</span>
                     </a>          </li>
             </ul>
@@ -82,11 +102,6 @@
                     <li class="tab ">
                         <a href="/">
                             <span class="menu-text">发现</span><i class="iconfont ic-navigation-discover menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="tab ">
-                        <a href="/subscriptions">
-                            <span class="menu-text">关注</span><i class="iconfont ic-navigation-follow menu-icon"></i>
                         </a>
                     </li>
                     <li class="search">
