@@ -1,5 +1,8 @@
 package com.bdqn.simplebook.service.impl;
 
+import com.bdqn.simplebook.dao.RelationDao;
+import com.bdqn.simplebook.dao.impl.RelationDaoImpl;
+import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.RelationService;
 
 /**
@@ -11,5 +14,16 @@ import com.bdqn.simplebook.service.RelationService;
  * @packageName: com.bdqn.simplebook.service.impl
  */
 public class RelationServiceImpl implements RelationService {
-    private RelationService service=new RelationServiceImpl();
+
+    private RelationDao dao = new RelationDaoImpl();
+
+    @Override
+    public int queryRelationUser(User user) {
+        return dao.queryRelationUid(user);
+    }
+
+    @Override
+    public int queryRelationCid(User user) {
+        return dao.queryRelationCid(user);
+    }
 }

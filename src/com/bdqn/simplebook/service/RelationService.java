@@ -1,5 +1,7 @@
 package com.bdqn.simplebook.service;
 
+import com.bdqn.simplebook.domain.User;
+
 /**
  * @author: 龚皓冬
  * @date: 2019/11/18
@@ -10,4 +12,7 @@ package com.bdqn.simplebook.service;
  */
 public interface RelationService {
 
+    int queryRelationUser(User user);
+
+    int queryRelationCid(User user);
 }

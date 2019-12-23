@@ -139,4 +139,9 @@ public class PostServiceImpl implements PostService {
         pageUtils.setData(list);
         return pageUtils;
     }
+
+    @Override
+    public int getPostUser(User user) {
+        return dao.getPostUser(user);
+    }
 }
