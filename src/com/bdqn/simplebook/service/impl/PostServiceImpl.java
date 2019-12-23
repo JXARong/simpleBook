@@ -144,4 +144,9 @@ public class PostServiceImpl implements PostService {
     public int getPostUser(User user) {
         return dao.getPostUser(user);
     }
+
+    @Override
+    public List<Post> getPostByUid(User user) {
+        return dao.selPostByUid(user);
+    }
 }

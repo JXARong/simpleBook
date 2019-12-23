@@ -257,4 +257,9 @@ public class PostServlet extends BaseServlet {
         int i = service.getPostUser((User)request.getSession().getAttribute("user"));
         request.getSession().setAttribute("postNumber",i);
     }
+
+    public void getPostByUid(HttpServletRequest request, HttpServletResponse response) throws  Exception{
+        List<Post> postList = service.getPostByUid((User)request.getSession().getAttribute("user"));
+
+    }
 }

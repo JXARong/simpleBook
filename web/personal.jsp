@@ -121,7 +121,7 @@
         <div class="col-xs-16 main">
             <div class="main-top">
 
-                <a class="avatar" href="/u/38268d4671c8">
+                <a class="avatar" href="/simpleBook/personal.jsp">
                     <img src="" alt="240" />
                 </a>
 
@@ -180,11 +180,14 @@
 
                 <ul class="note-list" infinite-scroll-url="/u/38268d4671c8?order_by=shared_at">
 
-                    <!--<li id="note-55964837" data-note-id="55964837" class="">
+                    <li id="note-55964837" data-note-id="55964837" class="">
                         <div class="content ">
                             <a class="title" target="_blank" href="/p/6cceefcfcc33">无标题文章</a>
                             <p class="abstract">
-                                123
+                                123123456789
+                                <%
+
+                                %>
                             </p>
                             <div class="meta">
                                 <a target="_blank" href="/p/6cceefcfcc33">
@@ -196,7 +199,7 @@
                                 <span class="time" data-shared-at="2019-11-05T16:17:19+08:00"></span>
                             </div>
                         </div>
-                    </li>-->
+                    </li>
 
                 </ul>
 

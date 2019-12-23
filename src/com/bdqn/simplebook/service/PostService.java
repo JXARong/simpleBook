@@ -34,4 +34,6 @@ public interface PostService {
     PageUtils selPostListOfTop(PageUtils pageUtils);
 
     int getPostUser(User user);
+
+    List<Post> getPostByUid(User user);
 }
