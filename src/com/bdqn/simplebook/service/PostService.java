@@ -1,7 +1,7 @@
 package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.Post;
-
+import com.bdqn.simplebook.utils.PageUtils;
 
 import java.util.List;
 
@@ -32,6 +32,8 @@ public interface PostService {
     Integer delPostById(String[] pid) throws Exception;
 
     PageUtils selPostListOfTop(PageUtils pageUtils);
+
+    List<Post> selPostByTid(Integer tid);
 
     int getPostUser(User user);
 }

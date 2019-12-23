@@ -6,12 +6,9 @@ import com.bdqn.simplebook.dao.impl.*;
 import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.Topic;
-
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.utils.PageUtils;
-
-import java.util.List;
 
 import java.util.List;
 
@@ -124,6 +121,12 @@ public class PostServiceImpl implements PostService {
         }
         return count;
 
+    }
+
+    @Override
+    public List<Post> selPostByTid(Integer tid) {
+        List<Post> posts = dao.selPostByTid(tid);
+        return posts;
     }
 
     @Override

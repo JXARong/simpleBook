@@ -3,9 +3,7 @@ package com.bdqn.simplebook.dao.impl;
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.PostDao;
 import com.bdqn.simplebook.domain.Post;
-
 import com.bdqn.simplebook.domain.User;
-import com.bdqn.simplebook.utils.PageUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -137,6 +135,16 @@ public class PostDaoImpl extends BaseDao implements PostDao {
     }
 
     @Override
+    public Integer delPostByTid(Integer id) {
+        String sql="delete from post where topicId = ?";
+        return super.update(sql, new Object[]{id});
+    }
+
+    @Override
+    public List<Post> selPostByTid(Integer tid) {
+        String sql="select * from post where topicId = ?";
+        List<Post> posts = super.selectList(Post.class, sql, new Object[]{tid});
+        return posts;
     public int getPostUser(User user) {
         String sql = "select count(uid) from post uid = ?";
         int i = (int)super.getCount(sql,new Object[]{user.getUid()});

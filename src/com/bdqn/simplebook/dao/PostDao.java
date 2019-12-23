@@ -32,10 +32,16 @@ public interface PostDao {
 
     List<Post> selPostOfTop(int i, Integer limit);
 
+
+    Integer delPostByTid(Integer id);
+
+    List<Post> selPostByTid(Integer tid);
+  
     /**
      * 文章数
      * @param user
      * @return
      */
     int getPostUser(User user);
+
 }
