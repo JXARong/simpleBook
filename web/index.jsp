@@ -45,7 +45,7 @@
     </ul>
 </nav>
 <section class="first_subject" style="margin: 10px auto">
-    <div style="border: 1px solid red ; height: "></div>
+    <div style="border: 1px solid red ; "></div>
     <div class="subjec_left">
         <ul class="left_meue">
             <li>

@@ -36,4 +36,19 @@ public class RelationDaoImpl extends BaseDao implements RelationDao {
         String sql="delete from relation where cid = ?";
         return  super.update(sql,new Object[]{user.getUid()});
     }
+
+
+    @Override
+    public int queryRelationUid(User user) {
+        String sql = "select count(rid) from relation where cid = ?";
+        Object num = super.getCount(sql,new Object[]{user.getUid()});
+        return (int)num;
+    }
+
+    @Override
+    public int queryRelationCid(User user) {
+        String sql = "select count(cid) form relation where uid = ?";
+        int num = (int)super.getCount(sql,new Object[]{user.getUid()});
+        return num;
+    }
 }

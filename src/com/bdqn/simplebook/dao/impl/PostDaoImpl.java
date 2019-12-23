@@ -145,5 +145,9 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         String sql="select * from post where topicId = ?";
         List<Post> posts = super.selectList(Post.class, sql, new Object[]{tid});
         return posts;
+    public int getPostUser(User user) {
+        String sql = "select count(uid) from post uid = ?";
+        int i = (int)super.getCount(sql,new Object[]{user.getUid()});
+        return i;
     }
 }
