@@ -16,19 +16,23 @@ import java.util.List;
  */
 public interface PostDao {
 
-   public List<Post> selectAllPost()throws  Exception;
+    public List<Post> selectAllPost() throws Exception;
 
-    Post findPost(int pid)throws Exception;
+    Post findPost(int pid) throws Exception;
 
     Integer delPostByUid(User user);
 
     List<Post> selPostByUid(User user);
 
-    List<Post> selPostByPage(Integer startNum, Integer limit, Post post,String sendDate);
+    List<Post> selPostByPage(Integer startNum, Integer limit, Post post, String sendDate);
 
     Long selPostCount(Post post);
 
     Integer delPostByPid(Integer pid);
 
- List<Post> selPostOfTop(int i, Integer limit);
+    List<Post> selPostOfTop(int i, Integer limit);
+
+    Integer delPostByTid(Integer id);
+
+    List<Post> selPostByTid(Integer tid);
 }

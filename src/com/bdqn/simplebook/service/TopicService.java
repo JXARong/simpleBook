@@ -1,6 +1,5 @@
 package com.bdqn.simplebook.service;
 
-import com.bdqn.simplebook.dao.TopicDao;
 import com.bdqn.simplebook.domain.Topic;
 
 import java.util.List;
@@ -15,7 +14,15 @@ import java.util.List;
  */
 public interface TopicService {
 
-    List<Topic> selAllTopic() throws Exception;
+    List<Topic> selAllTopic(String page,String limit) throws Exception;
 
     Topic addTopic(Topic topic) throws Exception;
+
+    Long selTopicCount();
+
+    int updTopic(Topic topic);
+
+    boolean existsTopicByName(String name);
+
+    int delTopicById(Integer id);
 }
