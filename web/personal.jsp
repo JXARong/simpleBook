@@ -61,19 +61,19 @@
             <i class="iconfont ic-write"></i>写文章
         </a>
 
-        <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img"></a>
-        <dl class="layui-nav-child">
-            <dd><a href="javascript:;">修改信息</a></dd>
-            <dd><a href="javascript:;">安全管理</a></dd>
-            <dd><a href="javascript:;">退了</a></dd>
-        </dl>
+<%--        <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img"></a>--%>
+<%--        <dl class="layui-nav-child">--%>
+<%--            <dd><a href="javascript:;">修改信息</a></dd>--%>
+<%--            <dd><a href="javascript:;">安全管理</a></dd>--%>
+<%--            <dd><a href="javascript:;">退了</a></dd>--%>
+<%--        </dl>--%>
 
         <!-- 如果用户登录，显示下拉菜单 -->
-        <div class="user" style="background-color: white">
-            <div data-hover="dropdown" id="visit">
+        <div class="user" id="visit" style="background-color: white;" >
+            <div data-hover="dropdown" >
                 <a class="avatar" href="/simpleBook/personal.jsp"><img src="" alt="120" /></a>
             </div>
-            <ul class="dropdown-menus" style="list-style:none;dispaly:none;background-color: white" id="dmenus">
+            <ul class="dropdown-menus" style="list-style:none;background-color: white;display: none" id="dmenus">
                 <li>
                     <a href="/simpleBook/personal.jsp">
                         <i class="iconfont ic-navigation-profile"></i><span>我的主页</span>
@@ -87,7 +87,7 @@
                         <i class="iconfont ic-navigation-feedback"></i><span>帮助与反馈</span>
                     </a>          </li>
                 <li>
-                    <a rel="nofollow" data-method="delete" href="/simpleBook/index.jsp">
+                    <a rel="nofollow" data-method="delete" href="/simpleBook/index.jsp" <% request.getSession().removeAttribute("user"); %>>
                         <i class="iconfont ic-navigation-signout"></i><span>退出</span>
                     </a>          </li>
             </ul>
@@ -100,7 +100,7 @@
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="nav navbar-nav">
                     <li class="tab ">
-                        <a href="/">
+                        <a href="/simpleBook/index.jsp">
                             <span class="menu-text">发现</span><i class="iconfont ic-navigation-discover menu-icon"></i>
                         </a>
                     </li>
@@ -126,40 +126,34 @@
                 </a>
 
                 <div class="title">
-                    <a class="name" href="/u/38268d4671c8">？？？</a>
+                    <a class="name" href="/u/38268d4671c8">${user.uname}</a>
                 </div>
                 <div class="info">
                     <ul>
                         <li>
                             <div class="meta-block">
-                                    <p>0</p>
+                                    <p>${relationCid}</p>
                                     关注
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div class="meta-block">
-                                    <p>0</p>
+                                    <p>${relationUid}</p>
                                     粉丝
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div class="meta-block">
-                                <p>0</p>
+                                <p>${postNumber}</p>
                                 文章
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div class="meta-block">
-                                <p>0</p>
-                                <div>字数</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="meta-block">
-                                <p>0</p>
+                                <p>${favourite}</p>
                                 <div>收获喜欢</div>
                             </div>
                         </li>
@@ -211,18 +205,10 @@
 
         <div class="col-xs-7 col-xs-offset-1 aside">
             <div class="title">个人介绍</div>
-            <form class="profile-edit js-intro-form" data-type="json" id="edit_user_20023754" action="/users/38268d4671c8" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" />
-                <textarea name="user[intro]" id="user_intro">
-</textarea>
-                <input type="submit" name="commit" value="保存" class="btn btn-hollow" data-action="save-edit-intro" data-disable-with="保存" />
-                <a data-action="cancel-edit-intro" href="javascript:void(null);">取消</a>
-            </form>
             <div class="description">
-                <div class="js-intro"></div>
+                <div class="js-intro">${user.introduce}</div>
 
             </div>
-            <div class="publication-list"></div>
-            <div class="course-list"></div>
 <%--            <ul class="list user-dynamic">--%>
 <%--                <li>--%>
 <%--                    <a href="/users/38268d4671c8/liked_notes">--%>

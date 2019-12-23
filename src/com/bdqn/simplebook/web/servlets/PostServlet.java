@@ -252,4 +252,9 @@ public class PostServlet extends BaseServlet {
         }
         return pageUtils;
     }
+
+    public void getPostUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        int i = service.getPostUser((User)request.getSession().getAttribute("user"));
+        request.getSession().setAttribute("postNumber",i);
+    }
 }
