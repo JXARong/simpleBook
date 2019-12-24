@@ -35,7 +35,7 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
     @Override
     public List<Topic> selTopicOfAll(Integer pageNo,Integer limit) {
         String sql="select * from topic limit ?,?";
-        List<Topic> topics = super.selectList(Topic.class, sql, new Object[]{pageNo,limit});
+        List<Topic> topics = super.selectList(Topic.class, sql, new Object[]{(pageNo-1)*limit,limit});
         return topics;
     }
 
@@ -79,7 +79,7 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
 
     @Override
     public int delTopicById(Integer id) {
-        String sql="delete from topic where topidId =?";
+        String sql="delete from topic where topicId =?";
         return super.update(sql, new Object[]{id});
     }
 }

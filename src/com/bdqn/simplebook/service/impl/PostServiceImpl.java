@@ -147,4 +147,9 @@ public class PostServiceImpl implements PostService {
     public int getPostUser(User user) {
         return dao.getPostUser(user);
     }
+
+    @Override
+    public Long getCountByTid(Integer topicId) {
+        return dao.getCountByTid(topicId);
+    }
 }

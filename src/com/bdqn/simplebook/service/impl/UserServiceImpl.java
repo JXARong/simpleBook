@@ -274,4 +274,9 @@ public class UserServiceImpl  implements UserService {
         Long all = dao.selUserCountOfAll();
         return  all;
     }
+
+    @Override
+    public User selUserById(Integer id) {
+        return dao.selUserById(id);
+    }
 }

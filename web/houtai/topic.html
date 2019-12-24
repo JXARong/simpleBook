@@ -62,50 +62,56 @@
             url: "/simpleBook/topic/selectTopic",
             id: "topic",
             cols: [[
-                {field:'topicId', width:100,title:"主题编号"},
-                {field:'topic', width:100,edit:'text',title:"主题名称"},
-                {field:'topicPicture', minWidth: 110,templet:'#img',title:"主题缩略图"},
-                {field:'topicPost', width:120,title:"文章数量",templet:"<span>{{d.topicPost}}篇</span>"},
-                {field:'topicFollow', minWidth: 100,title:"关注人数",templet:"<span>{{d.topicFollow}}人</span>"},
-                {width:100,toolbar:"#delete",title:"操作"}
+                {field: 'topicId', width: 100, title: "主题编号"},
+                {field: 'topic', width: 100, edit: 'text', title: "主题名称"},
+                {field: 'topicPicture', minWidth: 110, templet: '#img', title: "主题缩略图"},
+                {field: 'topicPost', width: 120, title: "文章数量", templet: "<span>{{d.topicPost}}篇</span>"},
+                {field: 'topicFollow', minWidth: 100, title: "关注人数", templet: "<span>{{d.topicFollow}}人</span>"},
+                {width: 100, toolbar: "#delete", title: "操作"}
             ]],
-            page:true,
-            limit:6,
-            limits:[6],
-            text:"未查询到数据",
+            page: true,
+            limits: [5, 10, 15],
+            limit: 5,
+            loading: true,
+            text: {none: "暂无相关数据"},
             done: function (res, curr, count) {
-                $(".layui-table-cell").css({"height":"auto","text-align":"center"})
+                $(".layui-table-cell").css({"height": "auto", "text-align": "center"})
             }
         });
 
         //监听单元格编辑
         table.on('edit(topic)', function (obj) {
             var data = obj.data; //得到所在行所有键值对
-            if (data["topic"]==null || data["topic"]==''){
+            if (data["topic"] == null || data["topic"] == '') {
                 layer.msg("主题名称不能为空");
                 return;
             }
+            var isExists=true;
             $.ajax({
-               url:"/simpleBook/topic/selTopicByName",
-                data:{topic:data["topic"]},
-                type:"post",
-                async:false,
-                success:function (data) {
+                url: "/simpleBook/topic/selTopicByName",
+                data: {topic: data["topic"]},
+                type: "post",
+                async: false,
+                success: function (data) {
                     console.log(data);
-                    if(!data){
-                        layer.msg("已存在该主题，请重新修改");
-                        return;
-                    }
+                    isExists=data;
                 }
             });
+            if(!isExists){
+                layer.alert("该主题已存在，请勿重复添加",{icon:2});
+                reload();
+                return;
+            }
             $.ajax({
-                url:"/simpleBook/topic/updateTopic",
-                type:"post",
-                data:{topic:data["topic"],topicId:data["topicId"]},
-                success:function (data) {
-                    if(data.flag){
-                        layer.msg(data.msg)
-                    }else{
+                url: "/simpleBook/topic/updateTopic",
+                type: "post",
+                async:false,
+                data: {topic: data["topic"], topicId: data["topicId"]},
+                success: function (data) {
+                    if (data.flag) {
+                        layer.msg(data.msg);
+                        reload();
+                    } else {
                         layer.msg(data.errorMsg);
                     }
                 }
@@ -113,21 +119,33 @@
         });
 
         //删除主题
-        table.on('tool(topic)', function(obj){
+        table.on('tool(topic)', function (obj) {
             var data = obj.data;
-            if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
+            if (obj.event === 'del') {
+                layer.confirm('确定删除该主题以及该主题下的所有文章吗?', function (index) {
                     $.ajax({
-                       url:"/simpleBook/topic/delTopicById",
-                       type:"post",
-                       data:{topicId:data["topicId"]} ,
-                        success:function (data) {
-                            console.log(data);
+                        url: "/simpleBook/topic/delTopicById",
+                        type: "post",
+                        data: {topicId: data["topicId"]},
+                        success: function (data) {
+                            if (data) {
+                                layer.alert("删除成功", {icon: 1});
+                                reload();
+                            }
                         }
                     });
                 });
             }
         });
+
+        // 重新加载表格
+        function reload() {
+            table.reload('topic', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        }
     });
 </script>
 

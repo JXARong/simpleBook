@@ -36,6 +36,11 @@ public class TopicServiceImpl implements TopicService {
         if (topics == null || topics.size() == 0) {
             throw new Exception("暂无相关数据");
         }
+        for (Topic topic : topics) {
+
+            Long count = postService.getCountByTid(topic.getTopicId());
+            topic.setTopicPost(Integer.valueOf(String.valueOf(count)));
+        }
         return topics;
     }
 
@@ -74,17 +79,25 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public int delTopicById(Integer id) {
         List<Post> posts = postService.selPostByTid(id);
-        if (posts == null && posts.size() == 0) {
+
+        // 判断该主题下是否包含文章，若不包含可直接删除
+        if (posts != null && posts.size() == 0) {
             return dao.delTopicById(id);
         }
-        String[] pid=new String[posts.size()];
+        String[] pid = new String[posts.size()];
+
         // 否则删除该主题下的所有帖子
         for (int i = 0; i < pid.length; i++) {
-            pid[i]= String.valueOf(posts.get(i).getPid());
+            pid[i] = String.valueOf(posts.get(i).getPid());
         }
         Integer index = 0;
         try {
-            index = postService.delPostById(pid);
+            // 删除帖子是否成功
+            int res = postService.delPostById(pid);
+            // 帖子删除成功则删除该主题
+            if(res>0){
+                index= dao.delTopicById(id);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
