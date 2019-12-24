@@ -36,4 +36,14 @@ public interface PostService {
     int getPostUser(User user);
 
     Long getCountByTid(Integer topicId);
+
+    List<Post> selPostByUIdOfTop10(Integer uid);
+
+    /**
+     * 发布文章
+     * @param post
+     * @return
+     */
+    int sendPost(Post post);
+
 }

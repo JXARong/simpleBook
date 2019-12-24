@@ -27,7 +27,7 @@
 </style>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/layui/layui.js"></script>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/js/layui/css/layui.css">
-<body>
+<body style="background-color: #F2F2F2">
     <div style="width: 20%;margin: 0 auto">
         <form class="layui-form" lay-filter="userInfo">
             <input type="hidden" value="" name="uid"/>

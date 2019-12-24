@@ -82,4 +82,10 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
         String sql="delete from topic where topicId =?";
         return super.update(sql, new Object[]{id});
     }
+
+    @Override
+    public List<Topic> selAllTopic() {
+        String sql="select * from topic ";
+        return super.selectList(Topic.class,sql,null);
+    }
 }
