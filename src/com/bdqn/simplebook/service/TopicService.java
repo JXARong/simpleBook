@@ -25,4 +25,6 @@ public interface TopicService {
     boolean existsTopicByName(String name);
 
     int delTopicById(Integer id);
+
+    List<Topic> selAll();
 }

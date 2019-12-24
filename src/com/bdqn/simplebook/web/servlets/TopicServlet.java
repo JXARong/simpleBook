@@ -139,4 +139,16 @@ public class TopicServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSON.toJSONString(flag));
     }
+
+    /**
+     * 查询全部主题信息
+     * @param request
+     * @param response
+     * @throws IOException
+     */
+    public void selAllTopic(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        List<Topic> topics = service.selAll();
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONString(topics));
+    }
 }

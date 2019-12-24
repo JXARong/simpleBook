@@ -27,5 +27,6 @@ public interface TopicDao {
 
     int delTopicById(Integer id);
 
+    List<Topic> selAllTopic();
 
 }

@@ -103,4 +103,9 @@ public class TopicServiceImpl implements TopicService {
         }
         return index;
     }
+
+    @Override
+    public List<Topic> selAll() {
+        return dao.selAllTopic();
+    }
 }
