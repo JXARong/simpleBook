@@ -1,12 +1,10 @@
 package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.Post;
+import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.PageUtils;
 
 import java.util.List;
-
-import com.bdqn.simplebook.domain.User;
-import com.bdqn.simplebook.utils.PageUtils;
 
 
 /**
@@ -36,4 +34,6 @@ public interface PostService {
     List<Post> selPostByTid(Integer tid);
 
     int getPostUser(User user);
+
+    Long getCountByTid(Integer topicId);
 }

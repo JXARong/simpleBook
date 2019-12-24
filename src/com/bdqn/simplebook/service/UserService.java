@@ -59,4 +59,6 @@ public interface UserService {
 
     Long selUserCountOfAll();
 
+    User selUserById(Integer id);
+
 }

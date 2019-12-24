@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.bdqn.simplebook.domain.User" %><%--
   Created by IntelliJ IDEA.
   User: QZY
   Date: 2019/11/4
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
 <script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
 <body>
-<nav class="first_header" style="width: 66%; position: relative;left: 250px">
+<%--<nav class="first_header" style="width: 66%; position: relative;left: 250px">
 
     <ul class="header_login">
         <li><a href="" style="color: orangered;font-size: 24px;position: relative;left: 50px;top: 5px">简·简书</a></li>
@@ -43,13 +43,20 @@
         </li>
 
     </ul>
-</nav>
+</nav>--%>
+<%--判断是否登录，显示的导航栏不同--%>
+<%User user = (User) request.getSession().getAttribute("user");
+    if (null==user){%>
+    <jsp:include page="noLogin.jsp" flush="true"/>
+<%}else{%>
+      <jsp:include page="loginHeader.jsp" flush="true"/>
+    <%}%>
 <section class="first_subject" style="margin: 10px auto">
     <div style="border: 1px solid red ; "></div>
     <div class="subjec_left">
         <ul class="left_meue">
             <li>
-                <div  class="information" >
+                <div class="information" >
                    <a><img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png" style="height: 100px"></a>
                     <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3>
                     <p name="suject_content">

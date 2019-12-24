@@ -44,4 +44,5 @@ public interface PostDao {
      */
     int getPostUser(User user);
 
+    Long getCountByTid(Integer topicId);
 }
