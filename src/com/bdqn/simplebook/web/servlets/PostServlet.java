@@ -252,4 +252,53 @@ public class PostServlet extends BaseServlet {
         }
         return pageUtils;
     }
+
+    public void getPostUser(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        int i = service.getPostUser((User)request.getSession().getAttribute("user"));
+        request.getSession().setAttribute("postNumber",i);
+    }
+
+    /**
+     * 查询用户发布的前十条帖子
+     * @param request
+     * @param response
+     */
+    public void selPostByUIdOfTop10(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        User user = (User) request.getSession().getAttribute("user");
+        List<Post> posts = service.selPostByUIdOfTop10(user.getUid());
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONString(posts));
+    }
+
+    /**
+     * 发布文章
+     * @param request
+     * @param response
+     */
+    public void sendPost(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        // 文章内容
+        String context = request.getParameter("context");
+
+        // 文章标题
+        String title = request.getParameter("title");
+
+        // 主题编号
+        String topicId = request.getParameter("topicId");
+
+        Post post=new Post();
+        post.setTitle(title);
+        post.setArticle(context);
+        post.setTopicId(Integer.valueOf(topicId));
+        User user = (User) request.getSession().getAttribute("user");
+        post.setUid(user.getUid());
+
+        int index = service.sendPost(post);
+        String flag="false";
+        if (index>0){
+            flag="true";
+        }
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(flag);
+    }
 }

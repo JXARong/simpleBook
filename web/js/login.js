@@ -28,7 +28,7 @@ $(function () {
 
     $("#session_email_or_mobile_number").blur(checkUser);
     $("#session_password").blur(checkPwd);
-})
+});
 
 function checkUser(){
     if ($("#session_email_or_mobile_number").val()=="") {

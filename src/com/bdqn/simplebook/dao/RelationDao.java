@@ -14,4 +14,18 @@ public interface RelationDao {
     int delRelationByUid(User user);
 
     int delcRelationByCid(User user);
+
+    /**
+     * 粉丝数
+     * @param user
+     * @return
+     */
+    int queryRelationUid(User user);
+
+    /**
+     * 关注人数
+     * @param user
+     * @return
+     */
+    int queryRelationCid(User user);
 }

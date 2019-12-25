@@ -36,4 +36,11 @@ public class FavouriteDaoImpl extends BaseDao implements FavouriteDao {
         String sql="delete from favourite where pid = ?";
         return super.update(sql, new Object[]{post.getPid()});
     }
+
+    @Override
+    public int getFavouriteUser(User user) {
+        String sql = "select count(uid) from favourite where pid in (select pid from post where uid = ?)";
+        int i = (int)super.getCount(sql,new Object[]{user.getUid()});
+        return i;
+    }
 }

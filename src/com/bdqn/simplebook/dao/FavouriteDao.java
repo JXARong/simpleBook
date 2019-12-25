@@ -15,4 +15,11 @@ public interface FavouriteDao {
     int delFavouriteByUid(User user);
 
     int delFavouriteByPid(Post post);
+
+    /**
+     * 文章收获的喜欢数
+     * @param user
+     * @return
+     */
+    int getFavouriteUser(User user);
 }
