@@ -108,9 +108,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             sql+=", uname = ?";
             params.add(user.getUname());
         }
-        if (user.getProfile()!=null && !"".equals(user.getProfile())){
-            sql+=", profile = ?";
-            params.add(user.getProfile());
+        if (user.getIntroduce()!=null && !"".equals(user.getIntroduce())){
+            sql+=", introduce = ?";
+            params.add(user.getIntroduce());
         }
         sql+=" WHERE `uid`=?";
         params.add(user.getUid());
