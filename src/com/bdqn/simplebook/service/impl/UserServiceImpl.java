@@ -157,6 +157,11 @@ public class UserServiceImpl  implements UserService {
         if (users.size() == 0) {
             page.setMsg("暂无相关数据");
         }
+        // 查询该用户的所有文章
+        for (User user1 : users) {
+            List<Post> posts = postDao.selPostByUid(user);
+            user1.setPosts(posts);
+        }
         Long count = dao.selUserCount(user, borthday);
         page.setData(users);
         page.setCount(Integer.valueOf(count.toString()));
@@ -250,7 +255,8 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public User login(String emailOruname, String pwd) throws Exception {
-        return dao.login(emailOruname,pwd);
+        User login = dao.login(emailOruname, pwd);
+        return login;
     }
 
     /**
@@ -276,7 +282,13 @@ public class UserServiceImpl  implements UserService {
     }
 
     @Override
-    public User selUserById(Integer id) {
-        return dao.selUserById(id);
+    public User selUserById(Integer id) throws Exception {
+        User user = dao.selUserById(id);
+        if (user==null || user.getUid()==null){
+            throw new Exception("暂无查询到信息");
+        }
+        List<Post> posts = postDao.selPostByUid(user);
+        user.setPosts(posts);
+        return user;
     }
 }

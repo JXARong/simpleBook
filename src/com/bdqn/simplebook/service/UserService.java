@@ -59,6 +59,6 @@ public interface UserService {
 
     Long selUserCountOfAll();
 
-    User selUserById(Integer id);
+    User selUserById(Integer id) throws Exception;
 
 }

@@ -69,7 +69,7 @@ public class UserServlet extends BaseServlet {
         }else{
             user.setStatus(Integer.valueOf(request.getParameter("status")));
         }
-        user.setProfile(request.getParameter("profile"));
+        user.setIntroduce(request.getParameter("profile"));
 
         System.out.println(user);
 
@@ -334,6 +334,7 @@ public class UserServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         try {
             List<User> getAllUserList = service.selectIndexUser();
+            System.out.println(getAllUserList);
             String uname = request.getParameter("uname");
             for (User userList :getAllUserList){
                 if (uname.equals(userList.getUname())){
@@ -378,5 +379,24 @@ public class UserServlet extends BaseServlet {
         }
         String json = JSON.toJSONString(ajaxUtils);
         response.getWriter().write(json);
+    }
+
+    public void loginOut(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        request.getSession().removeAttribute("user");
+        response.sendRedirect(request.getContextPath()+"/index.jsp");
+    }
+
+    public void verifyPwd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String pwd = request.getParameter("pwd");
+        User user = (User) request.getSession().getAttribute("user");
+        boolean flag = false;
+        if (user.getPassword().equals(pwd)){
+            flag=true;
+        }
+        response.getWriter().write(JSON.toJSONString(flag));
+    }
+
+    public void changePwd(HttpServletRequest request,HttpServletResponse response){
+
     }
 }

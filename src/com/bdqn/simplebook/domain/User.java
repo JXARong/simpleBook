@@ -1,6 +1,7 @@
 package com.bdqn.simplebook.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author: 赖榕
@@ -22,7 +23,24 @@ public class User {
     private Integer status; // 状态  0正常使用  1审核中 2 已封禁
     private String uname; // 昵称
     private Timestamp registerTime; // 注册时间
-    private String profile;
+    private String introduce;
+    private List<Post> posts;
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 
     public Integer getUid() {
         return uid;
@@ -102,14 +120,6 @@ public class User {
 
     public void setRegisterTime(Timestamp registerTime) {
         this.registerTime = registerTime;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
     }
 
     @Override

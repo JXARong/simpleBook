@@ -31,7 +31,7 @@
                 <a href="javascript:;"><img src="<%=request.getContextPath()%>/resources/userPhoto/${user.photo}" class="layui-nav-img"><span style="color: black">我</span></a>
                 <dl class="layui-nav-child">
                     <dd><a href="<%=request.getContextPath()%>/userInfo.jsp">个人信息</a></dd>
-                    <dd><a href="javascript:;">安全退出</a></dd>
+                    <dd><a href="/simpleBook/user/loginOut">安全退出</a></dd>
                 </dl>
             </li>
             <li>
