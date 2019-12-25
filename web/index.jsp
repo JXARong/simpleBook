@@ -22,18 +22,15 @@
         <li><a href=""
                style="text-decoration: none;color: orangered;position: relative;top:5px;left:80px;font-size: 18px">首页</a>
         </li>
-        <li><a href="" style="position: relative;left: 100px;top: 2px"><img src="/simpleBook/images/xiazaiAPP(2).png" ></a></li>
         <li>
             <input class="search_input" type="text" name="search" style="padding: 0 40px 0 20px;border-radius:40px;height: 38px;font-size: 14px;border: 1px solid #eee;background: #eee;width: 200px;position: relative;left: 100px;top:2px">
             <a href="" style="position: relative;left: 70px;z-index: 9999;font-size: 20px"><i class="layui-icon">&#xe615;</i></a>
         </li>
-        <li><a href="" style="position: relative;left: 400px;top: 5px "><img src="/simpleBook/images/Aaa.png" ></a></li>
-        <li><a href=""style="position: relative;left: 230px;top: 2px"><img src="/simpleBook/images/beastApp.png" ></a>
-        </li>
+
         <li name="login_simple"><a href="" style="color:#b0b0b0;position: relative;left: 300px;top: 5px;font-size: 20px;">登录</a></li>
         <li>
             <button type="button" class="layui-btn layui-btn-primary layui-btn-radius"
-                    style="color: orangered;position: relative;left: 350px">注册
+                    style="color: orangered;position: relative;left: 350px">注册</注册>
             </button>
         </li>
         <li>
@@ -50,8 +47,7 @@
         <ul class="left_meue">
             <li>
                 <div  class="information" >
-                   <a><img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png" style="height: 100px"></a>
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3>
+                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>
                     <p name="suject_content">
                         大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
                     </p>
@@ -62,8 +58,8 @@
             </li>
             <li>
                 <div  class="information" >
-                    <a><img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png" style="height: 100px"></a>
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3>
+
+                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>
                     <p name="suject_content">
                         大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
                     </p>
@@ -74,8 +70,8 @@
             </li>
             <li>
                 <div  class="information" >
-                    <a><img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png" style="height: 100px"></a>
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3>
+
+                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>
                     <p name="suject_content">
                         大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
                     </p>
@@ -107,10 +103,7 @@
 
         <ul class="right_menu" style="margin: 10px">
             <li style="margin: 10px"><img src="/simpleBook/images/OEZXS$%602CGGLITMHC%5DIA%7BCC.png"></li>
-            <li style="margin: 10px"><img src="/simpleBook/images/3A%25U5%5D81%5D4A$2J%5D5%60%6090HOF.png"></li>
-            <li style="margin: 10px"><img src="/simpleBook/images/8S)2BEFZW8%60UZ%5D%5B8PUNK$K3.png"></li>
-            <li style="margin: 10px"><img src="/simpleBook/images/VEHVB_LTA8(DV40Q5I$V551.png"></li>
-            <li style="margin: 10px"><img src="images/V~ZHJ$F4)P_YZ0QUY2FORNS.png"height="60px"></li>
+
         </ul>
         <ul class="right_lover"  style="border: 1px white solid">
             <li  style="border: 1px white solid"><h5 style="color: #b0b0b0">推荐作者</h5><span style="position: relative;left: 80px;bottom: 20px "><a href="" style="color: #b0b0b0"><i class="layui-icon">&#xe669;换一批</i></a></span></li>
