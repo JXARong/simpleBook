@@ -26,7 +26,7 @@
 <%}%>
 
 <section class="first_subject" style="margin: 10px auto">
-    <div style="border: 1px solid red ; "></div>
+  <div style="border: 1px solid red ; "></div>
     <div class="subjec_left">
         <ul class="left_meue">
             <li>
@@ -37,12 +37,14 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
+
                     <a href=""
                        style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i
                         class="layui-icon">&#xe611;</i>
                     <number name="browse_times">12</number>
                     <i class="layui-icon">&#xe6c6;</i>
                     <number name="good_fablous">12</number>
+
                 </div>
             </li>
             <li>
@@ -54,12 +56,9 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href=""
-                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i
-                        class="layui-icon">&#xe611;</i>
-                    <number name="browse_times">12</number>
-                    <i class="layui-icon"">&#xe6c6;</i>
-                    <number name="good_fablous">12</number>
+
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
+
                 </div>
             </li>
             <li>
@@ -71,12 +70,9 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href=""
-                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i
-                        class="layui-icon">&#xe611;</i>
-                    <number name="browse_times">12</number>
-                    <i class="layui-icon">&#xe6c6;</i>
-                    <number name="good_fablous">12</number>
+
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
+
                 </div>
             </li>
             <li>
@@ -87,12 +83,9 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href=""
-                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i
-                        class="layui-icon">&#xe611;</i>
-                    <number name="browse_times">12</number>
-                    <i class="layui-icon">&#xe6c6;</i>
-                    <number name="good_fablous">12</number>
+
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
+
                 </div>
             </li>
             <li style="border: 1px white solid">
