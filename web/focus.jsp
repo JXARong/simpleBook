@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <title>关注-简书</title>
 </head>
 <link rel="stylesheet" href="/simpleBook/css/focus.css" type="text/css">

@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>管理员信息表</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" media="all">
 <script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>

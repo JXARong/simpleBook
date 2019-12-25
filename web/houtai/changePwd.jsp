@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>修改密码</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <script src="/simpleBook/js/layui/layui.all.js" type="application/javascript" charset="UTF-8"></script>
 <link href="/simpleBook/js/layui/css/layui.css" rel="stylesheet" type="text/css" media="all">

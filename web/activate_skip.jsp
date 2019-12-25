@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <title>邮箱激活</title>
     <script>
 
