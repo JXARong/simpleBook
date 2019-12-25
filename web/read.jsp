@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <title>Title</title>
     <style type="text/css">
         body {

@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>简简书-个人信息页</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <%
     Object user = session.getAttribute("user");
@@ -18,17 +19,61 @@
     }
 %>
 <style>
-    .layui-form>div{
-        margin-bottom: 20px;
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
     }
-    .layui-form{
-        margin-top: 20px;
+    #bigPanel{
+        width: 70%;
+        height: 100%;
+        display:flex;/*Flex布局*/
+        display: -webkit-flex; /* Safari */
+        align-items:center;/*指定垂直居中*/
+        margin: 60px auto 0;
+    }
+    #option{
+        width: 200px;
+        display: inline-block;
+        margin-right: 100px;
+    }
+    #option>li{
+        border-radius: 3%;
+        height: 40px;
+        line-height: 35px;
+        width: 200px;
+        text-align: center;
+    }
+    #option>li span{
+        font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+        font-size: 16px;
+        margin-left: 5px;
+    }
+    #option>li:hover{
+        background: #F2F2F2;
+        cursor: pointer;
+    }
+    #userInfo>div{
+        border-bottom: 1px #F2F2F2 solid;
+        margin-bottom: 10px;
+        padding-bottom:10px;
+    }
+    #userInfo>div:last-child{
+        border-bottom: 0px;
+    }
+    .select{
+        background: #F2F2F2;
     }
 </style>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/layui/layui.js"></script>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/js/layui/css/layui.css">
-<body style="background-color: #F2F2F2">
-    <div style="width: 20%;margin: 0 auto">
+<body>
+<div id="bigPanel" style="height: 70%">
+    <ul id="option">
+        <li class="layui-icon layui-icon-username select" value="info"><span>个人信息</span></li>
+        <li class="layui-icon layui-icon-password" value="change"><span>修改密码</span></li>
+    </ul>
+    <div id="userInfo" style="width: 40%;height: 100%;">
         <form class="layui-form" lay-filter="userInfo">
             <input type="hidden" value="" name="uid"/>
             <!--    头像  -->
@@ -68,7 +113,7 @@
             </div>
             <div class="layui-form-item">
                 <label>个人简介：</label>
-                    <textarea placeholder="请输入内容" lay-verify="profile" class="layui-textarea" name="profile"></textarea>
+                <textarea placeholder="请输入内容" lay-verify="profile" class="layui-textarea" name="profile"></textarea>
             </div>
             <input type="hidden" id="filePath" name="filePath" value=""/>
             <div>
@@ -77,6 +122,28 @@
             </div>
         </form>
     </div>
+    <div id="changeUserPwd" style="display: none">
+        <form class="layui-form" id="changPwd">
+            <div class="layui-form-item">
+                <label class="layui-form-label">原密码：</label>
+                <input type="text" class="layui-input layui-input-inline" name="oldPwd"/>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">新密码：</label>
+                <input type="text" class="layui-input layui-input-inline" name="oldPwd"/>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码：</label>
+                <input type="text" class="layui-input layui-input-inline" name="oldPwd"/>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <button type="button" class="layui-btn layui-btn-sm">提交</button>
+                <button type="button" class="layui-btn layui-btn-sm">返回首页</button>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 <script type="text/javascript">
     layui.use(["form",'laydate','upload','jquery'],function () {
@@ -86,9 +153,26 @@
         var $=layui.jquery;
         form.render();
         laydate.render({
-            elem:"#birthDay",
+            elem:"#bornthDay",
             type:"datetime"
         });
+
+        // 右侧栏点击事件
+        $("#option>li").click(function () {
+            // 设置选中状态
+            $(this).addClass("select");
+            $("#option>li").not(this).removeClass("select");
+
+            var value = $(this).attr("value");
+            if (value=="info"){
+                $("#userInfo").show();
+                $("#changeUserPwd").hide();
+            }else{
+                $("#userInfo").hide();
+                $("#changeUserPwd").show();
+            }
+        });
+
         form.verify({
             "nickName":function (value,item) {
                 if (value==null || value==""){

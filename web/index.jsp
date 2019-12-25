@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>简简书</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <link rel="stylesheet" href="/simpleBook/css/indexof.css" type="text/css">
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">

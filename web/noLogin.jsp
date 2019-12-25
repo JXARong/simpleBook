@@ -10,6 +10,7 @@
 <head>
     <title>未登录导航栏</title>
 </head>
+<link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 <link rel="stylesheet" href="/simpleBook/css/indexof.css" type="text/css">
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
 <script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>

@@ -1,8 +1,14 @@
+<%@ page import="com.bdqn.simplebook.domain.User" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.time.Duration" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.time.ZoneOffset" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui</title>
+    <title>简简书-发布文章</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <%
     Object user = session.getAttribute("user");
@@ -21,24 +27,43 @@
         <div class="layui-col-md2">
             <div class="layui-card">
                 <div class="layui-card-body">
+                    <div style="padding: 5px">
+                        <div style="height: 120px;margin-bottom: 15px;">
+                            <img src="<%=request.getContextPath()%>/resources/userPhoto/${user.photo}" height="60px" width="60px" style="margin-top: 10px;border-radius: 50%">
+                            <p id="uname" style="display: inline-block;margin-left: 15px;font-size: 16px;vertical-align: middle">我来自人间...</p>
+                            <br>
+                            <p id="registerTime" style="display: inline-block;margin-left: 30%;">简龄：6年</p>
+                        </div>
+                        <div style="height: 120px;">
+                            <p><b>个人简介：</b></p>
+                            <p id="profile" style="text-indent: 2em">我来自人间，去往天堂,并且不留一丝痕迹</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-body">
                     <div>
                         <div>
                             <ul id="postList">
-                                <li>
-                                    <b>人生低谷时、尽量多睡觉，少说话、多看书…</b>
-                                    <p>
-                                        《道德经》里说：多言数穷，不如守中。
-                                        意思是，人说的话太多，常常会让自己陷入困境，不如将一些话放在心里，保持谦卑的姿态。
-                                    </p>
+                                <style>
+                                    #postList li{
+                                        border-bottom: 1px solid #F2F2F2;
+                                        padding: 5px 0;
+                                    }
+                                    #postList>li>p>span{
+                                        color: #d63031;
+                                        font-weight: bold;
+                                    }
+                                </style>
+                                <%--<li>
+                                    <b>人生低谷时、尽量多睡觉，少说话、多看书嘎嘎解放路卡戴珊kg哈宽带连接</b>
+                                    <p>点赞:<span>100</span>&nbsp;&nbsp;热度:<span>10</span></p>
                                 </li>
                                 <li>
-                                    <b>你好您好您好你好你好你好你好</b>
-                                    <p>节流阀京东方开房记录范德萨减肥啦电脑卡V领打升级浪费简单示例女克里斯丁朵女郎你上课辣椒粉来得及；</p>
-                                </li>
-                                <li>
-                                    <b>你好您好您好你好你好你好你好</b>
-                                    <p>节流阀京东方开房记录范德萨减肥啦电脑卡V领打升级浪费简单示例女克里斯丁朵女郎你上课辣椒粉来得及；</p>
-                                </li>
+                                    <b>人生低谷时、尽量多睡觉，少说话</b>
+                                    <p>点赞:100&nbsp;&nbsp;热度:10</p>
+                                </li>--%>
                             </ul>
                         </div>
                     </div>
@@ -46,7 +71,7 @@
             </div>
         </div>
         <%--            发布文章板块--%>
-        <div class="layui-col-md8">
+        <div class="layui-col-md10">
             <div class="layui-card">
                 <div class="layui-card-body">
                     <div>
@@ -81,16 +106,6 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <%--            个人简介--%>
-        <div class="layui-col-md2">
-            <div class="layui-card">
-                <div class="layui-card-body">
-                    <div>
                     </div>
                 </div>
             </div>
@@ -138,6 +153,72 @@
                 }
             });
         })();
+
+        // 加载10篇最近发帖，左侧
+        (function () {
+            $.ajax({
+                url:"<%=request.getContextPath()%>/post/selPostByUIdOfTop10",
+                type:"post",
+                success:function (data) {
+                    if (data.length>0){
+                        $.each(data,function (index,item) {
+                            if (index==8){
+                                return;
+                            }
+                            var title=item.title;
+                            // 截取标题
+                            title=title.length>15?title.substring(0,14)+"..." : title;
+                            var temp="<li><b><a href=''>"+title+"</a></b><p>点赞:<span>"+item.start+"</span>&nbsp;&nbsp;热度:<span>"+item.hot+"</span></p></li>";
+                            $("#postList").append($(temp));
+                        })
+                    }else{
+                        $("#postList").append($("<h4 style='text-align: center'>您还未发布过文章</h4>"))
+                    }
+
+                },error:function () {
+                    layer.msg("加载文章失败",{icon:2});
+                }
+            })
+        })();
+
+        // 处理昵称
+        <%!
+            public String getUName(String str){
+                return  str.length()>7?str.substring(0,7)+"...":str;
+            }
+        %>
+        <%!
+            public String getResiterTime(Timestamp timestamp){
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime time =LocalDateTime.ofEpochSecond(timestamp.getTime()/1000,0,ZoneOffset.ofHours(8));
+                Duration between = Duration.between(time,now);
+                StringBuffer sb=new StringBuffer();
+                // 求出相差的天数
+                long days = between.toDays();
+                // 获取年份数
+                int year= (int) (days/365);
+                System.out.println(now+"--"+time);
+                System.out.println(days);
+                // 若年份不等于0显示多少年
+                if (year>0){
+                    sb.append(year+"年");
+                }
+                // 获取除完年份剩下的天数
+                long day = days%365;
+
+                // 获取月份
+                int month=((int) (day%30))==0?(int) (day/30)+1:(int) (day/30);
+                sb.append(month+"月");
+                return sb.toString();
+            }
+        %>
+        // 加载作者简单信息，右侧
+        (function () {
+            $("#uname").text("<%=getUName(((User)user).getUname())%>");
+            $("#registerTime").text("简龄:<%=getResiterTime(((User)user).getRegisterTime())%>");
+            $("#profile").text("<%=((User)user).getProfile()%>");
+        })();
+
         // 验证信息是否填写正确
         form.verify({
             "title": function (value, item) {
@@ -150,6 +231,7 @@
             }
         });
 
+        // 提交发布
         form.on("submit(sendPost)", function () {
             // 获取富文本中的纯文本内容(不包含html标签)
             var text = edit.getText(editIndex);
@@ -170,6 +252,7 @@
             }
         });
 
+        // 封装发布文章
         function sendPost() {
             // 发布帖子
             console.log("发布帖子");

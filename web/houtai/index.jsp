@@ -7,6 +7,7 @@
     <title>简简书-后台管理</title>
     <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css">
     <script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <script type="application/javascript">
     layui.use(["jquery", "layer","element"], function () {

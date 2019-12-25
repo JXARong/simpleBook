@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <title></title>
 </head>
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
@@ -30,7 +31,6 @@
                 <a href="javascript:;"><img src="<%=request.getContextPath()%>/resources/userPhoto/${user.photo}" class="layui-nav-img"><span style="color: black">我</span></a>
                 <dl class="layui-nav-child">
                     <dd><a href="<%=request.getContextPath()%>/userInfo.jsp">个人信息</a></dd>
-                    <dd><a href="javascript:;">修改密码</a></dd>
                     <dd><a href="javascript:;">安全退出</a></dd>
                 </dl>
             </li>

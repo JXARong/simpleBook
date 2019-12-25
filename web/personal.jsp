@@ -12,7 +12,7 @@
 
 <head>
     <meta charset="utf-8">
-
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <title>${user.uname} - 简·简书</title>
 
     <link rel="stylesheet" href="/simpleBook/css/personal_two.css">

@@ -11,6 +11,7 @@
 <html>
 <head>
     <title></title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
 <script href=""></script>
 <script type="text/javascript">
