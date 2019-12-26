@@ -3,9 +3,14 @@ package com.bdqn.simplebook.web.servlets;
 
 import com.alibaba.fastjson.JSON;
 import com.bdqn.simplebook.domain.Post;
+import com.bdqn.simplebook.domain.Topic;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.PostService;
+import com.bdqn.simplebook.service.TopicService;
+import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.service.impl.PostServiceImpl;
+import com.bdqn.simplebook.service.impl.TopicServiceImpl;
+import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
@@ -304,5 +309,20 @@ public class PostServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(flag);
+    }
+
+    public void selectPostUserType(HttpServletRequest request,HttpServletResponse response) throws IOException{
+
+        TopicService topicServlet = new TopicServiceImpl();
+        UserService userService = new UserServiceImpl();
+        response.setCharacterEncoding("utf-8");
+        String search = request.getParameter("search");
+        List<Post> searchPostList = service.searchPost(search);
+        List<Topic> searchTopicList = topicServlet.searchTopic(search);
+        List<User> searchUserList = userService.searchUser(search);
+        request.setAttribute("searchPostList", searchPostList);
+        request.setAttribute("searchTopicList", searchTopicList);
+        request.setAttribute("searchUserList",searchUserList);
+        request.getRequestDispatcher("/simpleBook/search.jsp");
     }
 }

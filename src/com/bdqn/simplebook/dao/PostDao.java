@@ -124,4 +124,11 @@ public interface PostDao {
      * @return
      */
     int sendPost(Post post);
+
+    /**
+     * 文章搜索
+     * @param searchValue
+     * @return
+     */
+    List<Post> searchPost(String searchValue);
 }

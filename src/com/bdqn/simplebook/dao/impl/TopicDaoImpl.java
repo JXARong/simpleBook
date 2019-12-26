@@ -88,4 +88,11 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
         String sql="select * from topic ";
         return super.selectList(Topic.class,sql,null);
     }
+
+    @Override
+    public List<Topic> searchTopic(String searchValue) {
+        String sql = "select * from topic where topic like ?";
+        List<Topic> searchTopicList = super.selectList(Topic.class,sql,new Object[]{"%"+searchValue+"%"});
+        return searchTopicList;
+    }
 }

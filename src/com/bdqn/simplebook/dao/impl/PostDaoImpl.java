@@ -4,6 +4,7 @@ import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.PostDao;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
+import javafx.geometry.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -173,5 +174,12 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         String sql = "insert into post values(default,?,0,0,0.0,?,?,?,0,1,?,null,?)";
         return super.update(sql, new Object[]{post.getUid(), post.getSendDate(), post.getArticle(), post.getTitle(), post.getTopicId(),post.getTextNum()});
 
+    }
+
+    @Override
+    public List<Post> searchPost(String searchValue) {
+        String sql = "select * from post where title like ?";
+        List<Post> searchPostList = super.selectList(Post.class,sql,new Object[]{"%"+searchValue+"%"});
+        return searchPostList;
     }
 }

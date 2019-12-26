@@ -184,4 +184,9 @@ public class PostServiceImpl implements PostService {
         int favouriteByPid = new FavouriteServiceImpl().getFavouriteByPid(pid);
         return favouriteByPid;
     }
+
+    @Override
+    public List<Post> searchPost(String searchValue) {
+        return dao.searchPost(searchValue);
+    }
 }

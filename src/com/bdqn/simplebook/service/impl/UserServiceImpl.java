@@ -346,4 +346,9 @@ public class UserServiceImpl implements UserService {
         user.setFans(fansNum);
         user.setAttentionNum(attentionNum);
     }
+
+    @Override
+    public List<User> searchUser(String searchValue) {
+        return dao.searchUser(searchValue);
+    }
 }

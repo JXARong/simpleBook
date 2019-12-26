@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.bdqn.simplebook.domain.Post" %><%--
   Created by IntelliJ IDEA.
   User: 落雨丶
   Date: 2019/12/26
@@ -87,36 +87,61 @@
             <div class="search-content">
 
                 <ul class="note-list">
-                    <li>
-                        <div class="content">
-                            <div class="author">
-                                <a href="/u/67803d7e6c3b" target="_blank" class="avatar"><img
-                                        src="https://upload.jianshu.io/users/upload_avatars/1589374/c11fe4e68249.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp"></a>
-                                <div class="info">
-                                    <a href="/u/67803d7e6c3b" class="nickname">小白兔去钓鱼</a> <span class="time">
-            								2 年前
-          									</span></div>
+
+                    <c:forEach items="${searchPostList}" var="postList" varStatus="status">
+
+                        <li>
+
+                            <div class="content">
+                                <a href="" target="_blank" class="title">${postList.title}</a>
+                                <p class="abstract">
+                                    <%
+                                        Post post = (Post) pageContext.getAttribute("postList");
+                                        String article = post.getArticle().substring(0, 50);
+                                    %>
+                                    <%=article%>
+                                </p>
+                                <div class="meta">
+                                    <span target="_blank">
+                                        <i class="iconfont ic-list-read"></i> ${postList.readCount}
+                                    </span>
+                                    <span>
+                                    <i class="iconfont ic-list-like"></i> ${postList.start}
+                                </span>
+                                </div>
+
                             </div>
-                            <a href="/p/c07d6fcb155b" target="_blank" class="title">2018-06-25</a>
-                            <p class="abstract">……专业考题类型管理运行工作负责人一般作业考题内容选项<em class="search-result-highlight">A</em>选项B选项C选项D选项E选项F正确答案
-                                变电单选GYSZ本规程规定了工作人员在（ ）应遵守的安全要求。<em class="search-result-highlight">A</em>. 检修现场B. 运维现场C.
-                                作业现场D……. 抢修现场C 变电单选GYSZ低［电］压：用于配电的交流系统中（）的电压等级。<em
-                                        class="search-result-highlight">A</em>. 220V以下B. 220V及以下C. 1000V以下D. 1000V及以下D
-                                变电单选GYSZ高［电］压：<em class="search-result-highlight">a</em>）通常……指超过低压的电压等级。b）特定情况下，指电力系统中（
-                                ）的电压等级。<em class="search-result-highlight">A</em>. 输电B. 变电C. 配电D. 用电<em
-                                        class="search-result-highlight">A</em> 变电单选GYSZ为加强电力生产现场管理，规范（
-                                ），保证人身、电网和设备安全，依据国家……</p>
-                            <div class="meta">
-                                <a href="/p/c07d6fcb155b" target="_blank"><i class="iconfont ic-list-read"></i> 6015
-                                </a>
-                                <a href="/p/c07d6fcb155b#comments" target="_blank"><i
-                                        class="iconfont ic-list-comments"></i> 0
-                                </a> <span><i class="iconfont ic-list-like"></i> 4
-        									</span>
-                                <!---->
-                            </div>
-                        </div>
-                    </li>
+
+                        </li>
+
+                    </c:forEach>
+
+                    <%--                    <li>--%>
+                    <%--                        <div class="content">--%>
+                    <%--                            <a href="" target="_blank" class="title">这个题目</a>--%>
+                    <%--                            <p class="abstract">--%>
+                    <%--                                ……专业考题类型管理运行工作负责人一般作业考题内容选项<em class="search-result-highlight">A</em>选项B选项C选项D选项E选项F正确答案--%>
+                    <%--                                变电单选GYSZ本规程规定了工作人员在（ ）应遵守的安全要求。<em class="search-result-highlight">A</em>. 检修现场B. 运维现场C.--%>
+                    <%--                                作业现场D……. 抢修现场C 变电单选GYSZ低［电］压：用于配电的交流系统中（）的电压等级。<em--%>
+                    <%--                                        class="search-result-highlight">A</em>. 220V以下B. 220V及以下C. 1000V以下D. 1000V及以下D--%>
+                    <%--                                变电单选GYSZ高［电］压：<em class="search-result-highlight">a</em>）通常……指超过低压的电压等级。b）特定情况下，指电力系统中（--%>
+                    <%--                                ）的电压等级。<em class="search-result-highlight">A</em>. 输电B. 变电C. 配电D. 用电<em--%>
+                    <%--                                        class="search-result-highlight">A</em> 变电单选GYSZ为加强电力生产现场管理，规范（--%>
+                    <%--                                ），保证人身、电网和设备安全，依据国家……--%>
+                    <%--                            </p>--%>
+                    <%--                            <div class="meta">--%>
+                    <%--                                <a href="/p/c07d6fcb155b" target="_blank">--%>
+                    <%--                                    <i class="iconfont ic-list-read"></i> 6015--%>
+                    <%--                                </a>--%>
+                    <%--                                <a href="/p/c07d6fcb155b#comments" target="_blank">--%>
+                    <%--                                    <i class="iconfont ic-list-comments"></i> 0--%>
+                    <%--                                </a>--%>
+                    <%--                                <span>--%>
+                    <%--                                    <i class="iconfont ic-list-like"></i> 4--%>
+                    <%--                                </span>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </li>--%>
 
                 </ul>
             </div>
@@ -125,20 +150,47 @@
         <div class="col-xs-16 col-xs-offset-8 main" id="userlist" style="display: none;">
             <div class="search-content">
                 <ul class="user-list">
-                    <li>
-                        <a href="/u/a79572799f73" target="_blank" class="avatar"><img
-                                src="https://upload.jianshu.io/users/upload_avatars/2733509/503df8760ba4?imageMogr2/auto-orient/strip|imageView2/1/w/144/h/144/format/webp"></a>
-                        <div class="info">
-                            <a href="/u/a79572799f73" target="_blank" class="name">
-                                a__
+
+                    <c:forEach items="${searchUserList}" var="userList" varStatus="status">
+
+                        <li>
+                            <a href="" target="_blank" class="avatar">
+                                <img src="/simpleBook/resources/userPhoto/${userList.photo}">
                             </a>
-                            <div class="meta"><span>关注 0</span> <span>粉丝 2</span> <span>文章 0</span></div>
-                            <div class="meta"><span>
-        							写了 0 字，获得了 0 个喜欢
-        							</span></div>
-                        </div>
-                        <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
-                    </li>
+                            <div class="info">
+                                <a href="" target="_blank" class="name">
+                                        ${userList.uname}
+                                </a>
+                                <div class="meta">
+                                    <span>关注${userList.attentionNum}</span>
+                                    <span>粉丝${userList.fans}</span>
+                                    <span>文章${userList.posts}</span>
+                                </div>
+                                <div class="meta">
+                                    <span>
+                                        写了 ${userList.textCount} 字，获得了 ${userList.favouriteNum} 个喜欢
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+
+                    </c:forEach>
+
+<%--                    <li>--%>
+<%--                        <a href="/u/a79572799f73" target="_blank" class="avatar"><img--%>
+<%--                                src="https://upload.jianshu.io/users/upload_avatars/2733509/503df8760ba4?imageMogr2/auto-orient/strip|imageView2/1/w/144/h/144/format/webp"></a>--%>
+<%--                        <div class="info">--%>
+<%--                            <a href="/u/a79572799f73" target="_blank" class="name">--%>
+<%--                                a__--%>
+<%--                            </a>--%>
+<%--                            <div class="meta"><span>关注 0</span> <span>粉丝 2</span> <span>文章 0</span></div>--%>
+<%--                            <div class="meta">--%>
+<%--                                <span>--%>
+<%--        							写了 0 字，获得了 0 个喜欢--%>
+<%--                                </span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
                 </ul>
             </div>
         </div>
@@ -146,18 +198,39 @@
         <div class="col-xs-16 col-xs-offset-8 main" id="typelist" style="display: none;">
             <div class="search-content">
                 <ul class="user-list">
-                    <li>
-                        <a href="/c/GQ5FAs" target="_blank" class="avatar-collection"><img
-                                src="https://upload.jianshu.io/collections/images/49/66ba9fdegw1e61syw6tk6j20bj0go0wo.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/144/h/144/format/webp"></a>
+
+                    <c:forEach items="${searchTopicList}" var="topicList" varStatus="status">
+
+                        <span target="_blank" class="avatar-collection">
+                            <img src="/simpleBook/resources/topic/${topicList.topicPicture}">
+                        </span>
                         <div class="info">
-                            <a href="/c/GQ5FAs" target="_blank" class="name">
-                                谈谈情，说说爱
-                            </a>
-                            <div class="meta"><span>
-        							收录了 80872 篇文章，1166976 人关注
-        							</span></div>
+                            <span target="_blank" class="name">
+                                ${topicList.topic}
+                            </span>
+                            <div class="meta">
+                                <span>
+                                    收录了 ${topicList.topicPost} 篇文章，${topicList.topicFollow} 人关注
+                                </span>
+                            </div>
                         </div>
-                    </li>
+
+                    </c:forEach>
+
+<%--                    <li>--%>
+<%--                        <a href="/c/GQ5FAs" target="_blank" class="avatar-collection"><img--%>
+<%--                                src="https://upload.jianshu.io/collections/images/49/66ba9fdegw1e61syw6tk6j20bj0go0wo.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/144/h/144/format/webp"></a>--%>
+<%--                        <div class="info">--%>
+<%--                            <a href="/c/GQ5FAs" target="_blank" class="name">--%>
+<%--                                谈谈情，说说爱--%>
+<%--                            </a>--%>
+<%--                            <div class="meta">--%>
+<%--                                <span>--%>
+<%--        							收录了 80872 篇文章，1166976 人关注--%>
+<%--                                </span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
                 </ul>
             </div>
         </div>

@@ -30,10 +30,19 @@
                         </a>
                     </li>
                     <li class="search">
-                        <form target="_blank" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;"/>
-                            <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索"
-                                   class="search-input"/>
-                            <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+                        <form target="_blank" action="" accept-charset="UTF-8" method="get">
+                            <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input"/>
+                            <a class="search-btn" onclick="tiaozhuan()">
+                                <i class="iconfont ic-search"></i>
+                            </a>
+                            <script>
+                                function tiaozhuan() {
+
+                                    var search = document.getElementById("q").value;
+
+                                    window.location.href="/simpleBook/post/selectPostUserType?search="+encodeURI(search);
+                                }
+                            </script>
                         </form>
                     </li>
                 </ul>
