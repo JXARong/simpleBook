@@ -141,7 +141,7 @@
                                     </li>
 
                                     <li class="layui-col-xs3">
-                                        <a href="/simpleBook/admin/logout">
+                                        <a id="logout" href="javascript:void(0)">
                                             <i class="layui-icon layui-icon-set"></i>
                                             <cite>安全退出</cite>
                                         </a>
@@ -309,6 +309,25 @@
                 layer.msg("服务器繁忙，获取数据失败",{icon:2});
             }
         });
+
+        // 安全退出
+        $("#logout").on("click", function () {
+            layer.open({
+                title: "安全退出",
+                content: "确认退出吗？退出将会转跳至登录页面",
+                btn: ["确定", "取消"],
+                btn1: function () {
+                    $.ajax({
+                        url: "/simpleBook/admin/logout",
+                        success: function (data) {
+                            parent.location.href = "/simpleBook/houtai/login.html";
+                        }, error: function () {
+                            layer.msg("服务器繁忙,请刷新后重试")
+                        }
+                    })
+                }
+            });
+        })
 
         // 加载图标
         function loadEcharts(data){

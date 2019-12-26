@@ -373,10 +373,10 @@
         window.onload = function () {
             document.getElementsByClassName("left_style")[0].onclick = function () {
                 alert("666");
-            }
+            };
             document.getElementsByClassName("left_style")[1].onclick = function () {
                 alert("777");
-            }
+            };
             document.getElementsByClassName("left_style")[2].onclick = function () {
                 var time = setInterval(function () {
                     var top = document.body.scrollTop || document.documentElement.scrollTop;
@@ -387,7 +387,7 @@
                     }
                 }, 1)
             }
-        }
+        };
         var fixedDom = document.getElementsByClassName("reading")[0];
         window.onscroll = function () {
             if (document.body.scrollTop >= 100) {
@@ -395,7 +395,7 @@
             } else {
                 fixedDom.style.position = "relative";
             }
-        }
+        };
         var riview = document.getElementById("riview");
         riview.onfocus = function () {
             alert(666)
@@ -403,6 +403,13 @@
     </script>
 </head>
 <body>
+<%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${user==null}">
+    <jsp:include page="header.jsp"/>
+</c:if>
+<c:if test="${user!=null}">
+    <jsp:include page="header2.jsp"/>
+</c:if>--%>
 
 <header class="header">
     <div class="header_left">
@@ -433,6 +440,7 @@
         </div>
     </div>
 </header>
+
 <div class="middle">
     <div class="fill"></div>
     <div class="hidden">

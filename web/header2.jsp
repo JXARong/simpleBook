@@ -1,16 +1,16 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="css/geren1.css" />
-		<link rel="stylesheet" href="css/geren2.css" />
-		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<link rel="stylesheet" href="/simpleBook/css/personal_one.css" />
+		<link rel="stylesheet" href="/simpleBook/css/personal_two.css" />
+		<script type="text/javascript" src="/simpleBook/js/jquery-1.12.4.min.js" ></script>
 	</head>
 	
 	<script>
-		
 		$(function() {
 			$("#userlog").hover(function() {
 				$("#userlog").removeClass("user");
@@ -27,38 +27,38 @@
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="width-limit">
 				<!-- 左上方 Logo -->
-				<a class="logo" href="/"><img src="img/jianjianshulogo.png" alt="Nav logo" /></a>
+				<a class="logo" href="/simpleBook/index.jsp"><img src="/simpleBook/images/jianjianshulogo.png" alt="Nav logo" /></a>
 
 				<!-- 右上角 -->
 				<!-- 登录显示写文章 -->
-				<a class="btn write-btn" target="_blank" href="/writer#/">
+				<a class="btn write-btn" target="_blank" href="/simpleBook/writePost.jsp">
 					<i class="iconfont ic-write"></i>写文章
 				</a>
 				<!-- 如果用户登录，显示下拉菜单 -->
 				<div class="user" id="userlog">
 					<div data-hover="dropdown">
-						<a class="avatar" href="">
-							<img src="img/qq.png" alt="120" />
+						<a class="avatar" href="/simpleBook/personal.jsp">
+							<img src="/simpleBook/resources/userPhoto/${user.photo}" alt="120" />
 						</a>
 					</div>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="">
+							<a href="/simpleBook/personal.jsp">
 								<i class="iconfont ic-navigation-profile"></i><span>我的主页</span>
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="/simpleBook/userInfo.jsp">
 								<i class="iconfont ic-navigation-settings"></i><span>设置</span>
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="/simpleBook/problem.html">
 								<i class="iconfont ic-navigation-feedback"></i><span>帮助与反馈</span>
 							</a>
 						</li>
 						<li>
-							<a rel="nofollow" data-method="delete" href="">
+							<a rel="nofollow" data-method="delete" href="/simpleBook/user/loginOut">
 								<i class="iconfont ic-navigation-signout"></i>
 								<span>退出</span>
 							</a>
