@@ -2,7 +2,6 @@ package com.bdqn.simplebook.dao.impl;
 
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.RelationDao;
-import com.bdqn.simplebook.dao.ReportDao;
 import com.bdqn.simplebook.domain.User;
 
 /**
@@ -40,15 +39,34 @@ public class RelationDaoImpl extends BaseDao implements RelationDao {
 
     @Override
     public int queryRelationUid(User user) {
-        String sql = "select count(rid) from relation where cid = ?";
+        String sql = "select count(*) from relation where cid = ?";
         Object num = super.getCount(sql,new Object[]{user.getUid()});
-        return (int)num;
+        return Integer.valueOf(String.valueOf(num));
     }
 
     @Override
     public int queryRelationCid(User user) {
-        String sql = "select count(cid) form relation where uid = ?";
-        int num = (int)super.getCount(sql,new Object[]{user.getUid()});
-        return num;
+        String sql = "select count(*) from relation where uid = ?";
+        Object num = super.getCount(sql,new Object[]{user.getUid()});
+        return Integer.valueOf(String.valueOf(num));
+    }
+
+    @Override
+    public int verifyIsRelation(Integer uid, Integer cid) {
+        String sql="select count(*) from relation where uid = ? and cid = ?";
+        Object count = super.getCount(sql, new Object[]{uid, cid});
+        return Integer.valueOf(String.valueOf(count));
+    }
+
+    @Override
+    public int addRelational(Integer cid, Integer uid) {
+        String sql="insert into relation values(default,?,?)";
+        return super.update(sql,new Object[]{uid,cid});
+    }
+
+    @Override
+    public int cancel(Integer cid, Integer uid) {
+        String sql="delete from relation where cid = ? and uid = ?";
+        return super.update(sql,new Object[]{cid,uid});
     }
 }

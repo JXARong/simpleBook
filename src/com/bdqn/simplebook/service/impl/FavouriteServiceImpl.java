@@ -21,4 +21,9 @@ public class FavouriteServiceImpl implements FavouriteService {
         int i = dao.getFavouriteUser(user);
         return i;
     }
+
+    @Override
+    public int getFavouriteByPid(Integer pid) {
+        return dao.getFavouriteByPid(pid);
+    }
 }

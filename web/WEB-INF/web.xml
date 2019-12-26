@@ -69,10 +69,10 @@
         <servlet-name>comments</servlet-name>
         <servlet-class>com.bdqn.simplebook.web.servlets.CommentServlet</servlet-class>
     </servlet>
-<servlet-mapping>
-    <servlet-name>comments</servlet-name>
-    <url-pattern>/comments/*</url-pattern>
-</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>comments</servlet-name>
+        <url-pattern>/comments/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>commons_like</servlet-name>
         <servlet-class>com.bdqn.simplebook.web.servlets.Commons_LikeServlet</servlet-class>
@@ -99,4 +99,5 @@
         <servlet-name>photo</servlet-name>
         <url-pattern>/photo/*</url-pattern>
     </servlet-mapping>
+
 </web-app>

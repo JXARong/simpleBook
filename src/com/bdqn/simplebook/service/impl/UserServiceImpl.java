@@ -6,6 +6,7 @@ import com.bdqn.simplebook.dao.impl.*;
 import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
+import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.utils.ConstantUtils;
 import com.bdqn.simplebook.utils.NumberUtils;
@@ -25,7 +26,7 @@ import java.util.Random;
  * @since: JDK1.8
  * @packageName: com.bdqn.simplebook.service.impl
  */
-public class UserServiceImpl  implements UserService {
+public class UserServiceImpl implements UserService {
 
     /**
      * 用户dao访问接口
@@ -60,20 +61,20 @@ public class UserServiceImpl  implements UserService {
     /**
      * 评论点赞表
      */
-    private Commons_LikeDao commons_likeDao=new Commons_LikeDaoImpl();
-  
-  
+    private Commons_LikeDao commons_likeDao = new Commons_LikeDaoImpl();
+
+
     /**
      * 查询首页的所有用户
      */
-  @Override
+    @Override
     public List<User> selectIndexUser() throws Exception {
-        List<User>users=dao.selectIndexUser();
-        if(users==null){
-            throw  new  RuntimeException("用户为空，未查到数据");
+        List<User> users = dao.selectIndexUser();
+        if (users == null) {
+            throw new RuntimeException("用户为空，未查到数据");
         }
         return users;
-      }
+    }
 
     /**
      * 添加用户
@@ -148,19 +149,58 @@ public class UserServiceImpl  implements UserService {
      * @return
      */
     @Override
-    public PageUtils selUserByPage(PageUtils page, User user,String borthday) {
+    public PageUtils selUserByPage(PageUtils page, User user, String borthday) {
        /*
        查询指定页数中的数据
        startNum = (pageNum-1)*limit
        */
-        List<User> users = dao.selUserByPage((page.getPageNum() - 1) * page.getLimit(), page.getLimit(), user,borthday);
+        List<User> users = dao.selUserByPage((page.getPageNum() - 1) * page.getLimit(), page.getLimit(), user, borthday);
         if (users.size() == 0) {
             page.setMsg("暂无相关数据");
+        }
+        // 查询该用户的所有文章
+        for (User user1 : users) {
+            List<Post> posts = postDao.selPostByUid(user);
+            user1.setPosts(posts);
+            // 查询粉丝数量以及关注数量
+            this.selInfoOfUser(user1);
+            // 查询喜爱文章人数
+            int num = this.selFavouriteNum(user1);
+            int textNum = this.selTextNum(posts);
+            user1.setFavouriteNum(num);
+            user1.setTextCount(textNum);
         }
         Long count = dao.selUserCount(user, borthday);
         page.setData(users);
         page.setCount(Integer.valueOf(count.toString()));
         return page;
+    }
+
+    /**
+     * 查询所有文章字数
+     * @param posts
+     * @return
+     */
+    private int selTextNum(List<Post> posts) {
+        int num = 0;
+        System.out.println(posts);
+        for (Post post : posts) {
+
+            num += post.getTextNum();
+
+        }
+        return num;
+    }
+
+    private int selFavouriteNum(User user1) {
+        int num = 0;
+        PostService service = new PostServiceImpl();
+        for (Post post : user1.getPosts()) {
+            Integer pid = post.getPid();
+            int i = service.selFavouriteByPid(pid);
+            num += i;
+        }
+        return num;
     }
 
     /**
@@ -235,7 +275,7 @@ public class UserServiceImpl  implements UserService {
     public int register(User user) throws Exception {
         int random = Integer.valueOf(NumberUtils.createRandomNumber(8));
         for (User i : dao.queryUser()) {
-            if (random == i.getUid()){
+            if (random == i.getUid()) {
                 random = Integer.valueOf(NumberUtils.createRandomNumber(8));
             }
         }
@@ -250,33 +290,60 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public User login(String emailOruname, String pwd) throws Exception {
-        return dao.login(emailOruname,pwd);
+        User login = dao.login(emailOruname, pwd);
+        return login;
     }
 
     /**
-     *  获取今天的用户注册数量
+     * 获取今天的用户注册数量
+     *
      * @return
      */
     @Override
     public Long selUserCountOfToday() {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String format = sdf.format(new Date());
         System.out.println(format);
         return dao.selUserCountOfToday(format);
     }
 
     /**
-     *  获取用户总数量
+     * 获取用户总数量
+     *
      * @return
      */
     @Override
     public Long selUserCountOfAll() {
         Long all = dao.selUserCountOfAll();
-        return  all;
+        return all;
     }
 
     @Override
-    public User selUserById(Integer id) {
-        return dao.selUserById(id);
+    public User selUserById(Integer id) throws Exception {
+        User user = dao.selUserById(id);
+        if (user == null || user.getUid() == null) {
+            throw new Exception("暂无查询到信息");
+        }
+        List<Post> posts = postDao.selPostByUid(user);
+        user.setPosts(posts);
+        return user;
+    }
+
+    /**
+     * 查询一对多关系
+     *
+     * @param user
+     */
+    public void selInfoOfUser(User user) {
+
+        // 查询该用户的粉丝数
+        int fansNum = relationDao.queryRelationUid(user);
+
+        // 查询该用户关注人数
+        int attentionNum = relationDao.queryRelationCid(user);
+
+
+        user.setFans(fansNum);
+        user.setAttentionNum(attentionNum);
     }
 }

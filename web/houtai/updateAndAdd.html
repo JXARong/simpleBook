@@ -5,8 +5,7 @@
     <title>用户修改与添加</title>
     <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 </head>
-<script src="/simpleBook/js/jquery-1.12.4.min.js" type="application/javascript"></script>
-<script src="/simpleBook/js/laydate/laydate.js"></script>
+<script src="/simpleBook/js/jquery-1.12.4.min.js" type="text/javascript"></script>
 <script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" media="all">
 <body>
@@ -21,7 +20,8 @@
             , $ = layui.jquery;
 
         date.render({
-            elem: "#bornthDay",
+            elem: ".bornth",
+            trigger: 'click',
             type:"datetime"
         });
 
@@ -174,7 +174,7 @@
             <label class="layui-form-label">出生日期</label>
             <div class="layui-input-inline">
                 <input type="text" name="bornthDay" id="bornthDay" placeholder="yyyy-MM-dd HH:mm:ss"
-                       value="" autocomplete="off" class="layui-input">
+                       value=""  class="layui-input bornth">
             </div>
         </div>
     </div>

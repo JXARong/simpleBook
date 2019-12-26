@@ -1,9 +1,6 @@
 package com.bdqn.simplebook.domain;
 
-import jdk.net.SocketFlow;
-
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @author: 赖榕
@@ -27,6 +24,15 @@ public class Post {
     private Integer topicId;  // 主题编号
     private Topic topic; // 主题信息
     private User user; // 发布人信息
+    private Integer textNum; //  该文章的文字数量
+
+    public Integer getTextNum() {
+        return textNum;
+    }
+
+    public void setTextNum(Integer textNum) {
+        this.textNum = textNum;
+    }
 
     public Integer getPid() {
         return pid;
