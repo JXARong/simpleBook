@@ -5,71 +5,25 @@
     <title>标题显示</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <script type="text/javascript" src="/simpleBook/js/tagcloud.js"></script>
     <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
     <link type="text/css" rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" media="all"/>
 
-    <style type="text/css">
-
-        .wrapper {
-            width: 50%;
-            height: 50%;
-            margin: 0 auto;
+    <script type="text/html" id="delete">
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" id="delPost">删除</a>
+    </script>
+    <script type="text/html" id="img">
+        <div>
+            <img src="/simpleBook/resources/topic/{{d.topicPicture}}" height="60px" alt="暂无缩略图"/>
+        </div>
+    </script>
+    <style>
+        .laytable-cell-1-img {
+            height: 100%;
+            max-width: 100%;
         }
-
-        .wrapper p {
-            padding-top: 150px;
-            line-height: 27px;
-            color: #999;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .tagcloud {
-            position: relative;
-            margin-top: -150px;
-        }
-
-        .tagcloud a {
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: block;
-            padding: 11px 30px;
-            color: #333;
-            font-size: 16px;
-            border: 1px solid #e6e7e8;
-            border-radius: 18px;
-            background-color: #f2f4f8;
-            text-decoration: none;
-            white-space: nowrap;
-            -o-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
-            -ms-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
-            -moz-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
-            -webkit-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
-            box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
-            -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')"; /*兼容ie7/8*/
-            filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
-            /*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
-        }
-
-        .tagcloud a:hover {
-            color: #3385cf;
-        }
-
-        .layui-card-body {
-            position: relative;
-        }
-
-        .tagcloud {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
     </style>
-
 </head>
 <body>
 <div class="layui-card" style="height: 60%; width: 97%;margin: 0 auto;margin-top: 15px">
@@ -90,86 +44,109 @@
     </div>
 
     <div class="layui-card-body">
-        <div class="wrapper" style="margin-top: 400px">
-            <div class="tagcloud" id="tag">
 
-            </div>
-        </div>
+        <table class="layui-table" id="topic" lay-filter="topic"></table>
     </div>
 </div>
 
 <script type="text/javascript">
-
-    // 渲染标签云
-    function ren() {
-        /*3D标签云*/
-        tagcloud({
-            selector: ".tagcloud",  //元素选择器
-            fontsize: 16,       //基本字体大小, 单位px
-            radius: 140,         //滚动半径, 单位px
-            mspeed: "normal",   //滚动最大速度, 取值: slow, normal(默认), fast
-            ispeed: "normal",   //滚动初速度, 取值: slow, normal(默认), fast
-            direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
-            keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
-        });
-    }
-
-
-    layui.use(['jquery', 'form', 'element', 'layer'], function () {
+    layui.use(['jquery', 'form', 'element', 'layer', 'table'], function () {
         var $ = layui.jquery,
             form = layui.form,
             element = layui.element,
-            layer = layui.layer;
+            layer = layui.layer,
+            table = layui.table;
         element.render();
+        table.render({
+            elem: "#topic",
+            url: "/simpleBook/topic/selectTopic",
+            id: "topic",
+            cols: [[
+                {field: 'topicId', width: 100, title: "主题编号"},
+                {field: 'topic', width: 100, edit: 'text', title: "主题名称"},
+                {field: 'topicPicture', minWidth: 110, templet: '#img', title: "主题缩略图"},
+                {field: 'topicPost', width: 120, title: "文章数量", templet: "<span>{{d.topicPost}}篇</span>"},
+                {field: 'topicFollow', minWidth: 100, title: "关注人数", templet: "<span>{{d.topicFollow}}人</span>"},
+                {width: 100, toolbar: "#delete", title: "操作"}
+            ]],
+            page: true,
+            limits: [5, 10, 15],
+            limit: 5,
+            loading: true,
+            text: {none: "暂无相关数据"},
+            done: function (res, curr, count) {
+                $(".layui-table-cell").css({"height": "auto", "text-align": "center"})
+            }
+        });
 
-        // 加载标签云
-        function loadTag() {
+        //监听单元格编辑
+        table.on('edit(topic)', function (obj) {
+            var data = obj.data; //得到所在行所有键值对
+            if (data["topic"] == null || data["topic"] == '') {
+                layer.msg("主题名称不能为空");
+                return;
+            }
+            var isExists=true;
             $.ajax({
-                url: '/simpleBook/topic/selectTopic',
-                method: "post",
+                url: "/simpleBook/topic/selTopicByName",
+                data: {topic: data["topic"]},
+                type: "post",
+                async: false,
                 success: function (data) {
-                    if (data.flag == true) {
-                        // 清空标签云中的代码
-                        $("#tag").html("");
-                        $.each(data.data, function (i, o) {
-                            $("#tag").append($("<a href='javascript:void(0)'>" + o.topic + "</a>"));
-                        });
-                        // 重新渲染标签云
-                        ren();
-                    } else {
-                        layer.msg(data.errorMsg, {icon: 2});
-                    }
-                }, error: function () {
-                    layer.msg("服务器繁忙，请稍后重试", {icon: 2});
-                }
-            })
-        }
-
-        loadTag();
-
-        $("#add").on("click", function () {
-            var topicName = $("#topicName").val();
-            $.ajax({
-                url: "/simpleBook/topic/addTopic",
-                data: {topicName: topicName},
-                method: "post",
-                success: function (data) {
-                        if (data.flag==true){
-                            layer.msg(data.msg,{icon:1});
-                            // 添加成功重试获取所有最新的主题显示
-
-                        } else{
-                            layer.msg(data.errorMsg,{icon:2});
-                        }
-                }, error: function () {
-                    layer.msg("服务器繁忙，请稍后再试",{icon:2});
+                    console.log(data);
+                    isExists=data;
                 }
             });
-            return false;
-        })
+            if(!isExists){
+                layer.alert("该主题已存在，请勿重复添加",{icon:2});
+                reload();
+                return;
+            }
+            $.ajax({
+                url: "/simpleBook/topic/updateTopic",
+                type: "post",
+                async:false,
+                data: {topic: data["topic"], topicId: data["topicId"]},
+                success: function (data) {
+                    if (data.flag) {
+                        layer.msg(data.msg);
+                        reload();
+                    } else {
+                        layer.msg(data.errorMsg);
+                    }
+                }
+            })
+        });
 
+        //删除主题
+        table.on('tool(topic)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.confirm('确定删除该主题以及该主题下的所有文章吗?', function (index) {
+                    $.ajax({
+                        url: "/simpleBook/topic/delTopicById",
+                        type: "post",
+                        data: {topicId: data["topicId"]},
+                        success: function (data) {
+                            if (data) {
+                                layer.alert("删除成功", {icon: 1});
+                                reload();
+                            }
+                        }
+                    });
+                });
+            }
+        });
+
+        // 重新加载表格
+        function reload() {
+            table.reload('topic', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        }
     });
-
 </script>
 
 </body>

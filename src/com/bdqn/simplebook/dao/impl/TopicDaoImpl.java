@@ -2,7 +2,6 @@ package com.bdqn.simplebook.dao.impl;
 
 import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.TopicDao;
-import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.Topic;
 
 import java.util.List;
@@ -34,9 +33,9 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
      * @return
      */
     @Override
-    public List<Topic> selTopicOfAll() {
-        String sql="select * from topic";
-        List<Topic> topics = super.selectList(Topic.class, sql, null);
+    public List<Topic> selTopicOfAll(Integer pageNo,Integer limit) {
+        String sql="select * from topic limit ?,?";
+        List<Topic> topics = super.selectList(Topic.class, sql, new Object[]{(pageNo-1)*limit,limit});
         return topics;
     }
 
@@ -52,6 +51,13 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
         return selectOne;
     }
 
+    @Override
+    public Long selTopicCount() {
+        String sql="select count(*) from topic";
+        Object count = super.getCount(sql, null);
+        return (Long) count;
+    }
+
     /**
      *  添加主题
      * @param topic
@@ -62,5 +68,24 @@ public class TopicDaoImpl extends BaseDao implements TopicDao {
         String sql="insert into topic values(default,?)";
         int update = super.update(sql, new Object[]{topic.getTopic()});
         return update;
+    }
+
+    @Override
+    public int updTopic(Topic topic) {
+        String sql="update topic set topic = ? where topicid = ?";
+        int index = super.update(sql, new Object[]{topic.getTopic(), topic.getTopicId()});
+        return index;
+    }
+
+    @Override
+    public int delTopicById(Integer id) {
+        String sql="delete from topic where topicId =?";
+        return super.update(sql, new Object[]{id});
+    }
+
+    @Override
+    public List<Topic> selAllTopic() {
+        String sql="select * from topic ";
+        return super.selectList(Topic.class,sql,null);
     }
 }

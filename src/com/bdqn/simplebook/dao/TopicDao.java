@@ -1,6 +1,5 @@
 package com.bdqn.simplebook.dao;
 
-import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.Topic;
 
 import java.util.List;
@@ -16,9 +15,18 @@ import java.util.List;
 public interface TopicDao {
     Topic selTopicById(Integer id);
 
-    List<Topic> selTopicOfAll();
+    List<Topic> selTopicOfAll(Integer pageNo,Integer limit);
 
     Topic selTopicByName(String topic);
 
     int addTopic(Topic topic);
+
+    Long selTopicCount();
+
+    int updTopic(Topic topic);
+
+    int delTopicById(Integer id);
+
+    List<Topic> selAllTopic();
+
 }

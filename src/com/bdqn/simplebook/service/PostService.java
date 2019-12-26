@@ -1,12 +1,10 @@
 package com.bdqn.simplebook.service;
 
 import com.bdqn.simplebook.domain.Post;
-
-
-import java.util.List;
-
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.utils.PageUtils;
+
+import java.util.List;
 
 
 /**
@@ -33,7 +31,19 @@ public interface PostService {
 
     PageUtils selPostListOfTop(PageUtils pageUtils);
 
+    List<Post> selPostByTid(Integer tid);
+
     int getPostUser(User user);
 
-    List<Post> getPostByUid(User user);
+    Long getCountByTid(Integer topicId);
+
+    List<Post> selPostByUIdOfTop10(Integer uid);
+
+    /**
+     * 发布文章
+     * @param post
+     * @return
+     */
+    int sendPost(Post post);
+
 }

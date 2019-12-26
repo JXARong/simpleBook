@@ -5,7 +5,6 @@ import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.UserService;
 import com.bdqn.simplebook.service.impl.UserServiceImpl;
 import com.bdqn.simplebook.utils.AjaxUtils;
-import com.bdqn.simplebook.utils.NumberUtils;
 import com.bdqn.simplebook.utils.PageUtils;
 import com.bdqn.simplebook.utils.UUIDUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -14,7 +13,6 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import javax.mail.Session;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,8 +62,17 @@ public class UserServlet extends BaseServlet {
         user.setSex(Integer.parseInt(request.getParameter("sex")));
         user.setBornthDay(Timestamp.valueOf(request.getParameter("bornthDay")));
         user.setPhoto(request.getParameter("filePath"));
+        user.setRegisterTime(Timestamp.valueOf(request.getParameter("registerTime")));
         user.setMoney(Double.valueOf(request.getParameter("money")));
-        user.setStatus(Integer.valueOf(request.getParameter("status")));
+        if (request.getParameter("status")==null){
+            user.setStatus(1);
+        }else{
+            user.setStatus(Integer.valueOf(request.getParameter("status")));
+        }
+        user.setIntroduce(request.getParameter("profile"));
+
+        System.out.println(user);
+
         // 判断是否包含id值，有则调用修改方法，否则调用添加方法
         String id = request.getParameter("uid");
         if (id != null && id.trim().length() > 0) {
@@ -75,6 +82,8 @@ public class UserServlet extends BaseServlet {
                 if (index >= 1) {
                     ajaxUtils.setFlag(true);
                     ajaxUtils.setMsg("用户信息修改成功");
+                    User user1 = service.selUserById(user.getUid());
+                    request.getSession().setAttribute("user",user1);
                 } else {
                     ajaxUtils.setFlag(false);
                     ajaxUtils.setErrorMsg("修改失败");
@@ -142,6 +151,10 @@ public class UserServlet extends BaseServlet {
                     }
                     ajaxUtils.setFlag(true);
                     ajaxUtils.setData(file.getName());
+                    // 更新session作用域中的用户头像
+                    User user = (User) request.getSession().getAttribute("user");
+                    user.setPhoto(file.getName());
+                    request.getSession().setAttribute("user",user);
                 }
             }
         } catch (FileUploadException e) {
@@ -321,6 +334,7 @@ public class UserServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         try {
             List<User> getAllUserList = service.selectIndexUser();
+            System.out.println(getAllUserList);
             String uname = request.getParameter("uname");
             for (User userList :getAllUserList){
                 if (uname.equals(userList.getUname())){
@@ -365,5 +379,24 @@ public class UserServlet extends BaseServlet {
         }
         String json = JSON.toJSONString(ajaxUtils);
         response.getWriter().write(json);
+    }
+
+    public void loginOut(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        request.getSession().removeAttribute("user");
+        response.sendRedirect(request.getContextPath()+"/index.jsp");
+    }
+
+    public void verifyPwd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String pwd = request.getParameter("pwd");
+        User user = (User) request.getSession().getAttribute("user");
+        boolean flag = false;
+        if (user.getPassword().equals(pwd)){
+            flag=true;
+        }
+        response.getWriter().write(JSON.toJSONString(flag));
+    }
+
+    public void changePwd(HttpServletRequest request,HttpServletResponse response){
+
     }
 }

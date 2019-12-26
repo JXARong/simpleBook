@@ -6,13 +6,12 @@ import com.bdqn.simplebook.dao.impl.*;
 import com.bdqn.simplebook.domain.Comments;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.Topic;
-
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.utils.PageUtils;
 
-import java.util.List;
-
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -24,8 +23,6 @@ import java.util.List;
  * @packageName: com.bdqn.simplebook.service.impl
  */
 public class PostServiceImpl implements PostService {
-
-
 
 
     /**
@@ -46,7 +43,7 @@ public class PostServiceImpl implements PostService {
 
     private FavouriteDao favouriteDao = new FavouriteDaoImpl();
 
-    private UserDao userDao=new UserDaoImpl();
+    private UserDao userDao = new UserDaoImpl();
 
     @Override
     public List<Post> selectAllPost() throws Exception {
@@ -57,6 +54,7 @@ public class PostServiceImpl implements PostService {
         }
         return posts;
     }
+
     /**
      * 查询post(post中可以携带参数)
      *
@@ -66,8 +64,8 @@ public class PostServiceImpl implements PostService {
      * @throws Exception
      */
     @Override
-    public PageUtils selPostByPage(PageUtils pageUtils, Post post,String sendDate) throws Exception {
-        List<Post> posts = dao.selPostByPage((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit(), post,sendDate);
+    public PageUtils selPostByPage(PageUtils pageUtils, Post post, String sendDate) throws Exception {
+        List<Post> posts = dao.selPostByPage((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit(), post, sendDate);
         if (posts == null || posts.size() == 0) {
             throw new Exception("暂无相关数据");
         } else {
@@ -127,13 +125,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<Post> selPostByTid(Integer tid) {
+        List<Post> posts = dao.selPostByTid(tid);
+        for (Post post : posts) {
+            this.setTopicAndUser(post);
+        }
+        return posts;
+    }
+
+    @Override
     public PageUtils selPostListOfTop(PageUtils pageUtils) {
-        List<Post> list= dao.selPostOfTop((pageUtils.getPageNum()-1)*pageUtils.getLimit(),pageUtils.getLimit());
+        List<Post> list = dao.selPostOfTop((pageUtils.getPageNum() - 1) * pageUtils.getLimit(), pageUtils.getLimit());
         for (Post post : list) {
-            User user = userDao.selUserById(post.getUid());
-            Topic topic = topicDao.selTopicById(post.getTopicId());
-            post.setTopic(topic);
-            post.setUser(user);
+            this.setTopicAndUser(post);
         }
         pageUtils.setCount(20);
         pageUtils.setData(list);
@@ -146,7 +150,32 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getPostByUid(User user) {
-        return dao.selPostByUid(user);
+    public Long getCountByTid(Integer topicId) {
+        return dao.getCountByTid(topicId);
+    }
+
+    @Override
+    public List<Post> selPostByUIdOfTop10(Integer uid) {
+        List<Post> posts = dao.selPostByUIdOfTop10(uid);
+        for (Post post : posts) {
+            this.setTopicAndUser(post);
+        }
+        return posts;
+    }
+
+    public void setTopicAndUser(Post post) {
+        User user = userDao.selUserById(post.getUid());
+        Topic topic = topicDao.selTopicById(post.getTopicId());
+        post.setTopic(topic);
+        post.setUser(user);
+
+    }
+
+    @Override
+    public int sendPost(Post post) {
+        // 封装发布时间
+        post.setSendDate(Timestamp.valueOf(LocalDateTime.now()));
+        int index = dao.sendPost(post);
+        return index;
     }
 }

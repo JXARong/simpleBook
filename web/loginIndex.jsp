@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: QZY
@@ -11,6 +12,7 @@
 <head>
     <title>简简书</title>
 </head>
+<link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
 <link rel="stylesheet" href="/simpleBook/css/indexof.css" type="text/css">
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
 <script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
@@ -52,7 +54,7 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon"">&#xe6c6;</i><number name="good_fablous">12</number>
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
                 </div>
             </li>
             <li>
@@ -64,7 +66,7 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon"">&#xe6c6;</i><number name="good_fablous">12</number>
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
                 </div>
             </li>
             <li>
@@ -76,7 +78,7 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon"">&#xe6c6;</i><number name="good_fablous">12</number>
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
                 </div>
             </li>
             <li>
@@ -87,7 +89,7 @@
                     </p>
                 </div>
                 <div class="" style="color: #b0b0b0;display: inline-block">
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon"">&#xe6c6;</i><number name="good_fablous">12</number>
+                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
                 </div>
             </li>
             <li style="border: 1px white solid"> <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius" style="width: 100%;background-color: #b0b0b0">加载全部</button></li>
