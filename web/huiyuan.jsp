@@ -11,6 +11,7 @@
     <title>会员</title>
 </head>
 <body>
+<div style="text-align: center;"><img src="images/huiyuanadd.png" width="100%"></div>
 
 </body>
 </html>
