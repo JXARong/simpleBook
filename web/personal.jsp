@@ -31,12 +31,13 @@
         });
     });
 
-    $(function () {
-        $("#visit").hover(function () {
-
-            $("#dmenus").css({display:""});
-        },function () {
-            $("#dmenus").css({display:"none"});
+    $(function() {
+        $("#userlog").hover(function() {
+            $("#userlog").removeClass("user");
+            $("#userlog").addClass("user open");
+        },function(){
+            $("#userlog").removeClass("user open");
+            $("#userlog").addClass("user");
         })
     })
 
@@ -52,55 +53,57 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="width-limit">
         <!-- 左上方 Logo -->
-        <a class="logo" href="/"><img src="/simpleBook/images/jianjianshulogo.png" alt="Nav logo" /></a>
+        <a class="logo" href=""><img src="/simpleBook/images/jianjianshulogo.png" alt="Nav logo" /></a>
 
         <!-- 右上角 -->
         <!-- 登录显示写文章 -->
         <a class="btn write-btn" target="_blank" href="/writer#/">
             <i class="iconfont ic-write"></i>写文章
         </a>
-
-<%--        <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img"></a>--%>
-<%--        <dl class="layui-nav-child">--%>
-<%--            <dd><a href="javascript:;">修改信息</a></dd>--%>
-<%--            <dd><a href="javascript:;">安全管理</a></dd>--%>
-<%--            <dd><a href="javascript:;">退了</a></dd>--%>
-<%--        </dl>--%>
-
         <!-- 如果用户登录，显示下拉菜单 -->
-        <div class="user" id="visit" style="background-color: white;" >
-            <div data-hover="dropdown" >
-                <a class="avatar" href="/simpleBook/personal.jsp"><img src="" alt="120" /></a>
+        <div class="user" id="userlog">
+            <div data-hover="dropdown">
+                <a class="avatar" href="">
+                    <img src="img/qq.png" alt="120" />
+                </a>
             </div>
-            <ul class="dropdown-menus" style="list-style:none;background-color: white;display: none" id="dmenus">
+            <ul class="dropdown-menu">
                 <li>
-                    <a href="/simpleBook/personal.jsp">
+                    <a href="">
                         <i class="iconfont ic-navigation-profile"></i><span>我的主页</span>
-                    </a>          </li>
+                    </a>
+                </li>
                 <li>
-                    <a href="/simpleBook/userInfo.jsp">
-                        <i class="iconfont ic-navigation-settings"></i><span>个人信息</span>
-                    </a>          </li>
+                    <a href="">
+                        <i class="iconfont ic-navigation-settings"></i><span>设置</span>
+                    </a>
+                </li>
                 <li>
-                    <a href="/simpleBook/problem.html">
+                    <a href="">
                         <i class="iconfont ic-navigation-feedback"></i><span>帮助与反馈</span>
-                    </a>          </li>
+                    </a>
+                </li>
                 <li>
-                    <a rel="nofollow" data-method="delete" href="/simpleBook/index.jsp" <% request.getSession().removeAttribute("user"); %>>
-                        <i class="iconfont ic-navigation-signout"></i><span>退出</span>
-                    </a>          </li>
+                    <a rel="nofollow" data-method="delete" href="">
+                        <i class="iconfont ic-navigation-signout"></i>
+                        <span>退出</span>
+                    </a>
+                </li>
             </ul>
         </div>
+
+        <div id="navbar-jsds-enter">
+        </div>
+
+        <div id="view-mode-ctrl">
+        </div>
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-                </button>
-            </div>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="nav navbar-nav">
-                    <li class="tab ">
-                        <a href="/simpleBook/index.jsp">
-                            <span class="menu-text">发现</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+                    <li class="tab active">
+                        <a href="/">
+                            <span class="menu-text">发现</span>
+                            <i class="iconfont ic-navigation-discover menu-icon"></i>
                         </a>
                     </li>
                     <li class="search">
