@@ -43,4 +43,10 @@ public class FavouriteDaoImpl extends BaseDao implements FavouriteDao {
         int i = (int)super.getCount(sql,new Object[]{user.getUid()});
         return i;
     }
+
+    @Override
+    public int getFavouriteByPid(Integer pid) {
+        String sql="select count(*) from favourite where pid = ?";
+        return Integer.valueOf(String.valueOf(super.getCount(sql,new Object[]{pid})));
+    }
 }

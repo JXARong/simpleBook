@@ -285,10 +285,14 @@ public class PostServlet extends BaseServlet {
         // 主题编号
         String topicId = request.getParameter("topicId");
 
+        // 文字数量
+        String textNum = request.getParameter("textNum");
+        System.out.println(textNum);
         Post post=new Post();
         post.setTitle(title);
         post.setArticle(context);
         post.setTopicId(Integer.valueOf(topicId));
+        post.setTextNum(Integer.valueOf(textNum));
         User user = (User) request.getSession().getAttribute("user");
         post.setUid(user.getUid());
 

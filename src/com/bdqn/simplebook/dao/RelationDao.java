@@ -11,7 +11,9 @@ import com.bdqn.simplebook.domain.User;
  * @packageName: com.bdqn.simplebook.dao
  */
 public interface RelationDao {
+
     int delRelationByUid(User user);
+
 
     int delcRelationByCid(User user);
 
@@ -28,4 +30,16 @@ public interface RelationDao {
      * @return
      */
     int queryRelationCid(User user);
+
+    /**
+     * 查询两个用户是否有关注关系
+     * @param uid 关注人
+     * @param cid 被关注人
+     * @return
+     */
+    int verifyIsRelation(Integer uid,Integer cid);
+
+    int addRelational(Integer cid, Integer uid);
+
+    int cancel(Integer cid, Integer uid);
 }

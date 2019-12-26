@@ -13,4 +13,6 @@ import com.bdqn.simplebook.domain.User;
 public interface FavouriteService {
 
     int getFavouriteUser(User user);
+
+    int getFavouriteByPid(Integer pid);
 }

@@ -37,7 +37,7 @@
         // 渲染日期控件
         laydate.render({
             elem: "#bornthDay",
-            time:true
+            time: true
         });
         form.render();
 
@@ -127,7 +127,7 @@
                             if (obj) {
                                 // 给编辑用户窗口控件赋值
                                 assignment(body, status.data[0]);
-                            }
+                            }// 渲染日期控件
                         },
                         btn: ["确定", "取消"],
                         // 确定按钮点击事件
@@ -145,7 +145,7 @@
             } else if (opr === "delete_user") {   // 删除用户信息
                 var data = "";
                 $.each(status.data, function (i, v) {
-                    data += "uid="+v.uid+"&"
+                    data += "uid=" + v.uid + "&"
                 });
                 data = data.substring(0, data.length - 1);
                 delUser(data);
@@ -184,7 +184,7 @@
                     icon: 8,
                     btn: ["确定", "取消"],
                     btn1: function () {
-                        delUser("uid="+ obj.data.uid);
+                        delUser("uid=" + obj.data.uid);
                     },
                     btn2: function () {
 
@@ -197,7 +197,7 @@
         function delUser(data) {
             $.ajax({
                 method: "get",
-                url: "/simpleBook/user/delUserById"+"?"+data,
+                url: "/simpleBook/user/delUserById" + "?" + data,
                 dataType: "json",
                 success: function (data) {
                     if (data.flag == true) {

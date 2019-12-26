@@ -15,4 +15,14 @@ public interface RelationService {
     int queryRelationUser(User user);
 
     int queryRelationCid(User user);
+
+    /**
+     * 判断两个用户之间是否有关注关系
+     * @param uid
+     * @param cid
+     * @return
+     */
+    boolean verifyIsRelation(Integer uid,Integer cid);
+
+    boolean changeRelational(Integer cid, Integer uid, String status);
 }

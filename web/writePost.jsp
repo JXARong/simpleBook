@@ -33,7 +33,7 @@
                         </div>
                         <div style="height: 120px;">
                             <p><b>个人简介：</b></p>
-                            <p id="profile" style="text-indent: 2em">我来自人间，去往天堂,并且不留一丝痕迹</p>
+                            <p id="introduce" style="text-indent: 2em">我来自人间，去往天堂,并且不留一丝痕迹</p>
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
         (function () {
             $("#uname").text("${str}");
             $("#registerTime").text("简龄:${registerTime}");
-            $("#profile").text("${user.profile}");
+            $("#introduce").text("${user.introduce}");
         })();
 
         // 验证信息是否填写正确
@@ -263,7 +263,7 @@
             $.ajax({
                 url: "<%=request.getContextPath()%>/post/sendPost",
                 type: "post",
-                data: {title: $("#title").val(), topicId: $("#topics").val(), context: edit.getContent(editIndex)},
+                data: {title: $("#title").val(), topicId: $("#topics").val(), context: edit.getContent(editIndex),textNum:edit.getText(editIndex).length},
                 success: function (data) {
                     console.log(data);
                     if (data) {

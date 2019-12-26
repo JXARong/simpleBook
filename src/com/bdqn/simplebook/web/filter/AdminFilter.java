@@ -1,11 +1,9 @@
 package com.bdqn.simplebook.web.filter;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Response;
 import java.io.IOException;
 
 /**
@@ -27,9 +25,12 @@ public class AdminFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpSession session = request.getSession();
         Object admin = session.getAttribute("admin");
-        if(admin==null){
+
+        String uri = request.getRequestURI();
+        System.out.println("uri--->"+uri);
+        if(admin==null && !"/simpleBook/houtai/login.html".equals(uri)){
             HttpServletResponse response = (HttpServletResponse) servletResponse;
-            response.sendRedirect("/simpleBook/houtai/index.jsp");
+            response.sendRedirect("/simpleBook/houtai/index.html");
         }
         filterChain.doFilter(servletRequest,servletResponse);
     }

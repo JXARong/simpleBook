@@ -23,4 +23,6 @@ public class FavouriteServlet extends BaseServlet {
         int i = service.getFavouriteUser((User)request.getSession().getAttribute("user"));
         request.getSession().setAttribute("favourite",i);
     }
+
+
 }

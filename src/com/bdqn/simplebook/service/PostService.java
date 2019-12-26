@@ -46,4 +46,11 @@ public interface PostService {
      */
     int sendPost(Post post);
 
+    /**
+     * 根据帖子编号查询该篇帖子的喜欢数
+     * @param pid
+     * @return
+     */
+    int selFavouriteByPid(Integer pid);
+
 }

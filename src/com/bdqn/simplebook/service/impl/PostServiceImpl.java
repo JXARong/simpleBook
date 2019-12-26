@@ -178,4 +178,10 @@ public class PostServiceImpl implements PostService {
         int index = dao.sendPost(post);
         return index;
     }
+
+    @Override
+    public int selFavouriteByPid(Integer pid) {
+        int favouriteByPid = new FavouriteServiceImpl().getFavouriteByPid(pid);
+        return favouriteByPid;
+    }
 }

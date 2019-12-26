@@ -16,14 +16,13 @@
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
 <script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
 <body>
-<%
-    User user = (User) request.getSession().getAttribute("user");
-    if (null == user) {
-%>
-<jsp:include page="noLogin.jsp" flush="true"/>
-<%} else {%>
-<jsp:include page="loginHeader.jsp" flush="true"/>
-<%}%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${user==null}">
+    <jsp:include page="header.jsp"/>
+</c:if>
+<c:if test="${user!=null}">
+    <jsp:include page="header2.jsp"/>
+</c:if>
 
 <section class="first_subject" style="margin: 10px auto">
     <div style="border: 1px solid red ; "></div>
