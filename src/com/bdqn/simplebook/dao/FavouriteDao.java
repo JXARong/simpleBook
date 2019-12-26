@@ -22,4 +22,11 @@ public interface FavouriteDao {
      * @return
      */
     int getFavouriteUser(User user);
+
+    /**
+     * 查询帖子的喜爱人数
+     * @param pid
+     * @return
+     */
+    int getFavouriteByPid(Integer pid);
 }

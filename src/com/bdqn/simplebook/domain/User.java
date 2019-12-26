@@ -23,8 +23,53 @@ public class User {
     private Integer status; // 状态  0正常使用  1审核中 2 已封禁
     private String uname; // 昵称
     private Timestamp registerTime; // 注册时间
-    private String introduce;
-    private List<Post> posts;
+    private String introduce;  // 个人简介
+    private List<Post> posts; // 该用户发布的所有帖子
+    private List<Relation> relations; // 所有关注以及被关注
+    private int fans; // 粉丝数量
+    private int attentionNum ;// 关注的博主数量
+    private Integer favouriteNum; // 喜爱帖子人数
+    private Integer textCount; // 所有文章文字总数
+
+    public Integer getTextCount() {
+        return textCount;
+    }
+
+    public void setTextCount(Integer textCount) {
+        this.textCount = textCount;
+    }
+
+    public Integer getFavouriteNum() {
+        return favouriteNum;
+    }
+
+    public void setFavouriteNum(Integer favouriteNum) {
+        this.favouriteNum = favouriteNum;
+    }
+
+    public List<Relation> getRelations() {
+        return relations;
+    }
+
+    public void setRelations(List<Relation> relations) {
+        this.relations = relations;
+    }
+
+    public int getFans() {
+        return fans;
+    }
+
+    public void setFans(int fans) {
+        this.fans = fans;
+    }
+
+    public int getAttentionNum() {
+        return attentionNum;
+    }
+
+    public void setAttentionNum(int attentionNum) {
+        this.attentionNum = attentionNum;
+    }
 
     public String getIntroduce() {
         return introduce;

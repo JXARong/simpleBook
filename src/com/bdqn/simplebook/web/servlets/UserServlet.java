@@ -62,7 +62,7 @@ public class UserServlet extends BaseServlet {
         user.setSex(Integer.parseInt(request.getParameter("sex")));
         user.setBornthDay(Timestamp.valueOf(request.getParameter("bornthDay")));
         user.setPhoto(request.getParameter("filePath"));
-        user.setRegisterTime(Timestamp.valueOf(request.getParameter("registerTime")));
+//        user.setRegisterTime(Timestamp.valueOf(request.getParameter("registerTime")));
         user.setMoney(Double.valueOf(request.getParameter("money")));
         if (request.getParameter("status")==null){
             user.setStatus(1);
@@ -167,7 +167,6 @@ public class UserServlet extends BaseServlet {
 
     /**
      * 查询首页所有用户
-     *
      * @param request
      * @param response
      */

@@ -26,8 +26,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
      */
     @Override
     public int addUser(User user) {
-        String sql = "insert into user values(?,?,?,?,?,?,?,1,?,default)";
-        int update = super.update(sql, new Object[]{user.getUid(), user.getPassword(), user.getEmail(), user.getSex(), user.getBornthDay(), user.getPhoto(), user.getMoney(), user.getUname()});
+                                                                                                        // 编号，密码，邮箱，性别，生日，头像，余额，状态，用户名，注册时间，简介
+        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,default,default)";
+        int update = super.update(sql, new Object[]{user.getUid(), user.getPassword(), user.getEmail(), user.getSex(), user.getBornthDay(), user.getPhoto(), user.getMoney(),user.getStatus(), user.getUname()});
         return update;
     }
 
