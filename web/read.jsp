@@ -367,11 +367,28 @@
         .message_message *{
             margin-right: 10px;
         }
+
+
     </style>
     <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         window.onload = function () {
+
             document.getElementsByClassName("left_style")[0].onclick = function () {
+
+                var uid=1;
+                var pid=1;
+
+            }
+            document.getElementsByClassName("roundness inline_block float_left")[0].onclick = function (){
+                alert("888");
+            }
+            document.getElementsByClassName("attention float_left")[0].onclick = function (){
+                var uid=1;
+                var cid=1;
+            }
+            document.getElementsByClassName("left_style")[1].onclick = function () {
+
                 alert("666");
             };
             document.getElementsByClassName("left_style")[1].onclick = function () {
@@ -507,21 +524,28 @@
             <p>但这毕竟是一个重复的、同质化工作，我每天出去出去就是讲那几百页PPT，当我疲于奔波在一个个公开课和一家家企业、没有时间学习新东西是，我的进步就变得很慢了</p>
         </article>
 
-
+        <div>
+            <span><h3>全部评论</h3></span>
+        </div>
+        <div style="float: left ">
+            <img src="images/qq.png" >
+        </div>
+            <div>
+            <sapn><h4>爱吃火锅的大胖子</h4></sapn>
+            <span>2楼</span>
+            <span><time>01.28 17:56</time></span>
+        </div>
+        <div>
+            <h4>丹青妙笔<br>拍案叫绝</h4>
+        </div>
     </div>
 
     <div class="left">
         <div class="left_style">
             <div class="left_aside roundness">
-                <img src="images/zan_gary.png" height="24" width="24"/>
-            </div>
-            <label>点赞</label>
-        </div>
-        <div class="left_style">
-            <div class="left_aside roundness">
                 <img src="images/shang_gary.png" height="30" width="30" id="shang"/>
             </div>
-            <label>打赏</label>
+            <label>喜欢</label>
         </div>
         <div class="left_style">
             <div class="left_aside roundness">
