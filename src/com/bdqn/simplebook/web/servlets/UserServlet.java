@@ -275,7 +275,6 @@ public class UserServlet extends BaseServlet {
 
             if (i>0){
                 ajaxUtils.setFlag(true);
-                request.getSession().setAttribute("email",email);
 
             }else {
                 ajaxUtils.setFlag(false);

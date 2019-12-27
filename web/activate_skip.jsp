@@ -76,7 +76,7 @@
 
     <b>验证邮件已发送到您的电子邮箱：</b>
 
-    <b class="blue-text text-darken-1" id="email">${email}</b>
+    <b class="blue-text text-darken-1" id="email"><%=request.getParameter("email")%></b>
 
 </div>
 
@@ -93,11 +93,10 @@
 </div>
 </body>
 <%
-    String email = (String)request.getSession().getAttribute("email");
+    String email = request.getParameter("email");
     String text = "<a href='http://localhost:8080/simpleBook/index.jsp'>点击激活</a>";
     String title = "邮箱激活验证";
     boolean flag = MailUtils.sendMail(email,text,title);
 
-    request.getSession().removeAttribute("email");
 %>
 </html>
