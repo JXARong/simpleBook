@@ -180,4 +180,11 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         String sql="select * from post where pid = ?";
         return super.selectOne(Post.class,sql,new Object[]{id});
     }
+
+    @Override
+    public List<Post> searchPost(String searchValue) {
+        String sql = "select * from post where title like ?";
+        List<Post> searchPostList = super.selectList(Post.class,sql,new Object[]{"%"+searchValue+"%"});
+        return searchPostList;
+    }
 }

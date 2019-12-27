@@ -53,6 +53,15 @@ public interface PostService {
      */
     int selFavouriteByPid(Integer pid);
 
+
+    /**
+     * 文章搜索
+     * @param searchValue
+     * @return
+     */
+    List<Post> searchPost(String searchValue);
+
     Post selPostById(Integer id) throws Exception;
+
 
 }

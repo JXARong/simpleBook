@@ -29,4 +29,10 @@ public interface TopicDao {
 
     List<Topic> selAllTopic();
 
+    /**
+     * 主题搜索
+     * @param searchValue
+     * @return
+     */
+    List<Topic> searchTopic(String searchValue);
 }

@@ -25,9 +25,13 @@ $(function () {
         if (!checkPwd()) flag = false;
         return flag;
     })
+    $("#sign-in-form-submit-btn").click(function () {
 
-    $("#session_email_or_mobile_number").blur(checkUser);
-    $("#session_password").blur(checkPwd);
+        checkUser();
+        checkPwd();
+    })
+
+
 });
 
 function checkUser(){
