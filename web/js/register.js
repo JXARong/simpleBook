@@ -2,14 +2,15 @@ $(function () {
 
     function reg(){
         //用户注册
-        $("#sign_up_btn").click(function () {
+
+            var email = $("#user_mobile_number").val();
             $.ajax({
                 url: "/simpleBook/user/register",
-                data:{uname: $("#user_nickname").val(),email:$("#user_mobile_number").val(), password: $("#user_password").val()},
+                data:{uname: $("#user_nickname").val(),email:email, password: $("#user_password").val()},
                 method: "post",
                 uccess: function (data) {
-                    if (data.flag == true) {
-                        location.href = "/simpleBook/activate_skip.jsp";
+                    if (data.flag == "true") {
+                        location.href = "/simpleBook/activate_skip.jsp？eamil="+email;
                     }else {
                         alert(data.errorMsg());
                     }
@@ -17,7 +18,7 @@ $(function () {
                     alert("服务器繁忙，稍后重试")
                 }
             });
-        })
+
     }
 
 
@@ -29,7 +30,7 @@ $(function () {
                 data: {uname:userName},
                 method: "get",
                 uccess:function (data) {
-                    if (data.flag == false){
+                    if (data.flag == "false"){
                         alert(data.errorMsg());
                         $("#sign_up_btn").attr("disabled",true);
                     }
@@ -48,7 +49,7 @@ $(function () {
                 data:{email:$("#user_mobile_number").val()},
                 method:"get",
                 uccess:function (data) {
-                    if (data.flag == false){
+                    if (data.flag == "false"){
                         alert(data.errorMsg());
                         $("#sign_up_btn").attr("disabled",true);
                     }

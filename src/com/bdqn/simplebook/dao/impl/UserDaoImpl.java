@@ -204,7 +204,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public int register(User user) {
-        String sql = "insert into user values(?,?,?,?,?,default)";
+        String sql = "insert into user values(?,?,?,?,?)";
         return super.update(sql, new Object[]{user.getUid(), user.getPassword(), user.getEmail(), user.getStatus(), user.getUname()});
     }
 
