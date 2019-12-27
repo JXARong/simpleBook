@@ -14,6 +14,7 @@ function relation(status,cid) {
         url: "/simpleBook/relation/changeRelational",
         data: {cid: cid, status: status},
         async:false,
+        type: "post",
         success: function (data) {
             if (data) {
                 flag=true;
@@ -23,7 +24,6 @@ function relation(status,cid) {
             }
 
         }, error: function () {
-            type: "post",
                 layer.msg("啊哦，服务器繁忙，操作失败");
         }
     });
@@ -40,6 +40,7 @@ function getRelation(cid) {
     $.ajax({
         url: "/simpleBook/relation/verifyIsRelation",
         data: {cid: cid},
+        async:false,
         type: "post",
         success: function (data) {
             isRelation=data;

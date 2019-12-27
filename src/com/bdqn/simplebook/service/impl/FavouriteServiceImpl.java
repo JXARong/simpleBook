@@ -26,4 +26,14 @@ public class FavouriteServiceImpl implements FavouriteService {
     public int getFavouriteByPid(Integer pid) {
         return dao.getFavouriteByPid(pid);
     }
+
+    @Override
+    public boolean verifyFavourite(Integer pid, Integer uid) throws Exception {
+        boolean b = dao.verifyFavourite(pid, uid);
+        if (b){
+            throw new Exception("不能重复点赞");
+        }else{
+            return dao.addFavourite(pid, uid);
+        }
+    }
 }

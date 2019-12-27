@@ -15,4 +15,6 @@ public interface FavouriteService {
     int getFavouriteUser(User user);
 
     int getFavouriteByPid(Integer pid);
+
+    boolean verifyFavourite(Integer pid,Integer uid) throws Exception;
 }

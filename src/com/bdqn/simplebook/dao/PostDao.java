@@ -135,4 +135,6 @@ public interface PostDao {
 
     Post selpostByPid(Integer id);
 
+    void addReadOfPostByPid(Integer pid);
+
 }

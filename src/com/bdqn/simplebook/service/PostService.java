@@ -63,5 +63,6 @@ public interface PostService {
 
     Post selPostById(Integer id) throws Exception;
 
+    void addReadOfPostByPid(Integer pid);
 
 }

@@ -50,7 +50,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
     public List<Post> selPostByUid(User user) {
-        String sql = "select * from post where uid =?";
+        String sql = "select * from post where uid =? order by hot desc";
         List<Post> posts = super.selectList(Post.class, sql, new Object[]{user.getUid()});
         return posts;
     }
@@ -164,7 +164,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
     public List<Post> selPostByUIdOfTop10(Integer uid) {
-        String sql = "select * from post where uid  = ? limit 10";
+        String sql = "select * from post where uid  = ? order by hot desc limit 10";
         return super.selectList(Post.class, sql, new Object[]{uid});
     }
 
@@ -186,5 +186,12 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         String sql = "select * from post where title like ?";
         List<Post> searchPostList = super.selectList(Post.class,sql,new Object[]{"%"+searchValue+"%"});
         return searchPostList;
+    }
+
+
+    @Override
+    public void addReadOfPostByPid(Integer pid) {
+        String sql="update post set readCount=readCount+1 where pid =?";
+        super.update(sql,new Object[]{pid});
     }
 }
