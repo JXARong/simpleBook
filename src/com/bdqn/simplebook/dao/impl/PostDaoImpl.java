@@ -4,6 +4,7 @@ import com.bdqn.simplebook.dao.BaseDao;
 import com.bdqn.simplebook.dao.PostDao;
 import com.bdqn.simplebook.domain.Post;
 import com.bdqn.simplebook.domain.User;
+import javafx.geometry.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -172,6 +173,11 @@ public class PostDaoImpl extends BaseDao implements PostDao {
         // 文章编号 用户编号 点赞总数 打赏金额 浏览次数 发布时间 文章内容 标题 热度 状态 主题编号
         String sql = "insert into post values(default,?,0,0,0.0,?,?,?,0,1,?,null,?)";
         return super.update(sql, new Object[]{post.getUid(), post.getSendDate(), post.getArticle(), post.getTitle(), post.getTopicId(),post.getTextNum()});
+    }
 
+    @Override
+    public Post selpostByPid(Integer id) {
+        String sql="select * from post where pid = ?";
+        return super.selectOne(Post.class,sql,new Object[]{id});
     }
 }

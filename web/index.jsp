@@ -48,8 +48,7 @@
             </li>
             <li>
                 <div class="information">
-
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>
+                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br>
                     <p name="suject_content">
                         大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
                     </p>
@@ -63,7 +62,7 @@
             <li>
                 <div class="information">
 
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>
+                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br>
                     <p name="suject_content">
                         大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
                     </p>
@@ -76,7 +75,7 @@
             </li>
             <li>
                 <div class="information">
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3>
+                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3> <br>
                     <p name="suject_content" class="noimg" style="width: 500px">
                         大厦多看看书科技活动呵呵挖煤的哦的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好爱神的箭哦啊师姐殴打就哦啊圣诞节拉萨的
                     </p>
