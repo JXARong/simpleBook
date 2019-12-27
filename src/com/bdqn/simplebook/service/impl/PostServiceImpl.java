@@ -202,4 +202,9 @@ public class PostServiceImpl implements PostService {
         post.setUser(user);
         return post;
     }
+
+    @Override
+    public void addReadOfPostByPid(Integer pid) {
+        dao.addReadOfPostByPid(pid);
+    }
 }

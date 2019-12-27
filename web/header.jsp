@@ -18,8 +18,8 @@
         <a class="btn write-btn" target="_blank" href="/simpleBook/writePost.jsp">
             <i class="iconfont ic-write"></i>写文章
         </a>
-        <a class="btn sign-up" id="sign_up" href="/simpleBook/login.html">注册</a>
-        <a class="btn log-in" id="sign_in" href="/simpleBook/register.html">登录</a>
+        <a class="btn sign-up" id="sign_up" href="/simpleBook/register.html">注册</a>
+        <a class="btn log-in" id="sign_in" href="/simpleBook/login.html">登录</a>
 
         <div class="container">
             <div class="collapse navbar-collapse" id="menu">
@@ -46,12 +46,6 @@
                             </script>
 
                     <li class="search" style="margin-left: 100px">
-                        <form target="_blank" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;"/>
-                            <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索"
-                                   class="search-input"/>
-                            <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
-
-                        </form>
                     </li>
                 </ul>
             </div>

@@ -232,18 +232,17 @@
             }, 1);
         });
 
-        $("#changeRelation").click(function () {
-
-        });
-
         $("#photo").click(function () {
-            location.href="/simpleBook/anotherpage.jsp?cid="+$(this).attr("value");
+            location.href = "/simpleBook/anotherpage.jsp?cid=" + $(this).attr("value");
         });
 
         /**
          * 加载文章信息以及关注信息
          */
         (function () {
+
+            // 存储改变文章属于的用户编号
+            var cid = 0;
             // 获取文章编号
             $.ajax({
                 url: "/simpleBook/post/selPostByPid",
@@ -251,23 +250,24 @@
                 async: false,
                 data: {pid: "<%=request.getParameter("pid")%>"},
                 success: function (data) {
-                    if(data.flag){
-                        var postInfo=data.data;
+                    if (data.flag) {
+                        var postInfo = data.data;
                         $("head title").text(postInfo.title);
                         $("#title").text(postInfo.title);
-                        $("#photo").attr("src","/simpleBook/resources/userPhoto/"+postInfo.user.photo);
+                        $("#photo").attr("src", "/simpleBook/resources/userPhoto/" + postInfo.user.photo);
                         $("#uname").text(postInfo.user.uname);
-                        $("#photo").attr("value",postInfo.user.uid);
-                        if (postInfo.user.uid=="${user.uid}"){
+                        $("#photo").attr("value", postInfo.user.uid);
+                        if (postInfo.user.uid == "${user.uid}") {
                             $("#changeRelation").remove();
                         }
-                    // 2019.10.29 12:49:29 字数 707 阅读 3,202
-                        var temp=postInfo.sendDate+" 字数 "+postInfo.textNum+" 阅读 "+postInfo.readCount;
+                        cid = postInfo.user.uid;
+                        // 2019.10.29 12:49:29 字数 707 阅读 3,202
+                        var temp = postInfo.sendDate + " 字数 " + postInfo.textNum + " 阅读 " + postInfo.readCount;
                         $("#postInfo").text(temp);
                         $("#postContext").html(postInfo.article);
-                        $("#changeRelation").attr("cid",postInfo.user.uid)
-                    }else{
-                        layer.msg(data.errorMsg,{icon:2});
+                        $("#changeRelation").attr("cid", postInfo.user.uid)
+                    } else {
+                        layer.msg(data.errorMsg, {icon: 2});
                     }
                 }, error: function () {
                     layer.msg("加载文章信息失败！", {icon: 2});
@@ -275,32 +275,77 @@
             });
 
             /**
-             * 1.查看自己发布的文章，即不显示关注按钮
+             *  1.查看自己发布的文章，即不显示关注按钮
              *  2.查看别人发布的文章若关注了该用户则不显示关注按钮，若没有关注则显示按钮，并且加上点击事件
              */
-            var cid = $("#changeRelation").attr("cid");
-            if(cid=="${sessionScope.user.uid}"){
+            // 判断是否已关注，已关注的话关注按钮移出
+            if (cid == "${sessionScope.user.uid}") {
                 $("#changeRelation").remove();
             }
+
 
             // 获取登录用户与改用的关注关系
             var relation = getRelation(cid);
-            if (relation ==true){
+            if (relation == true) {
                 $("#changeRelation").remove();
             }
 
+            // 添加该文章的阅读数
+            $.ajax({
+                url: "/simpleBook/post/addRead",
+                type: "post",
+                data: {pid: "<%=request.getParameter("pid")%>"},
+                success: function () {
+
+                }
+            })
         })();
 
         // 关注按钮点击事件
         $("#changeRelation").click(function () {
-            var cid =$(this).attr("cid");
-            let b = relation("true",cid);
-            if(b){
+            var cid = $(this).attr("cid");
+            let b = relation("true", cid);
+            if (b) {
                 $("#changeRelation").remove();
             }
         });
 
+        // 喜欢文章按钮点击事件
+        $("#follows").click(function () {
+            // 判断是否登录
+            if($("#photo").attr("value")==null || $("#photo").attr("value")==''){
+                location.href="/simpleBook/login.html";
+                return;
+            }
 
+            // 判断是否是自己的文章
+            if($("#photo").attr("value")==${user.uid}){
+                layer.msg("不能给自己点赞哦！");
+                return ;
+            }
+            // 判断是否已经喜欢过
+            $.ajax({
+               url: "/simpleBook/favourite/verifyFavouriteUser",
+                type:"post",
+                data:{"pid":<%=request.getParameter("pid")%>,"uid":$("#photo").attr("value")},
+                success:function (data) {
+                    if(data.flag){
+                        layer.msg("点赞成功！");
+                    }else{
+                        layer.msg(data.errorMsg);
+                    }
+                },error:function () {
+                    layer.msg("服务器繁忙！");
+                }
+            });
+        });
+
+        // 举报文章
+        $(".jubao").click(function () {
+           layer.open({
+
+           })
+        });
     });
 </script>
 <body>
@@ -349,16 +394,22 @@
 
     <div class="left">
         <div class="left_style">
-            <div class="left_aside roundness">
+            <div class="left_aside roundness" id="follows">
                 <img src="/simpleBook/images/shang_gary.png" height="30" width="30" id="shang"/>
             </div>
             <label>喜欢</label>
         </div>
         <div class="left_style returnTop">
             <div class="left_aside roundness">
-                <img src="images/go_top.png" height="24" width="24" style="margin-top: 13px"/>
+                <img src="/simpleBook/images/go_top.png" height="24" width="24" style="margin-top: 13px"/>
             </div>
             <label>顶部</label>
+        </div>
+        <div class="left_style jubao">
+            <div class="left_aside roundness">
+                <img src="/simpleBook/images/jubao.png" height="24" width="24" style="margin-top: 13px"/>
+            </div>
+            <label>举报</label>
         </div>
     </div>
 
@@ -369,7 +420,6 @@
         <form action="">
             <textarea placeholder="写下你的评论..." id="review"></textarea>
             <button>发布</button>
-
         </form>
 
     </div>
