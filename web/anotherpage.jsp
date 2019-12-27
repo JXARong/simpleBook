@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="icon" type="image/x-icon" id="photoIcon" href="/simpleBook/images/girl.png"/>
     <link rel="stylesheet" href="/simpleBook/css/personal_one.css"/>
     <link rel="stylesheet" href="/simpleBook/css/personal_two.css"/>
     <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css"/>
@@ -27,7 +28,7 @@
         $("#follows").click(function () {
 
             if ($("#follows").hasClass("off")) {
-                var flag = relation("true","805876405");
+                var flag = relation("true",$(this).attr("value"));
                 if (flag) {
                     // 取消关注该用户
                     $("#follows").removeClass("off user-follow-button");
@@ -35,7 +36,7 @@
                     $("#relationalStatus").text("已关注");
                 }
             } else {
-                var flag = relation("false","805876405");
+                var flag = relation("false",$(this).attr("value"));
                 if (flag) {
                     // 关注该用户
                     $("#follows").removeClass("on user-follow-button");
@@ -43,46 +44,21 @@
                     $("#relationalStatus").text("关注");
                 }
             }
-
-            /**
-             * 关注获取取消关注
-             * @param stauts true关注用户  false取消关注该用户
-             */
-            /*function relation(status) {
-                var flag = false;
-                $.ajax({
-                    url: "/simpleBook/relation/changeRelational",
-                    data: {cid: "805876405", status: status},
-                    async:false,
-                    success: function (data) {
-                        if (data) {
-                            flag=true;
-                            layer.msg(status == "true" ? "关注成功" : "取消关注成功");
-                        } else {
-                            layer.msg(status == "true" ? "关注失败" : "取消关注失败");
-                        }
-
-                    }, error: function () {
-                        type: "post",
-                            layer.msg("啊哦，服务器繁忙，操作失败");
-                    }
-                });
-                return flag;
-            }*/
-
         });
 
         // 加载所有信息
         (function () {
             // 获取该用户的编号
-            var cid = "18273817";
+            var cid = "<%=request.getParameter("cid")%>";
             $.ajax({
                 url: "/simpleBook/user/selectUser",
                 type: "get",
+                async:false,
                 data: {uid: cid, limit: 1, page: 1},
                 success: function (data) {
                     var info = data.data[0];
-
+                    $("head title").text(info.uname);
+                    $("#photoIcon").attr("href","/simpleBook/resources/userPhoto/"+info.photo);
                     $("#uname").text(info.uname);
                     $("#postNum").text(info.posts.length);
                     $("#money").text(info.money);
@@ -91,15 +67,17 @@
                     $("#attentionNum").text(info.attentionNum);
                     $("#favouriteNum").text(info.favouriteNum);
                     $("#textCount").text(info.textCount);
-
+                    $("#photo").attr("src","/simpleBook/resources/userPhoto/"+info.photo);
+                    $("#follows").attr("value",info.uid);
                     // 遍历所有的文章
                     $.each(info.posts, function (index, item) {
                         var title = item.title;
                         title = title.length > 30 ? title.substring(0, 30) + "..." : title;
-                        var context = item.article.substring(0, 50);
+                        var html = $("<span>"+item.article+"</span>");
+                        var context = $(html).text().length>50?$(html).text().substring(0,50)+"...":context;
                         var temp = '<li id="note-57792457" data-note-id="57792457" class="have-img">' +
                             '                        <div class="content ">' +
-                            '                            <a class="title" target="_blank" href="">' + title + '</a>' +
+                            '                            <a class="title" target="_blank" href="/simpleBook/read.jsp?pid='+item.pid+'">' + title + '</a>' +
                             '                            <p class="abstract">' + context + '</p>' +
                             '                            <div class="meta">' +
                             '                                            <span><i class="iconfont ic-list-read"></i>' + item.readCount + '</span>' +
@@ -109,27 +87,34 @@
                             '                                <span class="time">' + item.sendDate + '</span>' +
                             '                            </div>' +
                             '                        </div>' +
-                            '                    </li>';
+                            '                    </li>  ';
                         $(".note-list").append($(temp));
                     });
+
                 }, error: function () {
 
                 }
             });
 
-            // 加载关注信息
-            let isRelation = getRelation(cid);
-            if (isRelation) {
-                // true代表已关注该用户
-                $("#follows").removeClass("off user-follow-button");
-                $("#follows").addClass("on user-follow-button");
-                $("#relationalStatus").text("已关注");
-            } else {
-                // false未关注该用户
-                $("#follows").removeClass("on user-follow-button");
-                $("#follows").addClass("off user-follow-button");
-                $("#relationalStatus").text("关注");
+            // 判断是否是登录用户，如果是则不显示关注按钮
+            if(cid!="${sessionScope.user.uid}"){
+                // 加载关注信息
+                let isRelation = getRelation(cid);
+                if (isRelation) {
+                    // true代表已关注该用户
+                    $("#follows").removeClass("off user-follow-button");
+                    $("#follows").addClass("on user-follow-button");
+                    $("#relationalStatus").text("已关注");
+                } else {
+                    // false未关注该用户
+                    $("#follows").removeClass("on user-follow-button");
+                    $("#follows").addClass("off user-follow-button");
+                    $("#relationalStatus").text("关注");
+                }
+            }else{
+                $("#follows").remove();
             }
+
         })();
     })
 </script>
@@ -140,7 +125,7 @@
         <div class="col-xs-16 main">
             <div class="main-top">
                 <a class="avatar" href="">
-                    <img src="/simpleBook/images/girl.png" alt="240" height="240"/>
+                    <img id="photo" src="/simpleBook/images/girl.png" alt="240" height="240"/>
                 </a>
                 <div class="follow-button"></div>
                 <button class="off  user-follow-button" id="follows">

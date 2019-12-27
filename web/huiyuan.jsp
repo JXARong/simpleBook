@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
     <title>会员</title>
 </head>
 <body>

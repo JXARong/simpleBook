@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png"/>
     <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png"/>
     <style type="text/css">
         body {
             margin: 0px;
@@ -210,7 +210,6 @@
             box-shadow: 0 5px 5px #F2F2F2;
         }
     </style>
-
     <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
     <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css"/>
     <script type="text/javascript" src="/simpleBook/js/changeRelation.js"/>
@@ -254,17 +253,19 @@
                 success: function (data) {
                     if(data.flag){
                         var postInfo=data.data;
+                        $("head title").text(postInfo.title);
                         $("#title").text(postInfo.title);
                         $("#photo").attr("src","/simpleBook/resources/userPhoto/"+postInfo.user.photo);
                         $("#uname").text(postInfo.user.uname);
                         $("#photo").attr("value",postInfo.user.uid);
                         if (postInfo.user.uid=="${user.uid}"){
-                            $("#changeRelation").hide();
+                            $("#changeRelation").remove();
                         }
                     // 2019.10.29 12:49:29 字数 707 阅读 3,202
                         var temp=postInfo.sendDate+" 字数 "+postInfo.textNum+" 阅读 "+postInfo.readCount;
                         $("#postInfo").text(temp);
                         $("#postContext").html(postInfo.article);
+                        $("#changeRelation").attr("cid",postInfo.user.uid)
                     }else{
                         layer.msg(data.errorMsg,{icon:2});
                     }
@@ -272,7 +273,34 @@
                     layer.msg("加载文章信息失败！", {icon: 2});
                 }
             });
+
+            /**
+             * 1.查看自己发布的文章，即不显示关注按钮
+             *  2.查看别人发布的文章若关注了该用户则不显示关注按钮，若没有关注则显示按钮，并且加上点击事件
+             */
+            var cid = $("#changeRelation").attr("cid");
+            if(cid=="${sessionScope.user.uid}"){
+                $("#changeRelation").remove();
+            }
+
+            // 获取登录用户与改用的关注关系
+            var relation = getRelation(cid);
+            if (relation ==true){
+                $("#changeRelation").remove();
+            }
+
         })();
+
+        // 关注按钮点击事件
+        $("#changeRelation").click(function () {
+            var cid =$(this).attr("cid");
+            let b = relation("true",cid);
+            if(b){
+                $("#changeRelation").remove();
+            }
+        });
+
+
     });
 </script>
 <body>
@@ -295,7 +323,7 @@
                  class="roundness inline_block float_left" id="photo">
             <div class="inline_block float_left message_message">
                 <a href="" title="ig666" class="message_style_a float_left" id="uname"></a>
-                <button class="attention float_left" id="changeRelation"></button>
+                <button class="attention float_left" id="changeRelation" style="font-size: 14px">关注</button>
                 <p class="margin0px message_style_p float_left" id="postInfo"></p>
                 <br>
             </div>

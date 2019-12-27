@@ -37,13 +37,13 @@
 				<!-- 如果用户登录，显示下拉菜单 -->
 				<div class="user" id="userlog">
 					<div data-hover="dropdown">
-						<a class="avatar" href="/simpleBook/personal.jsp">
+						<a class="avatar" href="/simpleBook/anotherpage.jsp?cid=${user.uid}">
 							<img src="/simpleBook/resources/userPhoto/${user.photo}" alt="120" />
 						</a>
 					</div>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="/simpleBook/personal.jsp">
+							<a href="/simpleBook/anotherpage.jsp?cid=${user.uid}">
 								<i class="iconfont ic-navigation-profile"></i><span>我的主页</span>
 							</a>
 						</li>
