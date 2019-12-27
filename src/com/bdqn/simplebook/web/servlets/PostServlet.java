@@ -346,4 +346,9 @@ public class PostServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JSON.toJSONStringWithDateFormat(ajaxUtils,"yyyy-MM-dd HH:mm:ss"));
     }
+
+    public void addRead(HttpServletRequest request,HttpServletResponse response){
+        String pid = request.getParameter("pid");
+        service.addReadOfPostByPid(Integer.valueOf(pid));
+    }
 }

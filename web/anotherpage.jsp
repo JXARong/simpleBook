@@ -74,7 +74,7 @@
                         var title = item.title;
                         title = title.length > 30 ? title.substring(0, 30) + "..." : title;
                         var html = $("<span>"+item.article+"</span>");
-                        var context = $(html).text().length>50?$(html).text().substring(0,50)+"...":context;
+                        var context = $(html).text().length>50?$(html).text().substring(0,50)+"...":$(html).text();
                         var temp = '<li id="note-57792457" data-note-id="57792457" class="have-img">' +
                             '                        <div class="content ">' +
                             '                            <a class="title" target="_blank" href="/simpleBook/read.jsp?pid='+item.pid+'">' + title + '</a>' +
@@ -82,7 +82,7 @@
                             '                            <div class="meta">' +
                             '                                            <span><i class="iconfont ic-list-read"></i>' + item.readCount + '</span>' +
                             '                                <span>' +
-                            '                                                <i class="iconfont ic-list-comments"></i> 12' +
+                            '                                                <i class="iconfont ic-list-comments"></i> 12'+ +
                             '                                            </span> <span><i class="iconfont ic-list-like"></i> ' + item.start + '</span>' +
                             '                                <span class="time">' + item.sendDate + '</span>' +
                             '                            </div>' +

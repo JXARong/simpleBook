@@ -29,4 +29,8 @@ public interface FavouriteDao {
      * @return
      */
     int getFavouriteByPid(Integer pid);
+
+    boolean verifyFavourite(Integer pid,Integer uid);
+
+    boolean addFavourite(Integer pid,Integer uid);
 }
