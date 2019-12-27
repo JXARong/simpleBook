@@ -186,6 +186,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<Post> searchPost(String searchValue) {
+        return dao.searchPost(searchValue);
+    }
     public Post selPostById(Integer id) throws Exception {
         Post post = dao.selpostByPid(id);
         if (post==null || post.getPid()==null){

@@ -125,5 +125,14 @@ public interface PostDao {
      */
     int sendPost(Post post);
 
+
+    /**
+     * 文章搜索
+     * @param searchValue
+     * @return
+     */
+    List<Post> searchPost(String searchValue);
+
     Post selpostByPid(Integer id);
+
 }

@@ -108,4 +108,9 @@ public class TopicServiceImpl implements TopicService {
     public List<Topic> selAll() {
         return dao.selAllTopic();
     }
+
+    @Override
+    public List<Topic> searchTopic(String searchValue) {
+        return dao.searchTopic(searchValue);
+    }
 }

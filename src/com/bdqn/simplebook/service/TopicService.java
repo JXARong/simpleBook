@@ -27,4 +27,11 @@ public interface TopicService {
     int delTopicById(Integer id);
 
     List<Topic> selAll();
+
+    /**
+     * 主题搜索
+     * @param searchValue
+     * @return
+     */
+    List<Topic> searchTopic(String searchValue);
 }

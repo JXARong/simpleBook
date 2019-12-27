@@ -104,5 +104,10 @@ public interface UserDao {
      */
     Long selUserCountOfAll();
 
-
+    /**
+     * 用户搜索
+     * @param searchValue
+     * @return
+     */
+    List<User> searchUser(String searchValue);
 }

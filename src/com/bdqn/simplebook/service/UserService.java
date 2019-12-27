@@ -61,4 +61,10 @@ public interface UserService {
 
     User selUserById(Integer id) throws Exception;
 
+    /**
+     * 用户搜索
+     * @param searchValue
+     * @return
+     */
+    List<User> searchUser(String searchValue);
 }
