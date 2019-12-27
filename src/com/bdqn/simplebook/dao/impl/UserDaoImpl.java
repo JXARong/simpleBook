@@ -218,7 +218,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public User login(String emailOrunam, String pwd) {
         String sql = "select * from `user` where (? = email or ? = uname) and ? = `password`";
-        User user = super.selectOne(User.class, sql, new Object[]{emailOrunam, emailOrunam, pwd});
+        String expr = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$";
+        String email = "";
+        if(emailOrunam.matches(expr)){
+            email=emailOrunam;
+            emailOrunam="";
+        }
+        User user = super.selectOne(User.class, sql, new Object[]{email, emailOrunam, pwd});
         return user;
     }
 

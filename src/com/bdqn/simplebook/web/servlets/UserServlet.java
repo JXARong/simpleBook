@@ -332,7 +332,7 @@ public class UserServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         try {
-            List<User> getAllUserList = service.selectIndexUser();
+            List<User> getAllUserList = service.usersList();
             System.out.println(getAllUserList);
             String uname = request.getParameter("uname");
             for (User userList :getAllUserList){
@@ -363,7 +363,7 @@ public class UserServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         try {
-            List<User> getAllEmailList = service.selectIndexUser();
+            List<User> getAllEmailList = service.usersList();
             String email = request.getParameter("email");
             for (User emailList : getAllEmailList) {
                 if (emailList.getEmail().equals(email)){
