@@ -53,4 +53,6 @@ public interface PostService {
      */
     int selFavouriteByPid(Integer pid);
 
+    Post selPostById(Integer id) throws Exception;
+
 }

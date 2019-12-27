@@ -29,7 +29,7 @@
                             <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
                         </a>
                     </li>
-                    <li class="search">
+                    <li class="search" style="margin-left: 100px">
                         <form target="_blank" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;"/>
                             <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索"
                                    class="search-input"/>

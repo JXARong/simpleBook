@@ -4,6 +4,7 @@
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.ZoneOffset" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -12,6 +13,7 @@
 </head>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/layui/layui.js"></script>
 <link href="<%=request.getContextPath()%>/js/layui/css/layui.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="/simpleBook/js/tinymce/tinymce.min.js"></script>
 <body style="background-color: #F2F2F2;padding: 5px">
 
 <div class="layui-fluid">
@@ -68,6 +70,7 @@
                 </div>
             </div>
         </div>
+
         <%--            发布文章板块--%>
         <div class="layui-col-md10">
             <div class="layui-card">
@@ -113,10 +116,9 @@
 <script type="text/javascript">
     layui.use(['form', 'jquery', 'layedit'], function () {
         var form = layui.form,
-            $ = layui.jquery,
-            edit = layui.layedit;
+            $ = layui.jquery;
         form.render();
-        var editIndex = edit.build("context", {
+        /*var editIndex = edit.build("context", {
             height: "65%",
             tool: [
                 'strong' //加粗
@@ -134,8 +136,15 @@
                 , 'face' //表情
                 , 'help' //帮助
             ]
+        });*/
+        tinymce.init({
+            selector:"#context",
+            language:'zh_CN',
+            height:"500px",
+            statusbar: false,
+            content_css : 'js/layui/css/layui.css' ,
+            toolbar: 'bold italic | underline strikethrough | alignleft aligncenter alignright | styleselect fontselect fontsizeselect | indent outdent ',
         });
-
         // 加载主题信息,立即执行函数，只加载一次
         (function () {
             $.ajax({
@@ -166,7 +175,7 @@
                             var title = item.title;
                             // 截取标题
                             title = title.length > 15 ? title.substring(0, 14) + "..." : title;
-                            var temp = "<li><b><a href=''>" + title + "</a></b><p>点赞:<span>" + item.start + "</span>&nbsp;&nbsp;热度:<span>" + item.hot + "</span></p></li>";
+                            var temp = "<li><b><a href='/simpleBook/read.jsp?pid="+item.pid+"'>" + title + "</a></b><p>点赞:<span>" + item.start + "</span>&nbsp;&nbsp;热度:<span>" + item.hot + "</span></p></li>";
                             $("#postList").append($(temp));
                         })
                     } else {
@@ -238,7 +247,10 @@
         // 提交发布
         form.on("submit(sendPost)", function () {
             // 获取富文本中的纯文本内容(不包含html标签)
-            var text = edit.getText(editIndex);
+            var activeEditor = tinymce.activeEditor; 
+            var editBody = activeEditor.getBody(); 
+            activeEditor.selection.select(editBody); 
+            var text = activeEditor.selection.getContent( { 'format' : 'text' } );
             if (text.length < 30) {
                 var index = layer.open({
                     title: '在线调试'
@@ -258,12 +270,17 @@
 
         // 封装发布文章
         function sendPost() {
+            // 获取富文本中的纯文本内容(不包含html标签)
+            var activeEditor = tinymce.activeEditor;
+            var editBody = activeEditor.getBody();
+            activeEditor.selection.select(editBody);
+            var text = activeEditor.selection.getContent( { 'format' : 'text' } );
             // 发布帖子
             console.log("发布帖子");
             $.ajax({
                 url: "<%=request.getContextPath()%>/post/sendPost",
                 type: "post",
-                data: {title: $("#title").val(), topicId: $("#topics").val(), context: edit.getContent(editIndex),textNum:edit.getText(editIndex).length},
+                data: {title: $("#title").val(), topicId: $("#topics").val(), context: tinyMCE.activeEditor.getContent(),textNum:text.length},
                 success: function (data) {
                     console.log(data);
                     if (data) {

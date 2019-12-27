@@ -305,4 +305,25 @@ public class PostServlet extends BaseServlet {
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(flag);
     }
+
+    /**
+     * 根据编号查询文章信息
+     * @param request
+     * @param response
+     */
+    public void selPostByPid(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String pid = request.getParameter("pid");
+        AjaxUtils ajaxUtils=new AjaxUtils();
+        try {
+            Post post = service.selPostById(Integer.valueOf(pid));
+            ajaxUtils.setData(post);
+            ajaxUtils.setFlag(true);
+            System.out.println(ajaxUtils);
+        } catch (Exception e) {
+            ajaxUtils.setFlag(false);
+            ajaxUtils.setMsg(e.getMessage());
+        }
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONStringWithDateFormat(ajaxUtils,"yyyy-MM-dd HH:mm:ss"));
+    }
 }
