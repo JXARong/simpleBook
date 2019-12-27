@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--<link rel="stylesheet" href="/simpleBook/css/userList.css">-->
+<link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" media="all">
+<script src="/simpleBook/js/layui/layui.js" charset="utf-8"></script>
+<script id="gender_temp" type="text/html">
+    {{#  if(d.sex == 0){ }}
+    女
+    {{#  } else { }}
+    男
+    {{#  } }}
+</script>
+<script type="text/html" id="user_status">
+    {{# if(d.status == 0){ }}
+    <span style="color: red;">已封禁</span>
+    {{# }else{ }}
+    使用中
+    {{#}}}
+</script>
+<script type="text/html" id="opr">
+    <a class="layui-btn layui-btn-xs" lay-event="update" id="updateUser">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" id="delUser">删除</a>
+</script>
+<script type="text/html" id="opr_left">
+    <div class="layui-btn-group">
+        <button type="button" class="layui-btn" lay-event="insert_user">增加</button>
+        <button type="button" class="layui-btn " lay-event="update_user">编辑</button>
+        <button type="button" class="layui-btn" lay-event="delete_user">删除已选中</button>
+    </div>
+</script>
+
+<script type="application/javascript">
+    layui.use(["table", "form", "laydate", "jquery"], function () {
+        var table = layui.table
+            , form = layui.form
+            , laydate = layui.laydate
+            , $ = layui.jquery;
+        // 渲染日期控件
+        laydate.render({
+            elem: "#bornthDay",
+            time: true
+        });
+        form.render();
+
+        // 渲染表格
+        table.render({
+            elem: '#user_info'
+            , id: "userInfo"
+            , title: "用户列表"
+            , url: '/simpleBook/user/selectUser'
+            , toolbar: '#opr_left' //开启头部工具栏，并为其绑定左侧模板
+            , method: "post"
+            , layEvent: 'LAYTABLE_TIPS'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: 'uid', width: 110, title: 'ID', sort: true}
+                , {field: 'uname', width: 150, title: '昵称'}
+                , {field: 'password', width: 135, title: '密码'}
+                , {field: 'email', width: 180, title: '邮箱'}
+                , {field: 'sex', title: '性别', width: 80, templet: "#gender_temp"} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                , {field: 'bornthDay', title: '生日', width: 150, sort: true}
+                , {field: 'photo', title: '头像地址(悬浮可查看)'}
+                , {field: 'money', title: '金额', sort: true}
+                , {field: 'status', width: 150, title: '状态', templet: "#user_status"}
+                , {fixed: 'right', title: '操作', toolbar: '#opr', width: 150}
+            ]]
+            , page: true
+            , limits: [10, 20, 30, 50]
+            , loading: true
+            , text: {none: "暂无相关数据"}
+            , done: function (res, curr, count) {
+                hoverOpenImg();
+            }
+        });
+
+        // 绑定左边工具栏点击事件
+        table.on("toolbar(user_opr)", function (obj) {
+            // 获取当前状态
+            var status = table.checkStatus(obj.config.id);
+            // 判断当前操作
+            var opr = obj.event;
+
+            // 添加用户信息
+            if (opr === "insert_user") {
+                var index = layer.open({
+                    title: "添加用户",
+                    content: ["/simpleBook/houtai/updateAndAdd.html", 'no'],
+                    type: 2,
+                    area: ['500px', '700px'],
+                    btn: ["确定", "取消"],
+                    success: function (layero, index) {
+                        var body = layui.layer.getChildFrame("body", index);
+                        body.find(".layui-form-item:eq(0)").css("display", "none").removeAttr("name");
+                    },
+                    yes: function (index, obj) {
+                        yes(index, obj);
+                        reload();
+                    }
+                });
+            } else if (opr === "update_user") { // 修改用户信息
+                if (status.data.length > 1) {
+                    layer.open({
+                        title: "提示",
+                        content: "选中多行数据,无法修改",
+                        icon: 2,
+                        anim: 2
+                    });
+                    return;
+                }
+                if (status.data.length == 0) {
+                    layer.open({
+                        title: "提示",
+                        content: "没有选中用户，无法修改",
+                        icon: 2,
+                        anim: 2
+                    });
+                    return;
+                }
+                if (status.data.length == 1) {
+                    var index = layer.open({
+                        title: status.data[0].uname.toString() + "-" + status.data[0].uid.toString(),
+                        content: ["/simpleBook/houtai/updateAndAdd.html", 'no'],
+                        type: 2,
+                        area: ['500px', '750px'],
+                        success: function (layero, index) {
+                            var body = layui.layer.getChildFrame('body', index);
+                            if (obj) {
+                                // 给编辑用户窗口控件赋值
+                                assignment(body, status.data[0]);
+                            }// 渲染日期控件
+                        },
+                        btn: ["确定", "取消"],
+                        // 确定按钮点击事件
+                        yes: function (index, obj) {
+                            yes(index, obj);
+                            table.reload("#user_info");
+                            reload();
+                        },
+                        // 关闭用户编辑窗口
+                        btn2: function () {
+                            layer.close(obj.index);
+                        }
+                    })
+                }
+            } else if (opr === "delete_user") {   // 删除用户信息
+                var data = "";
+                $.each(status.data, function (i, v) {
+                    data += "uid=" + v.uid + "&"
+                });
+                data = data.substring(0, data.length - 1);
+                delUser(data);
+            }
+        });
+        // 右边工具栏点击事件
+        table.on("tool(user_opr)", function (obj) {
+            // 获取事件名称
+            var event = obj.event;
+            if (event === "update") {
+                layer.open({
+                    title: obj.data.uname.toString() + "-" + obj.data.uid.toString(),
+                    content: ["/simpleBook/houtai/updateAndAdd.html", 'no'],
+                    type: 2,
+                    area: ['500px', '700px'],
+                    btn: ["确定", "取消"],
+                    success: function (layero, index) {
+                        var body = layui.layer.getChildFrame('body', index);
+                        if (obj) {
+                            assignment(body, obj.data);
+                        }
+                    },
+                    // 确定按钮
+                    btn1: function (index, obj) {
+                        yes(index, obj.data)
+                    },
+                    // 取消按钮
+                    btn2: function () {
+
+                    }
+                })
+            } else if (event === "del") {
+                layer.open({
+                    title: obj.data.uname.toString(),
+                    content: "确定删除该用户吗？点击确定将删除该用户的所有信息",
+                    icon: 8,
+                    btn: ["确定", "取消"],
+                    btn1: function () {
+                        delUser("uid=" + obj.data.uid);
+                    },
+                    btn2: function () {
+
+                    }
+                })
+            }
+        });
+
+        // 删除用户
+        function delUser(data) {
+            $.ajax({
+                method: "get",
+                url: "/simpleBook/user/delUserById" + "?" + data,
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag == true) {
+                        layer.msg(data.msg, {icon: 1});
+                        reload();
+                    } else {
+                        layer.msg(data.errorMsg, {icon: 2});
+                    }
+                }, error: function () {
+                    layer.msg("服务器繁忙，请稍后再试");
+                }
+            });
+        }
+
+        // 重新加载表格
+        function reload() {
+            table.reload('userInfo', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                },
+                where: {
+                    uname: $("#uname").val(),
+                    uid: $("#uid").val(),
+                    email: $("#email").val(),
+                    bornthDay: $("#bornthDay").val(),
+                    sex: $("#sex").val(),
+                    status: $("#status").val()
+                }
+            });
+        }
+
+        // 查询按钮点击事件
+        $("#select").on("click", function () {
+            reload();
+        });
+
+        //鼠标悬浮显示大图
+        function hoverOpenImg() {
+            var img_show = null; // tips，用来放置图片的提示框
+            $('tr td[data-field="photo"]').hover(function () {
+                var id = "#" + $(this).parent().attr('id');
+                var img = "<img class='img_msg' src='/simpleBook/resources/userPhoto/" + $(this).text() + "' style='height: 130px;' />";//tips具体显示内容，具体样式可自行拼接
+                img_show = layer.tips(img, this, {
+                    time: 0, //-1为不消失
+                    tips: [2, 'rgba(41,41,41,.5)'], //浮动方向设定,1-4上右下左
+                    area: ['160px', '160px']
+                });
+            }, function () {
+                layer.close(img_show); //鼠标离开关闭tips，即浮动消失，不加这句鼠标离开后tips依然存在
+            });
+        }
+
+        // 弹出层按钮点击事件
+        function yes(index, obj) {
+            // 查找弹窗body部分
+            var body = layui.layer.getChildFrame('body', index);
+            // 查找修改和添加用户的表单提交按钮
+            var subBtn = body.find("#sub");
+            // 触发提交按钮的点击事件
+            subBtn.click();
+        }
+
+        // 给弹框赋值
+        function assignment(body, data) {
+            body.find("#uid").val(data.uid);
+            body.find("input[name='uname']").val(data.uname);
+            body.find("input[name='password']").val(data.password);
+            body.find("input[name='passwordTwo']").val(data.password);
+            body.find("input[name='email']").val(data.email);
+            body.find("#sex").val(data.sex);
+            body.find("input[name='bornthDay']").val(data.bornthDay);
+            body.find("input[name='money']").val(data.money);
+            body.find("input[name='bornthDay']").val(data.bornthDay);
+            body.find("#status").val(data.status);
+            body.find("#filePath").val(data.photo);
+            body.find("#portrait").attr("src", "/simpleBook/resources/userPhoto/" + data.photo);
+        }
+
+    })
+</script>
+<style>
+    .user_search_main form .layui-input-inline {
+        margin: 5px 0;
+    }
+</style>
+<body>
+<div class="layui-card" style="height: 60%; width: 97%;margin: 0 auto;margin-top: 15px">
+    <h2 class="layui-card-header">用户列表</h2>
+    <div class="layui-card-body">
+        <div class="user_div">
+            <div class="user_search_main" style="margin-top: 10px;margin-bottom: 15px">
+                <form action="" class="layui-form">
+
+                    <div class="layui-input-inline">
+                        <input type="text" name="uid" id="uid" placeholder="用户编号" autocomplete="off"
+                               class="layui-input"/>
+                    </div>
+
+                    <div class="layui-input-inline">
+                        <input type="text" name="uname" id="uname" placeholder="用户昵称" class="layui-input"
+                               autocomplete="off"/>
+                    </div>
+
+                    <div class="layui-input-inline">
+                        <input type="email" class="layui-input" name="email" id="email"
+                               placeholder="邮箱" autocomplete="off"/>
+                    </div>
+
+                    <div class="layui-input-inline">
+                        <input type="data" class="layui-input" name="bornthDay" id="bornthDay"
+                               placeholder="出生日期(yyyy-MM-dd)" autocomplete="off">
+                    </div>
+
+                    <div class="layui-input-inline">
+                        <select name="sex" id="sex">
+                            <option value="">请选择</option>
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+                    </div>
+
+                    <div class="layui-input-inline">
+                        <select name="status" id="status">
+                            <option value="">请选择</option>
+                            <option value="1">使用中</option>
+                            <option value="0">已封禁</option>
+                        </select>
+                    </div>
+
+                    <button type="button" lay-submit lay-filter="select" id="select" class="layui-btn layui-btn-normal">
+                        查询
+                    </button>
+                </form>
+            </div>
+            <table id="user_info" lay-filter="user_opr" class="layui-hide"></table>
+        </div>
+    </div>
+</div>
+</body>

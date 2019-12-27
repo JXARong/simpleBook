@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>后台首页</title>
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
+</head>
+<link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css"/>
+<script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
+<script type="text/javascript" src="/simpleBook/js/echarts.js"></script>
+<style>
+
+    /*卡片主题样式*/
+    .layui-card-body {
+        padding: 5px;
+        line-height: 24px;
+    }
+
+    /*设置每个快捷方式的样式*/
+    .layui-col-xs3 {
+        width: 25%;
+    }
+
+    .layui-col-xs6 {
+        width: 50%;
+    }
+
+    /*设置快捷方式中图标的样式*/
+    .layui-col-xs3 .layui-icon {
+        font-size: 30px;
+        height: 54px;
+        line-height: 55px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-radius: 2px;
+        background-color: #f2f2f2;
+    }
+
+    /*快捷方式中字体的样式*/
+    .layui-col-xs3 cite {
+        text-align: center;
+        padding-top: 5px;
+        display: block;
+    }
+
+    .shortcut li {
+        text-align: center;
+    }
+
+    .shortcut li i, cite {
+        cursor: pointer;
+    }
+
+    .shortcut {
+        background-color: white;
+        padding: 10px;
+    }
+
+    .layui-col-space10 > * {
+        padding: 5px;
+    }
+
+    /*设置待办事项样式*/
+    .layadmin-backlog-body {
+        display: block;
+        padding: 10px 15px;
+        height: 63px;
+        background-color: #f8f8f8;
+        text-align: left;
+    }
+
+    .layadmin-backlog-body p cite {
+        font-style: normal;
+        font-size: 30px;
+        font-weight: 300;
+        color: #009688;
+    }
+
+    .layadmin-backlog-body h3 {
+        font-size: 17px;
+        height: 24px;
+        padding-bottom: 10px;
+    }
+
+</style>
+<body style="padding: 15px;">
+
+<div class="layui-fluid" style="margin: 0 auto">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md15">
+            <div class="layui-row layui-col-space15">
+
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <h3 class="layui-card-header">快捷方式</h3>
+                        <div class="layui-card-body">
+                            <div carousel-item="">
+                                <ul class="layui-row layui-col-space15 shortcut">
+                                    <li class="layui-col-xs3">
+                                        <a href="javascript:void(0)" id="myInfo">
+                                            <i class="layui-icon layui-icon-template-1"></i>
+                                            <cite>我的信息</cite>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs3">
+                                        <a href="javascript:void(0)" id="passwordManage">
+                                            <i class="layui-icon layui-icon-chart"></i>
+                                            <cite>密码管理</cite>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs3">
+                                        <a href="/simpleBook/houtai/emailManager.html" target="rightFrame">
+                                            <i class="layui-icon layui-icon-template-1"></i>
+                                            <cite>邮箱管理</cite>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs3">
+                                        <a lay-href="javascript:layer.msg('暂不支持该功能，请期待2.0')">
+                                            <i class="layui-icon layui-icon-chat"></i>
+                                            <cite>支付信息</cite>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs3">
+                                        <a href="/simpleBook/houtai/topic.html" target="rightFrame">
+                                            <i class="layui-icon layui-icon-theme"></i>
+                                            <cite>主题管理</cite>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs3">
+                                        <a href="/simpleBook/houtai/postList.html" target="rightFrame">
+                                            <i class="layui-icon layui-icon-survey"></i>
+                                            <cite>文章管理</cite>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs3">
+                                        <a href="/simpleBook/houtai/userList.html" target="rightFrame">
+                                            <i class="layui-icon layui-icon-user"></i>
+                                            <cite>用户管理</cite>
+                                        </a>
+                                    </li>
+
+                                    <li class="layui-col-xs3">
+                                        <a id="logout" href="javascript:void(0)">
+                                            <i class="layui-icon layui-icon-set"></i>
+                                            <cite>安全退出</cite>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <h3 class="layui-card-header">待办事项</h3>
+                        <div class="layui-card-body">
+                            <div carousel-item="">
+                                <ul class="layui-row layui-col-space10 shortcut">
+                                    <li class="layui-col-xs6">
+                                        <a lay-href="app/content/comment" class="layadmin-backlog-body">
+                                            <h3>今日注册</h3>
+                                            <p><cite id="registerOfToday"></cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs6">
+                                        <a lay-href="app/forum/list" class="layadmin-backlog-body">
+                                            <h3>用户总量</h3>
+                                            <p><cite id="registerOfAll"></cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs6">
+                                        <a lay-href="template/goodslist" class="layadmin-backlog-body">
+                                            <h3>今日收入</h3>
+                                            <p><cite style="font-size: 16px">请期待...</cite></p>
+                                        </a>
+                                    </li>
+                                    <li class="layui-col-xs6">
+                                        <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});"
+                                           class="layadmin-backlog-body">
+                                            <h3>待审帖子</h3>
+                                            <p><cite style="font-size: 16px">暂未开放</cite></p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">最近一周用户注册数</div>
+                        <div class="layui-card-body">
+                            <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade"
+                                 lay-filter="LAY-index-dataview" lay-anim="fade" lay-indicator="inside" lay-arrow="none"
+                                 id="registerNum"
+                                 style="width: 100%; height: 250px; background-color: white">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-card">
+                        <div class="layui-card-header">热帖(Top20)</div>
+                        <div class="layui-card-body">
+                            <table id="hotListOfPost" class="layui-hide"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script id="time" type="text/html">
+</script>
+
+<script type="text/javascript">
+    layui.use(['element', 'layer', 'jquery','table'], function () {
+        var layer = layui.layer;
+        var $ = layui.jquery;
+        var element=layui.element;
+        var table=layui.table;
+        // 初始化echarts实例
+        var myChart = echarts.init(document.getElementById('registerNum'));
+
+
+
+        // 显示表格
+        table.render({
+            elem: '#hotListOfPost'
+            , id: "hotListOfPost"
+            , title: "今日热帖"
+            , url: '/simpleBook/post/selPostListOfTop'
+            , layEvent: 'LAYTABLE_TIPS'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                {field: 'title', width: "40%", title: '标题', sort: true}
+                , {field: 'user', width: '7%', title: '作者',templet:"<span>{{d.user.uname}}</span>"}
+                , {
+                    field: 'start',
+                    width: 120,
+                    title: '点赞/浏览',
+                    sort: true,
+                    templet: "<span>{{(d.hot+d.readCount)*10}}</span>"
+                }
+                , {field: 'topic', width: '8%', title: '主题', templet: "<span>{{d.topic.topic}}</span>"}
+                , {field:'sendDate',width:'15%',title:'发布时间'}
+            ]]
+            , page: true
+            , limits: [10, 20, 30, 50]
+            , loading: true
+            , text: {none: "暂无相关数据"}
+        });
+
+
+        // 显示信息
+        $("#myInfo").on("click", function () {
+            layer.open({
+                title: "管理员信息",
+                type: 2,
+                content: "/simpleBook/houtai/adminInfo.jsp",
+                area: ["600px", "650px"]
+            });
+        });
+
+        $("#passwordManage").click(function (data) {
+            layer.open({
+                title: "修改密码",
+                type: 2,
+                content: "/simpleBook/houtai/changePwd.jsp",
+                area: ["550px", "550px"]
+            });
+        });
+
+        // 获取近一周用户注册数量
+        $.ajax({
+            url:"/simpleBook/admin/getRegisterNumOfUser",
+            method:"post",
+            success:function (data) {
+                if(data.flag==true){
+                    loadEcharts(data.data);
+                }else{
+                    layer.msg("服务器繁忙，请刷新页面",{icon:2});
+                }
+            },error:function () {
+                layer.msg("服务器繁忙，请刷新页面",{icon:2});
+            }
+        });
+
+        // 获取今日数量，以及用户总量
+        $.ajax({
+            url:"/simpleBook/admin/getUserNumOfToday",
+            method:"post",
+            success:function (data) {
+                $("#registerOfToday").text(data.count);
+            },error:function () {
+                layer.msg("服务器繁忙，获取数据失败",{icon:2});
+            }
+        });
+
+        // 获取数据库用户总数量
+        $.ajax({
+            url:"/simpleBook/admin/getUserNumOfAll",
+            method:"post",
+            success:function (data) {
+                $("#registerOfAll").text(data.count);
+            },error:function () {
+                layer.msg("服务器繁忙，获取数据失败",{icon:2});
+            }
+        });
+
+        // 安全退出
+        $("#logout").on("click", function () {
+            layer.open({
+                title: "安全退出",
+                content: "确认退出吗？退出将会转跳至登录页面",
+                btn: ["确定", "取消"],
+                btn1: function () {
+                    $.ajax({
+                        url: "/simpleBook/admin/logout",
+                        success: function (data) {
+                            parent.location.href = "/simpleBook/houtai/login.html";
+                        }, error: function () {
+                            layer.msg("服务器繁忙,请刷新后重试")
+                        }
+                    })
+                }
+            });
+        })
+
+        // 加载图标
+        function loadEcharts(data){
+            var date = new Date();
+            var today = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var time = year + "." + month + ".";
+            console.log(today);
+            console.log(data);
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    id: "registerNumOfUser",
+                    "text": "近一周用户注册数",
+                    "top": "top",
+                    "left": "center",
+                    "textStyle": {"color": "#306fb6"},
+                    "subtextStyle": {
+                        "color": "#306fb6",
+                    }
+                },
+                tooltip: {},
+                legend: {
+                    data: ['']
+                },
+                xAxis: {
+                    data: [(time)+(today-7),(time)+(today-6), (time)+(today-5), (time)+(today-4), (time)+(today-3), (time)+(today-2), (time)+(today-1)]
+                    // data:[1,2,3,4,5,6,7]
+                },
+                yAxis: {},
+                series: [{
+                    name: '用户注册',
+                    type: "line",
+                    data: eval(data)
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+
+        // echarts随着窗口的大小变换
+        window.onresize = function(){
+            myChart.resize();
+        }
+
+    });
+    
+</script>
+</html>

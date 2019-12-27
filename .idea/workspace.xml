@@ -1,0 +1,1489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="simpleBook:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9667fae-1a5b-4386-8bc4-f740a3f02e80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/simpleBook_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/AdminDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/BaseDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/CommentsDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/Commons_LikeDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/DealDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/FavouriteDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/PostDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/RelationDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/ReportDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/TopicDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/UserDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/AdminDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/CommentsDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/Commons_LikeDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/DealDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/FavouriteDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/PostDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/RelationDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/ReportDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/TopicDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/dao/impl/UserDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Admin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Comments.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Commons_Like.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Deal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Email.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Favourite.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Post.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Relation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Report.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/Topic.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/domain/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/AdminService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/CommentsService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/Commons_LikeService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/DealService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/EmailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/FavouriteService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/PostService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/RelationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/ReportService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/TopicService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/AdminServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/CommentsServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/Commons_LikeServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/DealServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/EmailServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/FavouriteServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/PostServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/RelationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/TopicServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/test/TestBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/test/TestDB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/AjaxUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/CodeUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/ConstantUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/JdbcUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/MailUtils$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/MailUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/NumberUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/PageUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/utils/UUIDUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/filter/AdminFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/filter/EncodingFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/AdminServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/BaseServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/CommentServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/Commons_LikeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/DealServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/EmailServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/FavouriteServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/PhotoServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/PostServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/RelationServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/ReportServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/TopicServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/com/bdqn/simplebook/web/servlets/UserServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/classes/email.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/activation-1.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/commons-fileupload-1.2.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/commons-io-2.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/druid-1.0.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/fastjson-1.2.13.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/javax.mail.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/jstl.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/junit-4.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.47.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/lib/standard.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/activate_skip.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/anotherpage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/activate_skip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/focus.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/houtai_admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/houtai_index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/houtai_login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/indexof.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/personal_one.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/personal_two.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/postList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/userList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/web_login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/css/web_login2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/focus.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/header2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/adminInfo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/changePwd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/emailManager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/postList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/post_report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/topic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/updateAndAdd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/userList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/houtai/writePost.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/huiyuan.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/3A%U5]81]4A$2J]5``90HOF.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/7NZ3L0[_D6B00})@CZ8SOPA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/8S)2BEFZW8`UZ][8PUNK$K3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/Aaa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/FKB6}J)T9(56@SYX31GD`N0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/KO(80%{RY}(W3MVY({$%9DF.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/Like.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/OEZXS$`2CGGLITMHC]IA{CC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/QDOQCC(4A8LY2G[5M71S1}Y.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/VEHVB_LTA8(DV40Q5I$V551.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/V~ZHJ$F4)P_YZ0QUY2FORNS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/addfollow-fc392ec918dda9d19818181ca42d2d7e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/beastApp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/bgImg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/default_head_portrait.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/font_zuan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/girl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/go_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/houtai/download.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/houtai/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/houtai/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/huiyuanadd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/huiyuanone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/huiyuantwo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/jianjianshu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/jianjianshulogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/qq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/review.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/seruce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/shang_gary.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/shang_orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/sousuo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/sujectpetetou.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/tupoajsd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/weima.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/write.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/xiazaiAPP(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/xiazaiAPP(2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/xinxi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/zan_black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/zan_gary.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/zan_orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/images/邮箱.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/layui.mobile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/37.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/38.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/39.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/40.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/41.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/42.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/43.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/44.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/45.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/46.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/47.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/48.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/49.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/51.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/52.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/53.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/54.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/55.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/56.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/57.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/58.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/59.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/60.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/61.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/62.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/63.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/65.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/66.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/67.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/68.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/69.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/70.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/71.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/images/face/9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/colorpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/rate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/layui.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/Layui-KnifeZ/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/ace/ace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/ace/ext-searchbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/ace/mode-html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/ace/snippets/html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/ace/theme-tomorrow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/Content/ace/worker-html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/houtai_login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/jquery-1.12.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/laydate/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/laydate/theme/default/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/laydate/theme/default/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/laydate/theme/default/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/laydate/theme/default/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/laydate/theme/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/layui.mobile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/font/iconfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/37.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/38.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/39.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/40.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/41.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/42.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/43.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/44.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/45.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/46.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/47.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/48.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/49.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/51.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/52.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/53.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/54.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/55.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/56.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/57.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/58.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/59.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/60.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/61.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/62.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/63.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/65.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/66.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/67.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/68.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/69.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/70.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/71.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/images/face/9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/rate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/transfer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/layui.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tagcloud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/jquery.tinymce.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/langs/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/langs/zh_CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/advlist/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/anchor/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/autolink/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/autoresize/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/autosave/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/bbcode/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/charmap/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/code/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/codesample/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/colorpicker/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/contextmenu/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/directionality/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/emoticons/js/emojis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/emoticons/js/emojis.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/emoticons/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/fullpage/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/fullscreen/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/help/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/hr/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/image/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/imagetools/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/importcss/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/insertdatetime/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/legacyoutput/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/link/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/lists/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/media/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/nonbreaking/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/noneditable/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/pagebreak/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/paste/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/preview/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/print/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/quickbars/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/save/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/searchreplace/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/spellchecker/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/tabfocus/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/table/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/template/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/textcolor/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/textpattern/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/toc/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/visualblocks/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/visualchars/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/plugins/wordcount/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/content/dark/content.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/content/default/content.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/content/document/content.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/content/writer/content.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide-dark/content.inline.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide-dark/content.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide-dark/content.mobile.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide-dark/fonts/tinymce-mobile.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide-dark/skin.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide-dark/skin.mobile.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide/content.inline.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide/content.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide/content.mobile.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide/fonts/tinymce-mobile.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide/skin.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/skins/ui/oxide/skin.mobile.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/themes/mobile/theme.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/themes/silver/theme.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/js/tinymce/tinymce.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/json/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/json/postJson.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/json/reportPost.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/json/topic.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/json/userJson.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/loginIndex.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/personal.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/problem.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/read.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resource/userPhoto/fa.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/post/123123/44dca02500fa49bed535a1386feee9a7/54b464696ead49c38d6edafd0b49d33f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/post/123123/652afe98b36241c5b791ebedaba2eb3e/83b3b90bcec6402e99473ad4543b5ada.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/NBA.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/caijin.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/dongman.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/dongwu.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/guoji.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/jiankang.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/junshi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/keji.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/lishi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/lvyou.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/meishi.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/qiche.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/shenghuo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/shishang.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/shuma.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/tiyu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/wenhua.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/youxi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/yuer.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/yule.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/yule.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/topic/zhenquan.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-13-beta.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/10-8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/1833f22a387444528d7743ce213e6e2b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/21d74857952d4d41b22527e70f3da735.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/310cd59616684d5590312328288ed826.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/36ca8d68cabb4097860bd54875bc8b44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/3fcc81f0917647f0be97b6783856d474.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/44fb7e339a654d7bbf4143f7527cd761.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/488293ad525c411c922b89833a326a0f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/5225d4afef62467cb0a03e18bab4a5d5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/5b9a1e8db7bbd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/80bb932c18434ed3b0459b2a099d1f5a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/abee3071046d41be9b6ab82d898c3f2b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/b5da8b1d62744b40a904677800a5ef3f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/e51fe85345d9478f93080f834956e8a0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/f6dec06893cb4fa0ab0219a011da848c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/resources/userPhoto/user_8.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/userInfo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/simpleBook_war_exploded/writePost.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/AdminDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/BaseDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/CommentsDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/Commons_LikeDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/DealDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/FavouriteDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/PostDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/RelationDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/ReportDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/TopicDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/UserDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/AdminDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/CommentsDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/Commons_LikeDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/DealDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/FavouriteDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/PostDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/RelationDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/ReportDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/TopicDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/dao/impl/UserDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Admin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Comments.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Commons_Like.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Deal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Email.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Favourite.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Post.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Relation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Report.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/Topic.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/domain/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/AdminService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/CommentsService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/Commons_LikeService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/DealService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/EmailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/FavouriteService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/PostService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/RelationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/ReportService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/TopicService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/AdminServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/CommentsServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/Commons_LikeServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/DealServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/EmailServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/FavouriteServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/PostServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/RelationServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/TopicServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/test/TestBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/test/TestDB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/AjaxUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/CodeUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/ConstantUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/JdbcUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/MailUtils$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/MailUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/NumberUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/PageUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/utils/UUIDUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/filter/AdminFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/filter/EncodingFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/AdminServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/BaseServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/CommentServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/Commons_LikeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/DealServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/EmailServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/FavouriteServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/PhotoServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/PostServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/RelationServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/ReportServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/TopicServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/com/bdqn/simplebook/web/servlets/UserServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/simpleBook/email.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/simpleBook.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/database.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="false" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="151" column="100" lean-forward="true" selection-start-line="151" selection-start-column="100" selection-end-line="151" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/focus.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1235">
+              <caret line="65" column="64" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/anotherpage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1672">
+              <caret line="88" column="47" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/RelationServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/PhotoServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/writePost.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3895">
+              <caret line="205" column="17" selection-start-line="205" selection-start-column="17" selection-end-line="205" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/PostServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/UserServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3249">
+              <caret line="192" column="54" selection-start-line="192" selection-start-column="54" selection-end-line="192" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lr" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/bdqn/simplebook/service/PostService.java" />
+        <option value="$PROJECT_DIR$/web/css/index.css" />
+        <option value="$PROJECT_DIR$/web/css/indexof.css" />
+        <option value="$PROJECT_DIR$/src/com/bdqn/simplebook/test/TestDB.java" />
+        <option value="$PROJECT_DIR$/src/com/bdqn/simplebook/service/impl/PostServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/huiyuan.jsp" />
+        <option value="$PROJECT_DIR$/web/read.jsp" />
+        <option value="$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/UserServlet.java" />
+        <option value="$PROJECT_DIR$/src/database.properties" />
+        <option value="$PROJECT_DIR$/web/anotherpage.jsp" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/artifacts/simpleBook_war_exploded.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="55" />
+    <option name="y" value="56" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="simpleBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simpleBook" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="simpleBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simpleBook" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="simpleBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simpleBook" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="json" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/images/houtai" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\javaS2\simpleBook\web\images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaS2\simpleBook\web\images\houtai" />
+      <recent name="D:\javaS2\simpleBook\web\images" />
+      <recent name="D:\javaS2\simpleBook\web\WEB-INF\lib" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.50">
+    <configuration name="TestDB.testAllPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simpleBook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bdqn.simplebook.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bdqn.simplebook.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bdqn.simplebook.test.TestDB" />
+      <option name="METHOD_NAME" value="testAllPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDB.testGetDs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simpleBook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bdqn.simplebook.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bdqn.simplebook.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bdqn.simplebook.test.TestDB" />
+      <option name="METHOD_NAME" value="testGetDs" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDB.testUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="simpleBook" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bdqn.simplebook.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bdqn.simplebook.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bdqn.simplebook.test.TestDB" />
+      <option name="METHOD_NAME" value="testUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 8.5.50" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.50" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="simpleBook:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/simpleBook" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_simpleBook" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51379" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="simpleBook:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.TestDB.testUser" />
+      <item itemvalue="JUnit.TestDB.testAllPost" />
+      <item itemvalue="JUnit.TestDB.testGetDs" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.50" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestDB.testGetDs" />
+        <item itemvalue="JUnit.TestDB.testAllPost" />
+        <item itemvalue="JUnit.TestDB.testUser" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9667fae-1a5b-4386-8bc4-f740a3f02e80" name="Default Changelist" comment="" />
+      <created>1576736745122</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576736745122</updated>
+      <workItem from="1576736748464" duration="9026000" />
+      <workItem from="1577062672291" duration="28415000" />
+      <workItem from="1577151404557" duration="292000" />
+      <workItem from="1577151723692" duration="278000" />
+      <workItem from="1577152081484" duration="12254000" />
+      <workItem from="1577239621032" duration="33928000" />
+      <workItem from="1577406816974" duration="378000" />
+    </task>
+    <task id="LOCAL-00001" summary="xajhZBB">
+      <created>1577234587007</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577234587007</updated>
+    </task>
+    <task id="LOCAL-00002" summary="xajhZBB">
+      <created>1577237702410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577237702410</updated>
+    </task>
+    <task id="LOCAL-00003" summary="xajhZBB">
+      <created>1577329109194</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577329109195</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestDB_testUser - 2019.12.19 at 14h 39m 56s.xml">
+      <configuration name="TestDB.testUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestDB_testAllPost - 2019.12.19 at 14h 40m 19s.xml">
+      <configuration name="TestDB.testAllPost" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestDB_testGetDs - 2019.12.19 at 14h 40m 43s.xml">
+      <configuration name="TestDB.testGetDs" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestDB_testGetDs - 2019.12.19 at 14h 43m 20s.xml">
+      <configuration name="TestDB.testGetDs" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="84571000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Web" order="4" sideWeight="0.5021097" side_tool="true" weight="0.20107238" />
+      <window_info id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.57383966" visible="true" weight="0.20643431" />
+      <window_info id="Structure" order="7" sideWeight="0.42616034" side_tool="true" weight="0.20107238" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50067025" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.3286119" />
+      <window_info anchor="bottom" id="Java Enterprise" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49932975" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Message" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info anchor="bottom" id="Run" order="10" sideWeight="0.49932975" weight="0.3286119" />
+      <window_info anchor="bottom" id="Debug" order="11" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="14" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.3297587" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Database" order="6" weight="0.02010724" />
+      <window_info anchor="right" id="Ant Build" order="7" visible="true" weight="0.02010724" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="xajhZBB" />
+    <option name="LAST_COMMIT_MESSAGE" value="xajhZBB" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web/images/huiyuanadd.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/review.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/QDOQCC(4A8LY2G[5M71S1}Y.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/OEZXS$`2CGGLITMHC]IA{CC.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/Like.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/KO(80%{RY}(W3MVY({$%9DF.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/jianjianshulogo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/jianjianshu.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/images/huiyuantwo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/service/impl/PostServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="94" column="33" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4160#4161#0" expanded="true" />
+            <element signature="e#4204#4205#0" expanded="true" />
+            <element signature="e#4268#4269#0" expanded="true" />
+            <element signature="e#4317#4318#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/test/TestDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/service/PostService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/service/impl/TopicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/select.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/test.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/loginHeader.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/noLogin.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/personal.html" />
+    <entry file="file://$PROJECT_DIR$/web/images/qq.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-266">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/focus.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/FavouriteServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/read.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/ReportServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/json/postJson.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/activate_skip.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="92" column="6" lean-forward="true" selection-start-line="92" selection-start-column="6" selection-end-line="92" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.47.jar!/com/mysql/jdbc/Util.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/BaseServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/filter/EncodingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/service/impl/RelationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/dao/BaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/dao/impl/RelationDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/huiyuan.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/loginIndex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/personal.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="65" lean-forward="true" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/problem.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/userInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/header2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1498" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="151" column="100" lean-forward="true" selection-start-line="151" selection-start-column="100" selection-end-line="151" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/focus.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1235">
+          <caret line="65" column="64" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/anotherpage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="88" column="47" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/RelationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/PhotoServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/writePost.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3895">
+          <caret line="205" column="17" selection-start-line="205" selection-start-column="17" selection-end-line="205" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/PostServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bdqn/simplebook/web/servlets/UserServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3249">
+          <caret line="192" column="54" selection-start-line="192" selection-start-column="54" selection-end-line="192" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>simpleBook:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (simpleBook)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web|simpleBook</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -50,7 +50,8 @@ public class UserServlet extends BaseServlet {
      *
      * @param request
      * @param response
-     * @throws IOException
+     * @throws IOExcep
+     * tion
      */
     public void addAndUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         AjaxUtils ajaxUtils = new AjaxUtils();

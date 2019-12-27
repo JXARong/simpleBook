@@ -1,0 +1,19 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+.user_div{
+    margin-top: 20px;
+    height: 702px;
+    width: 97%;
+    margin-left: 1.5%;
+    border: 1px solid #cccccc;
+    background-color: white;
+}
+.user_search_main ul li{
+    display: inline-block;
+}
+.user_search_main ul{
+    height: 60px;
+    line-height: 45px;
+}

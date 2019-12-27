@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+div{
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+div:first-of-type{
+    margin-top: 100px;
+}
+
+div:last-of-type a{
+    display: inline-block;
+    line-height: 50px;
+    text-decoration:none;
+    color: white;
+    width: 150px;
+    height: 50px;
+    background: #1C97F3;
+    border-radius: 10px;
+}
