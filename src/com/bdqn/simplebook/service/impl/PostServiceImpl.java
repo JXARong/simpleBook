@@ -189,4 +189,17 @@ public class PostServiceImpl implements PostService {
     public List<Post> searchPost(String searchValue) {
         return dao.searchPost(searchValue);
     }
+    public Post selPostById(Integer id) throws Exception {
+        Post post = dao.selpostByPid(id);
+        if (post==null || post.getPid()==null){
+            throw new Exception("文章信息加载失败");
+        }
+        Integer uid = post.getUid();
+        User user = userDao.selUserById(uid);
+        if (user==null || user.getUid()==null){
+            throw new Exception("用户信息加载失败");
+        }
+        post.setUser(user);
+        return post;
+    }
 }
