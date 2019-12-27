@@ -124,4 +124,6 @@ public interface PostDao {
      * @return
      */
     int sendPost(Post post);
+
+    Post selpostByPid(Integer id);
 }

@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
 </head>
 <script type="text/javascript" src="/simpleBook/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/changeRelation.js"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${user==null}">
     <jsp:include page="header.jsp"/>
@@ -26,7 +27,7 @@
         $("#follows").click(function () {
 
             if ($("#follows").hasClass("off")) {
-                var flag = relation("true");
+                var flag = relation("true","805876405");
                 if (flag) {
                     // 取消关注该用户
                     $("#follows").removeClass("off user-follow-button");
@@ -34,7 +35,7 @@
                     $("#relationalStatus").text("已关注");
                 }
             } else {
-                var flag = relation("false");
+                var flag = relation("false","805876405");
                 if (flag) {
                     // 关注该用户
                     $("#follows").removeClass("on user-follow-button");
@@ -47,7 +48,7 @@
              * 关注获取取消关注
              * @param stauts true关注用户  false取消关注该用户
              */
-            function relation(status) {
+            /*function relation(status) {
                 var flag = false;
                 $.ajax({
                     url: "/simpleBook/relation/changeRelational",
@@ -67,18 +68,18 @@
                     }
                 });
                 return flag;
-            }
+            }*/
+
         });
 
         // 加载所有信息
         (function () {
             // 获取该用户的编号
-            <%--  <%=request.getParameter("uid")%>  --%>
-            var uid = "18273817";
+            var cid = "18273817";
             $.ajax({
                 url: "/simpleBook/user/selectUser",
                 type: "get",
-                data: {uid: uid, limit: 1, page: 1},
+                data: {uid: cid, limit: 1, page: 1},
                 success: function (data) {
                     var info = data.data[0];
 
@@ -110,35 +111,25 @@
                             '                        </div>' +
                             '                    </li>';
                         $(".note-list").append($(temp));
-                    })
-
-                    // 获取关注信息
-                    $.ajax({
-                        url: "/simpleBook/relation/verifyIsRelation",
-                        data: {cid: "17263785"},
-                        type: "post",
-                        success: function (data) {
-
-                            if (data) {
-                                // true代表已关注该用户
-                                $("#follows").removeClass("off user-follow-button");
-                                $("#follows").addClass("on user-follow-button");
-                                $("#relationalStatus").text("已关注");
-                            } else {
-                                // false未关注该用户
-                                $("#follows").removeClass("on user-follow-button");
-                                $("#follows").addClass("off user-follow-button");
-                                $("#relationalStatus").text("关注");
-                            }
-                        }, error: function () {
-                            layer.msg("加载信息失败", {icon: 1});
-                        }
                     });
                 }, error: function () {
 
                 }
             });
 
+            // 加载关注信息
+            let isRelation = getRelation(cid);
+            if (isRelation) {
+                // true代表已关注该用户
+                $("#follows").removeClass("off user-follow-button");
+                $("#follows").addClass("on user-follow-button");
+                $("#relationalStatus").text("已关注");
+            } else {
+                // false未关注该用户
+                $("#follows").removeClass("on user-follow-button");
+                $("#follows").addClass("off user-follow-button");
+                $("#relationalStatus").text("关注");
+            }
         })();
     })
 </script>
