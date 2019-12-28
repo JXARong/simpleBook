@@ -26,7 +26,7 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
 
     private AdminDao dao = new AdminDaoImpl();
-    private UserDao userDao=new UserDaoImpl();
+    private UserDao userDao = new UserDaoImpl();
 
     @Override
     public Admin login(Admin admin) {
@@ -53,6 +53,7 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 发送邮箱
+     *
      * @param forgetAdmin
      * @return
      */
@@ -60,7 +61,7 @@ public class AdminServiceImpl implements AdminService {
     public int sendEmail(Admin forgetAdmin) {
         int code = (int) ((Math.random() * 9 + 1) * 100000);
         String title = "简简书-管理员密码重置";
-        String content = "管理员：" + forgetAdmin.getUsername() + ",您好<br>  您的验证码为：" + code + ",切勿让他人盗取！";
+        String content = MailUtils.getEmailContent("简简书管理员密码重置", forgetAdmin.getUsername()+"-简简书管理员密码重置", "您的验证码为：" + code + ",请保管好您的验证码，验证码失效为5分钟");
         boolean b = MailUtils.sendMail(forgetAdmin.getEmail(), content, title);
 
         // 发送失败返回-1，否则返回随机数字
@@ -69,8 +70,6 @@ public class AdminServiceImpl implements AdminService {
         }
         return code;
     }
-
-
 
 
     /**
@@ -98,21 +97,23 @@ public class AdminServiceImpl implements AdminService {
     }
 
     /**
-     *  根据id查询管理员信息
+     * 根据id查询管理员信息
+     *
      * @param admin
      * @return
      */
     @Override
     public Admin selAdminById(Admin admin) throws Exception {
         admin = dao.selAdminById(admin.getId());
-        if (admin.getUsername()==null){
+        if (admin.getUsername() == null) {
             throw new Exception("获取管理员信息失败,请重新登录后重试");
         }
         return admin;
     }
 
     /**
-     *  修改管理员信息
+     * 修改管理员信息
+     *
      * @param admin
      * @return
      * @throws Exception
@@ -123,11 +124,11 @@ public class AdminServiceImpl implements AdminService {
         // 查找旧头像的路径并删除
         Admin selAdminById = dao.selAdminById(admin.getId());
         String photoPath = ConstantUtils.userPhoto + selAdminById.getPortrait();
-        File file=new File(photoPath);
+        File file = new File(photoPath);
         file.deleteOnExit();
 
-        int index=dao.updateAdminInfo(admin);
-        if (index==0){
+        int index = dao.updateAdminInfo(admin);
+        if (index == 0) {
             throw new Exception("修改失败,请稍后重试");
         }
         return index;
@@ -135,33 +136,35 @@ public class AdminServiceImpl implements AdminService {
 
     /**
      * 获取近一周的每天用户注册数量
+     *
      * @return
      */
     @Override
     public List<Integer> getRegisterNumOfUser() {
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        List<Integer> list=new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         // 实例化时间类
-        Calendar calendar=Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         // 遍历前七天
-        for (int i = 7; i >=0; i--) {
+        for (int i = 7; i >= 0; i--) {
             // 获取一天到七天前的时间,没循环一次时间推前一天
-            calendar.add(Calendar.DAY_OF_MONTH,-i);
+            calendar.add(Calendar.DAY_OF_MONTH, -i);
             String format = sdf.format(calendar.getTime());
             System.out.println(format);
             Long number = userDao.selUserCountByDate(format);
             list.add(Integer.valueOf(number.toString()));
 
             // 回到现在的时间
-            calendar.add(Calendar.DAY_OF_MONTH,+i);
+            calendar.add(Calendar.DAY_OF_MONTH, +i);
         }
         return list;
     }
 
     /**
      * 修改密码
+     *
      * @param admin
      */
     @Override

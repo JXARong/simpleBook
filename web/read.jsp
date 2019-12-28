@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ko no dio da!
-  Date: 2019/11/11
-  Time: 9:55
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -212,8 +206,8 @@
     </style>
     <script type="text/javascript" src="/simpleBook/js/layui/layui.js"></script>
     <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css"/>
-    <script type="text/javascript" src="/simpleBook/js/changeRelation.js"/>
     <script type="text/javascript" src="/simpleBook/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/simpleBook/js/changeRelation.js"></script>
 </head>
 <script type="text/javascript">
     layui.use(['jquery', 'layer'], function () {
@@ -228,10 +222,10 @@
                 if (top <= 0) {
                     clearInterval(time);
                 }
-
             }, 1);
         });
 
+        // 点击头像转跳至该作者的个人信息页面
         $("#photo").click(function () {
             location.href = "/simpleBook/anotherpage.jsp?cid=" + $(this).attr("value");
         });
@@ -241,7 +235,7 @@
          */
         (function () {
 
-            // 存储改变文章属于的用户编号
+            // 存储该文章属于的用户编号
             var cid = 0;
             // 获取文章编号
             $.ajax({
@@ -278,16 +272,20 @@
              *  1.查看自己发布的文章，即不显示关注按钮
              *  2.查看别人发布的文章若关注了该用户则不显示关注按钮，若没有关注则显示按钮，并且加上点击事件
              */
-            // 判断是否已关注，已关注的话关注按钮移出
-            if (cid == "${sessionScope.user.uid}") {
-                $("#changeRelation").remove();
-            }
+            if("${user.uid}"==null || "${user.uid}"==''){
+
+            }else{
+                // 判断是否已关注，已关注的话关注按钮移出
+                if (cid == "${sessionScope.user.uid}") {
+                    $("#changeRelation").remove();
+                }
 
 
-            // 获取登录用户与改用的关注关系
-            var relation = getRelation(cid);
-            if (relation == true) {
-                $("#changeRelation").remove();
+                // 获取登录用户与改用的关注关系
+                var relation = getRelation(cid);
+                if (relation == true) {
+                    $("#changeRelation").remove();
+                }
             }
 
             // 添加该文章的阅读数
@@ -296,45 +294,51 @@
                 type: "post",
                 data: {pid: "<%=request.getParameter("pid")%>"},
                 success: function () {
-
                 }
-            })
+            });
         })();
 
         // 关注按钮点击事件
         $("#changeRelation").click(function () {
-            var cid = $(this).attr("cid");
-            let b = relation("true", cid);
-            if (b) {
-                $("#changeRelation").remove();
+            if("${user.uid}"==null || "${user.uid}"==''){
+                layer.msg("您还没有登录哦！");
+                setTimeout("location.replace('/simpleBook/login.html')",1000);
+                return;
+            }else{
+                var cid = $(this).attr("cid");
+                let b = relation("true", cid);
+                if (b) {
+                    $("#changeRelation").remove();
+                }
             }
+
         });
 
         // 喜欢文章按钮点击事件
         $("#follows").click(function () {
             // 判断是否登录
-            if($("#photo").attr("value")==null || $("#photo").attr("value")==''){
-                location.href="/simpleBook/login.html";
+            if ('${user.uid}' == null || '${user.uid}' == '') {
+                location.href = "/simpleBook/login.html";
                 return;
             }
 
             // 判断是否是自己的文章
-            if($("#photo").attr("value")==${user.uid}){
+            if ($("#photo").attr("value") == '${user.uid}') {
                 layer.msg("不能给自己点赞哦！");
-                return ;
+                return;
             }
             // 判断是否已经喜欢过
             $.ajax({
-               url: "/simpleBook/favourite/verifyFavouriteUser",
-                type:"post",
-                data:{"pid":<%=request.getParameter("pid")%>,"uid":$("#photo").attr("value")},
-                success:function (data) {
-                    if(data.flag){
+                url: "/simpleBook/favourite/verifyFavouriteUser",
+                type: "post",
+                data: {"pid":<%=request.getParameter("pid")%>, "uid": $("#photo").attr("value")},
+                success: function (data) {
+                    if (data.flag) {
                         layer.msg("点赞成功！");
-                    }else{
+                    } else {
                         layer.msg(data.errorMsg);
                     }
-                },error:function () {
+                }, error: function () {
                     layer.msg("服务器繁忙！");
                 }
             });
@@ -342,9 +346,51 @@
 
         // 举报文章
         $(".jubao").click(function () {
-           layer.open({
 
-           })
+             // 判断是否已经登录
+            if($("${user.uid}")==null || '${user.uid}'==''){
+                layer.msg("登录后才能操作哦！");
+                setTimeout("location.href='/simpleBook/login.html'",1000);
+                return;
+            }
+            var isReport=false;
+            // 判断该用户是否已经举报过该文章
+            $.ajax({
+                url:"/simpleBook/report/getReport",
+                data:{uid:'${user.uid}',pid:<%=request.getParameter("pid")%>},
+                async:false,
+                type:"post",
+                success:function (data) {
+                    isReport=data;
+                },error:function () {
+
+                }
+            });
+            if(isReport){
+                layer.msg("您已经举报过了，请耐心等待审核信息,届时会通过邮箱通知您");
+                return;
+            }
+
+            // 打开举报窗口
+            var index = layer.open({
+                type: 2,
+                content: '/simpleBook/jubao.jsp',
+                title: "文章举报",
+                area: ["600px", "350px"],
+                btn: ["确定", "取消"],
+                success: function () {
+                    var body = layui.layer.getChildFrame('body', index);
+                    body.find("#pid").val("<%=request.getParameter("pid")%>");
+                    body.find("#title").text($("#title").text());
+                },
+                btn1: function () {
+                    // 查找弹窗body部分
+                    var body = layui.layer.getChildFrame('body', index);
+                    // 查找修改和添加用户的表单提交按钮
+                    var subBtn = body.find("#sub");
+                    subBtn.click();
+                }
+            })
         });
     });
 </script>
@@ -368,7 +414,7 @@
                  class="roundness inline_block float_left" id="photo">
             <div class="inline_block float_left message_message">
                 <a href="" title="ig666" class="message_style_a float_left" id="uname"></a>
-                <button class="attention float_left" id="changeRelation" style="font-size: 14px">关注</button>
+                <button class="attention float_left" id="changeRelation" style="font-size: 14px" type="button" onclick="javascript:void(0)">关注</button>
                 <p class="margin0px message_style_p float_left" id="postInfo"></p>
                 <br>
             </div>

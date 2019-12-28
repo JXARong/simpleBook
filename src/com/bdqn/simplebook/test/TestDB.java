@@ -15,7 +15,13 @@ import org.junit.Test;
 import javax.sql.DataSource;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -97,5 +103,11 @@ public class TestDB  extends BaseDao {
         AdminServiceImpl service=new AdminServiceImpl();
         List<Integer> numOfUser = service.getRegisterNumOfUser();
         System.out.println(JSON.toJSONString(numOfUser));
+    }
+
+    public static void main(String[] a){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+      String s= formatter.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(System.currentTimeMillis()), ZoneId.systemDefault()));
+        System.out.println(s);
     }
 }
