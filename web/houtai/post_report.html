@@ -5,13 +5,11 @@
     <title>被举报文章管理</title>
     <link href="/simpleBook/js/layui/css/layui.css" rel="stylesheet" type="text/css">
     <script src="/simpleBook/js/layui/layui.js" type="application/javascript"></script>
-    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png"/>
 </head>
 <script type="text/html" id="exam">
-    <div class="layui-input-inline">
-        <input type="checkbox" style="font-size: 12px" class="layui-word-aux" name="close" lay-skin="switch"
-               lay-text="通过|失败" lay-event="examine">
-    </div>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="success">审核通过</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="fail">审核失败</a>
 </script>
 <body class="layui-bg-gray">
 <div class="layui-card">
@@ -29,21 +27,59 @@
         var layer = layui.layer;
         table.render({
             elem: "#reportPost",
-            url: "/simpleBook/json/reportPost.json",
+            url: "/simpleBook/report/getAllReport",
             title: "被举报文章列表",
+            layEvent: 'LAYTABLE_TIPS',
+            method: "post",
             cols: [[
-                {type: 'checkbox', fixed: "left"},
-                {field: "id", title: "编号", width: "7%", fixed: "left", align: "center", sort: true},
-                {field: 'author', title: '作者', width: "7%", unresize: true, sort: true},
-                {field: 'title', title: '标题', width: "20%", unresize: true},
-                {field: 'context', title: '文章内容', width: "26.3%", unresize: true},
-                {field: 'reportName', title: '举报人', width: "7%", unresize: true},
-                {field: 'reportReason', title: '举报原因', width: "13%", unresize: true},
-                {field: 'createTime', title: '举报时间', width: "9%", unresize: true,sort:true},
-                {fixed: "right", title: '操作', width: "8%", align: "center", sort: true, templet: "#exam"}
-            ]],
-            page: true
+                {field: "reportId", title: "编号", width: "7%", fixed: "left", align: "center", sort: true},
+                {field: 'author', title: '作者', width: "7%", unresize: true, sort: true,templet:"<span>{{d.post.user.uname}}</span>"},
+                {field: 'title', title: '标题', width: "25%", unresize: true,templet:"<span>{{d.post.title}}</span>"},
+                {field: 'reportName', title: '举报人', width: "7%", unresize: true,templet:"<span>{{d.user.uname}}</span>"},
+                {field: 'reportContent', title: '举报原因', width: "26%", unresize: true},
+                {field: 'reportTime', title: '举报时间', width: "13%", unresize: true, sort: true},
+                {fixed: 'right',title:"操作", width: "15.2%", align: 'center', toolbar: '#exam'}
+            ]]
+            ,page: true
+            , limits: [10, 20, 30, 50]
+            , loading: true
+            , text: {none: "暂无相关数据"}
         });
+
+        table.on("tool(reportPost)", function (obj) {
+            data=obj.data;
+            // 获取事件名称
+            var event = obj.event;
+            if (event === "success") {
+                $.ajax({
+                    url:"/simpleBook/report/successOfReport",
+                    data:{reportId:data.reportId,pid:data.post.pid,uid:data.user.uid},
+                    type:"post",
+                    success:function (data) {
+                        if(data){
+                            layer.msg("审核成功！",{icon:1});
+                        }else{
+                            layer.msg("审核失败，请稍后再试",{icon:2});
+                        }
+                    }
+                })
+            } else if (event === "fail") {
+                $.ajax({
+                    url:"/simpleBook/report/failOfReport",
+                    data:{reportId:data.reportId,pid:data.post.pid,uid:data.user.uid},
+                    type:"post",
+                    success:function (data) {
+                        if(data){
+                            layer.msg("审核成功！",{icon:1});
+                        }else{
+                            layer.msg("审核失败，请稍后再试",{icon:2});
+                        }
+                    },error:function () {
+                        layer.msg("服务器繁忙，请刷新页面后重试！");
+                    }
+                })
+            }
+        })
     })
 </script>
 </body>

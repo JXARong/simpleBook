@@ -1,7 +1,10 @@
 package com.bdqn.simplebook.dao;
 
 import com.bdqn.simplebook.domain.Post;
+import com.bdqn.simplebook.domain.Report;
 import com.bdqn.simplebook.domain.User;
+
+import java.util.List;
 
 /**
  * @author: 赖榕
@@ -15,4 +18,14 @@ public interface ReportDao {
     int delReportByUid(User user);
 
     int delReportByPid(Post post);
+
+    Report isReport(Integer pid,Integer uid);
+
+    int addReport(Report report);
+
+    List<Report> getAllReport(Integer page,Integer size);
+
+    Long selAllCount();
+
+    List<Report> getReportsOfInfo(Report report);
 }

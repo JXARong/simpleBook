@@ -2,11 +2,14 @@ package com.bdqn.simplebook.utils;
 
 import com.alibaba.druid.sql.ast.statement.SQLCreateTriggerStatement;
 import com.bdqn.simplebook.domain.Email;
+import jdk.nashorn.internal.ir.ReturnNode;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
+import java.net.URLDecoder;
+import java.nio.Buffer;
 import java.util.Properties;
 
 /**
@@ -16,9 +19,32 @@ public final class MailUtils {
 
     public static final Properties props = new Properties();
 
+    public static BufferedReader emailReader = null;
+
+    private static String defaultEmailTemp = "";
+
     // 加载发送邮件信息
     static {
         loadEmailInfo();
+
+        // 初始化读取email文件的信息
+        String path = MailUtils.class.getResource("/email.txt").getPath();
+        try {
+            emailReader = new BufferedReader(new FileReader(URLDecoder.decode(path, "UTF-8")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        // 初始化默认的邮箱样板
+        try {
+            while (emailReader.ready()) {
+                defaultEmailTemp += emailReader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -124,14 +150,14 @@ public final class MailUtils {
         try {
             FileOutputStream fos = new FileOutputStream(path);
             // 修改内存中的email信息
-            props.setProperty("mail.user",email.getEmail());
-            props.setProperty("mail.smtp.user",email.getEmailName());
-            props.setProperty("mail.smtp.host",email.getHost());
-            props.setProperty("mail.smtp.port",email.getPort());
-            props.setProperty("mail.password",email.getPassword());
+            props.setProperty("mail.user", email.getEmail());
+            props.setProperty("mail.smtp.user", email.getEmailName());
+            props.setProperty("mail.smtp.host", email.getHost());
+            props.setProperty("mail.smtp.port", email.getPort());
+            props.setProperty("mail.password", email.getPassword());
 
             // 将信息持久化到硬盘中
-            props.store(fos,"emailInfo");
+            props.store(fos, "emailInfo");
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,6 +166,16 @@ public final class MailUtils {
     }
 
     public static void main(String[] args) throws Exception { // 做测试用
-        sendMail("1131111310@qq.com","测试","测试");
+        String emailContent = getEmailContent("简简书文章举报审核","简简书文章审核结果如下","亲爱的'天涯诺比邻'您好,在 2019-12-12 19:12:12 时您对进行了'海贼王中鹰眼的实力定位是什么？和大将四皇同级吗？'举报！举报原因为：太幼稚了,我们已对该文章进行了删除,并对作者进行了通知，感谢您为简简书做的一切");
+        sendMail("1131111310@qq.com",emailContent , "测试");
+    }
+
+    public static String getEmailContent(String titleStr, String subTitle, String contentStr) {
+        String temp=defaultEmailTemp;
+        temp = temp.replace("titleStr", titleStr);
+        temp = temp.replace("subTitleStr", subTitle);
+        temp = temp.replace("contentStr", contentStr);
+            System.out.println(temp);
+            return temp;
     }
 }

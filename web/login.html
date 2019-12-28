@@ -16,7 +16,17 @@
     <script src="/simpleBook/js/jquery-1.12.4.min.js"></script>
     <script src="/simpleBook/js/login.js"></script>
 </head>
-
+<script type="text/javascript">
+    $(function () {
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                /// 当点击浏览器的 后退和前进按钮 时才会被触发，
+                window.history.pushState('forward', null, '');
+                window.history.forward(1);
+            });
+        }
+    })
+</script>
 <body class="no-padding reader-black-font" lang="zh-CN">
 <div class="sign">
     <div class="logo">
