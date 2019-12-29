@@ -1,4 +1,5 @@
-<%@ page import="com.bdqn.simplebook.domain.User" %><%--
+<%@ page import="com.bdqn.simplebook.domain.User" %>
+<%@ page import="com.bdqn.simplebook.domain.Post" %><%--
   Created by IntelliJ IDEA.
   User: QZY
   Date: 2019/11/4
@@ -17,6 +18,7 @@
 <script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
 <body>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${user==null}">
     <jsp:include page="header.jsp"/>
 </c:if>
@@ -28,64 +30,58 @@
   <div style="border: 1px solid red ; "></div>
     <div class="subjec_left">
         <ul class="left_meue">
-            <li>
-                <div class="information">
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>
-                    <p name="suject_content">
-                        大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
-                    </p>
-                </div>
+
+
+            <c:forEach items="${postList}" var="postList" varStatus="status">
+                <h3 name="subjec_title"><a href="" style=""><b>${postList.title}</b></a></h3><br><br>
+                <p name="suject_content">
+                    <%
+                        Post post = (Post) pageContext.getAttribute("postList");
+                        String article = post.getArticle().substring(0, 50);
+                    %>
+                    <%=article%>
+                </p>
+
                 <div class="" style="color: #b0b0b0;display: inline-block">
 
                     <a href=""
-                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i
-                        class="layui-icon">&#xe611;</i>
-                    <number name="browse_times">12</number>
+                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <c:forEach items="${userList}" var="userList" varStatus="status">
+
+                            <c:if test="${postList.uid==userList.uid}">
+                                ${userList.uname}
+                            </c:if>
+
+                        </c:forEach>
+                    </a>
+                    <i class="layui-icon">&#xe611;</i>
+                    <number name="browse_times">${postList.readCount}</number>
                     <i class="layui-icon">&#xe6c6;</i>
-                    <number name="good_fablous">12</number>
+                    <number name="good_fablous">${postList.start}</number>
 
                 </div>
-            </li>
-            <li>
-                <div class="information">
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br>
-                    <p name="suject_content">
-                        大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
-                    </p>
-                </div>
-                <div class="" style="color: #b0b0b0;display: inline-block">
+            </c:forEach>
 
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
 
-                </div>
-            </li>
-            <li>
-                <div class="information">
+<%--            <li>--%>
+<%--                <div class="information">--%>
+<%--                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>--%>
+<%--                    <p name="suject_content">--%>
+<%--                        大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了--%>
+<%--                    </p>--%>
+<%--                </div>--%>
+<%--                <div class="" style="color: #b0b0b0;display: inline-block">--%>
 
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br>
-                    <p name="suject_content">
-                        大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了
-                    </p>
-                </div>
-                <div class="" style="color: #b0b0b0;display: inline-block">
+<%--                    <a href=""--%>
+<%--                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i--%>
+<%--                        class="layui-icon">&#xe611;</i>--%>
+<%--                    <number name="browse_times">12</number>--%>
+<%--                    <i class="layui-icon">&#xe6c6;</i>--%>
+<%--                    <number name="good_fablous">12</number>--%>
 
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
+<%--                </div>--%>
+<%--            </li>--%>
 
-                </div>
-            </li>
-            <li>
-                <div class="information">
-                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3> <br>
-                    <p name="suject_content" class="noimg" style="width: 500px">
-                        大厦多看看书科技活动呵呵挖煤的哦的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好爱神的箭哦啊师姐殴打就哦啊圣诞节拉萨的
-                    </p>
-                </div>
-                <div class="" style="color: #b0b0b0;display: inline-block">
-
-                    <a href="" style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i class="layui-icon">&#xe611;</i><number name="browse_times">12</number><i class="layui-icon">&#xe6c6;</i><number name="good_fablous">12</number>
-
-                </div>
-            </li>
             <li style="border: 1px white solid">
                 <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius"
                         style="width: 100%;background-color: #b0b0b0">加载全部
@@ -111,55 +107,31 @@
         <ul class="right_lover" style="border: 1px white solid">
             <li style="border: 1px white solid"><h5 style="color: #b0b0b0">推荐作者</h5><span
                     style="position: relative;left: 80px;bottom: 20px "><a href="" style="color: #b0b0b0"><i
-                    class="layui-icon">&#xe669;换一批</i></a></span></li>
-            <li style="border: 1px white solid">
-                <img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"
-                     style="border-radius: 50%;height: 45px;width: 45px">
-                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>
-                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                    写了11k字·1K喜欢</p>
+                    class="layui-icon">&#xe669;换一批</i></a></span>
             </li>
-            <li style="border: 1px white solid">
-                <img class="userpotato" src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"
-                     style="position: relative;right: 110px;border-radius: 50%;height: 45px;width: 45px;position: relative;right: 130px">
-                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>
-                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                    写了11k字·1K喜欢</p>
-            </li>
-            <li style="border: 1px white solid">
-                <img class="userpotato" src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"
-                     style="position: relative;right: 110px;border-radius: 50%;height: 45px;width: 45px;position: relative;right: 130px">
-                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>
-                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                    写了11k字·1K喜欢</p>
-            </li>
-            <li style="border: 1px white solid">
-                <img class="userpotato" src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"
-                     style="position: relative;right: 110px;border-radius: 50%;height: 45px;width: 45px;position: relative;right: 130px">
-                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>
-                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                    写了11k字·1K喜欢</p>
-            </li>
-            <li style="border: 1px white solid">
-                <img class="userpotato" src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"
-                     style="position: relative;right: 110px;border-radius: 50%;height: 45px;width: 45px;position: relative;right: 130px">
-                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>
-                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                    写了11k字·1K喜欢</p>
-            </li>
-            <li style="border: 1px white solid">
-                <img class="userpotato" src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"
-                     style="position: relative;right: 110px;border-radius: 50%;height: 45px;width: 45px;position: relative;right: 130px">
-                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>
-                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                    写了11k字·1K喜欢</p>
-            </li>
+
+            <c:forEach items="${userList}" var="userList" varStatus="status">
+
+                <li style="border: 1px white solid">
+                    <img src="/simpleBook/resources/userPhoto/${userList.photo}" style="border-radius: 50%;height: 45px;width: 45px">
+                    <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">${userList.uname}</p>
+                    <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
+                    <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
+                        写了${userList.textCount}字·${userList.fans}粉丝
+                    </p>
+                </li>
+
+            </c:forEach>
+
+<%--            <li style="border: 1px white solid">--%>
+<%--                <img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"--%>
+<%--                     style="border-radius: 50%;height: 45px;width: 45px">--%>
+<%--                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>--%>
+<%--                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>--%>
+<%--                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">--%>
+<%--                    写了11k字·1K喜欢</p>--%>
+<%--            </li>--%>
+
             <li style="border: 1px white solid">
                 <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius"
                         style="width: 200px">加载全部
