@@ -72,6 +72,8 @@ public class PostServiceImpl implements PostService {
             // 遍历查询的文章，查询该文章属于哪个主题
             for (Post postOne : posts) {
                 Topic topic = topicDao.selTopicById(postOne.getTopicId());
+                User user = userDao.selUserById(postOne.getUid());
+                postOne.setUser(user);
                 postOne.setTopic(topic);
             }
         }
@@ -189,6 +191,7 @@ public class PostServiceImpl implements PostService {
     public List<Post> searchPost(String searchValue) {
         return dao.searchPost(searchValue);
     }
+
     public Post selPostById(Integer id) throws Exception {
         Post post = dao.selpostByPid(id);
         if (post==null || post.getPid()==null){
@@ -206,5 +209,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public void addReadOfPostByPid(Integer pid) {
         dao.addReadOfPostByPid(pid);
+    }
+
+    @Override
+    public boolean addStart(Integer pid) {
+        Integer index = dao.addStart(pid);
+        return index>0;
     }
 }

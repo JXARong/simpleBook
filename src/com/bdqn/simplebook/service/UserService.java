@@ -67,4 +67,8 @@ public interface UserService {
      * @return
      */
     List<User> searchUser(String searchValue);
+
+    List<User> selUserForIndex(Integer uid) throws Exception;
+
+    Integer changePwd(Integer uid, String oldPwd, String newPwd);
 }

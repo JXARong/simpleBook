@@ -110,4 +110,5 @@ public interface UserDao {
      * @return
      */
     List<User> searchUser(String searchValue);
+
 }

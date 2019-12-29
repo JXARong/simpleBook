@@ -26,7 +26,10 @@
 
         // 关注按钮点击事件
         $("#follows").click(function () {
-
+            if("${user.uid}"==''){
+                layer.msg("您还没有登录，无法关注用户");
+                return;
+            }
             if ($("#follows").hasClass("off")) {
                 var flag = relation("true",$(this).attr("value"));
                 if (flag) {
@@ -128,7 +131,7 @@
                     <img id="photo" src="/simpleBook/images/girl.png" alt="240" height="240"/>
                 </a>
                 <div class="follow-button"></div>
-                <button class="off  user-follow-button" id="follows">
+                <button class="off  user-follow-button" id="follows" type="button">
                     <i class="iconfont"></i>
                     <span id="relationalStatus">关注</span>
                 </button>
