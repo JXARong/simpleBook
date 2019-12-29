@@ -23,7 +23,7 @@ public interface PostService {
      * @return
      * @throws Exception
      */
-    public List<Post>selectAllPost()throws  Exception;
+    public List<Post> selectAllPost()throws  Exception;
 
     PageUtils selPostByPage(PageUtils pageUtils, Post post,String sendDate) throws Exception;
 
