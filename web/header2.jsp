@@ -75,7 +75,7 @@
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav">
 							<li class="tab active">
-								<a href="/">
+								<a href="/simpleBook/index.jsp">
 									<span class="menu-text">发现</span>
 									<i class="iconfont ic-navigation-discover menu-icon"></i>
 								</a>

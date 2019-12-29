@@ -70,6 +70,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
             sql += "and sendDate like ?";
             params.add("%" + sendDate + "%");
         }
+        sql+=" order by hot desc";
         sql += " limit ?,?";
         params.add(start);
         params.add(limit);
@@ -193,5 +194,23 @@ public class PostDaoImpl extends BaseDao implements PostDao {
     public void addReadOfPostByPid(Integer pid) {
         String sql="update post set readCount=readCount+1 where pid =?";
         super.update(sql,new Object[]{pid});
+    }
+
+    @Override
+    public Integer addStart(Integer pid) {
+        String sql="update post set start = start +1 where pid = ?";
+        return super.update(sql,new Object[]{pid});
+    }
+
+    @Override
+    public List<Integer> selUidGroupByTextNumDesc(Integer uid) {
+        String sql="SELECT uid FROM post GROUP BY uid HAVING 1=1  ";
+        List<Object> params=new LinkedList<>();
+        if (uid!=null){
+            sql+=" and uid!=?";
+            params.add(uid);
+        }
+        sql+=" ORDER BY SUM(textNum) DESC";
+        return super.selRowsAndOneColumn(Integer.class,sql,params.toArray());
     }
 }

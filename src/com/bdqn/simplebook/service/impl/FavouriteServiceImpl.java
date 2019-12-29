@@ -4,6 +4,7 @@ import com.bdqn.simplebook.dao.FavouriteDao;
 import com.bdqn.simplebook.dao.impl.FavouriteDaoImpl;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.FavouriteService;
+import com.bdqn.simplebook.service.PostService;
 
 /**
  * @author: 龚皓冬
@@ -15,7 +16,7 @@ import com.bdqn.simplebook.service.FavouriteService;
  */
 public class FavouriteServiceImpl implements FavouriteService {
     private FavouriteDao dao=new FavouriteDaoImpl();
-
+    private PostService postService=new PostServiceImpl();
     @Override
     public int getFavouriteUser(User user) {
         int i = dao.getFavouriteUser(user);
@@ -33,7 +34,13 @@ public class FavouriteServiceImpl implements FavouriteService {
         if (b){
             throw new Exception("不能重复点赞");
         }else{
-            return dao.addFavourite(pid, uid);
+            // 添加喜欢信息
+            boolean favourite = dao.addFavourite(pid, uid);
+            // 给post中start加1
+            if (favourite){
+                return postService.addStart(pid);
+            }
+            return false;
         }
     }
 }

@@ -257,7 +257,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public List<User> searchUser(String searchValue) {
-        String sql = "select * from `user` from uname like ?";
+        String sql = "select * from `user` where uname like ?";
         List<User> searchUserList = super.selectList(User.class,sql,new Object[]{"%"+searchValue+"%"});
         return searchUserList;
     }

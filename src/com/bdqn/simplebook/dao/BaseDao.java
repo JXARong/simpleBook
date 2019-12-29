@@ -150,6 +150,28 @@ public class BaseDao {
         return list != null && list.size() > 0 ? list.get(0) : null;
     }
 
+    protected  <T> List<T>  selRowsAndOneColumn(Class<T> clazz,String sql,Object[] params){
+        List<T> list = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            connection = JdbcUtils.getConnection();
+            ps = connection.prepareStatement(sql);
+            this.fullParams(ps, params);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                list.add((T) rs.getObject(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JdbcUtils.close(connection,ps,rs);
+        }
+
+        return list;
+    }
+
     /**
      * 填充数据库
      *

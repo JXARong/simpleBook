@@ -1,147 +1,256 @@
-<%@ page import="com.bdqn.simplebook.domain.User" %>
-<%@ page import="com.bdqn.simplebook.domain.Post" %><%--
-  Created by IntelliJ IDEA.
-  User: QZY
-  Date: 2019/11/4
-  Time: 13:48
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <title>简简书</title>
+    <title>简简书 · 首页</title>
     <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png"/>
+    <script src="/simpleBook/js/layui/layui.js"></script>
+    <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css">
+    <script src="/simpleBook/js/jquery-1.12.4.min.js"></script>
+    <script src="/simpleBook/js/changeRelation.js"></script>
 </head>
-<link rel="stylesheet" href="/simpleBook/css/indexof.css" type="text/css">
-<link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" type="text/css">
-<script type="text/javascript" src="/simpleBook/js/layui/layui.all.js"></script>
 <body>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${user==null}">
     <jsp:include page="header.jsp"/>
 </c:if>
 <c:if test="${user!=null}">
     <jsp:include page="header2.jsp"/>
 </c:if>
+<div class="layui-fluid" style="padding-top: 30px">
+    <div class="layui-row layui-col-space10">
+        <%--      左侧栏，显示文章信息      --%>
+        <div class="layui-col-md7  layui-col-md-offset1" style="height: 90%">
+            <style>
+                .indexTitle {
+                    font-size: 18px;
+                    line-height: 40px
+                }
 
-<section class="first_subject" style="margin: 10px auto">
-  <div style="border: 1px solid red ; "></div>
-    <div class="subjec_left">
-        <ul class="left_meue">
+                .abstract {
+                    color: #999;
+                    font-size: 13px;
+                    line-height: 24px;
+                }
 
+                #right li {
+                    padding: 15px 2px 20px 0;
+                    margin: 0 0 15px;
+                    border-bottom: 1px solid #f0f0f0;
+                }
 
-            <c:forEach items="${postList}" var="postList" varStatus="status">
-                <h3 name="subjec_title"><a href="" style=""><b>${postList.title}</b></a></h3><br><br>
-                <p name="suject_content">
-                    <%
-                        Post post = (Post) pageContext.getAttribute("postList");
-                        String article = post.getArticle().substring(0, 50);
-                    %>
-                    <%=article%>
-                </p>
+                #right .meta {
+                    font-size: 12px;
+                }
 
-                <div class="" style="color: #b0b0b0;display: inline-block">
+                #right .meta a {
+                    color: #b4b4b4;
+                }
 
-                    <a href=""
-                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;
-                        <c:forEach items="${userList}" var="userList" varStatus="status">
+                #right .start {
+                    color: #b4b4b4;
+                }
 
-                            <c:if test="${postList.uid==userList.uid}">
-                                ${userList.uname}
-                            </c:if>
+            </style>
+            <ul style="width: 70%;margin: 0 auto" id="right" class="flow-default">
+                <%--<li style="width: 100%">
+                    <div class="postContent">
 
-                        </c:forEach>
-                    </a>
-                    <i class="layui-icon">&#xe611;</i>
-                    <number name="browse_times">${postList.readCount}</number>
-                    <i class="layui-icon">&#xe6c6;</i>
-                    <number name="good_fablous">${postList.start}</number>
+                        &lt;%&ndash; 显示文章标题 &ndash;%&gt;
+                        <a style="color: black" class="indexTitle" target="_blank" href="/simpleBook/read.jsp?pid=">30岁了没有一点方向</a>
+                        &lt;%&ndash; 显示文章内容节选 &ndash;%&gt;
+                        <p class="abstract">
+                            晚上睡不着，干脆写篇文再睡。 我一直以为自己30岁，没结婚，还年轻。今天人家告诉我，再有几天过年了，过完年我就是32岁了，我们这都讲虚岁的。 那...
+                        </p>
+                        &lt;%&ndash; 显示文章点赞信息，评论信息 &ndash;%&gt;
+                        <div class="meta">
+                            <span class="jsd-meta">
+                              <i class="iconfont ic-paid1"></i> 3.9
+                            </span>
+                            <a class="nickname" target="_blank" href="/u/f4ec3457f617">我是你的茉莉小姐</a>
+                            <a target="_blank" href="/p/1931a925ddbe#comments">
+                                <i class="iconfont ic-list-comments"></i> 4
+                            </a> <span><i class="iconfont ic-list-like"></i> 17</span>
+                        </div>
+                    </div>
+                </li>--%>
+            </ul>
 
-                </div>
-            </c:forEach>
-
-
-<%--            <li>--%>
-<%--                <div class="information">--%>
-<%--                    <h3 name="subjec_title"><a href="" style=""><b>惊！北大青鸟某男子。。。</b></a></h3><br><br>--%>
-<%--                    <p name="suject_content">--%>
-<%--                        大厦多看看书科技活动呵呵挖煤的哦i的萨芬马可夫肯定是方法大佛啊按发发打发了艰苦撒旦回复老两口大数据发哈得零分哈点击返回骄傲和弗兰克大黄蜂建立大师傅喀什附近开了的身份看好了--%>
-<%--                    </p>--%>
-<%--                </div>--%>
-<%--                <div class="" style="color: #b0b0b0;display: inline-block">--%>
-
-<%--                    <a href=""--%>
-<%--                       style="color: #b0b0b0;position: relative;bottom: 1px">&nbsp;&nbsp;&nbsp;&nbsp;三天就扫觉得</a><i--%>
-<%--                        class="layui-icon">&#xe611;</i>--%>
-<%--                    <number name="browse_times">12</number>--%>
-<%--                    <i class="layui-icon">&#xe6c6;</i>--%>
-<%--                    <number name="good_fablous">12</number>--%>
-
-<%--                </div>--%>
-<%--            </li>--%>
-
-            <li style="border: 1px white solid">
-                <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius"
-                        style="width: 100%;background-color: #b0b0b0">加载全部
-                </button>
-            </li>
-            <div>
-                <a href="" style="color: #b0b0b0">关于简书·</a><a href="" style="color: #b0b0b0">加入我们·</a><a href=""
-                                                                                                         style="color: #b0b0b0">联系我们·</a><a
-                    href="" style="color: #b0b0b0">简书出版社·</a><a href="" style="color: #b0b0b0">帮助中心·</a><a href=""
-                                                                                                           style="color: #b0b0b0">合作伙伴</a>
+        </div>
+        <%--    右侧栏    --%>
+        <div class="layui-col-md3">
+            <div class="layui-col-md12">
+                <img id="huiyuan" src="images/OEZXS$%602CGGLITMHC%5DIA%7BCC.png">
             </div>
-            <div>
-                <p style="color: #b0b0b0">©2012-2019 上海佰集信息科技有限公司 / 简书 / 沪ICP备11018329号-5 / Smrz 沪公网安备31010402002252号 /
-                    Wxb 简书网举报电话：021-34770013 / Fanzha 亲爱的市民朋友，上海警方反诈劝阻电话“962110”系专门针对避免您财产被骗受损而设，请您一旦收到来电，立即接听 / Zggsrz
-                </p>
+            <div class="layui-col-md12" style="padding-top: 50px">
+                <style>
+                    .userList li {
+                        margin-bottom: 20px;
+                    }
+
+                    .indexFollow span, a {
+                        color: #00bb29;
+                    }
+
+                    .indexFollow a:hover {
+                        color: #00bb29;
+                    }
+
+                    .indexFollow a:visited {
+                        color: #00bb29;
+                    }
+
+                    .indexFollow {
+                        cursor: pointer;
+                    }
+
+                    #huiyuan {
+                        cursor: pointer;
+                    }
+
+                    .userList img {
+                        border-radius: 50%;
+                    }
+                    .userList img{
+                        cursor: pointer;
+                    }
+                    .userList .name{
+                        cursor: pointer;
+                    }
+                </style>
+                <ul class="userList">
+                </ul>
             </div>
-        </ul>
-
-        <ul class="right_menu" style="margin: 10px">
-            <li style="margin: 10px"><img src="/simpleBook/images/OEZXS$%602CGGLITMHC%5DIA%7BCC.png"></li>
-
-        </ul>
-        <ul class="right_lover" style="border: 1px white solid">
-            <li style="border: 1px white solid"><h5 style="color: #b0b0b0">推荐作者</h5><span
-                    style="position: relative;left: 80px;bottom: 20px "><a href="" style="color: #b0b0b0"><i
-                    class="layui-icon">&#xe669;换一批</i></a></span>
-            </li>
-
-            <c:forEach items="${userList}" var="userList" varStatus="status">
-
-                <li style="border: 1px white solid">
-                    <img src="/simpleBook/resources/userPhoto/${userList.photo}" style="border-radius: 50%;height: 45px;width: 45px">
-                    <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">${userList.uname}</p>
-                    <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>
-                    <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">
-                        写了${userList.textCount}字·${userList.fans}粉丝
-                    </p>
-                </li>
-
-            </c:forEach>
-
-<%--            <li style="border: 1px white solid">--%>
-<%--                <img src="images/KO(80%25%7BRY%7D(W3MVY(%7B$%259DF.png"--%>
-<%--                     style="border-radius: 50%;height: 45px;width: 45px">--%>
-<%--                <p class="right_writer" style="position: relative;left: 50px;bottom: 40px">这个人是傻逼</p>--%>
-<%--                <a href="" style="position: relative;left: 80px;bottom: 45px;color: #00FF00">+关注</a>--%>
-<%--                <p class="bottom_writer" style="color:#b0b0b0;font-size:8px;position: relative;bottom: 40px;left: 50px">--%>
-<%--                    写了11k字·1K喜欢</p>--%>
-<%--            </li>--%>
-
-            <li style="border: 1px white solid">
-                <button type="button" class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius"
-                        style="width: 200px">加载全部
-                </button>
-            </li>
-        </ul>
+        </div>
     </div>
-</section>
+</div>
+<script type="text/javascript">
 
+    layui.use(["jquery", "layer", "flow"], function () {
+        var flow = layui.flow;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        flow.load({
+            elem: '#right' //流加载容器
+            , done: function (page, next) { //执行下一页的回调
+                $.ajax({
+                    url: "/simpleBook/post/selectPost",
+                    data: {page: page, limit: 6},
+                    type: "post",
+                    success: function (data) {
+                        let count = data.count;
+                        //插入查询的数据
+                        setTimeout(function () {
+                            var lis = [];
+                            // 遍历查询到的数据
+                            for (var i = 0; i < data.data.length; i++) {
+                                var postInfo = data.data[i];
+                                var content = $("<span>" + postInfo.article + "</span>").text();
+                                content = content.length > 150 ? content.substring(0, 150) + "..." : content;
+                                var temp = '<li style="width: 100%">' +
+                                    '                    <div class="postContent">' +
+                                    '\n' +
+                                    '                        <a style="color: black" class="indexTitle" target="_blank" href="/simpleBook/read.jsp?pid=' + postInfo.pid + '">' + postInfo.title + '</a>\n' +
+                                    '                        <p class="abstract">' + content +
+                                    '                        </p>' +
+                                    '                        <div class="meta">' +
+                                    '                            <span class="jsd-meta">' +
+                                    '                              <i class="iconfont ic-paid1"></i> ' + postInfo.hot +
+                                    '                            </span>' +
+                                    '                            <a class="nickname" target="_blank" href="/simpleBook/anotherpage.jsp?cid=' + postInfo.user.uid + '">&nbsp;&nbsp;&nbsp;' + postInfo.user.uname + '&nbsp;&nbsp;&nbsp;</a>' +
+                                    '                            <a target="_blank" href="/p/1931a925ddbe#comments">' +
+                                    '                                <i class="iconfont ic-list-comments"></i> 4' +
+                                    '                            </a> ' +
+                                    '                           <span class="start">' +
+                                    '                               <i class="iconfont ic-list-like"></i>' + postInfo.start + '' +
+                                    '                           </span>' +
+                                    '                        </div>\n' +
+                                    '                    </div>\n' +
+                                    '                </li>';
+                                lis.push(temp)
+                            }
+
+                            //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                            //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                            next(lis.join(''), page < (count / 6)); //假设总页数为 10
+                        }, 500);
+                    }, error: function () {
+                        layer.msg("信息加载错误，请稍后访问");
+                    }
+                });
+            }
+        });
+
+        // 会员点击事件
+        $("#huiyuan").click(function () {
+            location.href = "/simpleBook/huiyuan.jsp"
+        });
+
+        // 加载右侧栏人物信息
+        (function () {
+            $.ajax({
+                url: "/simpleBook/user/selUserForIndex",
+                type: "get",
+                success: function (data) {
+                    for (const user of data) {
+                        // 遍历该用户的所有文章
+                        var textNum = 0;
+                        var start = 0;
+                        for (const post of user.posts) {
+                            start += post.start;
+                            textNum += post.textNum;
+                        }
+                        textNum = (textNum / 1000).toFixed(1);
+                        start = start < 1000 ? parseInt(start) : (start / 1000).toFixed(1);
+                        var temp = ' <li style="width: 100%">' +
+                            '                        <img src="/simpleBook/resources/userPhoto/' + user.photo + '" onclick="javascript:location.href=\'/simpleBook/anotherpage.jsp?cid='+user.uid+'\'"  width="50px" height="50px">' +
+                            '                        <div style="display: inline-block;vertical-align: top;padding-top: 5px;width: 45%;">' +
+                            '                            <span class="name" onclick="javascript:location.href=\'/simpleBook/anotherpage.jsp?cid='+user.uid+'\'">' + user.uname + '</span>' +
+                            '                            <span class="indexFollow" style="float: right">' +
+                            '                                <span style="display: inline-block;height: 20px;width: 60px;">' +
+                            '                                    <span class="layui-icon" style="display: inline-block;width: 14px;">' +
+                            '                                        &#xe654;' +
+                            '                                    </span>' +
+                            '                                    <a href="javascript:void(0)" value=' + user.uid + ' class="changeRelationForIndex" style="font-size: 13px;">关注</a>' +
+                            '                                </span>' +
+                            '                            </span>' +
+                            '                            <br>' +
+                            '                            <span style="font-size: 12px;display:inline-block;vertical-align: bottom;padding-top: 10px">写了' + textNum + 'k字 · ' + start + '喜欢</span>' +
+                            '                        </div>' +
+                            '                    </li>';
+                        $(".userList").append($(temp));
+                    }
+                }, error: function () {
+                    layer.msg("信息加载异常，请刷新后重新");
+                }
+            })
+        })();
+
+
+        // 关注按钮点击事件
+        $(".userList").on("click",'.indexFollow', (function () {
+                console.log("sjab");
+                // 判断是否已经登录
+                if ("${user.uid}" == '') {
+                    layer.msg("还没有登录哦，不能点赞");
+                    return;
+                }
+                let b = getRelation($(this).find("a").attr("value"));
+                // 判断是否已经关注了
+                if(b){
+                    layer.msg("您已经关注过了哦");
+                    return;
+                }
+
+                // 关注获取去取消关注
+                let b1 = relation("true",$(this).find("a").attr("value"));
+                if(b1){
+                    $(this).find("a").prev().remove();
+                    $(this).find("a").text("已关注");
+                }
+            })
+        );
+    })
+
+</script>
 </body>
-
 </html>
-

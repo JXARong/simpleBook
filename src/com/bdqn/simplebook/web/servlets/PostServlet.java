@@ -21,6 +21,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -57,7 +58,7 @@ public class PostServlet extends BaseServlet {
             List<User> userList = userService.usersList();
             request.setAttribute("userList",userList);
             request.setAttribute("postList", postList);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -315,7 +316,7 @@ public class PostServlet extends BaseServlet {
     }
 
 
-    public void selectPostUserType(HttpServletRequest request,HttpServletResponse response) throws IOException{
+    public void selectPostUserType(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 
         TopicService topicServlet = new TopicServiceImpl();
         UserService userService = new UserServiceImpl();
@@ -327,7 +328,7 @@ public class PostServlet extends BaseServlet {
         request.setAttribute("searchPostList", searchPostList);
         request.setAttribute("searchTopicList", searchTopicList);
         request.setAttribute("searchUserList",searchUserList);
-        request.getRequestDispatcher("/simpleBook/search.jsp");
+        request.getRequestDispatcher("/search.jsp").forward(request,response);
     }
     /**
      * 根据编号查询文章信息
@@ -350,6 +351,11 @@ public class PostServlet extends BaseServlet {
         response.getWriter().write(JSON.toJSONStringWithDateFormat(ajaxUtils,"yyyy-MM-dd HH:mm:ss"));
     }
 
+    /**
+     * 添加阅读量
+     * @param request
+     * @param response
+     */
     public void addRead(HttpServletRequest request,HttpServletResponse response){
         String pid = request.getParameter("pid");
         service.addReadOfPostByPid(Integer.valueOf(pid));

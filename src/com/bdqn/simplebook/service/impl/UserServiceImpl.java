@@ -14,9 +14,7 @@ import com.bdqn.simplebook.utils.PageUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author: 龚皓冬
@@ -350,5 +348,28 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> searchUser(String searchValue) {
         return dao.searchUser(searchValue);
+    }
+
+    @Override
+    public List<User> selUserForIndex(Integer uid) throws Exception {
+        List<User> users=new ArrayList<>();
+        List<Integer> integers = postDao.selUidGroupByTextNumDesc(uid);
+        for (Integer integer : integers) {
+            User user = this.selUserById(integer);
+            users.add(user);
+        }
+        return users;
+    }
+
+    @Override
+    public Integer changePwd(Integer uid, String oldPwd, String newPwd) {
+        User user = dao.selUserById(uid);
+        if(!user.getPassword().equals(oldPwd)){
+            // -1 旧密码错误
+            return -1;
+        }
+        user.setPassword(newPwd);
+        int i = dao.updateUserById(user);
+        return i;
     }
 }
