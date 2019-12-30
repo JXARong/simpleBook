@@ -275,7 +275,7 @@ public class UserServlet extends BaseServlet {
 
             if (i>0){
                 ajaxUtils.setFlag(true);
-
+                request.getSession().setAttribute("user",user);
             }else {
                 ajaxUtils.setFlag(false);
                 ajaxUtils.setErrorMsg("注册失败！");
@@ -328,6 +328,7 @@ public class UserServlet extends BaseServlet {
     public void verificationUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         AjaxUtils ajaxUtils = new AjaxUtils();
+        ajaxUtils.setFlag(true);
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         try {
@@ -359,6 +360,7 @@ public class UserServlet extends BaseServlet {
     public void verificationEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         AjaxUtils ajaxUtils = new AjaxUtils();
+        ajaxUtils.setFlag(true);
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         try {

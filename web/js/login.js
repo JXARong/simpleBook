@@ -2,7 +2,6 @@ $(function () {
 
     function check(){
 
-
             $.ajax({
                 url: "/simpleBook/user/loginOn",
                 data: {unameAndEmail: $("#session_email_or_mobile_number").val(), password: $("#session_password").val()},
@@ -17,7 +16,6 @@ $(function () {
                     $(".tip").text("服务器繁忙");
                 }
             });
-
 
     }
 

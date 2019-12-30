@@ -9,6 +9,8 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
+    <script type="text/javascript" src="/simpleBook/js/jquery-1.12.4.min.js" ></script>
+
     <title>邮箱激活</title>
     <script>
 
