@@ -60,7 +60,6 @@
                 'foxmail.com': 'http://www.foxmail.com',
 
             };
-
             var url = '<%=request.getParameter("email")%>'.split('@')[1]; //获取邮箱域
 
             $("#goEmail").attr("href",hash[url]); //替换登陆链接
