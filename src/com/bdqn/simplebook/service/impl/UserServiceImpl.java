@@ -283,6 +283,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> usersList() throws Exception {
+
         return dao.queryUser();
     }
 
@@ -347,7 +348,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> searchUser(String searchValue) {
-        return dao.searchUser(searchValue);
+        List<User> userList = dao.searchUser(searchValue);
+        for (User user : userList) {
+            this.selInfoOfUser(user);
+            List<Post> posts = postDao.selPostByUid(user);
+            user.setPosts(posts);
+            user.setPostsNum(posts.size());
+            int textNum = this.selTextNum(posts);
+            user.setTextCount(textNum);
+            user.setFavouriteNum(this.selFavouriteNum(user));
+        }
+        return userList;
     }
 
     @Override

@@ -25,6 +25,7 @@ public class User {
     private Timestamp registerTime; // 注册时间
     private String introduce;  // 个人简介
     private List<Post> posts; // 该用户发布的所有帖子
+    private Integer postsNum; //该用户发布的所有帖子数量
     private List<Relation> relations; // 所有关注以及被关注
     private int fans; // 粉丝数量
     private int attentionNum ;// 关注的博主数量
@@ -167,6 +168,10 @@ public class User {
         this.registerTime = registerTime;
     }
 
+    public Integer getPostsNum(){ return postsNum; }
+
+    public void setPostsNum(Integer postsNum){ this.postsNum = postsNum; };
+
     @Override
     public String toString() {
         return "User{" +
@@ -180,6 +185,7 @@ public class User {
                 ", status=" + status +
                 ", uname='" + uname + '\'' +
                 ", registerTime='" + registerTime + '\'' +
+                ", postsNum" + postsNum + '\'' +
                 '}';
     }
 }

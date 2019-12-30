@@ -92,7 +92,7 @@
                             <li>
 
                                 <div class="content">
-                                    <a href="" target="_blank" class="title">${postList.title}</a>
+                                    <a href="/simpleBook/read.jsp?pid=${postList.pid}" target="_blank" class="title">${postList.title}</a>
                                     <p class="abstract">
                                         <%
                                             Post post = (Post) pageContext.getAttribute("postList");
@@ -133,17 +133,17 @@
                         <c:forEach items="${searchUserList}" var="userList" varStatus="status">
 
                             <li>
-                                <a href="" target="_blank" class="avatar">
+                                <a href="/simpleBook/anotherpage.jsp?cid=${userList.uid}" target="_blank" class="avatar">
                                     <img src="/simpleBook/resources/userPhoto/${userList.photo}">
                                 </a>
                                 <div class="info">
-                                    <a href="" target="_blank" class="name">
+                                    <a href="/simpleBook/anotherpage.jsp?cid=${userList.uid}" target="_blank" class="name">
                                             ${userList.uname}
                                     </a>
                                     <div class="meta">
                                         <span>关注${userList.attentionNum}</span>
                                         <span>粉丝${userList.fans}</span>
-                                        <span>文章${userList.posts}</span>
+                                        <span>文章${userList.postsNum}</span>
                                     </div>
                                     <div class="meta">
                                     <span>

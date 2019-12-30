@@ -9,62 +9,63 @@
 <html>
 <head>
     <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
+    <script type="text/javascript" src="/simpleBook/js/jquery-1.12.4.min.js" ></script>
+
     <title>邮箱激活</title>
     <script>
 
-        var hash={
+        $(function () {
+            var hash={
 
-            'qq.com': 'http://mail.qq.com',
+                'qq.com': 'http://mail.qq.com',
 
-            'gmail.com': 'http://mail.google.com',
+                'gmail.com': 'http://mail.google.com',
 
-            'sina.com': 'http://mail.sina.com.cn',
+                'sina.com': 'http://mail.sina.com.cn',
 
-            '163.com': 'http://mail.163.com',
+                '163.com': 'http://mail.163.com',
 
-            '126.com': 'http://mail.126.com',
+                '126.com': 'http://mail.126.com',
 
-            'yeah.net': 'http://www.yeah.net/',
+                'yeah.net': 'http://www.yeah.net/',
 
-            'sohu.com': 'http://mail.sohu.com/',
+                'sohu.com': 'http://mail.sohu.com/',
 
-            'tom.com': 'http://mail.tom.com/',
+                'tom.com': 'http://mail.tom.com/',
 
-            'sogou.com': 'http://mail.sogou.com/',
+                'sogou.com': 'http://mail.sogou.com/',
 
-            '139.com': 'http://mail.10086.cn/',
+                '139.com': 'http://mail.10086.cn/',
 
-            'hotmail.com': 'http://www.hotmail.com',
+                'hotmail.com': 'http://www.hotmail.com',
 
-            'live.com': 'http://login.live.com/',
+                'live.com': 'http://login.live.com/',
 
-            'live.cn': 'http://login.live.cn/',
+                'live.cn': 'http://login.live.cn/',
 
-            'live.com.cn': 'http://login.live.com.cn',
+                'live.com.cn': 'http://login.live.com.cn',
 
-            '189.com': 'http://webmail16.189.cn/webmail/',
+                '189.com': 'http://webmail16.189.cn/webmail/',
 
-            'yahoo.com.cn': 'http://mail.cn.yahoo.com/',
+                'yahoo.com.cn': 'http://mail.cn.yahoo.com/',
 
-            'yahoo.cn': 'http://mail.cn.yahoo.com/',
+                'yahoo.cn': 'http://mail.cn.yahoo.com/',
 
-            'eyou.com': 'http://www.eyou.com/',
+                'eyou.com': 'http://www.eyou.com/',
 
-            '21cn.com': 'http://mail.21cn.com/',
+                '21cn.com': 'http://mail.21cn.com/',
 
-            '188.com': 'http://www.188.com/',
+                '188.com': 'http://www.188.com/',
 
-            'foxmail.com': 'http://www.foxmail.com',
+                'foxmail.com': 'http://www.foxmail.com',
 
-        };
-
-        var url = $("#email").text().split('@')[1]; //获取邮箱域
-
-        for (var j in hash){
+            };
+            var url = '<%=request.getParameter("email")%>'.split('@')[1]; //获取邮箱域
 
             $("#goEmail").attr("href",hash[url]); //替换登陆链接
+        })
 
-        }
+
 
     </script>
     <link rel="stylesheet" type="text/css" href="/simpleBook/css/activate_skip.css">

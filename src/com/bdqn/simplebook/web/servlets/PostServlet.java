@@ -329,7 +329,13 @@ public class PostServlet extends BaseServlet {
         request.setAttribute("searchPostList", searchPostList);
         request.setAttribute("searchTopicList", searchTopicList);
         request.setAttribute("searchUserList",searchUserList);
-        request.getRequestDispatcher("/search.jsp").forward(request,response);
+
+        try {
+            request.getRequestDispatcher("/search.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+
     }
     /**
      * 根据编号查询文章信息

@@ -7,9 +7,10 @@ $(function () {
             url: "/simpleBook/user/register",
             data: {uname: $("#user_nickname").val(), email: email, password: $("#user_password").val()},
             method: "post",
-            uccess: function (data) {
-                if (data.flag == "true") {
-                    location.href = "/simpleBook/activate_skip.jsp？eamil=" + email;
+
+            success: function (data) {
+                if (data.flag == true) {
+                    location.href = "/simpleBook/activate_skip.jsp?email=" + email;
                 } else {
                     alert(data.errorMsg());
                 }
@@ -29,8 +30,8 @@ $(function () {
             data: {uname: userName},
             method: "post",
             async: false,
-            uccess: function (data) {
-                console.log(data);
+
+            success: function (data) {
                 if (!data.flag) {
                     alert(data.errorMsg);
                     $("#sign_up_btn").attr("disabled", true);
@@ -49,7 +50,9 @@ $(function () {
             data: {email: $("#user_mobile_number").val()},
             method: "get",
             async: false,
-            uccess: function (data) {
+
+            success: function (data) {
+
                 if (!data.flag) {
                     alert(data.errorMsg);
                     $("#sign_up_btn").attr("disabled", true);
