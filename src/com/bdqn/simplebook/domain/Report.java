@@ -19,6 +19,15 @@ public class Report {
     private Timestamp reportTime ; // 举报时间
     private Post post;  //  被举报文章信息
     private User user;   // 举报人信息
+    private Integer reportStatus;
+
+    public Integer getReportStatus() {
+        return reportStatus;
+    }
+
+    public void setReportStatus(Integer reportStatus) {
+        this.reportStatus = reportStatus;
+    }
 
     public Integer getReportId() {
         return reportId;

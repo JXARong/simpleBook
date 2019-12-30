@@ -8,8 +8,14 @@
     <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png"/>
 </head>
 <script type="text/html" id="exam">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="success">审核通过</a>
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="fail">审核失败</a>
+    {{#  if(d.reportStatus == 0){ }}
+    <span style="color: red">审核失败</span>
+    {{#  } else if(d.reportStatus == 1){ }}
+        <span style="color: red">审核通过</span>
+    {{#  } else{ }}
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="success">审核通过</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="fail">审核失败</a>
+    {{#  }}}
 </script>
 <body class="layui-bg-gray">
 <div class="layui-card">

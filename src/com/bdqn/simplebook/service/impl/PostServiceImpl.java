@@ -9,6 +9,8 @@ import com.bdqn.simplebook.domain.Topic;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.utils.PageUtils;
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+import sun.net.www.http.PosterOutputStream;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -72,6 +74,8 @@ public class PostServiceImpl implements PostService {
             // 遍历查询的文章，查询该文章属于哪个主题
             for (Post postOne : posts) {
                 Topic topic = topicDao.selTopicById(postOne.getTopicId());
+                User user = userDao.selUserById(postOne.getUid());
+                postOne.setUser(user);
                 postOne.setTopic(topic);
             }
         }
@@ -189,6 +193,7 @@ public class PostServiceImpl implements PostService {
     public List<Post> searchPost(String searchValue) {
         return dao.searchPost(searchValue);
     }
+
     public Post selPostById(Integer id) throws Exception {
         Post post = dao.selpostByPid(id);
         if (post==null || post.getPid()==null){
@@ -199,12 +204,26 @@ public class PostServiceImpl implements PostService {
         if (user==null || user.getUid()==null){
             throw new Exception("用户信息加载失败");
         }
+        List<Comments> comments = commentsDao.selCommentsByPid(id);
         post.setUser(user);
+        post.setComments(comments);
         return post;
     }
 
     @Override
     public void addReadOfPostByPid(Integer pid) {
         dao.addReadOfPostByPid(pid);
+    }
+
+    @Override
+    public boolean addStart(Integer pid) {
+        Integer index = dao.addStart(pid);
+        return index>0;
+    }
+
+    @Override
+    public boolean updPostStatus(Integer status, Integer pid) {
+        int i = dao.updPostStatus(status, pid);
+        return i>0;
     }
 }

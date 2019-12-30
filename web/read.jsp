@@ -392,6 +392,10 @@
                 }
             })
         });
+
+        $("#sendComment").click(function () {
+            alert("傻逼");
+        });
     });
 </script>
 <body>
@@ -462,12 +466,11 @@
 </div>
 
 <div class="footer">
-    <div class="review">
-        <form action="">
-            <textarea placeholder="写下你的评论..." id="review"></textarea>
-            <button>发布</button>
-        </form>
+    <div style="height: 150px;padding-top: 30px">
+        <textarea style="padding: 5px;vertical-align: middle" id="commentContent" rows="3" cols="50" maxlength="100">
 
+        </textarea>
+        <button type="button" class="layui-btn layui-btn-primary" id="sendComment" style="display: inline-block;margin-left: 15px">发送</button>
     </div>
 </div>
 </body>

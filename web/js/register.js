@@ -7,6 +7,7 @@ $(function () {
             url: "/simpleBook/user/register",
             data: {uname: $("#user_nickname").val(), email: email, password: $("#user_password").val()},
             method: "post",
+
             success: function (data) {
                 if (data.flag == true) {
                     location.href = "/simpleBook/activate_skip.jsp?email=" + email;
@@ -29,6 +30,7 @@ $(function () {
             data: {uname: userName},
             method: "post",
             async: false,
+
             success: function (data) {
                 if (!data.flag) {
                     alert(data.errorMsg);
@@ -48,7 +50,9 @@ $(function () {
             data: {email: $("#user_mobile_number").val()},
             method: "get",
             async: false,
+
             success: function (data) {
+
                 if (!data.flag) {
                     alert(data.errorMsg);
                     $("#sign_up_btn").attr("disabled", true);

@@ -50,7 +50,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
     public List<Post> selPostByUid(User user) {
-        String sql = "select * from post where uid =? order by hot desc";
+        String sql = "select * from post where uid =? and status = 0 order by hot desc";
         List<Post> posts = super.selectList(Post.class, sql, new Object[]{user.getUid()});
         return posts;
     }
@@ -70,6 +70,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
             sql += "and sendDate like ?";
             params.add("%" + sendDate + "%");
         }
+        sql+=" order by hot desc";
         sql += " limit ?,?";
         params.add(start);
         params.add(limit);
@@ -132,9 +133,11 @@ public class PostDaoImpl extends BaseDao implements PostDao {
             sql += " and  title  like ?";
             params.add("%" + post.getTitle() + "%");
         }
+        if(post.getStatus()!=null){
+            sql +=" and status = ?";
+            params.add(post.getStatus());
+        }
         return sql;
-
-
     }
 
     @Override
@@ -164,14 +167,14 @@ public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
     public List<Post> selPostByUIdOfTop10(Integer uid) {
-        String sql = "select * from post where uid  = ? order by hot desc limit 10";
+        String sql = "select * from post where uid  = ? and status = 0 order by hot desc limit 10";
         return super.selectList(Post.class, sql, new Object[]{uid});
     }
 
     @Override
     public int sendPost(Post post) {
         // 文章编号 用户编号 点赞总数 打赏金额 浏览次数 发布时间 文章内容 标题 热度 状态 主题编号
-        String sql = "insert into post values(default,?,0,0,0.0,?,?,?,0,1,?,null,?)";
+        String sql = "insert into post values(default,?,0,0,0.0,?,?,?,0,0,?,null,?)";
         return super.update(sql, new Object[]{post.getUid(), post.getSendDate(), post.getArticle(), post.getTitle(), post.getTopicId(),post.getTextNum()});
     }
 
@@ -183,7 +186,7 @@ public class PostDaoImpl extends BaseDao implements PostDao {
 
     @Override
     public List<Post> searchPost(String searchValue) {
-        String sql = "select * from post where title like ?";
+        String sql = "select * from post where title like ? and status = 0";
         List<Post> searchPostList = super.selectList(Post.class,sql,new Object[]{"%"+searchValue+"%"});
         return searchPostList;
     }
@@ -193,5 +196,35 @@ public class PostDaoImpl extends BaseDao implements PostDao {
     public void addReadOfPostByPid(Integer pid) {
         String sql="update post set readCount=readCount+1 where pid =?";
         super.update(sql,new Object[]{pid});
+    }
+
+    @Override
+    public Integer addStart(Integer pid) {
+        String sql="update post set start = start +1 where pid = ?";
+        return super.update(sql,new Object[]{pid});
+    }
+
+    @Override
+    public List<Integer> selUidGroupByTextNumDesc(Integer uid) {
+        String sql="SELECT uid FROM post GROUP BY  uid HAVING 1=1  ";
+        List<Object> params=new LinkedList<>();
+        if (uid!=null){
+            sql+=" and uid!=?";
+            params.add(uid);
+        }
+        sql+=" ORDER BY SUM(textNum) DESC";
+        return super.selRowsAndOneColumn(Integer.class,sql,params.toArray());
+    }
+
+    /**
+     * 修改文章的状态
+     * @param status
+     * @param pid
+     * @return
+     */
+    @Override
+    public int updPostStatus(Integer status, Integer pid) {
+        String sql="update post set status = ? where pid = ?";
+        return super.update(sql,new Object[]{status,pid});
     }
 }

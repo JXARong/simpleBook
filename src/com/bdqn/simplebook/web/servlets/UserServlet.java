@@ -62,8 +62,6 @@ public class UserServlet extends BaseServlet {
         user.setSex(Integer.parseInt(request.getParameter("sex")));
         user.setBornthDay(Timestamp.valueOf(request.getParameter("bornthDay")));
         user.setPhoto(request.getParameter("filePath"));
-//        user.setRegisterTime(Timestamp.valueOf(request.getParameter("registerTime")));
-        user.setMoney(Double.valueOf(request.getParameter("money")));
         if (request.getParameter("status")==null){
             user.setStatus(1);
         }else{
@@ -272,10 +270,11 @@ public class UserServlet extends BaseServlet {
             user.setPassword(password);
             user.setStatus(1);
             int i = service.register(user);
-
             if (i>0){
                 ajaxUtils.setFlag(true);
+
                 request.getSession().setAttribute("user",user);
+
             }else {
                 ajaxUtils.setFlag(false);
                 ajaxUtils.setErrorMsg("注册失败！");
@@ -396,7 +395,35 @@ public class UserServlet extends BaseServlet {
         response.getWriter().write(JSON.toJSONString(flag));
     }
 
-    public void changePwd(HttpServletRequest request,HttpServletResponse response){
+    public void selUserForIndex(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        List<User> users = null;
+        try {
+            User user = (User) request.getSession().getAttribute("user");
+            users = service.selUserForIndex(user==null?null:user.getUid());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONStringWithDateFormat(users,   "yyyy-MM-dd HH:mm:ss"));
 
+    }
+
+    public void changePwd(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String oldPwd = request.getParameter("oldPwd");
+        String newPwd = request.getParameter("newPwd");
+        User user = (User) request.getSession().getAttribute("user");
+        AjaxUtils ajaxUtils=new AjaxUtils();
+       Integer code =  service.changePwd(user.getUid(),oldPwd,newPwd);
+       if (code==-1){
+           ajaxUtils.setFlag(false);
+           ajaxUtils.setErrorMsg("旧密码输入错误");
+       }else if(code==1){
+           ajaxUtils.setFlag(true);
+           ajaxUtils.setMsg("密码修改成功");
+       }else{
+           ajaxUtils.setErrorMsg("密码修改失败");
+       }
+        response.setContentType("application/json;charset=utf-8");
+        response.getWriter().write(JSON.toJSONString(ajaxUtils));
     }
 }

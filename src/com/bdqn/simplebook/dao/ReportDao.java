@@ -28,4 +28,6 @@ public interface ReportDao {
     Long selAllCount();
 
     List<Report> getReportsOfInfo(Report report);
+
+    void updStatus(Integer status,Integer uid1, Integer pid);
 }

@@ -46,7 +46,7 @@ public class ReportDaoImpl extends BaseDao implements ReportDao {
     @Override
     public int addReport(Report report) {
         // reportId     pid       uid  reportContent          reportTime
-        String sql="insert into report values(default,?,?,?,?)";
+        String sql="insert into report values(default,?,?,?,?,default)";
         return super.update(sql,new Object[]{report.getPid(),report.getUid(),report.getReportContent(),report.getReportTime()});
     }
 
@@ -86,5 +86,11 @@ public class ReportDaoImpl extends BaseDao implements ReportDao {
         }
         List<Report> reports = super.selectList(Report.class, sql, params.toArray());
         return reports;
+    }
+
+    @Override
+    public void updStatus(Integer status,Integer uid1, Integer pid) {
+        String sql="update report set reportStatus = ? where uid = ? and pid =?";
+        super.update(sql,new Object[]{status,uid1,pid});
     }
 }
