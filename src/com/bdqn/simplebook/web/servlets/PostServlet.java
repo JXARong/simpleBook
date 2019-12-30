@@ -94,7 +94,8 @@ public class PostServlet extends BaseServlet {
         post.setTitle(title);
 
         String sendDate = request.getParameter("sendDate");
-
+        String postStatus = request.getParameter("postStatus");
+        post.setStatus(postStatus==null ? null : Integer.valueOf(postStatus));
         try {
             pageUtils = service.selPostByPage(pageUtils, post,sendDate);
             pageUtils.setCode(0);

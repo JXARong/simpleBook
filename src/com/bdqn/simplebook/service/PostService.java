@@ -66,4 +66,6 @@ public interface PostService {
     void addReadOfPostByPid(Integer pid);
 
     boolean addStart(Integer pid);
+
+    boolean updPostStatus(Integer status,Integer pid);
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>文章列表</title>
-    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png" />
+    <link rel="icon" type="image/x-icon" href="/simpleBook/images/girl.png"/>
 </head>
 <link href="/simpleBook/css/postList.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="/simpleBook/js/layui/css/layui.css" media="all">
@@ -22,11 +22,13 @@
     </div>
 </script>
 <script id="status" type="text/html">
-    <span>
-        {{# if(d.status==0){ }}
-        {{# '未使用'} else { }}
-        {{# '已封禁'} }}
-    </span>
+
+    {{#  if(d.status == 0){ }}
+        正常
+    {{#  } else { }}
+        <span style="color: red">已封禁</span>
+    {{#  } }}
+
 </script>
 <!--主题名称-->
 <script type="text/html" id="topic_temp">
@@ -65,11 +67,10 @@
                     sort: true,
                     templet: "<span>{{(d.hot+d.readCount)*10}}</span>"
                 }
-                , {field: 'gratuity', width: 100, title: '打赏金额'}
+                , {field: "status", title: "文章状态", width: "10%", templet: "#status"}
                 , {field: 'title', title: '标题', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                 , {field: 'sendDate', title: '发布时间', sort: true}
                 , {field: 'hot', title: '热度', sort: true}
-                , {field: 'status', title: '状态',templet:"#status"}
                 , {field: 'topic', width: 120, title: '主题', templet: "#topic_temp"}
                 , {fixed: 'right', title: '操作', toolbar: '#opr', width: 120}
             ]]

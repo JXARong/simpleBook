@@ -79,7 +79,7 @@
         <%--    右侧栏    --%>
         <div class="layui-col-md3">
             <div class="layui-col-md12">
-                <img id="huiyuan" src="images/OEZXS$%602CGGLITMHC%5DIA%7BCC.png">
+                <img id="huiyuan" src="/simpleBook/images/OEZXS$%602CGGLITMHC%5DIA%7BCC.png">
             </div>
             <div class="layui-col-md12" style="padding-top: 50px">
                 <style>
@@ -134,7 +134,7 @@
             , done: function (page, next) { //执行下一页的回调
                 $.ajax({
                     url: "/simpleBook/post/selectPost",
-                    data: {page: page, limit: 6},
+                    data: {page: page, limit: 6,postStatus:0},
                     type: "post",
                     success: function (data) {
                         let count = data.count;

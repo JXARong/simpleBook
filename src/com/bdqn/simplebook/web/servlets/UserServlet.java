@@ -62,8 +62,6 @@ public class UserServlet extends BaseServlet {
         user.setSex(Integer.parseInt(request.getParameter("sex")));
         user.setBornthDay(Timestamp.valueOf(request.getParameter("bornthDay")));
         user.setPhoto(request.getParameter("filePath"));
-//        user.setRegisterTime(Timestamp.valueOf(request.getParameter("registerTime")));
-        user.setMoney(Double.valueOf(request.getParameter("money")));
         if (request.getParameter("status")==null){
             user.setStatus(1);
         }else{
@@ -272,10 +270,8 @@ public class UserServlet extends BaseServlet {
             user.setPassword(password);
             user.setStatus(1);
             int i = service.register(user);
-
             if (i>0){
                 ajaxUtils.setFlag(true);
-
             }else {
                 ajaxUtils.setFlag(false);
                 ajaxUtils.setErrorMsg("注册失败！");

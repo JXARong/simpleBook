@@ -16,6 +16,15 @@ public class Comments {
     private Integer uid; // 评论者编号
     private String content; // 评论内容
     private Timestamp time; // 评论时间
+    private User user;// 对应的用户
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getCid() {
         return cid;

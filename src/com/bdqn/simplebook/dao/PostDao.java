@@ -140,4 +140,6 @@ public interface PostDao {
     Integer addStart(Integer pid);
 
     List<Integer> selUidGroupByTextNumDesc(Integer uid);
+
+    int updPostStatus(Integer status,Integer pid);
 }

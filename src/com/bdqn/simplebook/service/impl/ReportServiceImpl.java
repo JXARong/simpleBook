@@ -97,26 +97,22 @@ public class ReportServiceImpl implements ReportService {
             String time = formatter.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(report.getReportTime().getTime()), ZoneId.systemDefault()));
             String emailContent = MailUtils.getEmailContent("简简书文章举报审核", "简简书文章审核结果通过啦", "亲爱的'" + user.getUname() + "'您好,在" + time + "时您对\"" + post.getTitle()
                     + "\"进行了举报！举报原因为：" + report.getReportContent() + ",我们已对该文章进行了删除,并对作者发送了通知，感谢您为简简书做的一切");
-            MailUtils.sendMail(email,emailContent,"简简书文章举报审核结果");
+            MailUtils.sendMail(email, emailContent, "简简书文章举报审核结果");
+
+            // 修改举报信息状态
+            dao.updStatus(1, uid1, pid);
         }
 
-        // 删除举报信息
-        Post post = new Post();
-        post.setPid(pid);
-        dao.delReportByPid(post);
 
         // 查询该帖子信息
         Post selPostById = postService.selPostById(pid);
-
-        // 删除帖子信息
-        String[] strings=new String[1];
-        strings[0]=pid.toString();
-        Integer integer = postService.delPostById(strings);
+        // 修改帖子状态
+        boolean b = postService.updPostStatus(1, selPostById.getPid());
         String time = formatter.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(selPostById.getSendDate().getTime()), ZoneId.systemDefault()));
 
         // 对发布该帖子的人进行通知警告
         User user = userService.selUserById(uid);
-        String userContent = MailUtils.getEmailContent("简简书删除文章删除通知","简简书文章删除","尊敬的\""+user.getUname()+"\",您好。由于您于 "+time+" 发布的 \""+selPostById.getTitle()+"\"文章被多名用户举报,现已删除该文章并对您进行通知。请文明上网");
+        String userContent = MailUtils.getEmailContent("简简书文章封禁通知", "简简书文章封禁", "尊敬的\"" + user.getUname() + "\",您好。由于您于 " + time + " 发布的 \"" + selPostById.getTitle() + "\"文章被多名用户举报,现已封禁该文章并对您进行通知。请文明上网");
         boolean sendMail = MailUtils.sendMail(user.getEmail(), userContent, "简简书文章删除通知");
         return sendMail;
     }
@@ -126,24 +122,21 @@ public class ReportServiceImpl implements ReportService {
         // 处理日期格式
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        Report info=new Report();
+        Report info = new Report();
         info.setUid(uid);
         info.setPid(pid);
         info.setReportId(reportId);
         List<Report> reports = dao.getReportsOfInfo(info);
-        for (Report report : reports) {
-            User user = userService.selUserById(uid);
-            Post post = postService.selPostById(pid);
-            String time = formatter.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(report.getReportTime().getTime()), ZoneId.systemDefault()));
-            // 给所有的用户发送邮件
-            String temp="亲爱的 "+user.getUname()+" 您好，您于 "+time+" 举报的文章\""+post.getTitle()+"\"由于证据不足举报失败。";
-            String emailContent = MailUtils.getEmailContent("简简书文章举报审核", "文章举报审核失败", temp);
-            MailUtils.sendMail(user.getEmail(),emailContent,"简简书文章举报审核结果");
-        }
-        // 删除所有有关该帖子的举报信息
-        Post post=new Post();
-        post.setPid(pid);
-        int i = dao.delReportByPid(post);
-        return i>0;
+        Report report = reports.get(0);
+        User user = userService.selUserById(uid);
+        Post post = postService.selPostById(pid);
+        String time = formatter.format(LocalDateTime.ofInstant(Instant.ofEpochMilli(report.getReportTime().getTime()), ZoneId.systemDefault()));
+        // 给所有的用户发送邮件
+        String temp = "亲爱的 " + user.getUname() + " 您好，您于 " + time + " 举报的文章\"" + post.getTitle() + "\"由于证据不足举报失败。";
+        String emailContent = MailUtils.getEmailContent("简简书文章举报审核", "文章举报审核失败", temp);
+        MailUtils.sendMail(user.getEmail(), emailContent, "简简书文章举报审核结果");
+        // 修改举报信息状态
+        dao.updStatus(1, user.getUid(), pid);
+        return false;
     }
 }
