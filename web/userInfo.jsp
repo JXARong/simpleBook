@@ -109,10 +109,6 @@
                        name="bornthDay"/>
             </div>
             <div>
-                <label>余额：</label>
-                <input class="layui-input layui-input-inline" value="" name="money" readonly/>
-            </div>
-            <div>
                 <label>注册时间：</label>
                 <input class="layui-input layui-input-inline" value="" readonly id="registerTime" name="registerTime"/>
             </div>
@@ -140,19 +136,19 @@
         <form class="layui-form" id="changPwd">
             <div class="layui-form-item">
                 <label class="layui-form-label">原密码：</label>
-                <input type="text" class="layui-input layui-input-inline" lay-verify="oldPwd" lay-vertype="tips"
+                <input type="password" class="layui-input layui-input-inline" lay-verify="oldPwd" lay-vertype="tips"
                        name="oldPwd" id="oldPwd"/>
                 <div class="layui-form-mid layui-word-aux">填写现在的密码</div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">新密码：</label>
-                <input type="text" class="layui-input layui-input-inline" lay-verify="password" lay-vertype="tips"
+                <input type="password" class="layui-input layui-input-inline" lay-verify="password" lay-vertype="tips"
                        name="password" id="password"/>
                 <div class="layui-form-mid layui-word-aux">密码格式：6-16位英文数字组合而成</div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">确认密码：</label>
-                <input type="text" class="layui-input layui-input-inline" lay-verify="password2" lay-vertype="tips"
+                <input type="password" class="layui-input layui-input-inline" lay-verify="password2" lay-vertype="tips"
                        name="password2" id="password2"/>
 
             </div>
@@ -284,7 +280,7 @@
                         , "bornthDay": userInfo.bornthDay
                         , "money": userInfo.money
                         , "registerTime": userInfo.registerTime
-                        , "profile": userInfo.profile
+                        , "profile": userInfo.introduce
                         , "sex": userInfo.sex
                         , "filePath": userInfo.photo
                     });

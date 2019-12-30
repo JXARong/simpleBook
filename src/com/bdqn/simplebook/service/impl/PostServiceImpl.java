@@ -9,6 +9,8 @@ import com.bdqn.simplebook.domain.Topic;
 import com.bdqn.simplebook.domain.User;
 import com.bdqn.simplebook.service.PostService;
 import com.bdqn.simplebook.utils.PageUtils;
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+import sun.net.www.http.PosterOutputStream;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -202,7 +204,9 @@ public class PostServiceImpl implements PostService {
         if (user==null || user.getUid()==null){
             throw new Exception("用户信息加载失败");
         }
+        List<Comments> comments = commentsDao.selCommentsByPid(id);
         post.setUser(user);
+        post.setComments(comments);
         return post;
     }
 
@@ -215,5 +219,11 @@ public class PostServiceImpl implements PostService {
     public boolean addStart(Integer pid) {
         Integer index = dao.addStart(pid);
         return index>0;
+    }
+
+    @Override
+    public boolean updPostStatus(Integer status, Integer pid) {
+        int i = dao.updPostStatus(status, pid);
+        return i>0;
     }
 }

@@ -1,6 +1,7 @@
 package com.bdqn.simplebook.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author: 赖榕
@@ -25,6 +26,15 @@ public class Post {
     private Topic topic; // 主题信息
     private User user; // 发布人信息
     private Integer textNum; //  该文章的文字数量
+    private List<Comments> comments;
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
 
     public Integer getTextNum() {
         return textNum;
