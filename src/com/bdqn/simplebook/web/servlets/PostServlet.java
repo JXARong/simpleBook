@@ -21,6 +21,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -327,7 +328,11 @@ public class PostServlet extends BaseServlet {
         request.setAttribute("searchPostList", searchPostList);
         request.setAttribute("searchTopicList", searchTopicList);
         request.setAttribute("searchUserList",searchUserList);
-        request.getRequestDispatcher("/simpleBook/search.jsp");
+        try {
+            request.getRequestDispatcher("/simpleBook/search.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * 根据编号查询文章信息

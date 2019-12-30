@@ -1,7 +1,7 @@
 $(function () {
 
     function check(){
-        $("#sign-in-form-submit-btn").click(function () {
+
 
             $.ajax({
                 url: "/simpleBook/user/loginOn",
@@ -18,7 +18,7 @@ $(function () {
                 }
             });
 
-        })
+
     }
 
     $("#sign-in-form-submit-btn").submit(function(){
