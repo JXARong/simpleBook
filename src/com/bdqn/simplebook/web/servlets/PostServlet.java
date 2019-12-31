@@ -331,7 +331,7 @@ public class PostServlet extends BaseServlet {
         request.setAttribute("searchUserList",searchUserList);
 
         try {
-            request.getRequestDispatcher("/simpleBook/search.jsp").forward(request,response);
+            request.getRequestDispatcher("/search.jsp").forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         }

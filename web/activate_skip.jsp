@@ -60,7 +60,7 @@
 
         };
 
-        varurl = $("#email").text().split('@')[1]; //获取邮箱域
+        var url = $("#email").text().split('@')[1]; //获取邮箱域
 
         for (var j in hash){
 
